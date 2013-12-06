@@ -7,6 +7,7 @@
 //
 
 #import "PMAppDelegate.h"
+#import "PMRootMenuController.h"
 
 @implementation PMAppDelegate
 
@@ -17,8 +18,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+
+    self.window.rootViewController = [[PMRootMenuController alloc] init];
     [self.window makeKeyAndVisible];
     return YES;
 }

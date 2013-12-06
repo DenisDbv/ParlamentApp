@@ -22,6 +22,9 @@
 		18A84C851851D32700612BE5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A84C691851D32600612BE5 /* CoreData.framework */; };
 		18A84C8D1851D32700612BE5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18A84C8B1851D32700612BE5 /* InfoPlist.strings */; };
 		18A84C8F1851D32700612BE5 /* ParlamentAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84C8E1851D32700612BE5 /* ParlamentAppTests.m */; };
+		18A84C9B1851D56500612BE5 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A84C9A1851D56500612BE5 /* background.png */; };
+		18A84CA01851D5A600612BE5 /* PMRootMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84C9E1851D5A600612BE5 /* PMRootMenuController.m */; };
+		18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A84C9F1851D5A600612BE5 /* PMRootMenuController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,10 @@
 		18A84C8A1851D32700612BE5 /* ParlamentAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ParlamentAppTests-Info.plist"; sourceTree = "<group>"; };
 		18A84C8C1851D32700612BE5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18A84C8E1851D32700612BE5 /* ParlamentAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParlamentAppTests.m; sourceTree = "<group>"; };
+		18A84C9A1851D56500612BE5 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		18A84C9D1851D5A600612BE5 /* PMRootMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMRootMenuController.h; sourceTree = "<group>"; };
+		18A84C9E1851D5A600612BE5 /* PMRootMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMRootMenuController.m; sourceTree = "<group>"; };
+		18A84C9F1851D5A600612BE5 /* PMRootMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMRootMenuController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +122,8 @@
 		18A84C6B1851D32600612BE5 /* ParlamentApp */ = {
 			isa = PBXGroup;
 			children = (
+				18A84C991851D54600612BE5 /* Controllers */,
+				18A84C981851D4CA00612BE5 /* Resources */,
 				18A84C741851D32600612BE5 /* PMAppDelegate.h */,
 				18A84C751851D32600612BE5 /* PMAppDelegate.m */,
 				18A84C7A1851D32600612BE5 /* Images.xcassets */,
@@ -151,6 +160,32 @@
 				18A84C8B1851D32700612BE5 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18A84C981851D4CA00612BE5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				18A84C9A1851D56500612BE5 /* background.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		18A84C991851D54600612BE5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				18A84C9C1851D57D00612BE5 /* RootMenuController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		18A84C9C1851D57D00612BE5 /* RootMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				18A84C9D1851D5A600612BE5 /* PMRootMenuController.h */,
+				18A84C9E1851D5A600612BE5 /* PMRootMenuController.m */,
+				18A84C9F1851D5A600612BE5 /* PMRootMenuController.xib */,
+			);
+			path = RootMenuController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,7 +265,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A84C701851D32600612BE5 /* InfoPlist.strings in Resources */,
+				18A84C9B1851D56500612BE5 /* background.png in Resources */,
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
+				18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +289,7 @@
 				18A84C721851D32600612BE5 /* main.m in Sources */,
 				18A84C761851D32600612BE5 /* PMAppDelegate.m in Sources */,
 				18A84C791851D32600612BE5 /* ParlamentApp.xcdatamodeld in Sources */,
+				18A84CA01851D5A600612BE5 /* PMRootMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +492,7 @@
 				18A84C941851D32700612BE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18A84C951851D32700612BE5 /* Build configuration list for PBXNativeTarget "ParlamentAppTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +501,7 @@
 				18A84C971851D32700612BE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
