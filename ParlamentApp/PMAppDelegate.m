@@ -7,9 +7,9 @@
 //
 
 #import "PMAppDelegate.h"
-#import "PMRootMenuController.h"
 
 @implementation PMAppDelegate
+@synthesize rippleViewController;
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -19,7 +19,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    self.window.rootViewController = [[PMRootMenuController alloc] init];
+    rippleViewController = [[PMRootViewController alloc] initWithNibName:@"PMRootViewController" bundle:[NSBundle mainBundle]];
+    self.window.rootViewController = rippleViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }

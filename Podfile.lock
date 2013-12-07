@@ -1,0 +1,13 @@
+PODS:
+  - MZAppearance (1.1.1)
+  - MZFormSheetController (1.4.0):
+    - MZAppearance (~> 1.1.1)
+
+DEPENDENCIES:
+  - MZFormSheetController
+
+SPEC CHECKSUMS:
+  MZAppearance: 8b02683f0019f725557ae9839ed6cab153fff669
+  MZFormSheetController: 6253af6f7c5baede40b8d2b02af5af9fe820fc39
+
+COCOAPODS: 0.23.0

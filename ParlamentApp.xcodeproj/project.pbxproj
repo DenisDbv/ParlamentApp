@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18A68F68185388F8009019BC /* RippleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F62185388F8009019BC /* RippleModel.m */; };
+		18A68F69185388F8009019BC /* RippleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F64185388F8009019BC /* RippleViewController.m */; };
+		18A68F6A185388F8009019BC /* Shader.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F66185388F8009019BC /* Shader.fsh */; };
+		18A68F6B185388F8009019BC /* Shader.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F67185388F8009019BC /* Shader.vsh */; };
+		18A68F6C18538905009019BC /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F66185388F8009019BC /* Shader.fsh */; };
+		18A68F6D18538905009019BC /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F67185388F8009019BC /* Shader.vsh */; };
+		18A68F7118538CF9009019BC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68F7018538CF9009019BC /* OpenGLES.framework */; };
+		18A68F7318538D00009019BC /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68F7218538D00009019BC /* GLKit.framework */; };
+		18A68F7518538D1B009019BC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68F7418538D1B009019BC /* AVFoundation.framework */; };
+		18A68F7818538DC7009019BC /* PMParentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F7718538DC6009019BC /* PMParentController.m */; };
 		18A84C641851D32600612BE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A84C631851D32600612BE5 /* Foundation.framework */; };
 		18A84C661851D32600612BE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A84C651851D32600612BE5 /* CoreGraphics.framework */; };
 		18A84C681851D32600612BE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A84C671851D32600612BE5 /* UIKit.framework */; };
@@ -25,6 +35,15 @@
 		18A84C9B1851D56500612BE5 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A84C9A1851D56500612BE5 /* background.png */; };
 		18A84CA01851D5A600612BE5 /* PMRootMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84C9E1851D5A600612BE5 /* PMRootMenuController.m */; };
 		18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A84C9F1851D5A600612BE5 /* PMRootMenuController.xib */; };
+		18A84CA61851E04D00612BE5 /* PMSettingsViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84CA41851E04D00612BE5 /* PMSettingsViewContoller.m */; };
+		18A84CA71851E04D00612BE5 /* PMSettingsViewContoller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A84CA51851E04D00612BE5 /* PMSettingsViewContoller.xib */; };
+		18A84CAB1851E1F800612BE5 /* UINavigationController+ClearSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84CAA1851E1F800612BE5 /* UINavigationController+ClearSlider.m */; };
+		18A84CB01852047700612BE5 /* PMVoiceVisualizationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84CAE1852047700612BE5 /* PMVoiceVisualizationVC.m */; };
+		18A84CB11852047700612BE5 /* PMVoiceVisualizationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A84CAF1852047700612BE5 /* PMVoiceVisualizationVC.xib */; };
+		18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84CB61852084700612BE5 /* UIView+GestureBlocks.m */; };
+		18A84CC7185383CF00612BE5 /* PMRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84CC5185383CF00612BE5 /* PMRootViewController.m */; };
+		18A84CC8185383CF00612BE5 /* PMRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A84CC6185383CF00612BE5 /* PMRootViewController.xib */; };
+		4DAB77C04BEC400B9C6A466E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82D6C46B6664C009AA7199C /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +57,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18A68F61185388F8009019BC /* RippleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RippleModel.h; sourceTree = "<group>"; };
+		18A68F62185388F8009019BC /* RippleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RippleModel.m; sourceTree = "<group>"; };
+		18A68F63185388F8009019BC /* RippleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RippleViewController.h; sourceTree = "<group>"; };
+		18A68F64185388F8009019BC /* RippleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RippleViewController.m; sourceTree = "<group>"; };
+		18A68F66185388F8009019BC /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
+		18A68F67185388F8009019BC /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
+		18A68F6F18538B90009019BC /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		18A68F7018538CF9009019BC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		18A68F7218538D00009019BC /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		18A68F7418538D1B009019BC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		18A68F7618538DC6009019BC /* PMParentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMParentController.h; sourceTree = "<group>"; };
+		18A68F7718538DC6009019BC /* PMParentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMParentController.m; sourceTree = "<group>"; };
 		18A84C601851D32600612BE5 /* ParlamentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParlamentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A84C631851D32600612BE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18A84C651851D32600612BE5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,6 +91,21 @@
 		18A84C9D1851D5A600612BE5 /* PMRootMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMRootMenuController.h; sourceTree = "<group>"; };
 		18A84C9E1851D5A600612BE5 /* PMRootMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMRootMenuController.m; sourceTree = "<group>"; };
 		18A84C9F1851D5A600612BE5 /* PMRootMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMRootMenuController.xib; sourceTree = "<group>"; };
+		18A84CA31851E04D00612BE5 /* PMSettingsViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSettingsViewContoller.h; sourceTree = "<group>"; };
+		18A84CA41851E04D00612BE5 /* PMSettingsViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSettingsViewContoller.m; sourceTree = "<group>"; };
+		18A84CA51851E04D00612BE5 /* PMSettingsViewContoller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMSettingsViewContoller.xib; sourceTree = "<group>"; };
+		18A84CA91851E1F800612BE5 /* UINavigationController+ClearSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ClearSlider.h"; sourceTree = "<group>"; };
+		18A84CAA1851E1F800612BE5 /* UINavigationController+ClearSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ClearSlider.m"; sourceTree = "<group>"; };
+		18A84CAD1852047700612BE5 /* PMVoiceVisualizationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMVoiceVisualizationVC.h; sourceTree = "<group>"; };
+		18A84CAE1852047700612BE5 /* PMVoiceVisualizationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMVoiceVisualizationVC.m; sourceTree = "<group>"; };
+		18A84CAF1852047700612BE5 /* PMVoiceVisualizationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMVoiceVisualizationVC.xib; sourceTree = "<group>"; };
+		18A84CB51852084700612BE5 /* UIView+GestureBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GestureBlocks.h"; sourceTree = "<group>"; };
+		18A84CB61852084700612BE5 /* UIView+GestureBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GestureBlocks.m"; sourceTree = "<group>"; };
+		18A84CC4185383CF00612BE5 /* PMRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMRootViewController.h; sourceTree = "<group>"; };
+		18A84CC5185383CF00612BE5 /* PMRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMRootViewController.m; sourceTree = "<group>"; };
+		18A84CC6185383CF00612BE5 /* PMRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMRootViewController.xib; sourceTree = "<group>"; };
+		B82D6C46B6664C009AA7199C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F248A30DA07F413CB7568B8E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,10 +113,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A68F7518538D1B009019BC /* AVFoundation.framework in Frameworks */,
+				18A68F7318538D00009019BC /* GLKit.framework in Frameworks */,
+				18A68F7118538CF9009019BC /* OpenGLES.framework in Frameworks */,
 				18A84C661851D32600612BE5 /* CoreGraphics.framework in Frameworks */,
 				18A84C6A1851D32600612BE5 /* CoreData.framework in Frameworks */,
 				18A84C681851D32600612BE5 /* UIKit.framework in Frameworks */,
 				18A84C641851D32600612BE5 /* Foundation.framework in Frameworks */,
+				4DAB77C04BEC400B9C6A466E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +138,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18A68F60185388F8009019BC /* RippleBackground */ = {
+			isa = PBXGroup;
+			children = (
+				18A68F61185388F8009019BC /* RippleModel.h */,
+				18A68F62185388F8009019BC /* RippleModel.m */,
+				18A68F63185388F8009019BC /* RippleViewController.h */,
+				18A68F64185388F8009019BC /* RippleViewController.m */,
+				18A68F65185388F8009019BC /* Shaders */,
+			);
+			path = RippleBackground;
+			sourceTree = "<group>";
+		};
+		18A68F65185388F8009019BC /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				18A68F66185388F8009019BC /* Shader.fsh */,
+				18A68F67185388F8009019BC /* Shader.vsh */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
 		18A84C571851D32600612BE5 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +166,7 @@
 				18A84C881851D32700612BE5 /* ParlamentAppTests */,
 				18A84C621851D32600612BE5 /* Frameworks */,
 				18A84C611851D32600612BE5 /* Products */,
+				F248A30DA07F413CB7568B8E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,11 +182,15 @@
 		18A84C621851D32600612BE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18A68F7418538D1B009019BC /* AVFoundation.framework */,
+				18A68F7218538D00009019BC /* GLKit.framework */,
+				18A68F7018538CF9009019BC /* OpenGLES.framework */,
 				18A84C631851D32600612BE5 /* Foundation.framework */,
 				18A84C651851D32600612BE5 /* CoreGraphics.framework */,
 				18A84C671851D32600612BE5 /* UIKit.framework */,
 				18A84C691851D32600612BE5 /* CoreData.framework */,
 				18A84C811851D32700612BE5 /* XCTest.framework */,
+				B82D6C46B6664C009AA7199C /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,6 +198,7 @@
 		18A84C6B1851D32600612BE5 /* ParlamentApp */ = {
 			isa = PBXGroup;
 			children = (
+				18A84CA81851E1CE00612BE5 /* Common */,
 				18A84C991851D54600612BE5 /* Controllers */,
 				18A84C981851D4CA00612BE5 /* Resources */,
 				18A84C741851D32600612BE5 /* PMAppDelegate.h */,
@@ -173,7 +250,15 @@
 		18A84C991851D54600612BE5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18A68F60185388F8009019BC /* RippleBackground */,
+				18A84CAC1852046000612BE5 /* VoiceVisualization */,
+				18A84CA21851E02B00612BE5 /* SettingsViewController */,
 				18A84C9C1851D57D00612BE5 /* RootMenuController */,
+				18A84CC4185383CF00612BE5 /* PMRootViewController.h */,
+				18A84CC5185383CF00612BE5 /* PMRootViewController.m */,
+				18A84CC6185383CF00612BE5 /* PMRootViewController.xib */,
+				18A68F7618538DC6009019BC /* PMParentController.h */,
+				18A68F7718538DC6009019BC /* PMParentController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -188,6 +273,38 @@
 			path = RootMenuController;
 			sourceTree = "<group>";
 		};
+		18A84CA21851E02B00612BE5 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				18A84CA31851E04D00612BE5 /* PMSettingsViewContoller.h */,
+				18A84CA41851E04D00612BE5 /* PMSettingsViewContoller.m */,
+				18A84CA51851E04D00612BE5 /* PMSettingsViewContoller.xib */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		18A84CA81851E1CE00612BE5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				18A84CB51852084700612BE5 /* UIView+GestureBlocks.h */,
+				18A84CB61852084700612BE5 /* UIView+GestureBlocks.m */,
+				18A84CA91851E1F800612BE5 /* UINavigationController+ClearSlider.h */,
+				18A84CAA1851E1F800612BE5 /* UINavigationController+ClearSlider.m */,
+				18A68F6F18538B90009019BC /* Global.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		18A84CAC1852046000612BE5 /* VoiceVisualization */ = {
+			isa = PBXGroup;
+			children = (
+				18A84CAD1852047700612BE5 /* PMVoiceVisualizationVC.h */,
+				18A84CAE1852047700612BE5 /* PMVoiceVisualizationVC.m */,
+				18A84CAF1852047700612BE5 /* PMVoiceVisualizationVC.xib */,
+			);
+			path = VoiceVisualization;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -195,9 +312,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18A84C921851D32700612BE5 /* Build configuration list for PBXNativeTarget "ParlamentApp" */;
 			buildPhases = (
+				020BAEDF5DD14BFB9ECF2B47 /* Check Pods Manifest.lock */,
 				18A84C5C1851D32600612BE5 /* Sources */,
 				18A84C5D1851D32600612BE5 /* Frameworks */,
 				18A84C5E1851D32600612BE5 /* Resources */,
+				80DD24DDD46F4507B28D322A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,10 +383,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A68F6C18538905009019BC /* Shader.fsh in Resources */,
+				18A68F6D18538905009019BC /* Shader.vsh in Resources */,
 				18A84C701851D32600612BE5 /* InfoPlist.strings in Resources */,
+				18A84CC8185383CF00612BE5 /* PMRootViewController.xib in Resources */,
+				18A84CA71851E04D00612BE5 /* PMSettingsViewContoller.xib in Resources */,
 				18A84C9B1851D56500612BE5 /* background.png in Resources */,
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
 				18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */,
+				18A84CB11852047700612BE5 /* PMVoiceVisualizationVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,14 +405,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		020BAEDF5DD14BFB9ECF2B47 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		80DD24DDD46F4507B28D322A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18A84C5C1851D32600612BE5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A68F6A185388F8009019BC /* Shader.fsh in Sources */,
 				18A84C721851D32600612BE5 /* main.m in Sources */,
+				18A84CC7185383CF00612BE5 /* PMRootViewController.m in Sources */,
 				18A84C761851D32600612BE5 /* PMAppDelegate.m in Sources */,
+				18A68F6B185388F8009019BC /* Shader.vsh in Sources */,
+				18A68F68185388F8009019BC /* RippleModel.m in Sources */,
+				18A68F69185388F8009019BC /* RippleViewController.m in Sources */,
+				18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */,
+				18A68F7818538DC7009019BC /* PMParentController.m in Sources */,
 				18A84C791851D32600612BE5 /* ParlamentApp.xcdatamodeld in Sources */,
+				18A84CA61851E04D00612BE5 /* PMSettingsViewContoller.m in Sources */,
+				18A84CB01852047700612BE5 /* PMVoiceVisualizationVC.m in Sources */,
+				18A84CAB1851E1F800612BE5 /* UINavigationController+ClearSlider.m in Sources */,
 				18A84CA01851D5A600612BE5 /* PMRootMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +574,7 @@
 		};
 		18A84C931851D32700612BE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F248A30DA07F413CB7568B8E /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -414,12 +582,14 @@
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		18A84C941851D32700612BE5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F248A30DA07F413CB7568B8E /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -427,6 +597,7 @@
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

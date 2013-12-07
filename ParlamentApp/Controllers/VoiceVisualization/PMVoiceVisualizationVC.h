@@ -1,5 +1,5 @@
 //
-//  PMRootMenuController.h
+//  PMVoiceVisualizationVC.h
 //  ParlamentApp
 //
 //  Created by DenisDbv on 06.12.13.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PMParentController.h"
 
-@interface PMRootMenuController : PMParentController
+@interface PMVoiceVisualizationVC : UIViewController
 
 @end
