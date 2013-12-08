@@ -17,6 +17,21 @@
 		18A68F7318538D00009019BC /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68F7218538D00009019BC /* GLKit.framework */; };
 		18A68F7518538D1B009019BC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68F7418538D1B009019BC /* AVFoundation.framework */; };
 		18A68F7818538DC7009019BC /* PMParentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F7718538DC6009019BC /* PMParentController.m */; };
+		18A68F801853A009009019BC /* active-eye.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F7A1853A009009019BC /* active-eye.png */; };
+		18A68F811853A009009019BC /* active-finger.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F7B1853A009009019BC /* active-finger.png */; };
+		18A68F821853A009009019BC /* active-monogram.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F7C1853A009009019BC /* active-monogram.png */; };
+		18A68F831853A009009019BC /* active-siluet.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F7D1853A009009019BC /* active-siluet.png */; };
+		18A68F841853A009009019BC /* active-voice.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F7E1853A009009019BC /* active-voice.png */; };
+		18A68F851853A009009019BC /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F7F1853A009009019BC /* settings.png */; };
+		18A68F8A1853ABEC009019BC /* PMActivationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F891853ABEC009019BC /* PMActivationView.m */; };
+		18A68F8D1853AD89009019BC /* UIImage+UIImageFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F8C1853AD89009019BC /* UIImage+UIImageFunctions.m */; };
+		18A68F901853BF52009019BC /* MyriadPro-Cond.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F8F1853BF52009019BC /* MyriadPro-Cond.otf */; };
+		18A68F9218546058009019BC /* settings-close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F9118546058009019BC /* settings-close.png */; };
+		18A68F981854682E009019BC /* active-eye-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F941854682E009019BC /* active-eye-disable.png */; };
+		18A68F991854682E009019BC /* active-finger-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F951854682E009019BC /* active-finger-disable.png */; };
+		18A68F9A1854682E009019BC /* active-siluet-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F961854682E009019BC /* active-siluet-disable.png */; };
+		18A68F9B1854682E009019BC /* active-voice-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F971854682E009019BC /* active-voice-disable.png */; };
+		18A68F9D18546DD3009019BC /* active-monogram-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F9C18546DD3009019BC /* active-monogram-disable.png */; };
 		18A84C641851D32600612BE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A84C631851D32600612BE5 /* Foundation.framework */; };
 		18A84C661851D32600612BE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A84C651851D32600612BE5 /* CoreGraphics.framework */; };
 		18A84C681851D32600612BE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A84C671851D32600612BE5 /* UIKit.framework */; };
@@ -69,6 +84,23 @@
 		18A68F7418538D1B009019BC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		18A68F7618538DC6009019BC /* PMParentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMParentController.h; sourceTree = "<group>"; };
 		18A68F7718538DC6009019BC /* PMParentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMParentController.m; sourceTree = "<group>"; };
+		18A68F7A1853A009009019BC /* active-eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-eye.png"; sourceTree = "<group>"; };
+		18A68F7B1853A009009019BC /* active-finger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-finger.png"; sourceTree = "<group>"; };
+		18A68F7C1853A009009019BC /* active-monogram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-monogram.png"; sourceTree = "<group>"; };
+		18A68F7D1853A009009019BC /* active-siluet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-siluet.png"; sourceTree = "<group>"; };
+		18A68F7E1853A009009019BC /* active-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-voice.png"; sourceTree = "<group>"; };
+		18A68F7F1853A009009019BC /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		18A68F881853ABEC009019BC /* PMActivationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMActivationView.h; sourceTree = "<group>"; };
+		18A68F891853ABEC009019BC /* PMActivationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMActivationView.m; sourceTree = "<group>"; };
+		18A68F8B1853AD89009019BC /* UIImage+UIImageFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImageFunctions.h"; sourceTree = "<group>"; };
+		18A68F8C1853AD89009019BC /* UIImage+UIImageFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImageFunctions.m"; sourceTree = "<group>"; };
+		18A68F8F1853BF52009019BC /* MyriadPro-Cond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Cond.otf"; sourceTree = "<group>"; };
+		18A68F9118546058009019BC /* settings-close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-close.png"; sourceTree = "<group>"; };
+		18A68F941854682E009019BC /* active-eye-disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-eye-disable.png"; sourceTree = "<group>"; };
+		18A68F951854682E009019BC /* active-finger-disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-finger-disable.png"; sourceTree = "<group>"; };
+		18A68F961854682E009019BC /* active-siluet-disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-siluet-disable.png"; sourceTree = "<group>"; };
+		18A68F971854682E009019BC /* active-voice-disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-voice-disable.png"; sourceTree = "<group>"; };
+		18A68F9C18546DD3009019BC /* active-monogram-disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-monogram-disable.png"; sourceTree = "<group>"; };
 		18A84C601851D32600612BE5 /* ParlamentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParlamentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A84C631851D32600612BE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18A84C651851D32600612BE5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -159,6 +191,57 @@
 			path = Shaders;
 			sourceTree = "<group>";
 		};
+		18A68F791853A009009019BC /* RootMenu */ = {
+			isa = PBXGroup;
+			children = (
+				18A68F9118546058009019BC /* settings-close.png */,
+				18A68F7A1853A009009019BC /* active-eye.png */,
+				18A68F7B1853A009009019BC /* active-finger.png */,
+				18A68F7C1853A009009019BC /* active-monogram.png */,
+				18A68F7D1853A009009019BC /* active-siluet.png */,
+				18A68F7E1853A009009019BC /* active-voice.png */,
+				18A68F7F1853A009009019BC /* settings.png */,
+			);
+			path = RootMenu;
+			sourceTree = "<group>";
+		};
+		18A68F861853ABD8009019BC /* ViewsHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				18A68F871853ABD8009019BC /* ActivationView */,
+			);
+			path = ViewsHelpers;
+			sourceTree = "<group>";
+		};
+		18A68F871853ABD8009019BC /* ActivationView */ = {
+			isa = PBXGroup;
+			children = (
+				18A68F881853ABEC009019BC /* PMActivationView.h */,
+				18A68F891853ABEC009019BC /* PMActivationView.m */,
+			);
+			path = ActivationView;
+			sourceTree = "<group>";
+		};
+		18A68F8E1853BF52009019BC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				18A68F8F1853BF52009019BC /* MyriadPro-Cond.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		18A68F931854682E009019BC /* SettingMenu */ = {
+			isa = PBXGroup;
+			children = (
+				18A68F9C18546DD3009019BC /* active-monogram-disable.png */,
+				18A68F941854682E009019BC /* active-eye-disable.png */,
+				18A68F951854682E009019BC /* active-finger-disable.png */,
+				18A68F961854682E009019BC /* active-siluet-disable.png */,
+				18A68F971854682E009019BC /* active-voice-disable.png */,
+			);
+			path = SettingMenu;
+			sourceTree = "<group>";
+		};
 		18A84C571851D32600612BE5 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +281,7 @@
 		18A84C6B1851D32600612BE5 /* ParlamentApp */ = {
 			isa = PBXGroup;
 			children = (
+				18A68F861853ABD8009019BC /* ViewsHelpers */,
 				18A84CA81851E1CE00612BE5 /* Common */,
 				18A84C991851D54600612BE5 /* Controllers */,
 				18A84C981851D4CA00612BE5 /* Resources */,
@@ -242,6 +326,9 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A68F931854682E009019BC /* SettingMenu */,
+				18A68F8E1853BF52009019BC /* Fonts */,
+				18A68F791853A009009019BC /* RootMenu */,
 				18A84C9A1851D56500612BE5 /* background.png */,
 			);
 			path = Resources;
@@ -286,6 +373,8 @@
 		18A84CA81851E1CE00612BE5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				18A68F8B1853AD89009019BC /* UIImage+UIImageFunctions.h */,
+				18A68F8C1853AD89009019BC /* UIImage+UIImageFunctions.m */,
 				18A84CB51852084700612BE5 /* UIView+GestureBlocks.h */,
 				18A84CB61852084700612BE5 /* UIView+GestureBlocks.m */,
 				18A84CA91851E1F800612BE5 /* UINavigationController+ClearSlider.h */,
@@ -383,15 +472,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A68F9A1854682E009019BC /* active-siluet-disable.png in Resources */,
 				18A68F6C18538905009019BC /* Shader.fsh in Resources */,
+				18A68F901853BF52009019BC /* MyriadPro-Cond.otf in Resources */,
+				18A68F811853A009009019BC /* active-finger.png in Resources */,
 				18A68F6D18538905009019BC /* Shader.vsh in Resources */,
+				18A68F821853A009009019BC /* active-monogram.png in Resources */,
 				18A84C701851D32600612BE5 /* InfoPlist.strings in Resources */,
 				18A84CC8185383CF00612BE5 /* PMRootViewController.xib in Resources */,
+				18A68F9D18546DD3009019BC /* active-monogram-disable.png in Resources */,
+				18A68F851853A009009019BC /* settings.png in Resources */,
+				18A68F981854682E009019BC /* active-eye-disable.png in Resources */,
 				18A84CA71851E04D00612BE5 /* PMSettingsViewContoller.xib in Resources */,
 				18A84C9B1851D56500612BE5 /* background.png in Resources */,
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
+				18A68F831853A009009019BC /* active-siluet.png in Resources */,
+				18A68F841853A009009019BC /* active-voice.png in Resources */,
+				18A68F9B1854682E009019BC /* active-voice-disable.png in Resources */,
+				18A68F9218546058009019BC /* settings-close.png in Resources */,
 				18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */,
+				18A68F991854682E009019BC /* active-finger-disable.png in Resources */,
 				18A84CB11852047700612BE5 /* PMVoiceVisualizationVC.xib in Resources */,
+				18A68F801853A009009019BC /* active-eye.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A68F8A1853ABEC009019BC /* PMActivationView.m in Sources */,
 				18A68F6A185388F8009019BC /* Shader.fsh in Sources */,
 				18A84C721851D32600612BE5 /* main.m in Sources */,
 				18A84CC7185383CF00612BE5 /* PMRootViewController.m in Sources */,
@@ -453,6 +556,7 @@
 				18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */,
 				18A68F7818538DC7009019BC /* PMParentController.m in Sources */,
 				18A84C791851D32600612BE5 /* ParlamentApp.xcdatamodeld in Sources */,
+				18A68F8D1853AD89009019BC /* UIImage+UIImageFunctions.m in Sources */,
 				18A84CA61851E04D00612BE5 /* PMSettingsViewContoller.m in Sources */,
 				18A84CB01852047700612BE5 /* PMVoiceVisualizationVC.m in Sources */,
 				18A84CAB1851E1F800612BE5 /* UINavigationController+ClearSlider.m in Sources */,

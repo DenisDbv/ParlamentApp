@@ -10,4 +10,7 @@
 
 @interface PMParentController : UIViewController
 
+-(void) hideAllContext;
+-(void) showAllContext;
+
 @end

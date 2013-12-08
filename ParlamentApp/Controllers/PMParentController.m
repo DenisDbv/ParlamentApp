@@ -27,6 +27,11 @@
 {
     [super viewDidLoad];
     
+    [self setNeedsStatusBarAppearanceUpdate];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+    self.view.multipleTouchEnabled = YES;
+    
     [[MZFormSheetBackgroundWindow appearance] setBlurRadius:5.0];
     [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:(__bridge CGColorRef)([UIColor clearColor])];
 }
@@ -37,9 +42,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)prefersStatusBarHidden
-{
+- (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+-(void) hideAllContext
+{
+
+}
+
+-(void) showAllContext
+{
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

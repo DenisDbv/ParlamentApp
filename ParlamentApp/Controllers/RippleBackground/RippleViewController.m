@@ -315,6 +315,11 @@ enum
     }
 }
 
+-(void) myTouchWithPoint:(CGPoint)point
+{
+    [_ripple initiateRippleAtLocation:point];
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self myTouch:touches withEvent:event];

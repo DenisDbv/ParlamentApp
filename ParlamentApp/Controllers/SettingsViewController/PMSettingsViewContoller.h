@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PMParentController.h"
+#import "PMActivationView.h"
 
-@interface PMSettingsViewContoller : UIViewController
+@interface PMSettingsViewContoller : PMParentController <PMActivationViewDelegate>
 
 @end

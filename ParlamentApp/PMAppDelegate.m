@@ -22,7 +22,34 @@
     rippleViewController = [[PMRootViewController alloc] initWithNibName:@"PMRootViewController" bundle:[NSBundle mainBundle]];
     self.window.rootViewController = rippleViewController;
     [self.window makeKeyAndVisible];
+    
+    //[self showFontsList];
+    
     return YES;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+-(void) showFontsList
+{
+    NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
+    
+    NSArray *fontNames;
+    NSInteger indFamily, indFont;
+    for (indFamily=0; indFamily<[familyNames count]; ++indFamily)
+    {
+        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
+        fontNames = [[NSArray alloc] initWithArray:
+                     [UIFont fontNamesForFamilyName:
+                      [familyNames objectAtIndex:indFamily]]];
+        for (indFont=0; indFont<[fontNames count]; ++indFont)
+        {
+            NSLog(@"    Font name: %@", [fontNames objectAtIndex:indFont]);
+        }
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

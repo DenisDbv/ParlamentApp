@@ -51,6 +51,7 @@
 
 @interface RippleViewController : GLKViewController
 
+-(void) myTouchWithPoint:(CGPoint)point;
 -(void) touchByLocation:(CGPoint)location;
 
 @end

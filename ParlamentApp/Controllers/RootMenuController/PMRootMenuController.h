@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PMParentController.h"
+#import "PMActivationView.h"
 
-@interface PMRootMenuController : PMParentController
+@interface PMRootMenuController : PMParentController <PMActivationViewDelegate>
 
 @end
