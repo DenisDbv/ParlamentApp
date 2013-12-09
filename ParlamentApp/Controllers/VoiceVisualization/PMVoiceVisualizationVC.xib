@@ -7,6 +7,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PMVoiceVisualizationVC">
             <connections>
                 <outlet property="attractorView" destination="EXj-Qd-Qm3" id="f8s-UF-ech"/>
+                <outlet property="finishTitle1" destination="Lcy-8o-yok" id="i0o-bT-U7Q"/>
+                <outlet property="finishTitle2" destination="9gL-hs-1CG" id="vMI-Qx-fFl"/>
+                <outlet property="finishTitle3" destination="8j8-iM-9Qg" id="0Q2-qV-D7C"/>
+                <outlet property="finishTitle4" destination="iPk-J1-OLW" id="LJy-Fq-bOV"/>
+                <outlet property="finishView" destination="zWs-sG-xh4" id="Gzl-rf-Ulm"/>
                 <outlet property="timerLabel" destination="sNP-MB-QbC" id="54E-rA-wKD"/>
                 <outlet property="titleLabel1" destination="eYK-El-97z" id="pcn-9p-73N"/>
                 <outlet property="titleLabel2" destination="cEH-jO-WP2" id="EHx-WL-X9O"/>
@@ -58,6 +63,37 @@
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" id="zWs-sG-xh4">
+                    <rect key="frame" x="267" y="184" width="500" height="464"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOUND MIRROR - ВИЗУАЛИЗАЦИЯ ГОЛОСА ОБРАЗ ГОЛОСА УСПЕШНО СОХРАНЁН" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lcy-8o-yok">
+                            <rect key="frame" x="49" y="20" width="402" height="61"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВАШ АРТ-ОБЪЕКТ ЗАПУЩЕН В ПРОИЗВОДСТВО ВЫ ПОЛУЧИТЕ СМС УВЕДОМЛЕНИЕ О ЕГО ГОТОВНОСТИ В БЛИЖАЙШЕЕ ВРЕМЯ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9gL-hs-1CG">
+                            <rect key="frame" x="21" y="108" width="458" height="108"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЕСЛИ ВЫ НЕ ПОЛУЧИЛИ СМС В ТЕЧЕНИИ ЧАСА, ПОЖАЛУЙСТА, ОБРАТИТЕСЬ К ХОСТЕС САМОСТОЯТЕЛЬНО." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8j8-iM-9Qg">
+                            <rect key="frame" x="111" y="319" width="278" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="СПАСИБО И ПРИЯТНОГО ВЕЧЕРА" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iPk-J1-OLW">
+                            <rect key="frame" x="-26" y="360" width="553" height="46"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>

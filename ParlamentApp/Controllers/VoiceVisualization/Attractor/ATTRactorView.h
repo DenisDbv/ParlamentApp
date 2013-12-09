@@ -10,6 +10,7 @@
 
 @protocol ATTRactorViewDelegate <NSObject>
 -(void) attractorScaleValue:(CGFloat)scale;
+-(void) createFirstAttractor;
 @end
 
 @interface ATTRactorView : UIView

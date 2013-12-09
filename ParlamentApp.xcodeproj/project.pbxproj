@@ -72,6 +72,8 @@
 		18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84CB61852084700612BE5 /* UIView+GestureBlocks.m */; };
 		18A84CC7185383CF00612BE5 /* PMRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84CC5185383CF00612BE5 /* PMRootViewController.m */; };
 		18A84CC8185383CF00612BE5 /* PMRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A84CC6185383CF00612BE5 /* PMRootViewController.xib */; };
+		18EA46191855D8AC0066A22C /* clear_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46181855D8AC0066A22C /* clear_button.png */; };
+		18EA461B1855DC9B0066A22C /* arrows-fullview.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA461A1855DC9B0066A22C /* arrows-fullview.png */; };
 		4DAB77C04BEC400B9C6A466E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82D6C46B6664C009AA7199C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +173,8 @@
 		18A84CC4185383CF00612BE5 /* PMRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMRootViewController.h; sourceTree = "<group>"; };
 		18A84CC5185383CF00612BE5 /* PMRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMRootViewController.m; sourceTree = "<group>"; };
 		18A84CC6185383CF00612BE5 /* PMRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMRootViewController.xib; sourceTree = "<group>"; };
+		18EA46181855D8AC0066A22C /* clear_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear_button.png; sourceTree = "<group>"; };
+		18EA461A1855DC9B0066A22C /* arrows-fullview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrows-fullview.png"; sourceTree = "<group>"; };
 		B82D6C46B6664C009AA7199C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F248A30DA07F413CB7568B8E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -329,6 +333,8 @@
 		18A68FBF1854D3FF009019BC /* Voice */ = {
 			isa = PBXGroup;
 			children = (
+				18EA461A1855DC9B0066A22C /* arrows-fullview.png */,
+				18EA46181855D8AC0066A22C /* clear_button.png */,
 				18A68FC01854D3FF009019BC /* close-voice.png */,
 				18A68FC11854D3FF009019BC /* reset-voice.png */,
 				18A68FC21854D3FF009019BC /* save-voice.png */,
@@ -577,8 +583,10 @@
 				18A68F6D18538905009019BC /* Shader.vsh in Resources */,
 				18A68FC31854D3FF009019BC /* close-voice.png in Resources */,
 				18A68F821853A009009019BC /* active-monogram.png in Resources */,
+				18EA461B1855DC9B0066A22C /* arrows-fullview.png in Resources */,
 				18A84C701851D32600612BE5 /* InfoPlist.strings in Resources */,
 				18A84CC8185383CF00612BE5 /* PMRootViewController.xib in Resources */,
+				18EA46191855D8AC0066A22C /* clear_button.png in Resources */,
 				18A68F9D18546DD3009019BC /* active-monogram-disable.png in Resources */,
 				18A68FC41854D3FF009019BC /* reset-voice.png in Resources */,
 				18A68F851853A009009019BC /* settings.png in Resources */,

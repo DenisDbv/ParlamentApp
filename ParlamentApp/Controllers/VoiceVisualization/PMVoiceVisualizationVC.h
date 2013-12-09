@@ -17,6 +17,13 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel3;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel4;
-
 @property (strong, nonatomic) IBOutlet UILabel *timerLabel;
+
+@property (strong, nonatomic) IBOutlet UIView *finishView;
+@property (strong, nonatomic) IBOutlet UILabel *finishTitle1;
+@property (strong, nonatomic) IBOutlet UILabel *finishTitle2;
+@property (strong, nonatomic) IBOutlet UILabel *finishTitle3;
+@property (strong, nonatomic) IBOutlet UILabel *finishTitle4;
+
+
 @end

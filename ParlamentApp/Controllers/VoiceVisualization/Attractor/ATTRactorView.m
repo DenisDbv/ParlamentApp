@@ -233,6 +233,11 @@
     NSInteger count = [attrManager attractorsDepth];
     if(count >= attractorIndexes.count) return;
     
+    if(count == 0)  {
+        if([delegate respondsToSelector:@selector(createFirstAttractor)])
+            [delegate createFirstAttractor];
+    }
+    
     ATTRactorObject *attr = [[ATTRactorObject alloc] init];
     attr.index = [[attractorIndexes objectAtIndex:count] integerValue];
     attr.g_side = [[attractorSides objectAtIndex:count] integerValue];

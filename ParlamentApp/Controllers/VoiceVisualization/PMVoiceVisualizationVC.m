@@ -24,10 +24,17 @@
     
     BOOL attractorIsFullView;
     
+    MZTimerLabel *timer;
+    
+    UIActivityIndicatorView *saveIndicator;
+    
+    UIImageView *arrowsFullView;
 }
 @synthesize attractorView;
 @synthesize titleLabel1, titleLabel2, titleLabel3, titleLabel4;
 @synthesize timerLabel;
+
+@synthesize finishView, finishTitle1, finishTitle2, finishTitle3, finishTitle4;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,6 +48,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    finishView.alpha = 0;
+    finishView.backgroundColor = [UIColor clearColor];
+    
+    finishTitle1.font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
+    finishTitle1.backgroundColor = [UIColor clearColor];
+    finishTitle1.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
+    finishTitle1.textAlignment = NSTextAlignmentCenter;
+    
+    finishTitle2.font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
+    finishTitle2.backgroundColor = [UIColor clearColor];
+    finishTitle2.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
+    finishTitle2.textAlignment = NSTextAlignmentCenter;
+    
+    finishTitle3.font = [UIFont fontWithName:@"MyriadPro-Cond" size:15.0];
+    finishTitle3.backgroundColor = [UIColor clearColor];
+    finishTitle3.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
+    finishTitle3.textAlignment = NSTextAlignmentCenter;
+    
+    finishTitle4.font = [UIFont fontWithName:@"MyriadPro-Cond" size:45.0];
+    finishTitle4.backgroundColor = [UIColor clearColor];
+    finishTitle4.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
+    finishTitle4.textAlignment = NSTextAlignmentCenter;
     
     attractorIsFullView = NO;
     
@@ -105,7 +135,7 @@
 {
     [attractorView initialization];
     
-    MZTimerLabel *timer = [[MZTimerLabel alloc] initWithLabel:timerLabel andTimerType:MZTimerLabelTypeTimer];
+    timer = [[MZTimerLabel alloc] initWithLabel:timerLabel andTimerType:MZTimerLabelTypeTimer];
     [timer setCountDownTime:60*5];
     [timer setTimeFormat:@"mm:ss"];
     timerLabel.font = [UIFont systemFontOfSize:45.0f];
@@ -150,6 +180,9 @@
 
 -(void) unload
 {
+    [timer pause];
+    timer = nil;
+    
     [attractorView releaseView];
     [attractorView removeFromSuperview];
     attractorView = nil;
@@ -157,6 +190,17 @@
 
 -(void) onVoiceSave:(UIButton*)btn
 {
+    [btn setEnabled:NO];
+    UIImage *saveClearImage = [UIImage imageNamed:@"clear_button.png"];
+    [btn setImage:saveClearImage forState:UIControlStateNormal];
+    [btn setImage:saveClearImage forState:UIControlStateHighlighted];
+    
+    saveIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [self.view addSubview:saveIndicator];
+    //saveIndicator.frame = CGRectMake(btn.frame.origin.x+10, btn.frame.origin.y+10, 25, 25);
+    saveIndicator.center = btn.center;
+    [saveIndicator startAnimating];
+    
     [UIView animateWithDuration:0.05 animations:^{
         btn.transform = CGAffineTransformMakeScale(0.95, 0.95);
     }
@@ -165,11 +209,33 @@
                          [UIView animateWithDuration:0.05f animations:^{
                              btn.transform = CGAffineTransformMakeScale(1, 1);
                          } completion:^(BOOL finished) {
-                             
+                             //
                          }];
                      }];
     
+    [timer pause];
     [attractorView snapShoting];
+    
+    [self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:3.0];
+}
+
+-(void) finishSavingSnapshot
+{
+    [saveIndicator stopAnimating];
+    [saveIndicator removeFromSuperview];
+    
+    saveButton.alpha = 0.0;
+    resetButton.alpha = 0.0;
+    titleLabel1.alpha = titleLabel2.alpha = titleLabel3.alpha = titleLabel4.alpha = 0.0;
+    timerLabel.alpha = 0.0;
+    settingButton.alpha = 0.0;
+    attractorView.alpha = 0.0;
+    finishView.alpha = 1.0;
+    
+    UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
+    [saveButton setEnabled:YES];
 }
 
 -(void) onVoiceReset:(UIButton*)btn
@@ -191,12 +257,32 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+    if(finishView.alpha == 1.0) {
+        for (UITouch *touch in touches)
+        {
+            CGPoint location;
+            if(touch.view == finishView)
+                location = [finishView convertPoint:[touch locationInView:touch.view] toView:self.view];
+            else
+                location = [self.view convertPoint:[touch locationInView:touch.view] toView:self.view];
+            [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+        }
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+    if(finishView.alpha == 1.0) {
+        for (UITouch *touch in touches)
+        {
+            CGPoint location;
+            if(touch.view == finishView)
+                location = [finishView convertPoint:[touch locationInView:touch.view] toView:self.view];
+            else
+                location = [self.view convertPoint:[touch locationInView:touch.view] toView:self.view];
+            [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+        }
+    }
 }
 
 -(void) attractorScaleValue:(CGFloat)scale
@@ -206,6 +292,22 @@
         attractorIsFullView = YES;
         [self attractorViewToFullScreen];
     }
+}
+
+-(void) createFirstAttractor
+{
+    arrowsFullView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"arrows-fullview.png"] scaleProportionalToRetina]];
+    arrowsFullView.alpha = 0;
+    arrowsFullView.center = attractorView.center;
+    [self.view addSubview:arrowsFullView];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        [UIView setAnimationRepeatCount:3];
+        arrowsFullView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        arrowsFullView.alpha = 0;
+        [arrowsFullView removeFromSuperview];
+    }];
 }
 
 -(void) attractorViewToFullScreen
