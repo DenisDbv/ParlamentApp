@@ -278,6 +278,8 @@ enum
 
 - (void)update
 {
+    [EAGLContext setCurrentContext:_context];
+    
     if (_ripple)
     {
         [_ripple runSimulation];
@@ -285,16 +287,22 @@ enum
         // no need to rebind GL_ARRAY_BUFFER to _texcoordVBO since it should be still be bound from setupBuffers
         glBufferData(GL_ARRAY_BUFFER, [_ripple getVertexSize], [_ripple getTexCoords], GL_DYNAMIC_DRAW);
     }
+    
+    //glFlush();
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
+    //[EAGLContext setCurrentContext:_context];
+    
     glClear(GL_COLOR_BUFFER_BIT);
     
     if (_ripple)
     {
         glDrawElements(GL_TRIANGLE_STRIP, [_ripple getIndexCount], GL_UNSIGNED_SHORT, 0);
     }
+    
+    //glFlush();
 }
 
 #pragma mark - Touch delegate methods

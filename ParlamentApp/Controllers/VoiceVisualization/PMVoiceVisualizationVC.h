@@ -7,7 +7,16 @@
 //
 
 #import "PMParentController.h"
+#import "ATTRactorView.h"
 
-@interface PMVoiceVisualizationVC : PMParentController
+@interface PMVoiceVisualizationVC : PMParentController <ATTRactorViewDelegate>
 
+@property (nonatomic, strong) IBOutlet ATTRactorView *attractorView;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel1;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel2;
+
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel3;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel4;
+
+@property (strong, nonatomic) IBOutlet UILabel *timerLabel;
 @end

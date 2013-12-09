@@ -32,6 +32,20 @@
 		18A68F9A1854682E009019BC /* active-siluet-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F961854682E009019BC /* active-siluet-disable.png */; };
 		18A68F9B1854682E009019BC /* active-voice-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F971854682E009019BC /* active-voice-disable.png */; };
 		18A68F9D18546DD3009019BC /* active-monogram-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F9C18546DD3009019BC /* active-monogram-disable.png */; };
+		18A68FB2185484A6009019BC /* ATTRactorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68FA1185484A6009019BC /* ATTRactorManager.m */; };
+		18A68FB3185484A6009019BC /* ATTRactorObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68FA3185484A6009019BC /* ATTRactorObject.m */; };
+		18A68FB4185484A6009019BC /* AudioFileReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18A68FA6185484A6009019BC /* AudioFileReader.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A68FB5185484A6009019BC /* AudioFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68FA8185484A6009019BC /* AudioFileWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A68FB6185484A6009019BC /* Novocaine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68FAA185484A6009019BC /* Novocaine.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A68FB7185484A6009019BC /* RingBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18A68FAC185484A6009019BC /* RingBuffer.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A68FB8185484A6009019BC /* ifs_fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 18A68FAE185484A6009019BC /* ifs_fragment.glsl */; };
+		18A68FB9185484A6009019BC /* ifs_vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 18A68FAF185484A6009019BC /* ifs_vertex.glsl */; };
+		18A68FBA185484A6009019BC /* ATTRactorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68FB0185484A6009019BC /* ATTRactorView.m */; };
+		18A68FBC18548513009019BC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68FBB18548513009019BC /* AudioToolbox.framework */; };
+		18A68FBE18548518009019BC /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68FBD18548518009019BC /* CoreAudio.framework */; };
+		18A68FC31854D3FF009019BC /* close-voice.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68FC01854D3FF009019BC /* close-voice.png */; };
+		18A68FC41854D3FF009019BC /* reset-voice.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68FC11854D3FF009019BC /* reset-voice.png */; };
+		18A68FC51854D3FF009019BC /* save-voice.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68FC21854D3FF009019BC /* save-voice.png */; };
 		18A84C641851D32600612BE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A84C631851D32600612BE5 /* Foundation.framework */; };
 		18A84C661851D32600612BE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A84C651851D32600612BE5 /* CoreGraphics.framework */; };
 		18A84C681851D32600612BE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A84C671851D32600612BE5 /* UIKit.framework */; };
@@ -101,6 +115,27 @@
 		18A68F961854682E009019BC /* active-siluet-disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-siluet-disable.png"; sourceTree = "<group>"; };
 		18A68F971854682E009019BC /* active-voice-disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-voice-disable.png"; sourceTree = "<group>"; };
 		18A68F9C18546DD3009019BC /* active-monogram-disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-monogram-disable.png"; sourceTree = "<group>"; };
+		18A68FA0185484A6009019BC /* ATTRactorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTRactorManager.h; sourceTree = "<group>"; };
+		18A68FA1185484A6009019BC /* ATTRactorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTRactorManager.m; sourceTree = "<group>"; };
+		18A68FA2185484A6009019BC /* ATTRactorObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTRactorObject.h; sourceTree = "<group>"; };
+		18A68FA3185484A6009019BC /* ATTRactorObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTRactorObject.m; sourceTree = "<group>"; };
+		18A68FA5185484A6009019BC /* AudioFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFileReader.h; sourceTree = "<group>"; };
+		18A68FA6185484A6009019BC /* AudioFileReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioFileReader.mm; sourceTree = "<group>"; };
+		18A68FA7185484A6009019BC /* AudioFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFileWriter.h; sourceTree = "<group>"; };
+		18A68FA8185484A6009019BC /* AudioFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioFileWriter.m; sourceTree = "<group>"; };
+		18A68FA9185484A6009019BC /* Novocaine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Novocaine.h; sourceTree = "<group>"; };
+		18A68FAA185484A6009019BC /* Novocaine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Novocaine.m; sourceTree = "<group>"; };
+		18A68FAB185484A6009019BC /* RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
+		18A68FAC185484A6009019BC /* RingBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RingBuffer.mm; sourceTree = "<group>"; };
+		18A68FAE185484A6009019BC /* ifs_fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ifs_fragment.glsl; sourceTree = "<group>"; };
+		18A68FAF185484A6009019BC /* ifs_vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ifs_vertex.glsl; sourceTree = "<group>"; };
+		18A68FB0185484A6009019BC /* ATTRactorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTRactorView.m; sourceTree = "<group>"; };
+		18A68FB1185484A6009019BC /* ATTRactorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTRactorView.h; sourceTree = "<group>"; };
+		18A68FBB18548513009019BC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		18A68FBD18548518009019BC /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		18A68FC01854D3FF009019BC /* close-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-voice.png"; sourceTree = "<group>"; };
+		18A68FC11854D3FF009019BC /* reset-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reset-voice.png"; sourceTree = "<group>"; };
+		18A68FC21854D3FF009019BC /* save-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save-voice.png"; sourceTree = "<group>"; };
 		18A84C601851D32600612BE5 /* ParlamentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParlamentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A84C631851D32600612BE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18A84C651851D32600612BE5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -145,6 +180,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A68FBE18548518009019BC /* CoreAudio.framework in Frameworks */,
+				18A68FBC18548513009019BC /* AudioToolbox.framework in Frameworks */,
 				18A68F7518538D1B009019BC /* AVFoundation.framework in Frameworks */,
 				18A68F7318538D00009019BC /* GLKit.framework in Frameworks */,
 				18A68F7118538CF9009019BC /* OpenGLES.framework in Frameworks */,
@@ -242,6 +279,63 @@
 			path = SettingMenu;
 			sourceTree = "<group>";
 		};
+		18A68F9E1854846B009019BC /* Attractor */ = {
+			isa = PBXGroup;
+			children = (
+				18A68F9F185484A6009019BC /* AttractorObject */,
+				18A68FA4185484A6009019BC /* Novocaine */,
+				18A68FAD185484A6009019BC /* Shaders */,
+				18A68FB1185484A6009019BC /* ATTRactorView.h */,
+				18A68FB0185484A6009019BC /* ATTRactorView.m */,
+			);
+			path = Attractor;
+			sourceTree = "<group>";
+		};
+		18A68F9F185484A6009019BC /* AttractorObject */ = {
+			isa = PBXGroup;
+			children = (
+				18A68FA0185484A6009019BC /* ATTRactorManager.h */,
+				18A68FA1185484A6009019BC /* ATTRactorManager.m */,
+				18A68FA2185484A6009019BC /* ATTRactorObject.h */,
+				18A68FA3185484A6009019BC /* ATTRactorObject.m */,
+			);
+			path = AttractorObject;
+			sourceTree = "<group>";
+		};
+		18A68FA4185484A6009019BC /* Novocaine */ = {
+			isa = PBXGroup;
+			children = (
+				18A68FA5185484A6009019BC /* AudioFileReader.h */,
+				18A68FA6185484A6009019BC /* AudioFileReader.mm */,
+				18A68FA7185484A6009019BC /* AudioFileWriter.h */,
+				18A68FA8185484A6009019BC /* AudioFileWriter.m */,
+				18A68FA9185484A6009019BC /* Novocaine.h */,
+				18A68FAA185484A6009019BC /* Novocaine.m */,
+				18A68FAB185484A6009019BC /* RingBuffer.h */,
+				18A68FAC185484A6009019BC /* RingBuffer.mm */,
+			);
+			path = Novocaine;
+			sourceTree = "<group>";
+		};
+		18A68FAD185484A6009019BC /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				18A68FAE185484A6009019BC /* ifs_fragment.glsl */,
+				18A68FAF185484A6009019BC /* ifs_vertex.glsl */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		18A68FBF1854D3FF009019BC /* Voice */ = {
+			isa = PBXGroup;
+			children = (
+				18A68FC01854D3FF009019BC /* close-voice.png */,
+				18A68FC11854D3FF009019BC /* reset-voice.png */,
+				18A68FC21854D3FF009019BC /* save-voice.png */,
+			);
+			path = Voice;
+			sourceTree = "<group>";
+		};
 		18A84C571851D32600612BE5 = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +359,8 @@
 		18A84C621851D32600612BE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18A68FBD18548518009019BC /* CoreAudio.framework */,
+				18A68FBB18548513009019BC /* AudioToolbox.framework */,
 				18A68F7418538D1B009019BC /* AVFoundation.framework */,
 				18A68F7218538D00009019BC /* GLKit.framework */,
 				18A68F7018538CF9009019BC /* OpenGLES.framework */,
@@ -326,6 +422,7 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A68FBF1854D3FF009019BC /* Voice */,
 				18A68F931854682E009019BC /* SettingMenu */,
 				18A68F8E1853BF52009019BC /* Fonts */,
 				18A68F791853A009009019BC /* RootMenu */,
@@ -387,6 +484,7 @@
 		18A84CAC1852046000612BE5 /* VoiceVisualization */ = {
 			isa = PBXGroup;
 			children = (
+				18A68F9E1854846B009019BC /* Attractor */,
 				18A84CAD1852047700612BE5 /* PMVoiceVisualizationVC.h */,
 				18A84CAE1852047700612BE5 /* PMVoiceVisualizationVC.m */,
 				18A84CAF1852047700612BE5 /* PMVoiceVisualizationVC.xib */,
@@ -477,23 +575,28 @@
 				18A68F901853BF52009019BC /* MyriadPro-Cond.otf in Resources */,
 				18A68F811853A009009019BC /* active-finger.png in Resources */,
 				18A68F6D18538905009019BC /* Shader.vsh in Resources */,
+				18A68FC31854D3FF009019BC /* close-voice.png in Resources */,
 				18A68F821853A009009019BC /* active-monogram.png in Resources */,
 				18A84C701851D32600612BE5 /* InfoPlist.strings in Resources */,
 				18A84CC8185383CF00612BE5 /* PMRootViewController.xib in Resources */,
 				18A68F9D18546DD3009019BC /* active-monogram-disable.png in Resources */,
+				18A68FC41854D3FF009019BC /* reset-voice.png in Resources */,
 				18A68F851853A009009019BC /* settings.png in Resources */,
 				18A68F981854682E009019BC /* active-eye-disable.png in Resources */,
 				18A84CA71851E04D00612BE5 /* PMSettingsViewContoller.xib in Resources */,
 				18A84C9B1851D56500612BE5 /* background.png in Resources */,
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
+				18A68FB9185484A6009019BC /* ifs_vertex.glsl in Resources */,
 				18A68F831853A009009019BC /* active-siluet.png in Resources */,
 				18A68F841853A009009019BC /* active-voice.png in Resources */,
 				18A68F9B1854682E009019BC /* active-voice-disable.png in Resources */,
 				18A68F9218546058009019BC /* settings-close.png in Resources */,
+				18A68FB8185484A6009019BC /* ifs_fragment.glsl in Resources */,
 				18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */,
 				18A68F991854682E009019BC /* active-finger-disable.png in Resources */,
 				18A84CB11852047700612BE5 /* PMVoiceVisualizationVC.xib in Resources */,
 				18A68F801853A009009019BC /* active-eye.png in Resources */,
+				18A68FC51854D3FF009019BC /* save-voice.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,19 +649,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A68F8A1853ABEC009019BC /* PMActivationView.m in Sources */,
+				18A68FB4185484A6009019BC /* AudioFileReader.mm in Sources */,
 				18A68F6A185388F8009019BC /* Shader.fsh in Sources */,
 				18A84C721851D32600612BE5 /* main.m in Sources */,
 				18A84CC7185383CF00612BE5 /* PMRootViewController.m in Sources */,
 				18A84C761851D32600612BE5 /* PMAppDelegate.m in Sources */,
 				18A68F6B185388F8009019BC /* Shader.vsh in Sources */,
+				18A68FB5185484A6009019BC /* AudioFileWriter.m in Sources */,
 				18A68F68185388F8009019BC /* RippleModel.m in Sources */,
+				18A68FB7185484A6009019BC /* RingBuffer.mm in Sources */,
 				18A68F69185388F8009019BC /* RippleViewController.m in Sources */,
+				18A68FB2185484A6009019BC /* ATTRactorManager.m in Sources */,
 				18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */,
 				18A68F7818538DC7009019BC /* PMParentController.m in Sources */,
 				18A84C791851D32600612BE5 /* ParlamentApp.xcdatamodeld in Sources */,
 				18A68F8D1853AD89009019BC /* UIImage+UIImageFunctions.m in Sources */,
 				18A84CA61851E04D00612BE5 /* PMSettingsViewContoller.m in Sources */,
 				18A84CB01852047700612BE5 /* PMVoiceVisualizationVC.m in Sources */,
+				18A68FB6185484A6009019BC /* Novocaine.m in Sources */,
+				18A68FBA185484A6009019BC /* ATTRactorView.m in Sources */,
+				18A68FB3185484A6009019BC /* ATTRactorObject.m in Sources */,
 				18A84CAB1851E1F800612BE5 /* UINavigationController+ClearSlider.m in Sources */,
 				18A84CA01851D5A600612BE5 /* PMRootMenuController.m in Sources */,
 			);

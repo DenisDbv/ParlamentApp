@@ -10,6 +10,7 @@
 
 #import "PMSettingsViewContoller.h"
 #import "PMVoiceVisualizationVC.h"
+
 #import "UIView+GestureBlocks.h"
 #import "UIImage+UIImageFunctions.h"
 
@@ -42,7 +43,6 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    NSLog(@"appear");
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
     titleLabel.backgroundColor = [UIColor clearColor];
@@ -182,7 +182,42 @@
 
 -(void) activationView:(PMActivationView*)activationView didSelectWithID:(ActivationIDs)ids
 {
-    NSLog(@"%i", ids);
+    switch (ids) {
+        case eEye:
+            
+            break;
+        case eVoice:
+            [self showVoiceViewController];
+            break;
+        case eSiluet:
+            
+            break;
+        case eFinger:
+            
+            break;
+        case eMonogram:
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void) showVoiceViewController
+{
+    [self hideAllContext];
+    
+    PMVoiceVisualizationVC *voiceVC = [[PMVoiceVisualizationVC alloc] initWithNibName:@"PMVoiceVisualizationVC" bundle:[NSBundle mainBundle]];
+    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:voiceVC];
+    formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+    __weak id wself = self;
+    formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+        [wself showAllContext];
+    };
+    [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+        
+    }];
 }
 
 @end

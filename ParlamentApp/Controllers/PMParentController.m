@@ -27,8 +27,7 @@
 {
     [super viewDidLoad];
     
-    [self setNeedsStatusBarAppearanceUpdate];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     
     self.view.multipleTouchEnabled = YES;
     

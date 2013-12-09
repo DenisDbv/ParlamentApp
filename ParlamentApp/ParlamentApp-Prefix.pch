@@ -14,6 +14,10 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+
+#import <QuartzCore/QuartzCore.h>
+#import <OpenGLES/ES1/gl.h>
+#import <OpenGLES/ES2/glext.h>
 #endif
 
 #import "Global.h"
