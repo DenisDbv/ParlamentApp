@@ -221,6 +221,8 @@
 
 -(void) finishSavingSnapshot
 {
+    [self unload];
+    
     [saveIndicator stopAnimating];
     [saveIndicator removeFromSuperview];
     

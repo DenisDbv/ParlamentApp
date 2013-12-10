@@ -8,6 +8,21 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>veron.ttf</string>
+		<string>comfortaa.ttf</string>
+		<string>dolphian.TTF</string>
+		<string>champagne.ttf</string>
+		<string>bedini.ttf</string>
+		<string>ampir.ttf</string>
+		<string>agatha.ttf</string>
+		<string>ariston.ttf</string>
+		<string>aquarelle.ttf</string>
+		<string>acquests.ttf</string>
+		<string>annabel.ttf</string>
+		<string>alexandr.ttf</string>
+		<string>adineki.ttf</string>
+		<string>adventur.ttf</string>
+		<string>andantino.ttf</string>
 		<string>MyriadPro-Cond.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>

@@ -74,6 +74,40 @@
 		18A84CC8185383CF00612BE5 /* PMRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A84CC6185383CF00612BE5 /* PMRootViewController.xib */; };
 		18EA46191855D8AC0066A22C /* clear_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46181855D8AC0066A22C /* clear_button.png */; };
 		18EA461B1855DC9B0066A22C /* arrows-fullview.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA461A1855DC9B0066A22C /* arrows-fullview.png */; };
+		18EA46201855F1590066A22C /* PMMonogramVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA461E1855F1590066A22C /* PMMonogramVC.m */; };
+		18EA46211855F1590066A22C /* PMMonogramVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EA461F1855F1590066A22C /* PMMonogramVC.xib */; };
+		18EA46251855F23E0066A22C /* further.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46231855F23E0066A22C /* further.png */; };
+		18EA46261855F23E0066A22C /* initial-textinput.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46241855F23E0066A22C /* initial-textinput.png */; };
+		18EA462B1855FB1C0066A22C /* PMChooseFontVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA46291855FB1C0066A22C /* PMChooseFontVC.m */; };
+		18EA462C1855FB1C0066A22C /* PMChooseFontVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EA462A1855FB1C0066A22C /* PMChooseFontVC.xib */; };
+		18EA462E185601CD0066A22C /* scroll-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA462D185601CD0066A22C /* scroll-background.png */; };
+		18EA464B185661D90066A22C /* adineki.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4630185661D90066A22C /* adineki.png */; };
+		18EA464C185661D90066A22C /* bedini.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4631185661D90066A22C /* bedini.png */; };
+		18EA464D185661D90066A22C /* acquests.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4632185661D90066A22C /* acquests.png */; };
+		18EA464E185661D90066A22C /* adventur.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4633185661D90066A22C /* adventur.png */; };
+		18EA464F185661D90066A22C /* agatha.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4634185661D90066A22C /* agatha.png */; };
+		18EA4650185661D90066A22C /* alexandr.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4635185661D90066A22C /* alexandr.png */; };
+		18EA4651185661D90066A22C /* ampir.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4636185661D90066A22C /* ampir.png */; };
+		18EA4652185661D90066A22C /* andantino.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4637185661D90066A22C /* andantino.png */; };
+		18EA4653185661D90066A22C /* annabel.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4638185661D90066A22C /* annabel.png */; };
+		18EA4654185661D90066A22C /* aquarelle.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4639185661D90066A22C /* aquarelle.png */; };
+		18EA4655185661D90066A22C /* ariston.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA463A185661D90066A22C /* ariston.png */; };
+		18EA4656185661D90066A22C /* veron.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA463B185661D90066A22C /* veron.png */; };
+		18EA4657185661D90066A22C /* acquests.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA463C185661D90066A22C /* acquests.ttf */; };
+		18EA4658185661D90066A22C /* adineki.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA463D185661D90066A22C /* adineki.ttf */; };
+		18EA4659185661D90066A22C /* adventur.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA463E185661D90066A22C /* adventur.ttf */; };
+		18EA465A185661D90066A22C /* agatha.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA463F185661D90066A22C /* agatha.ttf */; };
+		18EA465B185661D90066A22C /* alexandr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4640185661D90066A22C /* alexandr.ttf */; };
+		18EA465C185661D90066A22C /* ampir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4641185661D90066A22C /* ampir.ttf */; };
+		18EA465D185661D90066A22C /* andantino.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4642185661D90066A22C /* andantino.ttf */; };
+		18EA465E185661D90066A22C /* annabel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4643185661D90066A22C /* annabel.ttf */; };
+		18EA465F185661D90066A22C /* aquarelle.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4644185661D90066A22C /* aquarelle.ttf */; };
+		18EA4660185661D90066A22C /* ariston.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4645185661D90066A22C /* ariston.ttf */; };
+		18EA4661185661D90066A22C /* bedini.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4646185661D90066A22C /* bedini.ttf */; };
+		18EA4662185661D90066A22C /* champagne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4647185661D90066A22C /* champagne.ttf */; };
+		18EA4663185661D90066A22C /* comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4648185661D90066A22C /* comfortaa.ttf */; };
+		18EA4664185661D90066A22C /* dolphian.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4649185661D90066A22C /* dolphian.TTF */; };
+		18EA4665185661D90066A22C /* veron.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA464A185661D90066A22C /* veron.ttf */; };
 		4DAB77C04BEC400B9C6A466E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82D6C46B6664C009AA7199C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -175,6 +209,42 @@
 		18A84CC6185383CF00612BE5 /* PMRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMRootViewController.xib; sourceTree = "<group>"; };
 		18EA46181855D8AC0066A22C /* clear_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear_button.png; sourceTree = "<group>"; };
 		18EA461A1855DC9B0066A22C /* arrows-fullview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrows-fullview.png"; sourceTree = "<group>"; };
+		18EA461D1855F1590066A22C /* PMMonogramVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMonogramVC.h; sourceTree = "<group>"; };
+		18EA461E1855F1590066A22C /* PMMonogramVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMonogramVC.m; sourceTree = "<group>"; };
+		18EA461F1855F1590066A22C /* PMMonogramVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMMonogramVC.xib; sourceTree = "<group>"; };
+		18EA46231855F23E0066A22C /* further.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = further.png; sourceTree = "<group>"; };
+		18EA46241855F23E0066A22C /* initial-textinput.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "initial-textinput.png"; sourceTree = "<group>"; };
+		18EA46281855FB1C0066A22C /* PMChooseFontVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMChooseFontVC.h; sourceTree = "<group>"; };
+		18EA46291855FB1C0066A22C /* PMChooseFontVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMChooseFontVC.m; sourceTree = "<group>"; };
+		18EA462A1855FB1C0066A22C /* PMChooseFontVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMChooseFontVC.xib; sourceTree = "<group>"; };
+		18EA462D185601CD0066A22C /* scroll-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scroll-background.png"; sourceTree = "<group>"; };
+		18EA4630185661D90066A22C /* adineki.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adineki.png; sourceTree = "<group>"; };
+		18EA4631185661D90066A22C /* bedini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bedini.png; sourceTree = "<group>"; };
+		18EA4632185661D90066A22C /* acquests.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = acquests.png; sourceTree = "<group>"; };
+		18EA4633185661D90066A22C /* adventur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adventur.png; sourceTree = "<group>"; };
+		18EA4634185661D90066A22C /* agatha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = agatha.png; sourceTree = "<group>"; };
+		18EA4635185661D90066A22C /* alexandr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alexandr.png; sourceTree = "<group>"; };
+		18EA4636185661D90066A22C /* ampir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ampir.png; sourceTree = "<group>"; };
+		18EA4637185661D90066A22C /* andantino.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = andantino.png; sourceTree = "<group>"; };
+		18EA4638185661D90066A22C /* annabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = annabel.png; sourceTree = "<group>"; };
+		18EA4639185661D90066A22C /* aquarelle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aquarelle.png; sourceTree = "<group>"; };
+		18EA463A185661D90066A22C /* ariston.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ariston.png; sourceTree = "<group>"; };
+		18EA463B185661D90066A22C /* veron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veron.png; sourceTree = "<group>"; };
+		18EA463C185661D90066A22C /* acquests.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = acquests.ttf; sourceTree = "<group>"; };
+		18EA463D185661D90066A22C /* adineki.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = adineki.ttf; sourceTree = "<group>"; };
+		18EA463E185661D90066A22C /* adventur.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = adventur.ttf; sourceTree = "<group>"; };
+		18EA463F185661D90066A22C /* agatha.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = agatha.ttf; sourceTree = "<group>"; };
+		18EA4640185661D90066A22C /* alexandr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alexandr.ttf; sourceTree = "<group>"; };
+		18EA4641185661D90066A22C /* ampir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ampir.ttf; sourceTree = "<group>"; };
+		18EA4642185661D90066A22C /* andantino.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = andantino.ttf; sourceTree = "<group>"; };
+		18EA4643185661D90066A22C /* annabel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = annabel.ttf; sourceTree = "<group>"; };
+		18EA4644185661D90066A22C /* aquarelle.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = aquarelle.ttf; sourceTree = "<group>"; };
+		18EA4645185661D90066A22C /* ariston.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ariston.ttf; sourceTree = "<group>"; };
+		18EA4646185661D90066A22C /* bedini.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bedini.ttf; sourceTree = "<group>"; };
+		18EA4647185661D90066A22C /* champagne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = champagne.ttf; sourceTree = "<group>"; };
+		18EA4648185661D90066A22C /* comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = comfortaa.ttf; sourceTree = "<group>"; };
+		18EA4649185661D90066A22C /* dolphian.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = dolphian.TTF; sourceTree = "<group>"; };
+		18EA464A185661D90066A22C /* veron.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = veron.ttf; sourceTree = "<group>"; };
 		B82D6C46B6664C009AA7199C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F248A30DA07F413CB7568B8E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -266,6 +336,7 @@
 		18A68F8E1853BF52009019BC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				18EA462F185661A80066A22C /* Monograms */,
 				18A68F8F1853BF52009019BC /* MyriadPro-Cond.otf */,
 			);
 			path = Fonts;
@@ -428,6 +499,7 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18EA46221855F23E0066A22C /* Monogram */,
 				18A68FBF1854D3FF009019BC /* Voice */,
 				18A68F931854682E009019BC /* SettingMenu */,
 				18A68F8E1853BF52009019BC /* Fonts */,
@@ -440,6 +512,7 @@
 		18A84C991851D54600612BE5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18EA461C1855F13A0066A22C /* MonogramController */,
 				18A68F60185388F8009019BC /* RippleBackground */,
 				18A84CAC1852046000612BE5 /* VoiceVisualization */,
 				18A84CA21851E02B00612BE5 /* SettingsViewController */,
@@ -496,6 +569,63 @@
 				18A84CAF1852047700612BE5 /* PMVoiceVisualizationVC.xib */,
 			);
 			path = VoiceVisualization;
+			sourceTree = "<group>";
+		};
+		18EA461C1855F13A0066A22C /* MonogramController */ = {
+			isa = PBXGroup;
+			children = (
+				18EA461D1855F1590066A22C /* PMMonogramVC.h */,
+				18EA461E1855F1590066A22C /* PMMonogramVC.m */,
+				18EA461F1855F1590066A22C /* PMMonogramVC.xib */,
+				18EA46281855FB1C0066A22C /* PMChooseFontVC.h */,
+				18EA46291855FB1C0066A22C /* PMChooseFontVC.m */,
+				18EA462A1855FB1C0066A22C /* PMChooseFontVC.xib */,
+			);
+			path = MonogramController;
+			sourceTree = "<group>";
+		};
+		18EA46221855F23E0066A22C /* Monogram */ = {
+			isa = PBXGroup;
+			children = (
+				18EA462D185601CD0066A22C /* scroll-background.png */,
+				18EA46231855F23E0066A22C /* further.png */,
+				18EA46241855F23E0066A22C /* initial-textinput.png */,
+			);
+			path = Monogram;
+			sourceTree = "<group>";
+		};
+		18EA462F185661A80066A22C /* Monograms */ = {
+			isa = PBXGroup;
+			children = (
+				18EA4630185661D90066A22C /* adineki.png */,
+				18EA4631185661D90066A22C /* bedini.png */,
+				18EA4632185661D90066A22C /* acquests.png */,
+				18EA4633185661D90066A22C /* adventur.png */,
+				18EA4634185661D90066A22C /* agatha.png */,
+				18EA4635185661D90066A22C /* alexandr.png */,
+				18EA4636185661D90066A22C /* ampir.png */,
+				18EA4637185661D90066A22C /* andantino.png */,
+				18EA4638185661D90066A22C /* annabel.png */,
+				18EA4639185661D90066A22C /* aquarelle.png */,
+				18EA463A185661D90066A22C /* ariston.png */,
+				18EA463B185661D90066A22C /* veron.png */,
+				18EA463C185661D90066A22C /* acquests.ttf */,
+				18EA463D185661D90066A22C /* adineki.ttf */,
+				18EA463E185661D90066A22C /* adventur.ttf */,
+				18EA463F185661D90066A22C /* agatha.ttf */,
+				18EA4640185661D90066A22C /* alexandr.ttf */,
+				18EA4641185661D90066A22C /* ampir.ttf */,
+				18EA4642185661D90066A22C /* andantino.ttf */,
+				18EA4643185661D90066A22C /* annabel.ttf */,
+				18EA4644185661D90066A22C /* aquarelle.ttf */,
+				18EA4645185661D90066A22C /* ariston.ttf */,
+				18EA4646185661D90066A22C /* bedini.ttf */,
+				18EA4647185661D90066A22C /* champagne.ttf */,
+				18EA4648185661D90066A22C /* comfortaa.ttf */,
+				18EA4649185661D90066A22C /* dolphian.TTF */,
+				18EA464A185661D90066A22C /* veron.ttf */,
+			);
+			path = Monograms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -576,35 +706,67 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EA4654185661D90066A22C /* aquarelle.png in Resources */,
 				18A68F9A1854682E009019BC /* active-siluet-disable.png in Resources */,
+				18EA465F185661D90066A22C /* aquarelle.ttf in Resources */,
+				18EA4653185661D90066A22C /* annabel.png in Resources */,
 				18A68F6C18538905009019BC /* Shader.fsh in Resources */,
 				18A68F901853BF52009019BC /* MyriadPro-Cond.otf in Resources */,
 				18A68F811853A009009019BC /* active-finger.png in Resources */,
+				18EA4660185661D90066A22C /* ariston.ttf in Resources */,
 				18A68F6D18538905009019BC /* Shader.vsh in Resources */,
 				18A68FC31854D3FF009019BC /* close-voice.png in Resources */,
 				18A68F821853A009009019BC /* active-monogram.png in Resources */,
 				18EA461B1855DC9B0066A22C /* arrows-fullview.png in Resources */,
 				18A84C701851D32600612BE5 /* InfoPlist.strings in Resources */,
+				18EA4655185661D90066A22C /* ariston.png in Resources */,
+				18EA4658185661D90066A22C /* adineki.ttf in Resources */,
 				18A84CC8185383CF00612BE5 /* PMRootViewController.xib in Resources */,
 				18EA46191855D8AC0066A22C /* clear_button.png in Resources */,
+				18EA4656185661D90066A22C /* veron.png in Resources */,
 				18A68F9D18546DD3009019BC /* active-monogram-disable.png in Resources */,
+				18EA4661185661D90066A22C /* bedini.ttf in Resources */,
+				18EA464F185661D90066A22C /* agatha.png in Resources */,
+				18EA464E185661D90066A22C /* adventur.png in Resources */,
+				18EA4665185661D90066A22C /* veron.ttf in Resources */,
 				18A68FC41854D3FF009019BC /* reset-voice.png in Resources */,
 				18A68F851853A009009019BC /* settings.png in Resources */,
 				18A68F981854682E009019BC /* active-eye-disable.png in Resources */,
+				18EA465C185661D90066A22C /* ampir.ttf in Resources */,
+				18EA465A185661D90066A22C /* agatha.ttf in Resources */,
+				18EA462C1855FB1C0066A22C /* PMChooseFontVC.xib in Resources */,
+				18EA464C185661D90066A22C /* bedini.png in Resources */,
+				18EA465E185661D90066A22C /* annabel.ttf in Resources */,
 				18A84CA71851E04D00612BE5 /* PMSettingsViewContoller.xib in Resources */,
 				18A84C9B1851D56500612BE5 /* background.png in Resources */,
+				18EA46251855F23E0066A22C /* further.png in Resources */,
+				18EA46211855F1590066A22C /* PMMonogramVC.xib in Resources */,
+				18EA464D185661D90066A22C /* acquests.png in Resources */,
+				18EA4652185661D90066A22C /* andantino.png in Resources */,
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
+				18EA46261855F23E0066A22C /* initial-textinput.png in Resources */,
+				18EA4651185661D90066A22C /* ampir.png in Resources */,
 				18A68FB9185484A6009019BC /* ifs_vertex.glsl in Resources */,
+				18EA4657185661D90066A22C /* acquests.ttf in Resources */,
 				18A68F831853A009009019BC /* active-siluet.png in Resources */,
 				18A68F841853A009009019BC /* active-voice.png in Resources */,
+				18EA4659185661D90066A22C /* adventur.ttf in Resources */,
 				18A68F9B1854682E009019BC /* active-voice-disable.png in Resources */,
+				18EA4650185661D90066A22C /* alexandr.png in Resources */,
+				18EA465B185661D90066A22C /* alexandr.ttf in Resources */,
+				18EA4664185661D90066A22C /* dolphian.TTF in Resources */,
 				18A68F9218546058009019BC /* settings-close.png in Resources */,
+				18EA4663185661D90066A22C /* comfortaa.ttf in Resources */,
 				18A68FB8185484A6009019BC /* ifs_fragment.glsl in Resources */,
 				18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */,
 				18A68F991854682E009019BC /* active-finger-disable.png in Resources */,
+				18EA464B185661D90066A22C /* adineki.png in Resources */,
 				18A84CB11852047700612BE5 /* PMVoiceVisualizationVC.xib in Resources */,
 				18A68F801853A009009019BC /* active-eye.png in Resources */,
+				18EA465D185661D90066A22C /* andantino.ttf in Resources */,
+				18EA462E185601CD0066A22C /* scroll-background.png in Resources */,
 				18A68FC51854D3FF009019BC /* save-voice.png in Resources */,
+				18EA4662185661D90066A22C /* champagne.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,11 +820,13 @@
 			files = (
 				18A68F8A1853ABEC009019BC /* PMActivationView.m in Sources */,
 				18A68FB4185484A6009019BC /* AudioFileReader.mm in Sources */,
+				18EA462B1855FB1C0066A22C /* PMChooseFontVC.m in Sources */,
 				18A68F6A185388F8009019BC /* Shader.fsh in Sources */,
 				18A84C721851D32600612BE5 /* main.m in Sources */,
 				18A84CC7185383CF00612BE5 /* PMRootViewController.m in Sources */,
 				18A84C761851D32600612BE5 /* PMAppDelegate.m in Sources */,
 				18A68F6B185388F8009019BC /* Shader.vsh in Sources */,
+				18EA46201855F1590066A22C /* PMMonogramVC.m in Sources */,
 				18A68FB5185484A6009019BC /* AudioFileWriter.m in Sources */,
 				18A68F68185388F8009019BC /* RippleModel.m in Sources */,
 				18A68FB7185484A6009019BC /* RingBuffer.mm in Sources */,
