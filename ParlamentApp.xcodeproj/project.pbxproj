@@ -108,6 +108,8 @@
 		18EA4663185661D90066A22C /* comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4648185661D90066A22C /* comfortaa.ttf */; };
 		18EA4664185661D90066A22C /* dolphian.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4649185661D90066A22C /* dolphian.TTF */; };
 		18EA4665185661D90066A22C /* veron.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA464A185661D90066A22C /* veron.ttf */; };
+		18EA466B1856FE7E0066A22C /* PMFingerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA46691856FE7E0066A22C /* PMFingerVC.m */; };
+		18EA466C1856FE7E0066A22C /* PMFingerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EA466A1856FE7E0066A22C /* PMFingerVC.xib */; };
 		4DAB77C04BEC400B9C6A466E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82D6C46B6664C009AA7199C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -245,6 +247,9 @@
 		18EA4648185661D90066A22C /* comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = comfortaa.ttf; sourceTree = "<group>"; };
 		18EA4649185661D90066A22C /* dolphian.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = dolphian.TTF; sourceTree = "<group>"; };
 		18EA464A185661D90066A22C /* veron.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = veron.ttf; sourceTree = "<group>"; };
+		18EA46681856FE7E0066A22C /* PMFingerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMFingerVC.h; sourceTree = "<group>"; };
+		18EA46691856FE7E0066A22C /* PMFingerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMFingerVC.m; sourceTree = "<group>"; };
+		18EA466A1856FE7E0066A22C /* PMFingerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMFingerVC.xib; sourceTree = "<group>"; };
 		B82D6C46B6664C009AA7199C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F248A30DA07F413CB7568B8E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -512,6 +517,7 @@
 		18A84C991851D54600612BE5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18EA46671856FE6A0066A22C /* FingerViewController */,
 				18EA461C1855F13A0066A22C /* MonogramController */,
 				18A68F60185388F8009019BC /* RippleBackground */,
 				18A84CAC1852046000612BE5 /* VoiceVisualization */,
@@ -626,6 +632,16 @@
 				18EA464A185661D90066A22C /* veron.ttf */,
 			);
 			path = Monograms;
+			sourceTree = "<group>";
+		};
+		18EA46671856FE6A0066A22C /* FingerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				18EA46681856FE7E0066A22C /* PMFingerVC.h */,
+				18EA46691856FE7E0066A22C /* PMFingerVC.m */,
+				18EA466A1856FE7E0066A22C /* PMFingerVC.xib */,
+			);
+			path = FingerViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -760,6 +776,7 @@
 				18A68FB8185484A6009019BC /* ifs_fragment.glsl in Resources */,
 				18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */,
 				18A68F991854682E009019BC /* active-finger-disable.png in Resources */,
+				18EA466C1856FE7E0066A22C /* PMFingerVC.xib in Resources */,
 				18EA464B185661D90066A22C /* adineki.png in Resources */,
 				18A84CB11852047700612BE5 /* PMVoiceVisualizationVC.xib in Resources */,
 				18A68F801853A009009019BC /* active-eye.png in Resources */,
@@ -830,6 +847,7 @@
 				18A68FB5185484A6009019BC /* AudioFileWriter.m in Sources */,
 				18A68F68185388F8009019BC /* RippleModel.m in Sources */,
 				18A68FB7185484A6009019BC /* RingBuffer.mm in Sources */,
+				18EA466B1856FE7E0066A22C /* PMFingerVC.m in Sources */,
 				18A68F69185388F8009019BC /* RippleViewController.m in Sources */,
 				18A68FB2185484A6009019BC /* ATTRactorManager.m in Sources */,
 				18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */,

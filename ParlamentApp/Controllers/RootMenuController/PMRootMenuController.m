@@ -11,6 +11,7 @@
 #import "PMSettingsViewContoller.h"
 #import "PMVoiceVisualizationVC.h"
 #import "PMMonogramVC.h"
+#import "PMFingerVC.h"
 
 #import "UIView+GestureBlocks.h"
 #import "UIImage+UIImageFunctions.h"
@@ -194,7 +195,7 @@
             
             break;
         case eFinger:
-            
+            [self showFingerViewController];
             break;
         case eMonogram:
             [self showMonogramViewController];
@@ -228,6 +229,22 @@
     PMMonogramVC *monogramVC = [[PMMonogramVC alloc] initWithNibName:@"PMMonogramVC" bundle:[NSBundle mainBundle]];
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size
                                                                     viewController:[[UINavigationController alloc] initWithRootViewController:monogramVC]];
+    formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+    __weak id wself = self;
+    formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+        [wself showAllContext];
+    };
+    [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+        
+    }];
+}
+
+-(void) showFingerViewController
+{
+    [self hideAllContext];
+    
+    PMFingerVC *fingerVC = [[PMFingerVC alloc] initWithNibName:@"PMFingerVC" bundle:[NSBundle mainBundle]];
+    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:fingerVC];
     formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
     __weak id wself = self;
     formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
