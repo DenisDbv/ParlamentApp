@@ -12,6 +12,7 @@
 #import "PMVoiceVisualizationVC.h"
 #import "PMMonogramVC.h"
 #import "PMFingerVC.h"
+#import "PMSiluetVC.h"
 
 #import "UIView+GestureBlocks.h"
 #import "UIImage+UIImageFunctions.h"
@@ -85,24 +86,22 @@
                          [UIView animateWithDuration:0.05f animations:^{
                              btn.transform = CGAffineTransformMakeScale(1, 1);
                          } completion:^(BOOL finished) {
+                             [self hideAllContext];
                              
+                             PMSettingsViewContoller *settingVC = [[PMSettingsViewContoller alloc] initWithNibName:@"PMSettingsViewContoller" bundle:[NSBundle mainBundle]];
+                             MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:settingVC];
+                             formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+                             __weak id wself = self;
+                             formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+                                 [wself buttonsConfigure];
+                                 [wself buttonsReposition];
+                                 [wself showAllContext];
+                             };
+                             [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+                                 
+                             }];
                          }];
                      }];
-    
-    [self hideAllContext];
-    
-    PMSettingsViewContoller *settingVC = [[PMSettingsViewContoller alloc] initWithNibName:@"PMSettingsViewContoller" bundle:[NSBundle mainBundle]];
-    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:settingVC];
-    formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
-    __weak id wself = self;
-    formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
-        [wself buttonsConfigure];
-        [wself buttonsReposition];
-        [wself showAllContext];
-    };
-    [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
-        
-    }];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -192,7 +191,7 @@
             [self showVoiceViewController];
             break;
         case eSiluet:
-            
+            [self showSiluetViewController];
             break;
         case eFinger:
             [self showFingerViewController];
@@ -245,6 +244,22 @@
     
     PMFingerVC *fingerVC = [[PMFingerVC alloc] initWithNibName:@"PMFingerVC" bundle:[NSBundle mainBundle]];
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:fingerVC];
+    formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+    __weak id wself = self;
+    formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+        [wself showAllContext];
+    };
+    [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+        
+    }];
+}
+
+-(void) showSiluetViewController
+{
+    [self hideAllContext];
+    
+    PMSiluetVC *siluetVC = [[PMSiluetVC alloc] initWithNibName:@"PMSiluetVC" bundle:[NSBundle mainBundle]];
+    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:siluetVC];
     formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
     __weak id wself = self;
     formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {

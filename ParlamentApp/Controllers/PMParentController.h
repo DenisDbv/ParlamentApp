@@ -12,5 +12,6 @@
 
 -(void) hideAllContext;
 -(void) showAllContext;
+-(void) tapAnimate:(UIView*)view withBlock:(void (^)(void))block;
 
 @end

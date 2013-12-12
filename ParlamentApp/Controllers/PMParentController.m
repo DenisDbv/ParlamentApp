@@ -55,6 +55,21 @@
     
 }
 
+-(void) tapAnimate:(UIView*)view withBlock:(void (^)(void))block
+{
+    [UIView animateWithDuration:0.03 animations:^{
+        view.transform = CGAffineTransformMakeScale(0.95, 0.95);
+    }
+                     completion:^(BOOL finished){
+                         
+                         [UIView animateWithDuration:0.03f animations:^{
+                             view.transform = CGAffineTransformMakeScale(1, 1);
+                         } completion:^(BOOL finished) {
+                             //block();
+                         }];
+                     }];
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [[AppDelegateInstance() rippleViewController] touchesBegan:touches withEvent:event];

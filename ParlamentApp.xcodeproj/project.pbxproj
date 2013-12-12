@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		18A68F68185388F8009019BC /* RippleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F62185388F8009019BC /* RippleModel.m */; };
 		18A68F69185388F8009019BC /* RippleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F64185388F8009019BC /* RippleViewController.m */; };
-		18A68F6A185388F8009019BC /* Shader.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F66185388F8009019BC /* Shader.fsh */; };
-		18A68F6B185388F8009019BC /* Shader.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F67185388F8009019BC /* Shader.vsh */; };
-		18A68F6C18538905009019BC /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F66185388F8009019BC /* Shader.fsh */; };
-		18A68F6D18538905009019BC /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F67185388F8009019BC /* Shader.vsh */; };
 		18A68F7118538CF9009019BC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68F7018538CF9009019BC /* OpenGLES.framework */; };
 		18A68F7318538D00009019BC /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68F7218538D00009019BC /* GLKit.framework */; };
 		18A68F7518538D1B009019BC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68F7418538D1B009019BC /* AVFoundation.framework */; };
@@ -110,6 +106,24 @@
 		18EA4665185661D90066A22C /* veron.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18EA464A185661D90066A22C /* veron.ttf */; };
 		18EA466B1856FE7E0066A22C /* PMFingerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA46691856FE7E0066A22C /* PMFingerVC.m */; };
 		18EA466C1856FE7E0066A22C /* PMFingerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EA466A1856FE7E0066A22C /* PMFingerVC.xib */; };
+		18EA4688185734EC0066A22C /* PMSiluetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA4686185734EC0066A22C /* PMSiluetVC.m */; };
+		18EA4689185734EC0066A22C /* PMSiluetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EA4687185734EC0066A22C /* PMSiluetVC.xib */; };
+		18EA469018573E500066A22C /* RippleShader.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 18EA468E18573E500066A22C /* RippleShader.fsh */; };
+		18EA469118573E500066A22C /* RippleShader.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 18EA468F18573E500066A22C /* RippleShader.vsh */; };
+		18EA469218573E8A0066A22C /* RippleShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EA468E18573E500066A22C /* RippleShader.fsh */; };
+		18EA469318573E8A0066A22C /* RippleShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EA468F18573E500066A22C /* RippleShader.vsh */; };
+		18EA469518575F960066A22C /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EA469418575F950066A22C /* CoreImage.framework */; };
+		18EA469718575F9E0066A22C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EA469618575F9E0066A22C /* QuartzCore.framework */; };
+		18EA4699185766430066A22C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EA4698185766430066A22C /* CoreVideo.framework */; };
+		18EA469C185766F20066A22C /* UIColor+HSVAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA469B185766F20066A22C /* UIColor+HSVAdditions.m */; };
+		18EA469F185767560066A22C /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA469E185767560066A22C /* UIColor+Expanded.m */; };
+		18EA46A1185783FC0066A22C /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46A0185783FC0066A22C /* test.png */; };
+		18EA46A318578A430066A22C /* test2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46A218578A430066A22C /* test2.png */; };
+		18EA46A51857ABC50066A22C /* test3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46A41857ABC50066A22C /* test3.png */; };
+		18EA46A918595EF20066A22C /* PMCustomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA46A818595EF20066A22C /* PMCustomKeyboard.m */; };
+		18EA46AB18595F0C0066A22C /* PMCustomKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46AA18595F0C0066A22C /* PMCustomKeyboard.xib */; };
+		18EA46AF1859610C0066A22C /* button-key.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46AD1859610C0066A22C /* button-key.png */; };
+		18EA46B01859610C0066A22C /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46AE1859610C0066A22C /* delete.png */; };
 		4DAB77C04BEC400B9C6A466E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82D6C46B6664C009AA7199C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -128,8 +142,6 @@
 		18A68F62185388F8009019BC /* RippleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RippleModel.m; sourceTree = "<group>"; };
 		18A68F63185388F8009019BC /* RippleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RippleViewController.h; sourceTree = "<group>"; };
 		18A68F64185388F8009019BC /* RippleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RippleViewController.m; sourceTree = "<group>"; };
-		18A68F66185388F8009019BC /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
-		18A68F67185388F8009019BC /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
 		18A68F6F18538B90009019BC /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		18A68F7018538CF9009019BC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		18A68F7218538D00009019BC /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -250,6 +262,26 @@
 		18EA46681856FE7E0066A22C /* PMFingerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMFingerVC.h; sourceTree = "<group>"; };
 		18EA46691856FE7E0066A22C /* PMFingerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMFingerVC.m; sourceTree = "<group>"; };
 		18EA466A1856FE7E0066A22C /* PMFingerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMFingerVC.xib; sourceTree = "<group>"; };
+		18EA4685185734EC0066A22C /* PMSiluetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSiluetVC.h; sourceTree = "<group>"; };
+		18EA4686185734EC0066A22C /* PMSiluetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSiluetVC.m; sourceTree = "<group>"; };
+		18EA4687185734EC0066A22C /* PMSiluetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMSiluetVC.xib; sourceTree = "<group>"; };
+		18EA468E18573E500066A22C /* RippleShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = RippleShader.fsh; sourceTree = "<group>"; };
+		18EA468F18573E500066A22C /* RippleShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = RippleShader.vsh; sourceTree = "<group>"; };
+		18EA469418575F950066A22C /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		18EA469618575F9E0066A22C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		18EA4698185766430066A22C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		18EA469A185766F20066A22C /* UIColor+HSVAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HSVAdditions.h"; sourceTree = "<group>"; };
+		18EA469B185766F20066A22C /* UIColor+HSVAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HSVAdditions.m"; sourceTree = "<group>"; };
+		18EA469D185767560066A22C /* UIColor+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Expanded.h"; sourceTree = "<group>"; };
+		18EA469E185767560066A22C /* UIColor+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Expanded.m"; sourceTree = "<group>"; };
+		18EA46A0185783FC0066A22C /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		18EA46A218578A430066A22C /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test2.png; sourceTree = "<group>"; };
+		18EA46A41857ABC50066A22C /* test3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test3.png; sourceTree = "<group>"; };
+		18EA46A718595EF20066A22C /* PMCustomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMCustomKeyboard.h; sourceTree = "<group>"; };
+		18EA46A818595EF20066A22C /* PMCustomKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMCustomKeyboard.m; sourceTree = "<group>"; };
+		18EA46AA18595F0C0066A22C /* PMCustomKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMCustomKeyboard.xib; sourceTree = "<group>"; };
+		18EA46AD1859610C0066A22C /* button-key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-key.png"; sourceTree = "<group>"; };
+		18EA46AE1859610C0066A22C /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		B82D6C46B6664C009AA7199C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F248A30DA07F413CB7568B8E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -259,6 +291,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EA4699185766430066A22C /* CoreVideo.framework in Frameworks */,
+				18EA469718575F9E0066A22C /* QuartzCore.framework in Frameworks */,
+				18EA469518575F960066A22C /* CoreImage.framework in Frameworks */,
 				18A68FBE18548518009019BC /* CoreAudio.framework in Frameworks */,
 				18A68FBC18548513009019BC /* AudioToolbox.framework in Frameworks */,
 				18A68F7518538D1B009019BC /* AVFoundation.framework in Frameworks */,
@@ -301,8 +336,8 @@
 		18A68F65185388F8009019BC /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				18A68F66185388F8009019BC /* Shader.fsh */,
-				18A68F67185388F8009019BC /* Shader.vsh */,
+				18EA468E18573E500066A22C /* RippleShader.fsh */,
+				18EA468F18573E500066A22C /* RippleShader.vsh */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -324,6 +359,7 @@
 		18A68F861853ABD8009019BC /* ViewsHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				18EA46A618595ED70066A22C /* KeyboardView */,
 				18A68F871853ABD8009019BC /* ActivationView */,
 			);
 			path = ViewsHelpers;
@@ -441,6 +477,9 @@
 		18A84C621851D32600612BE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18EA4698185766430066A22C /* CoreVideo.framework */,
+				18EA469618575F9E0066A22C /* QuartzCore.framework */,
+				18EA469418575F950066A22C /* CoreImage.framework */,
 				18A68FBD18548518009019BC /* CoreAudio.framework */,
 				18A68FBB18548513009019BC /* AudioToolbox.framework */,
 				18A68F7418538D1B009019BC /* AVFoundation.framework */,
@@ -504,6 +543,10 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18EA46AC185960BC0066A22C /* Keyboard */,
+				18EA46A41857ABC50066A22C /* test3.png */,
+				18EA46A218578A430066A22C /* test2.png */,
+				18EA46A0185783FC0066A22C /* test.png */,
 				18EA46221855F23E0066A22C /* Monogram */,
 				18A68FBF1854D3FF009019BC /* Voice */,
 				18A68F931854682E009019BC /* SettingMenu */,
@@ -517,6 +560,7 @@
 		18A84C991851D54600612BE5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18EA4684185734D50066A22C /* SiluetViewController */,
 				18EA46671856FE6A0066A22C /* FingerViewController */,
 				18EA461C1855F13A0066A22C /* MonogramController */,
 				18A68F60185388F8009019BC /* RippleBackground */,
@@ -562,6 +606,10 @@
 				18A84CA91851E1F800612BE5 /* UINavigationController+ClearSlider.h */,
 				18A84CAA1851E1F800612BE5 /* UINavigationController+ClearSlider.m */,
 				18A68F6F18538B90009019BC /* Global.h */,
+				18EA469A185766F20066A22C /* UIColor+HSVAdditions.h */,
+				18EA469B185766F20066A22C /* UIColor+HSVAdditions.m */,
+				18EA469D185767560066A22C /* UIColor+Expanded.h */,
+				18EA469E185767560066A22C /* UIColor+Expanded.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -644,6 +692,35 @@
 			path = FingerViewController;
 			sourceTree = "<group>";
 		};
+		18EA4684185734D50066A22C /* SiluetViewController */ = {
+			isa = PBXGroup;
+			children = (
+				18EA4685185734EC0066A22C /* PMSiluetVC.h */,
+				18EA4686185734EC0066A22C /* PMSiluetVC.m */,
+				18EA4687185734EC0066A22C /* PMSiluetVC.xib */,
+			);
+			path = SiluetViewController;
+			sourceTree = "<group>";
+		};
+		18EA46A618595ED70066A22C /* KeyboardView */ = {
+			isa = PBXGroup;
+			children = (
+				18EA46A718595EF20066A22C /* PMCustomKeyboard.h */,
+				18EA46A818595EF20066A22C /* PMCustomKeyboard.m */,
+				18EA46AA18595F0C0066A22C /* PMCustomKeyboard.xib */,
+			);
+			path = KeyboardView;
+			sourceTree = "<group>";
+		};
+		18EA46AC185960BC0066A22C /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				18EA46AD1859610C0066A22C /* button-key.png */,
+				18EA46AE1859610C0066A22C /* delete.png */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -722,17 +799,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EA469218573E8A0066A22C /* RippleShader.fsh in Resources */,
+				18EA469318573E8A0066A22C /* RippleShader.vsh in Resources */,
 				18EA4654185661D90066A22C /* aquarelle.png in Resources */,
 				18A68F9A1854682E009019BC /* active-siluet-disable.png in Resources */,
 				18EA465F185661D90066A22C /* aquarelle.ttf in Resources */,
 				18EA4653185661D90066A22C /* annabel.png in Resources */,
-				18A68F6C18538905009019BC /* Shader.fsh in Resources */,
 				18A68F901853BF52009019BC /* MyriadPro-Cond.otf in Resources */,
 				18A68F811853A009009019BC /* active-finger.png in Resources */,
 				18EA4660185661D90066A22C /* ariston.ttf in Resources */,
-				18A68F6D18538905009019BC /* Shader.vsh in Resources */,
 				18A68FC31854D3FF009019BC /* close-voice.png in Resources */,
 				18A68F821853A009009019BC /* active-monogram.png in Resources */,
+				18EA46A318578A430066A22C /* test2.png in Resources */,
 				18EA461B1855DC9B0066A22C /* arrows-fullview.png in Resources */,
 				18A84C701851D32600612BE5 /* InfoPlist.strings in Resources */,
 				18EA4655185661D90066A22C /* ariston.png in Resources */,
@@ -740,7 +818,9 @@
 				18A84CC8185383CF00612BE5 /* PMRootViewController.xib in Resources */,
 				18EA46191855D8AC0066A22C /* clear_button.png in Resources */,
 				18EA4656185661D90066A22C /* veron.png in Resources */,
+				18EA46AF1859610C0066A22C /* button-key.png in Resources */,
 				18A68F9D18546DD3009019BC /* active-monogram-disable.png in Resources */,
+				18EA46AB18595F0C0066A22C /* PMCustomKeyboard.xib in Resources */,
 				18EA4661185661D90066A22C /* bedini.ttf in Resources */,
 				18EA464F185661D90066A22C /* agatha.png in Resources */,
 				18EA464E185661D90066A22C /* adventur.png in Resources */,
@@ -756,14 +836,17 @@
 				18A84CA71851E04D00612BE5 /* PMSettingsViewContoller.xib in Resources */,
 				18A84C9B1851D56500612BE5 /* background.png in Resources */,
 				18EA46251855F23E0066A22C /* further.png in Resources */,
+				18EA46A51857ABC50066A22C /* test3.png in Resources */,
 				18EA46211855F1590066A22C /* PMMonogramVC.xib in Resources */,
 				18EA464D185661D90066A22C /* acquests.png in Resources */,
 				18EA4652185661D90066A22C /* andantino.png in Resources */,
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
+				18EA46B01859610C0066A22C /* delete.png in Resources */,
 				18EA46261855F23E0066A22C /* initial-textinput.png in Resources */,
 				18EA4651185661D90066A22C /* ampir.png in Resources */,
 				18A68FB9185484A6009019BC /* ifs_vertex.glsl in Resources */,
 				18EA4657185661D90066A22C /* acquests.ttf in Resources */,
+				18EA4689185734EC0066A22C /* PMSiluetVC.xib in Resources */,
 				18A68F831853A009009019BC /* active-siluet.png in Resources */,
 				18A68F841853A009009019BC /* active-voice.png in Resources */,
 				18EA4659185661D90066A22C /* adventur.ttf in Resources */,
@@ -780,6 +863,7 @@
 				18EA464B185661D90066A22C /* adineki.png in Resources */,
 				18A84CB11852047700612BE5 /* PMVoiceVisualizationVC.xib in Resources */,
 				18A68F801853A009009019BC /* active-eye.png in Resources */,
+				18EA46A1185783FC0066A22C /* test.png in Resources */,
 				18EA465D185661D90066A22C /* andantino.ttf in Resources */,
 				18EA462E185601CD0066A22C /* scroll-background.png in Resources */,
 				18A68FC51854D3FF009019BC /* save-voice.png in Resources */,
@@ -838,13 +922,12 @@
 				18A68F8A1853ABEC009019BC /* PMActivationView.m in Sources */,
 				18A68FB4185484A6009019BC /* AudioFileReader.mm in Sources */,
 				18EA462B1855FB1C0066A22C /* PMChooseFontVC.m in Sources */,
-				18A68F6A185388F8009019BC /* Shader.fsh in Sources */,
 				18A84C721851D32600612BE5 /* main.m in Sources */,
 				18A84CC7185383CF00612BE5 /* PMRootViewController.m in Sources */,
 				18A84C761851D32600612BE5 /* PMAppDelegate.m in Sources */,
-				18A68F6B185388F8009019BC /* Shader.vsh in Sources */,
 				18EA46201855F1590066A22C /* PMMonogramVC.m in Sources */,
 				18A68FB5185484A6009019BC /* AudioFileWriter.m in Sources */,
+				18EA46A918595EF20066A22C /* PMCustomKeyboard.m in Sources */,
 				18A68F68185388F8009019BC /* RippleModel.m in Sources */,
 				18A68FB7185484A6009019BC /* RingBuffer.mm in Sources */,
 				18EA466B1856FE7E0066A22C /* PMFingerVC.m in Sources */,
@@ -852,13 +935,18 @@
 				18A68FB2185484A6009019BC /* ATTRactorManager.m in Sources */,
 				18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */,
 				18A68F7818538DC7009019BC /* PMParentController.m in Sources */,
+				18EA469118573E500066A22C /* RippleShader.vsh in Sources */,
 				18A84C791851D32600612BE5 /* ParlamentApp.xcdatamodeld in Sources */,
 				18A68F8D1853AD89009019BC /* UIImage+UIImageFunctions.m in Sources */,
 				18A84CA61851E04D00612BE5 /* PMSettingsViewContoller.m in Sources */,
 				18A84CB01852047700612BE5 /* PMVoiceVisualizationVC.m in Sources */,
 				18A68FB6185484A6009019BC /* Novocaine.m in Sources */,
 				18A68FBA185484A6009019BC /* ATTRactorView.m in Sources */,
+				18EA4688185734EC0066A22C /* PMSiluetVC.m in Sources */,
+				18EA469018573E500066A22C /* RippleShader.fsh in Sources */,
+				18EA469F185767560066A22C /* UIColor+Expanded.m in Sources */,
 				18A68FB3185484A6009019BC /* ATTRactorObject.m in Sources */,
+				18EA469C185766F20066A22C /* UIColor+HSVAdditions.m in Sources */,
 				18A84CAB1851E1F800612BE5 /* UINavigationController+ClearSlider.m in Sources */,
 				18A84CA01851D5A600612BE5 /* PMRootMenuController.m in Sources */,
 			);
@@ -1000,6 +1088,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

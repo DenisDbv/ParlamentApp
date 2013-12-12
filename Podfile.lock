@@ -4,16 +4,19 @@ PODS:
   - MZFormSheetController (1.4.0):
     - MZAppearance (~> 1.1.1)
   - MZTimerLabel (0.2.1)
+  - PBJVision (0.1.4)
 
 DEPENDENCIES:
   - iCarousel
   - MZFormSheetController
   - MZTimerLabel (~> 0.1)
+  - PBJVision
 
 SPEC CHECKSUMS:
   iCarousel: e23a26d7ba722215a42144e80adb0dcb59bebc41
   MZAppearance: 8b02683f0019f725557ae9839ed6cab153fff669
   MZFormSheetController: 6253af6f7c5baede40b8d2b02af5af9fe820fc39
   MZTimerLabel: 1ec7e65871aa808489a04ddf1933123f41b9eabc
+  PBJVision: 0840e89fe0ef2547071452663e8b4f3d6511220b
 
 COCOAPODS: 0.23.0

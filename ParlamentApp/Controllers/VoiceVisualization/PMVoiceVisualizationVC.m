@@ -166,16 +166,14 @@
                          [UIView animateWithDuration:0.05f animations:^{
                              btn.transform = CGAffineTransformMakeScale(1, 1);
                          } completion:^(BOOL finished) {
+                             [self unload];
                              
+                             self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+                             [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                                 
+                             }];
                          }];
                      }];
-    
-    [self unload];
-    
-    self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
-    [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-        
-    }];
 }
 
 -(void) unload

@@ -24,4 +24,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *finishTitle3;
 @property (strong, nonatomic) IBOutlet UILabel *finishTitle4;
 @property (strong, nonatomic) IBOutlet UILabel *finishTitle5;
+
+-(id) initWithInitials:(NSString*)initials;
+
 @end

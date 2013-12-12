@@ -60,7 +60,7 @@
     
     scanelAccessDeniedLabel.center = self.view.center;
     
-    UIImage *settingImage = [UIImage imageNamed:@"settings-close.png"];
+    UIImage *settingImage = [[UIImage imageNamed:@"close-voice.png"] scaleProportionalToRetina];
     UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [closeBtn addTarget:self action:@selector(onClose:) forControlEvents:UIControlEventTouchUpInside];
     [closeBtn setBackgroundImage:settingImage forState:UIControlStateNormal];
@@ -88,7 +88,6 @@
                              }];
                          }];
                      }];
-    
 }
 
 @end

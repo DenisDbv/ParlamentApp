@@ -36,6 +36,9 @@
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
     titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    PMCustomKeyboard *customKeyboard = [[PMCustomKeyboard alloc] init];
+    [customKeyboard setTextView:initialTextField];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -101,7 +104,7 @@
     else    {
         [self.view endEditing:YES];
         onClose.alpha = onFurther.alpha = initialContainerView.alpha = titleLabel.alpha = 0.0;
-        PMChooseFontVC *chooseFontVC = [[PMChooseFontVC alloc] initWithNibName:@"PMChooseFontVC" bundle:[NSBundle mainBundle]];
+        PMChooseFontVC *chooseFontVC = [[PMChooseFontVC alloc] initWithInitials:initialTextField.text];
         [self.navigationController pushViewController:chooseFontVC animated:YES];
     }
 }

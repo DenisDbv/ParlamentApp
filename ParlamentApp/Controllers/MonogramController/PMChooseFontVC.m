@@ -15,6 +15,8 @@
 
 @implementation PMChooseFontVC
 {
+    NSString *initialsString;
+    
     NSArray *fontImages;
     NSArray *fontNames;
     
@@ -27,11 +29,12 @@
 @synthesize closeBtn, saveBtn;
 @synthesize finishTitle1, finishTitle2, finishTitle3, finishTitle4, finishTitle5;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+-(id) initWithInitials:(NSString*)initials
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"PMChooseFontVC" bundle:[NSBundle mainBundle]];
     if (self) {
-        // Custom initialization
+        initialsString = initials;
     }
     return self;
 }
@@ -51,6 +54,7 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     
     monogramLabel.font = [UIFont fontWithName:@"AdineKirnberg" size:84];
+    monogramLabel.text = initialsString;
     
     [carousel reloadData];
     
