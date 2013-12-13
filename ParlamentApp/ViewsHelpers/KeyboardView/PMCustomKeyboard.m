@@ -14,7 +14,7 @@
 #define kFont [UIFont fontWithName:@"MyriadPro-Cond" size:27]
 #define kColor [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0]
 #define kChar @[ @"Й", @"Ц", @"У", @"К", @"Е", @"Н", @"Г", @"Ш", @"Щ", @"З", @"Х", @"Ъ", @"Ф", @"Ы", @"В", @"А", @"П", @"Р", @"О", @"Л", @"Д", @"Ж", @"Э", @"Я", @"Ч", @"С", @"М", @"И", @"Т", @"Ь", @"Б", @"Ю", @"-", @" " ]
-#define kCharEng @[ @"Q", @"W", @"E", @"R", @"T", @"Y", @"U", @"I", @"O", @"P", @"A", @"S", @"D", @"F", @"G", @"H", @"J", @"K", @"L", @"_", @"Z", @"X", @"C", @"V", @"B", @"N", @"M", @".", @"-", @" "]
+#define kCharEng @[ @"Q", @"W", @"E", @"R", @"T", @"Y", @"U", @"I", @"O", @"P", @"A", @"S", @"D", @"F", @"G", @"H", @"J", @"K", @"L", @"_", @"Z", @"X", @"C", @"V", @"B", @"N", @"M", @".", @"-", @"@", @" "]
 #define kNumberChar @[ @"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9"]
 
 - (id)init {
@@ -96,7 +96,7 @@
 
 -(void) refreshLanguageTitleOnButton
 {
-    [self.languageButton setTitle:((self.isRu)?@"RU":@"ENG") forState:UIControlStateNormal];
+    [self.languageButton setTitle:((self.isRu)?@"ENG":@"RU") forState:UIControlStateNormal];
     [self.languageButton.titleLabel setFont:kFont];
 	self.languageButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     UIEdgeInsets btnEdge = self.languageButton.titleEdgeInsets;

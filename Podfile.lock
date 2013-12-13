@@ -5,12 +5,14 @@ PODS:
     - MZAppearance (~> 1.1.1)
   - MZTimerLabel (0.2.1)
   - PBJVision (0.1.4)
+  - SHSPhoneComponent (1.4)
 
 DEPENDENCIES:
   - iCarousel
   - MZFormSheetController
   - MZTimerLabel (~> 0.1)
   - PBJVision
+  - SHSPhoneComponent
 
 SPEC CHECKSUMS:
   iCarousel: e23a26d7ba722215a42144e80adb0dcb59bebc41
@@ -18,5 +20,6 @@ SPEC CHECKSUMS:
   MZFormSheetController: 6253af6f7c5baede40b8d2b02af5af9fe820fc39
   MZTimerLabel: 1ec7e65871aa808489a04ddf1933123f41b9eabc
   PBJVision: 0840e89fe0ef2547071452663e8b4f3d6511220b
+  SHSPhoneComponent: f48d7d5dff3a2c1df7ff97f2567a4bc7314403a8
 
 COCOAPODS: 0.23.0

@@ -266,7 +266,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Kl1-uc-iDO">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Kl1-uc-iDO">
                     <rect key="frame" x="643" y="203" width="38" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -439,49 +439,6 @@
     </objects>
     <resources>
         <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="button-key.png" width="77" height="77"/>
-        <image name="delete.png" width="260" height="93"/>
         <image name="delete.png" width="260" height="93"/>
         <image name="initial-textinput.png" width="868" height="139"/>
     </resources>

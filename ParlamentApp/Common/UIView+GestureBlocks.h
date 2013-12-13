@@ -16,7 +16,7 @@
 @property (readwrite, nonatomic, copy) void (^swipeUpHandler)(UIGestureRecognizer *sender);
 @property (readwrite, nonatomic, copy) void (^swipeDownHandler)(UIGestureRecognizer *sender);
 
-- (void)initialiseTapHandler:(void (^) (UIGestureRecognizer *sender))block forTaps:(int)numberOfTaps;
+- (UITapGestureRecognizer*)initialiseTapHandler:(void (^) (UIGestureRecognizer *sender))block forTaps:(int)numberOfTaps;
 - (IBAction)handleTap:(UIGestureRecognizer *)sender;
 
 - (void)initialiseSwipeUpHandler:(void (^) (UIGestureRecognizer *sender))block;

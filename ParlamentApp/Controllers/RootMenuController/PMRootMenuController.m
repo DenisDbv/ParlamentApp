@@ -25,6 +25,12 @@
 @end
 
 @implementation PMRootMenuController
+{
+    BOOL secret_doubleTap;
+    BOOL secret_disable;
+    
+    UIButton *settingButton;
+}
 @synthesize activationButtonsArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -40,8 +46,66 @@
 {
     [super viewDidLoad];
     
+    secret_doubleTap = NO;
+    secret_disable = NO;
+    
     [self buttonsConfigure];
     [self buttonsReposition];
+    
+    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
+    tapGesture2.numberOfTapsRequired = 2;
+    [self.view addGestureRecognizer:tapGesture2];
+    
+    UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap1:)];
+    tapGesture1.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapGesture1];
+
+    [tapGesture1 requireGestureRecognizerToFail:tapGesture2];
+}
+
+- (void)handleTap1:(UIGestureRecognizer *)sender
+{
+    CGPoint coords = [sender locationInView:sender.view];
+    if(coords.x > self.view.frame.size.width-100 && coords.y > self.view.frame.size.height-100)    {
+        //NSLog(@"!%@", NSStringFromCGPoint(coords));
+        if(secret_doubleTap == YES) {
+            NSLog(@"Show settings secret button");
+            
+            secret_disable = YES;
+            
+            [UIView animateWithDuration:0.3f animations:^{
+                settingButton.alpha = 1.0;
+            } completion:^(BOOL finished) {
+                int64_t delayInSeconds = 3.0;
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                    [UIView animateWithDuration:0.3 animations:^{
+                        settingButton.alpha = 0.0;
+                    } completion:^(BOOL finished) {
+                        secret_disable = NO;
+                    }];
+                });
+            }];
+        }
+    }
+}
+
+- (void)handleTap2:(UIGestureRecognizer *)sender
+{
+    CGPoint coords = [sender locationInView:sender.view];
+    if(coords.x < 100 && coords.y < 100)    {
+        //NSLog(@"%@", NSStringFromCGPoint(coords));
+        
+        if(!secret_disable) {
+            secret_doubleTap = YES;
+            
+            int64_t delayInSeconds = 1.6;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                secret_doubleTap = NO;
+                    });
+        }
+    }
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -63,7 +127,8 @@
     CGFloat screenWidth = screenRect.size.height;
     
     UIImage *settingImage = [[UIImage imageNamed:@"settings.png"] scaleProportionalToRetina];
-    UIButton *settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    settingButton.alpha = 0.0f;
     [settingButton addTarget:self action:@selector(onSetting:) forControlEvents:UIControlEventTouchUpInside];
     [settingButton setImage:settingImage forState:UIControlStateNormal];
     [settingButton setImage:settingImage forState:UIControlStateHighlighted];
@@ -78,12 +143,15 @@
 
 -(void) onSetting:(UIButton*)btn
 {
-    [UIView animateWithDuration:0.05 animations:^{
+    CGPoint location = btn.center;
+    [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+    
+    [UIView animateWithDuration:0.03 animations:^{
         btn.transform = CGAffineTransformMakeScale(0.95, 0.95);
     }
                      completion:^(BOOL finished){
                          
-                         [UIView animateWithDuration:0.05f animations:^{
+                         [UIView animateWithDuration:0.03f animations:^{
                              btn.transform = CGAffineTransformMakeScale(1, 1);
                          } completion:^(BOOL finished) {
                              [self hideAllContext];

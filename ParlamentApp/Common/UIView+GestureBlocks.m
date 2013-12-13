@@ -36,7 +36,7 @@
 	objc_setAssociatedObject(self,@"swipeDownHandler",block,OBJC_ASSOCIATION_RETAIN);
 }
 
-- (void)initialiseTapHandler:(void (^) (UIGestureRecognizer *sender))block forTaps:(int)numberOfTaps
+- (UITapGestureRecognizer*)initialiseTapHandler:(void (^) (UIGestureRecognizer *sender))block forTaps:(int)numberOfTaps
 {
     [self setTapHandler:block];
     UITapGestureRecognizer *singleFingerDTap = [[UITapGestureRecognizer alloc]
@@ -49,6 +49,8 @@
     self.superview.userInteractionEnabled = YES;
     
     [self addGestureRecognizer:singleFingerDTap];
+    
+    return singleFingerDTap;
 }
 
 - (IBAction)handleTap:(UIGestureRecognizer *)sender {

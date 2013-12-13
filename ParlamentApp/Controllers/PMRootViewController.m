@@ -8,12 +8,16 @@
 
 #import "PMRootViewController.h"
 #import "PMRootMenuController.h"
+#import "PMRegistrationVC.h"
 
 @interface PMRootViewController ()
 
 @end
 
 @implementation PMRootViewController
+{
+    MZFormSheetController *registraionSheet;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,11 +47,26 @@
 
 -(void) windowInitiailization
 {
+    PMRegistrationVC *rootMenuViewController = [[PMRegistrationVC alloc] initWithNibName:@"PMRegistrationVC" bundle:[NSBundle mainBundle]];
+    
+    registraionSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
+    [registraionSheet presentFormSheetController:registraionSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+        NSLog(@"Registartion view controller present");
+    }];
+}
+
+-(void) closeRegistrationAndOpenApp
+{
     PMRootMenuController *rootMenuViewController = [[PMRootMenuController alloc] initWithNibName:@"PMRootMenuController" bundle:[NSBundle mainBundle]];
     
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
+    formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
     [formSheet presentFormSheetController:formSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
         NSLog(@"Root menu view controller present");
+        
+        [registraionSheet dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            //
+        }];
     }];
 }
 

@@ -124,6 +124,11 @@
 		18EA46AB18595F0C0066A22C /* PMCustomKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46AA18595F0C0066A22C /* PMCustomKeyboard.xib */; };
 		18EA46AF1859610C0066A22C /* button-key.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46AD1859610C0066A22C /* button-key.png */; };
 		18EA46B01859610C0066A22C /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46AE1859610C0066A22C /* delete.png */; };
+		18EA46B31859AE520066A22C /* reg-field.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46B21859AE520066A22C /* reg-field.png */; };
+		18EA46B81859AE980066A22C /* PMRegistrationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA46B61859AE980066A22C /* PMRegistrationVC.m */; };
+		18EA46B91859AE980066A22C /* PMRegistrationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46B71859AE980066A22C /* PMRegistrationVC.xib */; };
+		18EA46BC1859AEF40066A22C /* PMRegistrationFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA46BB1859AEF40066A22C /* PMRegistrationFieldView.m */; };
+		18EA46BE1859BB110066A22C /* continue-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46BD1859BB110066A22C /* continue-button.png */; };
 		4DAB77C04BEC400B9C6A466E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B82D6C46B6664C009AA7199C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -282,6 +287,13 @@
 		18EA46AA18595F0C0066A22C /* PMCustomKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMCustomKeyboard.xib; sourceTree = "<group>"; };
 		18EA46AD1859610C0066A22C /* button-key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-key.png"; sourceTree = "<group>"; };
 		18EA46AE1859610C0066A22C /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		18EA46B21859AE520066A22C /* reg-field.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reg-field.png"; sourceTree = "<group>"; };
+		18EA46B51859AE980066A22C /* PMRegistrationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMRegistrationVC.h; sourceTree = "<group>"; };
+		18EA46B61859AE980066A22C /* PMRegistrationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMRegistrationVC.m; sourceTree = "<group>"; };
+		18EA46B71859AE980066A22C /* PMRegistrationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMRegistrationVC.xib; sourceTree = "<group>"; };
+		18EA46BA1859AEF40066A22C /* PMRegistrationFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMRegistrationFieldView.h; sourceTree = "<group>"; };
+		18EA46BB1859AEF40066A22C /* PMRegistrationFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMRegistrationFieldView.m; sourceTree = "<group>"; };
+		18EA46BD1859BB110066A22C /* continue-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "continue-button.png"; sourceTree = "<group>"; };
 		B82D6C46B6664C009AA7199C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F248A30DA07F413CB7568B8E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -543,6 +555,7 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18EA46B11859AE520066A22C /* Registration */,
 				18EA46AC185960BC0066A22C /* Keyboard */,
 				18EA46A41857ABC50066A22C /* test3.png */,
 				18EA46A218578A430066A22C /* test2.png */,
@@ -560,6 +573,7 @@
 		18A84C991851D54600612BE5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18EA46B41859AE7C0066A22C /* RegistrationVC */,
 				18EA4684185734D50066A22C /* SiluetViewController */,
 				18EA46671856FE6A0066A22C /* FingerViewController */,
 				18EA461C1855F13A0066A22C /* MonogramController */,
@@ -721,6 +735,27 @@
 			path = Keyboard;
 			sourceTree = "<group>";
 		};
+		18EA46B11859AE520066A22C /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				18EA46BD1859BB110066A22C /* continue-button.png */,
+				18EA46B21859AE520066A22C /* reg-field.png */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		18EA46B41859AE7C0066A22C /* RegistrationVC */ = {
+			isa = PBXGroup;
+			children = (
+				18EA46B51859AE980066A22C /* PMRegistrationVC.h */,
+				18EA46B61859AE980066A22C /* PMRegistrationVC.m */,
+				18EA46B71859AE980066A22C /* PMRegistrationVC.xib */,
+				18EA46BA1859AEF40066A22C /* PMRegistrationFieldView.h */,
+				18EA46BB1859AEF40066A22C /* PMRegistrationFieldView.m */,
+			);
+			path = RegistrationVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -811,6 +846,7 @@
 				18A68FC31854D3FF009019BC /* close-voice.png in Resources */,
 				18A68F821853A009009019BC /* active-monogram.png in Resources */,
 				18EA46A318578A430066A22C /* test2.png in Resources */,
+				18EA46BE1859BB110066A22C /* continue-button.png in Resources */,
 				18EA461B1855DC9B0066A22C /* arrows-fullview.png in Resources */,
 				18A84C701851D32600612BE5 /* InfoPlist.strings in Resources */,
 				18EA4655185661D90066A22C /* ariston.png in Resources */,
@@ -845,6 +881,7 @@
 				18EA46261855F23E0066A22C /* initial-textinput.png in Resources */,
 				18EA4651185661D90066A22C /* ampir.png in Resources */,
 				18A68FB9185484A6009019BC /* ifs_vertex.glsl in Resources */,
+				18EA46B91859AE980066A22C /* PMRegistrationVC.xib in Resources */,
 				18EA4657185661D90066A22C /* acquests.ttf in Resources */,
 				18EA4689185734EC0066A22C /* PMSiluetVC.xib in Resources */,
 				18A68F831853A009009019BC /* active-siluet.png in Resources */,
@@ -860,6 +897,7 @@
 				18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */,
 				18A68F991854682E009019BC /* active-finger-disable.png in Resources */,
 				18EA466C1856FE7E0066A22C /* PMFingerVC.xib in Resources */,
+				18EA46B31859AE520066A22C /* reg-field.png in Resources */,
 				18EA464B185661D90066A22C /* adineki.png in Resources */,
 				18A84CB11852047700612BE5 /* PMVoiceVisualizationVC.xib in Resources */,
 				18A68F801853A009009019BC /* active-eye.png in Resources */,
@@ -930,8 +968,10 @@
 				18EA46A918595EF20066A22C /* PMCustomKeyboard.m in Sources */,
 				18A68F68185388F8009019BC /* RippleModel.m in Sources */,
 				18A68FB7185484A6009019BC /* RingBuffer.mm in Sources */,
+				18EA46BC1859AEF40066A22C /* PMRegistrationFieldView.m in Sources */,
 				18EA466B1856FE7E0066A22C /* PMFingerVC.m in Sources */,
 				18A68F69185388F8009019BC /* RippleViewController.m in Sources */,
+				18EA46B81859AE980066A22C /* PMRegistrationVC.m in Sources */,
 				18A68FB2185484A6009019BC /* ATTRactorManager.m in Sources */,
 				18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */,
 				18A68F7818538DC7009019BC /* PMParentController.m in Sources */,
