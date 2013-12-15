@@ -11,12 +11,18 @@
 
 typedef enum
 {
-    kPhoneField = 1
+    kNoKeyboard = 1,
+    kPhoneField = 2
     
 } FieldType;
 
+@protocol PMRegistrationFieldViewDelegate <NSObject>
+-(void) didSelectPMRegistrationField:(UIView*)fieldView;
+@end
+
 @interface PMRegistrationFieldView : UIView
 
+@property (nonatomic, strong) id <PMRegistrationFieldViewDelegate> delegate;
 @property (nonatomic, assign) UITextField *titleField;
 
 -(id) initWithPlaceholder:(NSString*)title subTitle:(NSString*)subTitle withType:(FieldType)type;

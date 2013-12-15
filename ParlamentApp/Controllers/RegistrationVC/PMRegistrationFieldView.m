@@ -47,24 +47,36 @@
     [self addSubview:subTitleLabel];
     
     titleField = [[UITextField alloc] initWithFrame:CGRectMake(19.0, 17.0, self.frame.size.width-30, 21)];
-    if(_type == kPhoneField)    {
-        titleField = [[SHSPhoneTextField alloc] initWithFrame:CGRectMake(19.0, 17.0, self.frame.size.width-30, 21)];
-        [((SHSPhoneTextField*)titleField).formatter setDefaultOutputPattern:@"+# (###) ###-##-##"];
-    }
     titleField.placeholder = _title;
     UIColor *color = [UIColor colorWithRed:50.0/255.0 green:72.0/255.0 blue:106.0/255.0 alpha:1.0];
     titleField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_title attributes:@{NSForegroundColorAttributeName: color}];
     titleField.font = [UIFont fontWithName:@"MyriadPro-Cond" size:22.0];
     titleField.backgroundColor = [UIColor clearColor];
+    titleField.delegate = self;
     [self addSubview:titleField];
     
     [self initialiseTapHandler:^(UIGestureRecognizer *sender) {
-        [titleField becomeFirstResponder];
+        [self sendMessageSelectView];
     } forTaps:1];
     
     [subTitleLabel initialiseTapHandler:^(UIGestureRecognizer *sender) {
         [titleField becomeFirstResponder];
     } forTaps:1];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self sendMessageSelectView];
+    
+    return (_type == kNoKeyboard)?NO:YES;
+}
+
+-(void) sendMessageSelectView
+{
+    if([self.delegate respondsToSelector:@selector(didSelectPMRegistrationField:)])
+    {
+        [self.delegate didSelectPMRegistrationField:self];
+    }
 }
 
 @end

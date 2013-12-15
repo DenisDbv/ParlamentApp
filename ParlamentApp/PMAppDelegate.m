@@ -7,6 +7,7 @@
 //
 
 #import "PMAppDelegate.h"
+#import "MBPopoverBackgroundView.h"
 
 @implementation PMAppDelegate
 @synthesize rippleViewController;
@@ -18,6 +19,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [MBPopoverBackgroundView initialize];
+    
+    [MBPopoverBackgroundView setArrowImageName:@"popover-arrow-red.png"];
+    [MBPopoverBackgroundView setBackgroundImageName:@"popover-background-red.png"];
+    [MBPopoverBackgroundView setBackgroundImageCapInsets:UIEdgeInsetsMake(12, 12, 12, 12)];
+    [MBPopoverBackgroundView setContentViewInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
 
     rippleViewController = [[PMRootViewController alloc] initWithNibName:@"PMRootViewController" bundle:[NSBundle mainBundle]];
     self.window.rootViewController = rippleViewController;
@@ -76,6 +84,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [MBPopoverBackgroundView cleanup];
+    
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }

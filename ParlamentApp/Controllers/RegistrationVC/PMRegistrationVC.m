@@ -9,8 +9,11 @@
 #import "PMRegistrationVC.h"
 #import "PMRegistrationFieldView.h"
 #import "PMCustomKeyboard.h"
+#import "MBPopoverBackgroundView.h"
+#import "PMDatePickerVCViewController.h"
+#import "PMSexChooseVC.h"
 
-@interface PMRegistrationVC ()
+@interface PMRegistrationVC () <PMRegistrationFieldViewDelegate, PMDatePickerVCViewControllerDelegate>
 
 @end
 
@@ -24,6 +27,11 @@
     PMRegistrationFieldView *dateBirthField;
     
     NSArray *fieldsArray;
+    
+    UIPopoverController *popoverControllerForDate;
+    UIPopoverController *popoverControllerForSex;
+    PMDatePickerVCViewController *popoverContent;
+    PMSexChooseVC *sexVC;
 }
 @synthesize tableView;
 @synthesize continueButton;
@@ -54,21 +62,37 @@
     secondNameField = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ФАМИЛИЯ" subTitle:@"ПРИМЕР: ИВАНОВ" withType:nil];
     [customKeyboard2 setTextView:secondNameField.titleField];
     
-    sexField = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ПОЛ" subTitle:@"ПРИМЕР: МУЖСКОЙ" withType:nil];
+    sexField = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ПОЛ" subTitle:@"ПРИМЕР: МУЖСКОЙ" withType:kNoKeyboard];
+    sexField.delegate = self;
     [customKeyboard3 setTextView:sexField.titleField];
     
-    phoneField = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ТЕЛЕФОН" subTitle:@"ПРИМЕР: +79005432121" withType:kPhoneField];
+    phoneField = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ТЕЛЕФОН" subTitle:@"ПРИМЕР: +79005432121" withType:nil];
     [customKeyboard4 setTextView:phoneField.titleField];
     
     emailField = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"E-MAIL" subTitle:@"ПРИМЕР: IVAN@MAIL.RU" withType:nil];
     [customKeyboard5 setTextView:emailField.titleField];
     
-    dateBirthField = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ДАТА РОЖДЕНИЯ" subTitle:@"ПРИМЕР: 14 МАРТА 1987" withType:nil];
+    dateBirthField = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ДАТА РОЖДЕНИЯ" subTitle:@"ПРИМЕР: 14 МАРТА 1987" withType:kNoKeyboard];
+    dateBirthField.delegate = self;
     [customKeyboard6 setTextView:dateBirthField.titleField];
     
     fieldsArray = @[nameField, secondNameField, sexField, phoneField, emailField, dateBirthField];
     
     tableView.scrollEnabled = NO;
+    
+    popoverContent = [[PMDatePickerVCViewController alloc] initWithNibName:@"PMDatePickerVCViewController"
+                                                                                                  bundle:[NSBundle mainBundle]];
+    popoverContent.delegate = self;
+    popoverControllerForDate = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
+    popoverControllerForDate.popoverBackgroundViewClass = [MBPopoverBackgroundView class];
+    popoverControllerForDate.popoverContentSize = CGSizeMake(393, 265);
+    
+    sexVC = [[PMSexChooseVC alloc] initWithNibName:@"PMSexChooseVC"
+                                                                    bundle:[NSBundle mainBundle]];
+    sexVC.delegate = self;
+    popoverControllerForSex = [[UIPopoverController alloc] initWithContentViewController:sexVC];
+    popoverControllerForSex.popoverBackgroundViewClass = [MBPopoverBackgroundView class];
+    popoverControllerForSex.popoverContentSize = sexVC.view.frame.size;
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -114,6 +138,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemCellIdentifier];
         cell.backgroundColor = [UIColor clearColor];
+        //cell setSelectedBackgroundView:<#(UIView *)#>
     }
 
     PMRegistrationFieldView *field = [fieldsArray objectAtIndex:indexPath.section];
@@ -150,7 +175,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"%i", indexPath.section);
+}
+
+-(void) didSelectPMRegistrationField:(UIView*)fieldView
+{
+    if(fieldView == dateBirthField)
+    {
+        CGRect rect = [fieldView convertRect:fieldView.frame toView:self.view];
+        rect.origin.y += 20;
+        [popoverControllerForDate presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    else if(fieldView == sexField)
+    {
+        CGRect rect = [fieldView convertRect:fieldView.frame toView:self.view];
+        rect.origin.y += 20;
+        [popoverControllerForSex presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+}
+
+-(void) didSelectSex:(NSString*)sexString
+{
+    [popoverControllerForSex dismissPopoverAnimated:YES];
     
+    sexField.titleField.text = sexString;
 }
 
 - (void)keyboardWillShow:(NSNotification*)notification
@@ -181,6 +229,11 @@
     [super touchesBegan:touches withEvent:event];
     
     [self.view endEditing:YES];
+}
+
+-(void) datePickerSetString:(NSString*)dateText
+{
+    dateBirthField.titleField.text = dateText;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event

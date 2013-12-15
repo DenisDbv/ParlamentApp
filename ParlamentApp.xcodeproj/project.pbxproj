@@ -68,6 +68,18 @@
 		18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84CB61852084700612BE5 /* UIView+GestureBlocks.m */; };
 		18A84CC7185383CF00612BE5 /* PMRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A84CC5185383CF00612BE5 /* PMRootViewController.m */; };
 		18A84CC8185383CF00612BE5 /* PMRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A84CC6185383CF00612BE5 /* PMRootViewController.xib */; };
+		18A8905D185E319700BD094A /* MBPopoverBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8905C185E319700BD094A /* MBPopoverBackgroundView.m */; };
+		18A89060185E323600BD094A /* popover-background-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8905E185E323600BD094A /* popover-background-red.png */; };
+		18A89061185E323600BD094A /* popover-arrow-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A8905F185E323600BD094A /* popover-arrow-red.png */; };
+		18A89069185E351D00BD094A /* FlatDatePicker-Icon-Check.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89063185E351D00BD094A /* FlatDatePicker-Icon-Check.png */; };
+		18A8906A185E351D00BD094A /* FlatDatePicker-Icon-Check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89064185E351D00BD094A /* FlatDatePicker-Icon-Check@2x.png */; };
+		18A8906B185E351D00BD094A /* FlatDatePicker-Icon-Close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89065185E351D00BD094A /* FlatDatePicker-Icon-Close.png */; };
+		18A8906C185E351D00BD094A /* FlatDatePicker-Icon-Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A89066185E351D00BD094A /* FlatDatePicker-Icon-Close@2x.png */; };
+		18A8906D185E351D00BD094A /* FlatDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A89068185E351D00BD094A /* FlatDatePicker.m */; };
+		18A89071185E3A0D00BD094A /* PMDatePickerVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8906F185E3A0D00BD094A /* PMDatePickerVCViewController.m */; };
+		18A89072185E3A0D00BD094A /* PMDatePickerVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A89070185E3A0D00BD094A /* PMDatePickerVCViewController.xib */; };
+		18A89076185E590F00BD094A /* PMSexChooseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A89074185E590F00BD094A /* PMSexChooseVC.m */; };
+		18A89077185E590F00BD094A /* PMSexChooseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A89075185E590F00BD094A /* PMSexChooseVC.xib */; };
 		18EA46191855D8AC0066A22C /* clear_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46181855D8AC0066A22C /* clear_button.png */; };
 		18EA461B1855DC9B0066A22C /* arrows-fullview.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA461A1855DC9B0066A22C /* arrows-fullview.png */; };
 		18EA46201855F1590066A22C /* PMMonogramVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA461E1855F1590066A22C /* PMMonogramVC.m */; };
@@ -226,6 +238,22 @@
 		18A84CC4185383CF00612BE5 /* PMRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMRootViewController.h; sourceTree = "<group>"; };
 		18A84CC5185383CF00612BE5 /* PMRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMRootViewController.m; sourceTree = "<group>"; };
 		18A84CC6185383CF00612BE5 /* PMRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMRootViewController.xib; sourceTree = "<group>"; };
+		18A8905B185E319700BD094A /* MBPopoverBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBPopoverBackgroundView.h; sourceTree = "<group>"; };
+		18A8905C185E319700BD094A /* MBPopoverBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBPopoverBackgroundView.m; sourceTree = "<group>"; };
+		18A8905E185E323600BD094A /* popover-background-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover-background-red.png"; sourceTree = "<group>"; };
+		18A8905F185E323600BD094A /* popover-arrow-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover-arrow-red.png"; sourceTree = "<group>"; };
+		18A89063185E351D00BD094A /* FlatDatePicker-Icon-Check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Check.png"; sourceTree = "<group>"; };
+		18A89064185E351D00BD094A /* FlatDatePicker-Icon-Check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Check@2x.png"; sourceTree = "<group>"; };
+		18A89065185E351D00BD094A /* FlatDatePicker-Icon-Close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Close.png"; sourceTree = "<group>"; };
+		18A89066185E351D00BD094A /* FlatDatePicker-Icon-Close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Close@2x.png"; sourceTree = "<group>"; };
+		18A89067185E351D00BD094A /* FlatDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatDatePicker.h; sourceTree = "<group>"; };
+		18A89068185E351D00BD094A /* FlatDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatDatePicker.m; sourceTree = "<group>"; };
+		18A8906E185E3A0D00BD094A /* PMDatePickerVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMDatePickerVCViewController.h; sourceTree = "<group>"; };
+		18A8906F185E3A0D00BD094A /* PMDatePickerVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMDatePickerVCViewController.m; sourceTree = "<group>"; };
+		18A89070185E3A0D00BD094A /* PMDatePickerVCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMDatePickerVCViewController.xib; sourceTree = "<group>"; };
+		18A89073185E590F00BD094A /* PMSexChooseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSexChooseVC.h; sourceTree = "<group>"; };
+		18A89074185E590F00BD094A /* PMSexChooseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSexChooseVC.m; sourceTree = "<group>"; };
+		18A89075185E590F00BD094A /* PMSexChooseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMSexChooseVC.xib; sourceTree = "<group>"; };
 		18EA46181855D8AC0066A22C /* clear_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear_button.png; sourceTree = "<group>"; };
 		18EA461A1855DC9B0066A22C /* arrows-fullview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrows-fullview.png"; sourceTree = "<group>"; };
 		18EA461D1855F1590066A22C /* PMMonogramVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMonogramVC.h; sourceTree = "<group>"; };
@@ -371,6 +399,8 @@
 		18A68F861853ABD8009019BC /* ViewsHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				18A89062185E351D00BD094A /* FlatDatePicker */,
+				18A8905A185E319700BD094A /* MBPopoverBackgroundView */,
 				18EA46A618595ED70066A22C /* KeyboardView */,
 				18A68F871853ABD8009019BC /* ActivationView */,
 			);
@@ -555,6 +585,8 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A8905E185E323600BD094A /* popover-background-red.png */,
+				18A8905F185E323600BD094A /* popover-arrow-red.png */,
 				18EA46B11859AE520066A22C /* Registration */,
 				18EA46AC185960BC0066A22C /* Keyboard */,
 				18EA46A41857ABC50066A22C /* test3.png */,
@@ -637,6 +669,28 @@
 				18A84CAF1852047700612BE5 /* PMVoiceVisualizationVC.xib */,
 			);
 			path = VoiceVisualization;
+			sourceTree = "<group>";
+		};
+		18A8905A185E319700BD094A /* MBPopoverBackgroundView */ = {
+			isa = PBXGroup;
+			children = (
+				18A8905B185E319700BD094A /* MBPopoverBackgroundView.h */,
+				18A8905C185E319700BD094A /* MBPopoverBackgroundView.m */,
+			);
+			path = MBPopoverBackgroundView;
+			sourceTree = "<group>";
+		};
+		18A89062185E351D00BD094A /* FlatDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				18A89063185E351D00BD094A /* FlatDatePicker-Icon-Check.png */,
+				18A89064185E351D00BD094A /* FlatDatePicker-Icon-Check@2x.png */,
+				18A89065185E351D00BD094A /* FlatDatePicker-Icon-Close.png */,
+				18A89066185E351D00BD094A /* FlatDatePicker-Icon-Close@2x.png */,
+				18A89067185E351D00BD094A /* FlatDatePicker.h */,
+				18A89068185E351D00BD094A /* FlatDatePicker.m */,
+			);
+			path = FlatDatePicker;
 			sourceTree = "<group>";
 		};
 		18EA461C1855F13A0066A22C /* MonogramController */ = {
@@ -752,6 +806,12 @@
 				18EA46B71859AE980066A22C /* PMRegistrationVC.xib */,
 				18EA46BA1859AEF40066A22C /* PMRegistrationFieldView.h */,
 				18EA46BB1859AEF40066A22C /* PMRegistrationFieldView.m */,
+				18A8906E185E3A0D00BD094A /* PMDatePickerVCViewController.h */,
+				18A8906F185E3A0D00BD094A /* PMDatePickerVCViewController.m */,
+				18A89070185E3A0D00BD094A /* PMDatePickerVCViewController.xib */,
+				18A89073185E590F00BD094A /* PMSexChooseVC.h */,
+				18A89074185E590F00BD094A /* PMSexChooseVC.m */,
+				18A89075185E590F00BD094A /* PMSexChooseVC.xib */,
 			);
 			path = RegistrationVC;
 			sourceTree = "<group>";
@@ -836,12 +896,14 @@
 			files = (
 				18EA469218573E8A0066A22C /* RippleShader.fsh in Resources */,
 				18EA469318573E8A0066A22C /* RippleShader.vsh in Resources */,
+				18A89072185E3A0D00BD094A /* PMDatePickerVCViewController.xib in Resources */,
 				18EA4654185661D90066A22C /* aquarelle.png in Resources */,
 				18A68F9A1854682E009019BC /* active-siluet-disable.png in Resources */,
 				18EA465F185661D90066A22C /* aquarelle.ttf in Resources */,
 				18EA4653185661D90066A22C /* annabel.png in Resources */,
 				18A68F901853BF52009019BC /* MyriadPro-Cond.otf in Resources */,
 				18A68F811853A009009019BC /* active-finger.png in Resources */,
+				18A89077185E590F00BD094A /* PMSexChooseVC.xib in Resources */,
 				18EA4660185661D90066A22C /* ariston.ttf in Resources */,
 				18A68FC31854D3FF009019BC /* close-voice.png in Resources */,
 				18A68F821853A009009019BC /* active-monogram.png in Resources */,
@@ -857,17 +919,21 @@
 				18EA46AF1859610C0066A22C /* button-key.png in Resources */,
 				18A68F9D18546DD3009019BC /* active-monogram-disable.png in Resources */,
 				18EA46AB18595F0C0066A22C /* PMCustomKeyboard.xib in Resources */,
+				18A89061185E323600BD094A /* popover-arrow-red.png in Resources */,
 				18EA4661185661D90066A22C /* bedini.ttf in Resources */,
 				18EA464F185661D90066A22C /* agatha.png in Resources */,
 				18EA464E185661D90066A22C /* adventur.png in Resources */,
 				18EA4665185661D90066A22C /* veron.ttf in Resources */,
 				18A68FC41854D3FF009019BC /* reset-voice.png in Resources */,
+				18A89069185E351D00BD094A /* FlatDatePicker-Icon-Check.png in Resources */,
 				18A68F851853A009009019BC /* settings.png in Resources */,
 				18A68F981854682E009019BC /* active-eye-disable.png in Resources */,
 				18EA465C185661D90066A22C /* ampir.ttf in Resources */,
+				18A89060185E323600BD094A /* popover-background-red.png in Resources */,
 				18EA465A185661D90066A22C /* agatha.ttf in Resources */,
 				18EA462C1855FB1C0066A22C /* PMChooseFontVC.xib in Resources */,
 				18EA464C185661D90066A22C /* bedini.png in Resources */,
+				18A8906B185E351D00BD094A /* FlatDatePicker-Icon-Close.png in Resources */,
 				18EA465E185661D90066A22C /* annabel.ttf in Resources */,
 				18A84CA71851E04D00612BE5 /* PMSettingsViewContoller.xib in Resources */,
 				18A84C9B1851D56500612BE5 /* background.png in Resources */,
@@ -894,6 +960,7 @@
 				18A68F9218546058009019BC /* settings-close.png in Resources */,
 				18EA4663185661D90066A22C /* comfortaa.ttf in Resources */,
 				18A68FB8185484A6009019BC /* ifs_fragment.glsl in Resources */,
+				18A8906C185E351D00BD094A /* FlatDatePicker-Icon-Close@2x.png in Resources */,
 				18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */,
 				18A68F991854682E009019BC /* active-finger-disable.png in Resources */,
 				18EA466C1856FE7E0066A22C /* PMFingerVC.xib in Resources */,
@@ -905,6 +972,7 @@
 				18EA465D185661D90066A22C /* andantino.ttf in Resources */,
 				18EA462E185601CD0066A22C /* scroll-background.png in Resources */,
 				18A68FC51854D3FF009019BC /* save-voice.png in Resources */,
+				18A8906A185E351D00BD094A /* FlatDatePicker-Icon-Check@2x.png in Resources */,
 				18EA4662185661D90066A22C /* champagne.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -967,7 +1035,10 @@
 				18A68FB5185484A6009019BC /* AudioFileWriter.m in Sources */,
 				18EA46A918595EF20066A22C /* PMCustomKeyboard.m in Sources */,
 				18A68F68185388F8009019BC /* RippleModel.m in Sources */,
+				18A8905D185E319700BD094A /* MBPopoverBackgroundView.m in Sources */,
 				18A68FB7185484A6009019BC /* RingBuffer.mm in Sources */,
+				18A89071185E3A0D00BD094A /* PMDatePickerVCViewController.m in Sources */,
+				18A8906D185E351D00BD094A /* FlatDatePicker.m in Sources */,
 				18EA46BC1859AEF40066A22C /* PMRegistrationFieldView.m in Sources */,
 				18EA466B1856FE7E0066A22C /* PMFingerVC.m in Sources */,
 				18A68F69185388F8009019BC /* RippleViewController.m in Sources */,
@@ -987,6 +1058,7 @@
 				18EA469F185767560066A22C /* UIColor+Expanded.m in Sources */,
 				18A68FB3185484A6009019BC /* ATTRactorObject.m in Sources */,
 				18EA469C185766F20066A22C /* UIColor+HSVAdditions.m in Sources */,
+				18A89076185E590F00BD094A /* PMSexChooseVC.m in Sources */,
 				18A84CAB1851E1F800612BE5 /* UINavigationController+ClearSlider.m in Sources */,
 				18A84CA01851D5A600612BE5 /* PMRootMenuController.m in Sources */,
 			);
