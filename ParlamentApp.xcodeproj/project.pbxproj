@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18A54AE7186025420085B714 /* PMMailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AE6186025420085B714 /* PMMailManager.m */; };
+		18A54AEA186032FA0085B714 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE8186032FA0085B714 /* test.vcf */; };
+		18A54AEB186032FA0085B714 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE9186032FA0085B714 /* Settings.bundle */; };
+		18A54AED186035E90085B714 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A54AEC186035E90085B714 /* CFNetwork.framework */; };
+		18A54AF918603F4F0085B714 /* Base64Transcoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AF018603F4F0085B714 /* Base64Transcoder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A54AFA18603F4F0085B714 /* HSK_CFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AF218603F4F0085B714 /* HSK_CFUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A54AFB18603F4F0085B714 /* NSData+Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AF418603F4F0085B714 /* NSData+Base64Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A54AFC18603F4F0085B714 /* NSStream+SKPSMTPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AF618603F4F0085B714 /* NSStream+SKPSMTPExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A54AFD18603F4F0085B714 /* SKPSMTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AF818603F4F0085B714 /* SKPSMTPMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A54AFF18604A9D0085B714 /* background1024x768.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AFE18604A9D0085B714 /* background1024x768.png */; };
 		18A68F68185388F8009019BC /* RippleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F62185388F8009019BC /* RippleModel.m */; };
 		18A68F69185388F8009019BC /* RippleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F64185388F8009019BC /* RippleViewController.m */; };
 		18A68F7118538CF9009019BC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68F7018538CF9009019BC /* OpenGLES.framework */; };
@@ -155,6 +165,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18A54AE5186025420085B714 /* PMMailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailManager.h; sourceTree = "<group>"; };
+		18A54AE6186025420085B714 /* PMMailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMailManager.m; sourceTree = "<group>"; };
+		18A54AE8186032FA0085B714 /* test.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.vcf; sourceTree = "<group>"; };
+		18A54AE9186032FA0085B714 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		18A54AEC186035E90085B714 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		18A54AEF18603F4F0085B714 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		18A54AF018603F4F0085B714 /* Base64Transcoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Transcoder.m; sourceTree = "<group>"; };
+		18A54AF118603F4F0085B714 /* HSK_CFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSK_CFUtilities.h; sourceTree = "<group>"; };
+		18A54AF218603F4F0085B714 /* HSK_CFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSK_CFUtilities.m; sourceTree = "<group>"; };
+		18A54AF318603F4F0085B714 /* NSData+Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64Additions.h"; sourceTree = "<group>"; };
+		18A54AF418603F4F0085B714 /* NSData+Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64Additions.m"; sourceTree = "<group>"; };
+		18A54AF518603F4F0085B714 /* NSStream+SKPSMTPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStream+SKPSMTPExtensions.h"; sourceTree = "<group>"; };
+		18A54AF618603F4F0085B714 /* NSStream+SKPSMTPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStream+SKPSMTPExtensions.m"; sourceTree = "<group>"; };
+		18A54AF718603F4F0085B714 /* SKPSMTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPSMTPMessage.h; sourceTree = "<group>"; };
+		18A54AF818603F4F0085B714 /* SKPSMTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPSMTPMessage.m; sourceTree = "<group>"; };
+		18A54AFE18604A9D0085B714 /* background1024x768.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1024x768.png; sourceTree = "<group>"; };
 		18A68F61185388F8009019BC /* RippleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RippleModel.h; sourceTree = "<group>"; };
 		18A68F62185388F8009019BC /* RippleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RippleModel.m; sourceTree = "<group>"; };
 		18A68F63185388F8009019BC /* RippleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RippleViewController.h; sourceTree = "<group>"; };
@@ -331,6 +357,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A54AED186035E90085B714 /* CFNetwork.framework in Frameworks */,
 				18EA4699185766430066A22C /* CoreVideo.framework in Frameworks */,
 				18EA469718575F9E0066A22C /* QuartzCore.framework in Frameworks */,
 				18EA469518575F960066A22C /* CoreImage.framework in Frameworks */,
@@ -361,6 +388,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18A54AE3186025060085B714 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				18A54AE4186025360085B714 /* MailManager */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		18A54AE4186025360085B714 /* MailManager */ = {
+			isa = PBXGroup;
+			children = (
+				18A54AE5186025420085B714 /* PMMailManager.h */,
+				18A54AE6186025420085B714 /* PMMailManager.m */,
+			);
+			path = MailManager;
+			sourceTree = "<group>";
+		};
+		18A54AEE18603F4F0085B714 /* SMTPLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				18A54AEF18603F4F0085B714 /* Base64Transcoder.h */,
+				18A54AF018603F4F0085B714 /* Base64Transcoder.m */,
+				18A54AF118603F4F0085B714 /* HSK_CFUtilities.h */,
+				18A54AF218603F4F0085B714 /* HSK_CFUtilities.m */,
+				18A54AF318603F4F0085B714 /* NSData+Base64Additions.h */,
+				18A54AF418603F4F0085B714 /* NSData+Base64Additions.m */,
+				18A54AF518603F4F0085B714 /* NSStream+SKPSMTPExtensions.h */,
+				18A54AF618603F4F0085B714 /* NSStream+SKPSMTPExtensions.m */,
+				18A54AF718603F4F0085B714 /* SKPSMTPMessage.h */,
+				18A54AF818603F4F0085B714 /* SKPSMTPMessage.m */,
+			);
+			path = SMTPLibrary;
+			sourceTree = "<group>";
+		};
 		18A68F60185388F8009019BC /* RippleBackground */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,6 +580,7 @@
 		18A84C621851D32600612BE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18A54AEC186035E90085B714 /* CFNetwork.framework */,
 				18EA4698185766430066A22C /* CoreVideo.framework */,
 				18EA469618575F9E0066A22C /* QuartzCore.framework */,
 				18EA469418575F950066A22C /* CoreImage.framework */,
@@ -540,6 +602,7 @@
 		18A84C6B1851D32600612BE5 /* ParlamentApp */ = {
 			isa = PBXGroup;
 			children = (
+				18A54AE3186025060085B714 /* Managers */,
 				18A68F861853ABD8009019BC /* ViewsHelpers */,
 				18A84CA81851E1CE00612BE5 /* Common */,
 				18A84C991851D54600612BE5 /* Controllers */,
@@ -585,6 +648,9 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A54AFE18604A9D0085B714 /* background1024x768.png */,
+				18A54AE8186032FA0085B714 /* test.vcf */,
+				18A54AE9186032FA0085B714 /* Settings.bundle */,
 				18A8905E185E323600BD094A /* popover-background-red.png */,
 				18A8905F185E323600BD094A /* popover-arrow-red.png */,
 				18EA46B11859AE520066A22C /* Registration */,
@@ -645,6 +711,7 @@
 		18A84CA81851E1CE00612BE5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				18A54AEE18603F4F0085B714 /* SMTPLibrary */,
 				18A68F8B1853AD89009019BC /* UIImage+UIImageFunctions.h */,
 				18A68F8C1853AD89009019BC /* UIImage+UIImageFunctions.m */,
 				18A84CB51852084700612BE5 /* UIView+GestureBlocks.h */,
@@ -907,6 +974,7 @@
 				18EA4660185661D90066A22C /* ariston.ttf in Resources */,
 				18A68FC31854D3FF009019BC /* close-voice.png in Resources */,
 				18A68F821853A009009019BC /* active-monogram.png in Resources */,
+				18A54AEA186032FA0085B714 /* test.vcf in Resources */,
 				18EA46A318578A430066A22C /* test2.png in Resources */,
 				18EA46BE1859BB110066A22C /* continue-button.png in Resources */,
 				18EA461B1855DC9B0066A22C /* arrows-fullview.png in Resources */,
@@ -932,6 +1000,7 @@
 				18A89060185E323600BD094A /* popover-background-red.png in Resources */,
 				18EA465A185661D90066A22C /* agatha.ttf in Resources */,
 				18EA462C1855FB1C0066A22C /* PMChooseFontVC.xib in Resources */,
+				18A54AFF18604A9D0085B714 /* background1024x768.png in Resources */,
 				18EA464C185661D90066A22C /* bedini.png in Resources */,
 				18A8906B185E351D00BD094A /* FlatDatePicker-Icon-Close.png in Resources */,
 				18EA465E185661D90066A22C /* annabel.ttf in Resources */,
@@ -939,6 +1008,7 @@
 				18A84C9B1851D56500612BE5 /* background.png in Resources */,
 				18EA46251855F23E0066A22C /* further.png in Resources */,
 				18EA46A51857ABC50066A22C /* test3.png in Resources */,
+				18A54AEB186032FA0085B714 /* Settings.bundle in Resources */,
 				18EA46211855F1590066A22C /* PMMonogramVC.xib in Resources */,
 				18EA464D185661D90066A22C /* acquests.png in Resources */,
 				18EA4652185661D90066A22C /* andantino.png in Resources */,
@@ -1030,11 +1100,14 @@
 				18EA462B1855FB1C0066A22C /* PMChooseFontVC.m in Sources */,
 				18A84C721851D32600612BE5 /* main.m in Sources */,
 				18A84CC7185383CF00612BE5 /* PMRootViewController.m in Sources */,
+				18A54AE7186025420085B714 /* PMMailManager.m in Sources */,
 				18A84C761851D32600612BE5 /* PMAppDelegate.m in Sources */,
 				18EA46201855F1590066A22C /* PMMonogramVC.m in Sources */,
+				18A54AFD18603F4F0085B714 /* SKPSMTPMessage.m in Sources */,
 				18A68FB5185484A6009019BC /* AudioFileWriter.m in Sources */,
 				18EA46A918595EF20066A22C /* PMCustomKeyboard.m in Sources */,
 				18A68F68185388F8009019BC /* RippleModel.m in Sources */,
+				18A54AFC18603F4F0085B714 /* NSStream+SKPSMTPExtensions.m in Sources */,
 				18A8905D185E319700BD094A /* MBPopoverBackgroundView.m in Sources */,
 				18A68FB7185484A6009019BC /* RingBuffer.mm in Sources */,
 				18A89071185E3A0D00BD094A /* PMDatePickerVCViewController.m in Sources */,
@@ -1042,8 +1115,10 @@
 				18EA46BC1859AEF40066A22C /* PMRegistrationFieldView.m in Sources */,
 				18EA466B1856FE7E0066A22C /* PMFingerVC.m in Sources */,
 				18A68F69185388F8009019BC /* RippleViewController.m in Sources */,
+				18A54AFA18603F4F0085B714 /* HSK_CFUtilities.m in Sources */,
 				18EA46B81859AE980066A22C /* PMRegistrationVC.m in Sources */,
 				18A68FB2185484A6009019BC /* ATTRactorManager.m in Sources */,
+				18A54AFB18603F4F0085B714 /* NSData+Base64Additions.m in Sources */,
 				18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */,
 				18A68F7818538DC7009019BC /* PMParentController.m in Sources */,
 				18EA469118573E500066A22C /* RippleShader.vsh in Sources */,
@@ -1051,6 +1126,7 @@
 				18A68F8D1853AD89009019BC /* UIImage+UIImageFunctions.m in Sources */,
 				18A84CA61851E04D00612BE5 /* PMSettingsViewContoller.m in Sources */,
 				18A84CB01852047700612BE5 /* PMVoiceVisualizationVC.m in Sources */,
+				18A54AF918603F4F0085B714 /* Base64Transcoder.m in Sources */,
 				18A68FB6185484A6009019BC /* Novocaine.m in Sources */,
 				18A68FBA185484A6009019BC /* ATTRactorView.m in Sources */,
 				18EA4688185734EC0066A22C /* PMSiluetVC.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "PMChooseFontVC.h"
 #import "UIImage+UIImageFunctions.h"
+#import "UIView+GestureBlocks.h"
 
 @interface PMChooseFontVC ()
 
@@ -21,6 +22,8 @@
     NSArray *fontNames;
     
     UIActivityIndicatorView *saveIndicator;
+    
+    PMMailManager *mailManager;
 }
 @synthesize titleLabel;
 @synthesize monogramLabel;
@@ -58,8 +61,6 @@
     
     [carousel reloadData];
     
-    //finishTitle1 = [[UILabel alloc] initWithFrame:CGRectMake(217, 206, 595, 63)];
-    //finishTitle1.text = @"MONOGRAM - МОНОГРАММА ВИЗУАЛИЗАЦИЯ ВАШЕЙ МОНОГРАММЫ УСПЕШНА СОХРАНЕНА";
     finishTitle1.alpha = 0;
     finishTitle1.font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
     finishTitle1.backgroundColor = [UIColor clearColor];
@@ -120,7 +121,27 @@
     saveIndicator.center = sender.center;
     [saveIndicator startAnimating];
     
-    [self performSelector:@selector(finishSavingMonogram) withObject:nil afterDelay:1.0];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        //Call your function or whatever work that needs to be done
+        //Code in this part is run on a background thread
+        UIImage *img = [self drawText:monogramLabel.text inImage:[UIImage imageNamed:@"background1024x768.png"] atPoint:CGPointMake(100, 100)];
+        NSLog(@"%@", NSStringFromCGSize(img.size));
+       
+        mailManager = [[PMMailManager alloc] init];
+        mailManager.delegate = self;
+        [mailManager sendMessageWithImage:img imageName:@"test.png" andText:@"Монограмма"];
+    });
+}
+
+-(void) mailSendSuccessfully
+{
+    [self performSelector:@selector(finishSavingMonogram) withObject:nil afterDelay:0.0];
+}
+
+-(void) mailSendFailed
+{
+    [self performSelector:@selector(finishSavingMonogram) withObject:nil afterDelay:0.0];
 }
 
 -(void) finishSavingMonogram
@@ -200,6 +221,62 @@
     NSLog(@"Tapped font: %@", [fontNames objectAtIndex:index]);
     
     monogramLabel.font = [UIFont fontWithName:[fontNames objectAtIndex:index] size:84];
+}
+
+-(void) generateImage
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        //Call your function or whatever work that needs to be done
+        //Code in this part is run on a background thread
+        UIImage *img = [self drawText:monogramLabel.text inImage:[UIImage new] atPoint:CGPointMake(100, 100)];
+        NSLog(@"%@", NSStringFromCGSize(img.size));
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            //Stop your activity indicator or anything else with the GUI
+            //Code here is run on the main thread
+            UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+            [self.view addSubview:imgView];
+            NSLog(@"%@", imgView);
+            
+        });
+    });
+}
+
+-(UIImage*) drawText:(NSString*) text
+             inImage:(UIImage*)  image
+             atPoint:(CGPoint)   point
+{
+    CGSize windowSize = image.size;
+    if(image.size.width == 0) windowSize = CGSizeMake(1024.0, 768.0);
+    
+    UIGraphicsBeginImageContextWithOptions(windowSize, NO, 2.0);
+    [image drawInRect:CGRectMake(0,0,windowSize.width,windowSize.height)];
+    CGRect rect = CGRectMake(point.x, point.y, windowSize.width, windowSize.height);
+    [[UIColor whiteColor] set];
+    
+    UIFont *font = [UIFont fontWithName:monogramLabel.font.fontName size:84.0*3.0];
+    if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
+    {
+        //iOS 7
+        
+        CGSize size = [text sizeWithFont:font];
+        rect.origin.x = (windowSize.width - size.width)/2;
+        rect.origin.y = (windowSize.height - size.height)/2;
+        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor whiteColor]};
+        [text drawInRect:rect withAttributes:att];
+    }
+    else
+    {
+        //legacy support
+        [text drawInRect:CGRectIntegral(rect) withFont:font];
+    }
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

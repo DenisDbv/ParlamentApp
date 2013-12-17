@@ -226,7 +226,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [super touchesBegan:touches withEvent:event];
+    //[super touchesBegan:touches withEvent:event];
     
     [self.view endEditing:YES];
 }
@@ -238,7 +238,7 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [super touchesMoved:touches withEvent:event];
+    //[super touchesMoved:touches withEvent:event];
 }
 
 - (IBAction)onContinue:(id)sender
@@ -250,6 +250,12 @@
             //return;
         }
     }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:nameField.titleField.text forKey:@"_firstname"];
+    [userDefaults setObject:secondNameField.titleField.text forKey:@"_lastname"];
+    [userDefaults setObject:emailField.titleField.text forKey:@"_emailTO"];
+    [userDefaults synchronize];
     
     [[AppDelegateInstance() rippleViewController] closeRegistrationAndOpenApp];
 }

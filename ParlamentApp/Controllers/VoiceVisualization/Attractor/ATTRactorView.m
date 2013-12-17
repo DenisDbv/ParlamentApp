@@ -74,7 +74,8 @@
     
     _eaglLayer = (CAEAGLLayer*) self.layer;
     _eaglLayer.opaque = NO;
-    _eaglLayer.drawableProperties = @{kEAGLDrawablePropertyRetainedBacking : @(YES)};
+    _eaglLayer.drawableProperties = @{kEAGLDrawablePropertyRetainedBacking : @(NO), kEAGLDrawablePropertyColorFormat:kEAGLColorFormatRGBA8 };
+    //_eaglLayer.contentsScale = 2.0;
     
     attrManager = [[ATTRactorManager alloc] init];
 }
@@ -601,7 +602,7 @@
     // otherwise, use kCGImageAlphaPremultipliedLast
     CGDataProviderRef ref = CGDataProviderCreateWithData(NULL, data, dataLength, NULL);
     CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-    CGImageRef iref = CGImageCreate(width, height, 8, 32, width * 4, colorspace, kCGBitmapByteOrder32Big | kCGImageAlphaPremultipliedLast,
+    CGImageRef iref = CGImageCreate(width, height, 8, 32, width * 4, colorspace, kCGBitmapByteOrder32Big | kCGImageAlphaPremultipliedLast | kCGBitmapByteOrderDefault,
                                     ref, NULL, true, kCGRenderingIntentDefault);
     
     // OpenGL ES measures data in PIXELS
@@ -612,8 +613,9 @@
         // Set the scale parameter to your OpenGL ES view's contentScaleFactor
         // so that you get a high-resolution snapshot when its value is greater than 1.0
         CGFloat scale = eaglview.contentScaleFactor;
-        widthInPoints = width / scale;
-        heightInPoints = height / scale;
+        scale = 2.0;
+        widthInPoints = width;// * scale;
+        heightInPoints = height;// * scale;
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(widthInPoints, heightInPoints), NO, scale);
     }
     else {

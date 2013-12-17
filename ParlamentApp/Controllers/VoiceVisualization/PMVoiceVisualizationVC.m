@@ -29,6 +29,9 @@
     UIActivityIndicatorView *saveIndicator;
     
     UIImageView *arrowsFullView;
+    
+    PMMailManager *mailManager;
+    UIImage *attractorSnapshot;
 }
 @synthesize attractorView;
 @synthesize titleLabel1, titleLabel2, titleLabel3, titleLabel4;
@@ -181,6 +184,8 @@
     [timer pause];
     timer = nil;
     
+    attractorSnapshot = attractorView.snapshotImage;
+    
     [attractorView releaseView];
     [attractorView removeFromSuperview];
     attractorView = nil;
@@ -214,7 +219,27 @@
     [timer pause];
     [attractorView snapShoting];
     
-    [self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:3.0];
+    [self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:2.0];
+    
+    //[self performSelector:@selector(snapshotWaiting) withObject:nil afterDelay:2.0];
+}
+
+-(void) snapshotWaiting
+{
+    NSLog(@"%@", NSStringFromCGSize(attractorView.snapshotImage.size));
+    mailManager = [[PMMailManager alloc] init];
+    mailManager.delegate = self;
+    [mailManager sendMessageWithImage:attractorView.snapshotImage imageName:@"voice.png" andText:@"Изображение голоса"];
+}
+
+-(void) mailSendSuccessfully
+{
+    //[self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:0.0];
+}
+
+-(void) mailSendFailed
+{
+    //[self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:0.0];
 }
 
 -(void) finishSavingSnapshot
@@ -236,6 +261,38 @@
     [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
     [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
     [saveButton setEnabled:YES];
+    
+    NSLog(@"%@", NSStringFromCGSize(attractorSnapshot.size));
+    if(attractorSnapshot.size.width != 0)   {
+        
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(attractorSnapshot.size.width,attractorSnapshot.size.height), NO, 1.0);
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        //CGContextSetBlendMode(ctx, kCGBlendModeSourceIn);
+        CGContextSetFillColorWithColor(ctx, [UIColor blackColor].CGColor);
+        CGContextFillRect(ctx, CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height));
+        [attractorSnapshot drawInRect:CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height)];
+        UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        /*
+         UIGraphicsBeginImageContextWithOptions(CGSizeMake(attractorSnapshot.size.width,attractorSnapshot.size.height), NO, 1.0);
+         [attractorSnapshot drawInRect:CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height)];
+         CGContextRef ctx = UIGraphicsGetCurrentContext();
+         CGContextSetBlendMode(ctx, kCGBlendModeSourceIn);
+         CGContextSetFillColorWithColor(ctx, [UIColor blackColor].CGColor);
+         CGContextFillRect(ctx, CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height));
+         UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+         UIGraphicsEndImageContext();
+         */
+        
+        mailManager = [[PMMailManager alloc] init];
+        mailManager.delegate = self;
+        [mailManager sendMessageWithImage:resultingImage imageName:@"voice.png" andText:@"Изображение голоса"];
+
+        /*UIImageView *imgView = [[UIImageView alloc] initWithImage:resultingImage];
+        imgView.frame = CGRectOffset(imgView.frame, 0, 0);
+        [self.view addSubview:imgView];*/
+    }
 }
 
 -(void) onVoiceReset:(UIButton*)btn
