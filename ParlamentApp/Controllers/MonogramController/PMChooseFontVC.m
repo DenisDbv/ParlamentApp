@@ -292,7 +292,7 @@
         
         textRect.origin.x = (paperSize.width - size.width)/2;
         textRect.origin.y = 120.0 + (400.0 - size.height)/2;
-        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor cyanColor]};
+        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor blueColor]};
         [text drawInRect:textRect withAttributes:att];
     }
     else

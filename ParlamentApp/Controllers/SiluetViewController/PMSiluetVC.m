@@ -87,7 +87,7 @@
 
 -(void) initCaptureButton
 {
-    UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
+    UIImage *saveVoiceImage = [[UIImage imageNamed:@"siluet-photo-make.png"] scaleProportionalToRetina];
     captureButton = [UIButton buttonWithType:UIButtonTypeCustom];
     captureButton.alpha = 0.0f;
     [captureButton addTarget:self action:@selector(onTakeCapture:) forControlEvents:UIControlEventTouchUpInside];
@@ -116,7 +116,7 @@
 
 -(void) initPostCaptureButtons
 {
-    UIImage *recaptureImage = [[UIImage imageNamed:@"close-voice.png"] scaleProportionalToRetina];
+    UIImage *recaptureImage = [[UIImage imageNamed:@"siluet-back.png"] scaleProportionalToRetina];
     recaptureButton = [UIButton buttonWithType:UIButtonTypeCustom];
     recaptureButton.alpha = 0;
     [recaptureButton addTarget:self action:@selector(onTakeRecapture:) forControlEvents:UIControlEventTouchUpInside];
@@ -125,7 +125,7 @@
     recaptureButton.frame = CGRectMake(self.view.bounds.size.width, self.view.center.y-recaptureImage.size.height-10, recaptureImage.size.width, recaptureImage.size.height);
     [_previewView addSubview:recaptureButton];
     
-    UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
+    UIImage *saveVoiceImage = [[UIImage imageNamed:@"siluet-accept.png"] scaleProportionalToRetina];
     savePhoto = [UIButton buttonWithType:UIButtonTypeCustom];
     savePhoto.alpha = 0;
     [savePhoto addTarget:self action:@selector(onSavePhoto:) forControlEvents:UIControlEventTouchUpInside];
@@ -159,7 +159,7 @@
 
 -(void) initFinishSaveButton
 {
-    UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
+    UIImage *saveVoiceImage = [[UIImage imageNamed:@"siluet-save.png"] scaleProportionalToRetina];
     captureButton = [UIButton buttonWithType:UIButtonTypeCustom];
     captureButton.alpha = 0.0;
     [captureButton addTarget:self action:@selector(onFinishSavePhoto:) forControlEvents:UIControlEventTouchUpInside];

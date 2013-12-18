@@ -17,6 +17,11 @@
 		18A54AFC18603F4F0085B714 /* NSStream+SKPSMTPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AF618603F4F0085B714 /* NSStream+SKPSMTPExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18A54AFD18603F4F0085B714 /* SKPSMTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AF818603F4F0085B714 /* SKPSMTPMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18A54AFF18604A9D0085B714 /* background1024x768.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AFE18604A9D0085B714 /* background1024x768.png */; };
+		18A54B051862224A0085B714 /* siluet-accept.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B011862224A0085B714 /* siluet-accept.png */; };
+		18A54B061862224A0085B714 /* siluet-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B021862224A0085B714 /* siluet-back.png */; };
+		18A54B071862224A0085B714 /* siluet-photo-make.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B031862224A0085B714 /* siluet-photo-make.png */; };
+		18A54B081862224A0085B714 /* siluet-save.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B041862224A0085B714 /* siluet-save.png */; };
+		18A54B0A186224B50085B714 /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B09186224B50085B714 /* exit.png */; };
 		18A68F68185388F8009019BC /* RippleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F62185388F8009019BC /* RippleModel.m */; };
 		18A68F69185388F8009019BC /* RippleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F64185388F8009019BC /* RippleViewController.m */; };
 		18A68F7118538CF9009019BC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68F7018538CF9009019BC /* OpenGLES.framework */; };
@@ -181,6 +186,11 @@
 		18A54AF718603F4F0085B714 /* SKPSMTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPSMTPMessage.h; sourceTree = "<group>"; };
 		18A54AF818603F4F0085B714 /* SKPSMTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPSMTPMessage.m; sourceTree = "<group>"; };
 		18A54AFE18604A9D0085B714 /* background1024x768.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1024x768.png; sourceTree = "<group>"; };
+		18A54B011862224A0085B714 /* siluet-accept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "siluet-accept.png"; sourceTree = "<group>"; };
+		18A54B021862224A0085B714 /* siluet-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "siluet-back.png"; sourceTree = "<group>"; };
+		18A54B031862224A0085B714 /* siluet-photo-make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "siluet-photo-make.png"; sourceTree = "<group>"; };
+		18A54B041862224A0085B714 /* siluet-save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "siluet-save.png"; sourceTree = "<group>"; };
+		18A54B09186224B50085B714 /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
 		18A68F61185388F8009019BC /* RippleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RippleModel.h; sourceTree = "<group>"; };
 		18A68F62185388F8009019BC /* RippleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RippleModel.m; sourceTree = "<group>"; };
 		18A68F63185388F8009019BC /* RippleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RippleViewController.h; sourceTree = "<group>"; };
@@ -422,6 +432,17 @@
 			path = SMTPLibrary;
 			sourceTree = "<group>";
 		};
+		18A54B001862224A0085B714 /* Siluet */ = {
+			isa = PBXGroup;
+			children = (
+				18A54B011862224A0085B714 /* siluet-accept.png */,
+				18A54B021862224A0085B714 /* siluet-back.png */,
+				18A54B031862224A0085B714 /* siluet-photo-make.png */,
+				18A54B041862224A0085B714 /* siluet-save.png */,
+			);
+			path = Siluet;
+			sourceTree = "<group>";
+		};
 		18A68F60185388F8009019BC /* RippleBackground */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +467,7 @@
 		18A68F791853A009009019BC /* RootMenu */ = {
 			isa = PBXGroup;
 			children = (
+				18A54B09186224B50085B714 /* exit.png */,
 				18A68F9118546058009019BC /* settings-close.png */,
 				18A68F7A1853A009009019BC /* active-eye.png */,
 				18A68F7B1853A009009019BC /* active-finger.png */,
@@ -648,6 +670,7 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A54B001862224A0085B714 /* Siluet */,
 				18A54AFE18604A9D0085B714 /* background1024x768.png */,
 				18A54AE8186032FA0085B714 /* test.vcf */,
 				18A54AE9186032FA0085B714 /* Settings.bundle */,
@@ -1004,6 +1027,7 @@
 				18EA464C185661D90066A22C /* bedini.png in Resources */,
 				18A8906B185E351D00BD094A /* FlatDatePicker-Icon-Close.png in Resources */,
 				18EA465E185661D90066A22C /* annabel.ttf in Resources */,
+				18A54B081862224A0085B714 /* siluet-save.png in Resources */,
 				18A84CA71851E04D00612BE5 /* PMSettingsViewContoller.xib in Resources */,
 				18A84C9B1851D56500612BE5 /* background.png in Resources */,
 				18EA46251855F23E0066A22C /* further.png in Resources */,
@@ -1013,9 +1037,11 @@
 				18EA464D185661D90066A22C /* acquests.png in Resources */,
 				18EA4652185661D90066A22C /* andantino.png in Resources */,
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
+				18A54B071862224A0085B714 /* siluet-photo-make.png in Resources */,
 				18EA46B01859610C0066A22C /* delete.png in Resources */,
 				18EA46261855F23E0066A22C /* initial-textinput.png in Resources */,
 				18EA4651185661D90066A22C /* ampir.png in Resources */,
+				18A54B051862224A0085B714 /* siluet-accept.png in Resources */,
 				18A68FB9185484A6009019BC /* ifs_vertex.glsl in Resources */,
 				18EA46B91859AE980066A22C /* PMRegistrationVC.xib in Resources */,
 				18EA4657185661D90066A22C /* acquests.ttf in Resources */,
@@ -1029,11 +1055,13 @@
 				18EA4664185661D90066A22C /* dolphian.TTF in Resources */,
 				18A68F9218546058009019BC /* settings-close.png in Resources */,
 				18EA4663185661D90066A22C /* comfortaa.ttf in Resources */,
+				18A54B061862224A0085B714 /* siluet-back.png in Resources */,
 				18A68FB8185484A6009019BC /* ifs_fragment.glsl in Resources */,
 				18A8906C185E351D00BD094A /* FlatDatePicker-Icon-Close@2x.png in Resources */,
 				18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */,
 				18A68F991854682E009019BC /* active-finger-disable.png in Resources */,
 				18EA466C1856FE7E0066A22C /* PMFingerVC.xib in Resources */,
+				18A54B0A186224B50085B714 /* exit.png in Resources */,
 				18EA46B31859AE520066A22C /* reg-field.png in Resources */,
 				18EA464B185661D90066A22C /* adineki.png in Resources */,
 				18A84CB11852047700612BE5 /* PMVoiceVisualizationVC.xib in Resources */,
