@@ -248,7 +248,7 @@
              inImage:(UIImage*)  image
              atPoint:(CGPoint)   point
 {
-    CGSize windowSize = image.size;
+    /*CGSize windowSize = image.size;
     if(image.size.width == 0) windowSize = CGSizeMake(1024.0, 768.0);
     
     UIGraphicsBeginImageContextWithOptions(windowSize, NO, 2.0);
@@ -274,9 +274,57 @@
     }
     
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();*/
+    
+    CGSize paperSize = CGSizeMake(571.0, 791.0);
+    CGRect textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
+    
+    UIGraphicsBeginImageContextWithOptions(paperSize, NO, 2.0);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
+    CGContextFillRect(ctx, CGRectMake(0, 0, paperSize.width, paperSize.height));
+    
+    UIFont *font = [UIFont fontWithName:monogramLabel.font.fontName size:84.0*3.0];
+    CGSize size = [text sizeWithFont:font];
+    if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
+    {
+        //iOS 7
+        
+        textRect.origin.x = (paperSize.width - size.width)/2;
+        textRect.origin.y = 120.0 + (400.0 - size.height)/2;
+        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor cyanColor]};
+        [text drawInRect:textRect withAttributes:att];
+    }
+    else
+    {
+        //legacy support
+        [text drawInRect:CGRectIntegral(textRect) withFont:font];
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+    font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
+    if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
+    {
+        //iOS 7
+        
+        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
+        size = [names sizeWithAttributes:att];
+        textRect.origin.x = (paperSize.width - size.width)/2;
+        textRect.origin.y = 120.0+400.0+128.0;
+        
+        [names drawInRect:textRect withAttributes:att];
+    }
+    else
+    {
+        //legacy support
+        [text drawInRect:CGRectIntegral(textRect) withFont:font];
+    }
+    
+    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    return newImage;
+    return resultingImage;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

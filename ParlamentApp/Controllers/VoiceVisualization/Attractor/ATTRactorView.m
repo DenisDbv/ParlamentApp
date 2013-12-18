@@ -153,12 +153,12 @@
     takeSnapshot = NO;
     
     attractorIndexes = @[[NSNumber numberWithInt:1],
+                         [NSNumber numberWithInt:2],
                          [NSNumber numberWithInt:3],
+                         [NSNumber numberWithInt:4],
                          [NSNumber numberWithInt:5],
-                         [NSNumber numberWithInt:7],
-                         [NSNumber numberWithInt:9],
-                         [NSNumber numberWithInt:10],
-                         [NSNumber numberWithInt:11]];
+                         [NSNumber numberWithInt:6],
+                         [NSNumber numberWithInt:7]];
     
     attractorSides = @[[NSNumber numberWithInt:256],
                        [NSNumber numberWithInt:128],
@@ -168,7 +168,7 @@
                        [NSNumber numberWithInt:256],
                        [NSNumber numberWithInt:256]];
     
-    attractorPontsSize = @[[NSNumber numberWithFloat:1.2],
+    attractorPontsSize = @[[NSNumber numberWithFloat:0.6],
                            [NSNumber numberWithFloat:0.5],
                            [NSNumber numberWithFloat:0.4],
                            [NSNumber numberWithFloat:0.4],
@@ -189,7 +189,7 @@
                        [NSNumber numberWithFloat:0.96],
                        [NSNumber numberWithFloat:1.2],
                        [NSNumber numberWithFloat:1.0],
-                       [NSNumber numberWithFloat:0.76],
+                       [NSNumber numberWithFloat:1.0],
                        [NSNumber numberWithFloat:1.9]];
     
     attractorDeltaTime = @[[NSNumber numberWithFloat:0.4],
@@ -242,7 +242,7 @@
     ATTRactorObject *attr = [[ATTRactorObject alloc] init];
     attr.index = [[attractorIndexes objectAtIndex:count] integerValue];
     attr.g_side = [[attractorSides objectAtIndex:count] integerValue];
-    if(!isRedColor) [attr setHueColor:0.14f];
+    //if(!isRedColor) [attr setHueColor:0.14f];
     attr.fade = [[attractorFades objectAtIndex:count] floatValue];
     attr.pointSize = [[attractorPontsSize objectAtIndex:count] floatValue];
     attr.phase = 0;//[attrManager attractorsDepth] * 10; //(arc4random() % ((unsigned)1000 + 1));
@@ -360,12 +360,15 @@
     //else
     //    [self changeTRMatrixNear];
     
+    glDisable(GL_DEPTH_TEST);
     glEnable(GL_POINT_SPRITE_OES);
     glEnable(GL_POINT_SMOOTH);
     glEnable(GL_BLEND);
-    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_COLOR);
+    //glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_COLOR);
+    //glBlendFunc(GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFunc(GL_SRC_COLOR, GL_ONE_MINUS_SRC_COLOR);
     
-    //glClearColor(1.0,0.0,0.0,0.0);
+    glClearColor(1.0,1.0,1.0,1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
@@ -613,9 +616,9 @@
         // Set the scale parameter to your OpenGL ES view's contentScaleFactor
         // so that you get a high-resolution snapshot when its value is greater than 1.0
         CGFloat scale = eaglview.contentScaleFactor;
-        scale = 2.0;
-        widthInPoints = width;// * scale;
-        heightInPoints = height;// * scale;
+        //scale = 2.0;
+        widthInPoints = width/ scale;
+        heightInPoints = height/ scale;
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(widthInPoints, heightInPoints), NO, scale);
     }
     else {

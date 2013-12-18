@@ -396,6 +396,13 @@ void rgbToHSV(float rgb[3], float hsv[3])
             }
         }
         
+        /*float rgb2[3], hsv2[3];
+        rgb2[0] = 0.68;
+        rgb2[1] = 0.96;
+        rgb2[2] = 0.99;
+        rgbToHSV(rgb2, hsv2);
+        NSLog(@"==> %f %f %f", hsv2[0], hsv2[1], hsv2[2]);*/
+        
         // Create memory with the cube data
         NSData *data = [NSData dataWithBytesNoCopy:cubeData
                                             length:size * size * size * sizeof (float) * 4

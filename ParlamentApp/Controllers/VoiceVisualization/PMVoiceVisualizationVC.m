@@ -85,7 +85,7 @@
     [closeButton addTarget:self action:@selector(onVoiceClose:) forControlEvents:UIControlEventTouchUpInside];
     [closeButton setImage:closeImage forState:UIControlStateNormal];
     [closeButton setImage:closeImage forState:UIControlStateHighlighted];
-    closeButton.frame = CGRectMake(159.0, 313.0, closeImage.size.width, closeImage.size.height);
+    closeButton.frame = CGRectMake(139.0, 313.0, closeImage.size.width, closeImage.size.height);
     [self.view addSubview:closeButton];
     
     UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
@@ -93,7 +93,7 @@
     [saveButton addTarget:self action:@selector(onVoiceSave:) forControlEvents:UIControlEventTouchUpInside];
     [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
     [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
-    saveButton.frame = CGRectMake(746.0, 313.0, saveVoiceImage.size.width, saveVoiceImage.size.height);
+    saveButton.frame = CGRectMake(766.0, 313.0, saveVoiceImage.size.width, saveVoiceImage.size.height);
     [self.view addSubview:saveButton];
     
     UIImage *resetVoiceImage = [[UIImage imageNamed:@"reset-voice.png"] scaleProportionalToRetina];
@@ -101,7 +101,7 @@
     [resetButton addTarget:self action:@selector(onVoiceReset:) forControlEvents:UIControlEventTouchUpInside];
     [resetButton setImage:resetVoiceImage forState:UIControlStateNormal];
     [resetButton setImage:resetVoiceImage forState:UIControlStateHighlighted];
-    resetButton.frame = CGRectMake(401.0, 605.0, resetVoiceImage.size.width, resetVoiceImage.size.height);
+    resetButton.frame = CGRectMake(401.0, 650.0, resetVoiceImage.size.width, resetVoiceImage.size.height);
     [self.view addSubview:resetButton];
     
     UIImage *settingImage = [[UIImage imageNamed:@"settings-close.png"] scaleProportionalToRetina];
@@ -262,17 +262,47 @@
     [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
     [saveButton setEnabled:YES];
     
-    NSLog(@"%@", NSStringFromCGSize(attractorSnapshot.size));
+   // NSLog(@"%@", NSStringFromCGSize(attractorSnapshot.size));
     if(attractorSnapshot.size.width != 0)   {
         
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(attractorSnapshot.size.width,attractorSnapshot.size.height), NO, 1.0);
+        CGSize paperSize = CGSizeMake(571.0, 791.0);
+        UIGraphicsBeginImageContextWithOptions(paperSize, NO, 1.0);
         CGContextRef ctx = UIGraphicsGetCurrentContext();
-        //CGContextSetBlendMode(ctx, kCGBlendModeSourceIn);
-        CGContextSetFillColorWithColor(ctx, [UIColor blackColor].CGColor);
+        CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
+        CGContextFillRect(ctx, CGRectMake(0, 0, paperSize.width, paperSize.height));
+        [attractorSnapshot drawInRect:CGRectMake((paperSize.width-attractorSnapshot.size.width)/2, 120.0, attractorSnapshot.size.width,attractorSnapshot.size.height)];
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *text = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+        UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
+        CGRect textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
+        if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
+        {
+            //iOS 7
+            
+            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
+            CGSize size = [text sizeWithAttributes:att];
+            textRect.origin.x = (paperSize.width - size.width)/2;
+            textRect.origin.y = 120.0+attractorSnapshot.size.height+128.0;
+            
+            [text drawInRect:textRect withAttributes:att];
+        }
+        else
+        {
+            //legacy support
+            [text drawInRect:CGRectIntegral(textRect) withFont:font];
+        }
+        
+        UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        /*UIGraphicsBeginImageContextWithOptions(CGSizeMake(attractorSnapshot.size.width,attractorSnapshot.size.height), NO, 1.0);
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
         CGContextFillRect(ctx, CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height));
         [attractorSnapshot drawInRect:CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height)];
         UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+        UIGraphicsEndImageContext();*/
         
         /*
          UIGraphicsBeginImageContextWithOptions(CGSizeMake(attractorSnapshot.size.width,attractorSnapshot.size.height), NO, 1.0);
@@ -389,7 +419,7 @@
     attractorIsFullView = NO;
     
     [UIView animateWithDuration:0.3f animations:^{
-        attractorView.frame = CGRectMake(385.0, 245.0, 255.0, 255.0);
+        attractorView.frame = CGRectMake(337.0, 189.0, 350.0, 350.0);
         attractorView.scale = 1.0;
         attractorView.lastScale = 1.0;
         closeButton.alpha = 1.0;

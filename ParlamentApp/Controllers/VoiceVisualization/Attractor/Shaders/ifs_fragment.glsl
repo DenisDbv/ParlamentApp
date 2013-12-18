@@ -23,5 +23,5 @@ void main(void)
     c = mix(vec4(0.0), c, a);
     c.a = 0.0;
 
-    gl_FragColor = c * 2.0;
+    gl_FragColor = c;// * 2.0;
 }

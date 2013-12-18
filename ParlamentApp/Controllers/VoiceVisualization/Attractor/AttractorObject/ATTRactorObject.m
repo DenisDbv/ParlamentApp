@@ -215,11 +215,15 @@
     
     // hsv color [0.53, 0.18, 0.96]
     float hue = 0.53f;
-    float hsvColor[] = { 0, 0.18f, 0.96f };
+    float hsvColor[] = { 0.53, 0.18f, 0.96f }; //{0.99, 1.0f, 0.75f};   //0.51
     
-    hsvColor[0] = _randomInRadius(hue, randomWidth / 2.0f);
+    //hsvColor[0] = _randomInRadius(hue, randomWidth / 2.0f);
     _hsv2rgb(hsvColor, color);
-    color[3] = 0.01f;
+    //NSLog(@"==> %f %f %f", color[0]*255, color[1]*255, color[2]*255);
+    /*color[0] = 0.41;
+    color[1] = 0.96;
+    color[2] = 0.98;*/
+    //color[3] = 0.01f;
     fade = 1.0f;
     phase = 0.0f;
     word = 1.0f;
