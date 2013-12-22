@@ -289,6 +289,7 @@ enum
     }
     
     //glFlush();
+    //NSLog(@"1");
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
@@ -303,6 +304,13 @@ enum
     }
     
     //glFlush();
+    //NSLog(@"2");
+}
+
+-(void) refresh
+{
+    //[self glkView:self.view drawInRect:self.view.frame];
+    [self update];
 }
 
 #pragma mark - Touch delegate methods

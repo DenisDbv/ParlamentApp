@@ -255,6 +255,9 @@
     timerLabel.alpha = 0.0;
     settingButton.alpha = 0.0;
     attractorView.alpha = 0.0;
+    
+    PMTimeManager *timeManager = [[PMTimeManager alloc] init];
+    finishTitle4.text = [NSString stringWithFormat:@"СПАСИБО И %@", [timeManager titleTimeArea]];
     finishView.alpha = 1.0;
     
     UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];

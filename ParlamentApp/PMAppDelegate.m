@@ -22,8 +22,8 @@
     
     [MBPopoverBackgroundView initialize];
     
-    [MBPopoverBackgroundView setArrowImageName:@"popover-arrow-red.png"];
-    [MBPopoverBackgroundView setBackgroundImageName:@"popover-background-red.png"];
+    [MBPopoverBackgroundView setArrowImageName:@"popover-arrow-red_2.png"];
+    [MBPopoverBackgroundView setBackgroundImageName:@"popover-background-red_2.png"];
     [MBPopoverBackgroundView setBackgroundImageCapInsets:UIEdgeInsetsMake(12, 12, 12, 12)];
     [MBPopoverBackgroundView setContentViewInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
 

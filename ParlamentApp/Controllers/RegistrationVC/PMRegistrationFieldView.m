@@ -68,7 +68,21 @@
 {
     [self sendMessageSelectView];
     
+    if(_type == kPhoneField)
+    {
+        if(textField.text.length == 0)
+            textField.text = @"+";
+    }
+    
     return (_type == kNoKeyboard)?NO:YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    if(textField.text.length == 1)
+        textField.text = @"";
+    
+    return YES;
 }
 
 -(void) sendMessageSelectView

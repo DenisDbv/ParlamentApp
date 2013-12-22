@@ -12,6 +12,9 @@
 #import "MBPopoverBackgroundView.h"
 #import "PMDatePickerVCViewController.h"
 #import "PMSexChooseVC.h"
+#import "UIView+GestureBlocks.h"
+#import "UIImage+UIImageFunctions.h"
+#import "PMSettingsViewContoller.h"
 
 @interface PMRegistrationVC () <PMRegistrationFieldViewDelegate, PMDatePickerVCViewControllerDelegate>
 
@@ -19,6 +22,8 @@
 
 @implementation PMRegistrationVC
 {
+    BOOL shortRegForm;
+    
     PMRegistrationFieldView *nameField;
     PMRegistrationFieldView *secondNameField;
     PMRegistrationFieldView *sexField;
@@ -32,6 +37,10 @@
     UIPopoverController *popoverControllerForSex;
     PMDatePickerVCViewController *popoverContent;
     PMSexChooseVC *sexVC;
+    
+    BOOL secret_doubleTap;
+    BOOL secret_disable;
+    UIButton *settingButton;
 }
 @synthesize tableView;
 @synthesize continueButton;
@@ -66,7 +75,7 @@
     sexField.delegate = self;
     [customKeyboard3 setTextView:sexField.titleField];
     
-    phoneField = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ТЕЛЕФОН" subTitle:@"ПРИМЕР: +79005432121" withType:nil];
+    phoneField = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ТЕЛЕФОН" subTitle:@"ПРИМЕР: +79005432121" withType:kPhoneField];
     [customKeyboard4 setTextView:phoneField.titleField];
     
     emailField = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"E-MAIL" subTitle:@"ПРИМЕР: IVAN@MAIL.RU" withType:nil];
@@ -93,6 +102,130 @@
     popoverControllerForSex = [[UIPopoverController alloc] initWithContentViewController:sexVC];
     popoverControllerForSex.popoverBackgroundViewClass = [MBPopoverBackgroundView class];
     popoverControllerForSex.popoverContentSize = sexVC.view.frame.size;
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.height;
+    
+    UIImage *settingImage = [[UIImage imageNamed:@"settings.png"] scaleProportionalToRetina];
+    settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    settingButton.alpha = 0.0f;
+    [settingButton addTarget:self action:@selector(onSetting:) forControlEvents:UIControlEventTouchUpInside];
+    [settingButton setImage:settingImage forState:UIControlStateNormal];
+    [settingButton setImage:settingImage forState:UIControlStateHighlighted];
+    settingButton.frame = CGRectMake(screenWidth - settingImage.size.width - 10, 10, settingImage.size.width, settingImage.size.height);
+    [self.view addSubview:settingButton];
+    
+    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
+    tapGesture2.numberOfTapsRequired = 2;
+    [self.view addGestureRecognizer:tapGesture2];
+    UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap1:)];
+    tapGesture1.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapGesture1];
+    [tapGesture1 requireGestureRecognizerToFail:tapGesture2];
+    
+    [self registrationFormRefresh];
+}
+
+- (void)handleTap1:(UIGestureRecognizer *)sender
+{
+    CGPoint coords = [sender locationInView:sender.view];
+    if(coords.x > self.view.frame.size.width-100 && coords.y > self.view.frame.size.height-100)    {
+        //NSLog(@"!%@", NSStringFromCGPoint(coords));
+        if(secret_doubleTap == YES) {
+            NSLog(@"Show settings secret button");
+            
+            secret_disable = YES;
+            
+            [UIView animateWithDuration:0.3f animations:^{
+                settingButton.alpha = 1.0;
+            } completion:^(BOOL finished) {
+                int64_t delayInSeconds = 3.0;
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                    
+                    [UIView animateWithDuration:0.3 animations:^{
+                        settingButton.alpha = 0.0;
+                    } completion:^(BOOL finished) {
+                        secret_disable = NO;
+                    }];
+                });
+            }];
+        }
+    }
+}
+
+- (void)handleTap2:(UIGestureRecognizer *)sender
+{
+    CGPoint coords = [sender locationInView:sender.view];
+    if(coords.x < 100 && coords.y < 100)    {
+        //NSLog(@"%@", NSStringFromCGPoint(coords));
+        
+        if(!secret_disable) {
+            secret_doubleTap = YES;
+            
+            int64_t delayInSeconds = 1.6;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                secret_doubleTap = NO;
+            });
+        }
+    }
+}
+
+-(void) onSetting:(UIButton*)btn
+{
+    //CGPoint location = btn.center;
+    //[[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+    
+    [UIView animateWithDuration:0.03 animations:^{
+        btn.transform = CGAffineTransformMakeScale(0.95, 0.95);
+    }
+                     completion:^(BOOL finished){
+                         
+                         [UIView animateWithDuration:0.03f animations:^{
+                             btn.transform = CGAffineTransformMakeScale(1, 1);
+                         } completion:^(BOOL finished) {
+                             [self hideAllContext];
+                             
+                             PMSettingsViewContoller *settingVC = [[PMSettingsViewContoller alloc] initWithNibName:@"PMSettingsViewContoller" bundle:[NSBundle mainBundle]];
+                             MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:settingVC];
+                             formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+                             __weak id wself = self;
+                             formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+                                 [wself registrationFormRefresh];
+                                 [wself showAllContext];
+                             };
+                             [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+                                 
+                             }];
+                         }];
+                     }];
+}
+
+-(void) hideAllContext
+{
+    self.view.alpha = 0.0;
+}
+
+-(void) showAllContext
+{
+    self.view.alpha = 1.0;
+}
+
+-(void) registrationFormRefresh
+{
+    NSUserDefaults *setting = [NSUserDefaults standardUserDefaults];
+    shortRegForm = [[setting objectForKey:@"ShortRegForm"] boolValue];
+    if(shortRegForm)    {
+        fieldsArray = @[nameField, secondNameField, phoneField, emailField];
+        tableView.frame = CGRectMake(387, 190, tableView.frame.size.width, tableView.frame.size.height);
+    }
+    else    {
+        fieldsArray = @[nameField, secondNameField, sexField, phoneField, emailField, dateBirthField];
+        tableView.frame = CGRectMake(387, 90, tableView.frame.size.width, tableView.frame.size.height);
+    }
+    
+    [tableView reloadData];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -210,7 +343,7 @@
     //[tableView setContentOffset:CGPointMake(0, 5) animated:YES];
     CGRect tableViewRect = tableView.frame;
     [UIView animateWithDuration:0.3 animations:^{
-        tableView.frame = CGRectMake(tableViewRect.origin.x, 10.0, tableViewRect.size.width, tableViewRect.size.height);
+        tableView.frame = CGRectMake(tableViewRect.origin.x, (shortRegForm)?90.0:10.0, tableViewRect.size.width, tableViewRect.size.height);
         continueButton.alpha = 0;
     }];
 }
@@ -219,14 +352,14 @@
 {
     CGRect tableViewRect = tableView.frame;
     [UIView animateWithDuration:0.3 animations:^{
-        tableView.frame = CGRectMake(tableViewRect.origin.x, 90.0, tableViewRect.size.width, tableViewRect.size.height);
+        tableView.frame = CGRectMake(tableViewRect.origin.x, (shortRegForm)?190.0:90.0, tableViewRect.size.width, tableViewRect.size.height);
         continueButton.alpha = 1;
     }];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //[super touchesBegan:touches withEvent:event];
+    [super touchesBegan:touches withEvent:event];
     
     [self.view endEditing:YES];
 }
@@ -238,7 +371,7 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //[super touchesMoved:touches withEvent:event];
+    [super touchesMoved:touches withEvent:event];
 }
 
 - (IBAction)onContinue:(id)sender
@@ -262,7 +395,7 @@
 
 -(void) shakeIt:(UIView*)view withDelta:(CGFloat)delta
 {
-    CAKeyframeAnimation *anim = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ] ;
+    CAKeyframeAnimation *anim = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ];
     anim.values = [ NSArray arrayWithObjects:
                    [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(delta, 0.0f, 0.0f) ],
                    [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-delta, 0.0f, 0.0f) ],

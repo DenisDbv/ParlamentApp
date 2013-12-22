@@ -12,5 +12,6 @@
 @interface PMRootViewController : RippleViewController
 
 -(void) closeRegistrationAndOpenApp;
+-(void) closeAppAndOpenRegistration;
 
 @end

@@ -13,6 +13,7 @@
 #import "PMMonogramVC.h"
 #import "PMFingerVC.h"
 #import "PMSiluetVC.h"
+#import "PMEyeVC.h"
 
 #import "UIView+GestureBlocks.h"
 #import "UIImage+UIImageFunctions.h"
@@ -52,7 +53,7 @@
     [self buttonsConfigure];
     [self buttonsReposition];
     
-    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
+    /*UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
     tapGesture2.numberOfTapsRequired = 2;
     [self.view addGestureRecognizer:tapGesture2];
     
@@ -60,7 +61,7 @@
     tapGesture1.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapGesture1];
 
-    [tapGesture1 requireGestureRecognizerToFail:tapGesture2];
+    [tapGesture1 requireGestureRecognizerToFail:tapGesture2];*/
 }
 
 - (void)handleTap1:(UIGestureRecognizer *)sender
@@ -73,14 +74,29 @@
             
             secret_disable = YES;
             
+            UIImage *settingImage = [[UIImage imageNamed:@"settings.png"] scaleProportionalToRetina];
+            [settingButton removeTarget:self action:@selector(onExit:) forControlEvents:UIControlEventTouchUpInside];
+            [settingButton addTarget:self action:@selector(onSetting:) forControlEvents:UIControlEventTouchUpInside];
+            [settingButton setImage:settingImage forState:UIControlStateNormal];
+            [settingButton setImage:settingImage forState:UIControlStateHighlighted];
+            
             [UIView animateWithDuration:0.3f animations:^{
+                [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:settingButton cache:NO];
                 settingButton.alpha = 1.0;
             } completion:^(BOOL finished) {
                 int64_t delayInSeconds = 3.0;
                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
                 dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                    
+                    UIImage *settingImage = [[UIImage imageNamed:@"exit.png"] scaleProportionalToRetina];
+                    [settingButton removeTarget:self action:@selector(onSetting:) forControlEvents:UIControlEventTouchUpInside];
+                    [settingButton addTarget:self action:@selector(onExit:) forControlEvents:UIControlEventTouchUpInside];
+                    [settingButton setImage:settingImage forState:UIControlStateNormal];
+                    [settingButton setImage:settingImage forState:UIControlStateHighlighted];
+                    
                     [UIView animateWithDuration:0.3 animations:^{
-                        settingButton.alpha = 0.0;
+                        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:settingButton cache:NO];
+                        settingButton.alpha = 1.0;
                     } completion:^(BOOL finished) {
                         secret_disable = NO;
                     }];
@@ -126,10 +142,10 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.height;
     
-    UIImage *settingImage = [[UIImage imageNamed:@"settings.png"] scaleProportionalToRetina];
+    UIImage *settingImage = [[UIImage imageNamed:@"exit.png"] scaleProportionalToRetina];
     settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    settingButton.alpha = 0.0f;
-    [settingButton addTarget:self action:@selector(onSetting:) forControlEvents:UIControlEventTouchUpInside];
+    settingButton.alpha = 1.0f;
+    [settingButton addTarget:self action:@selector(onExit:) forControlEvents:UIControlEventTouchUpInside];
     [settingButton setImage:settingImage forState:UIControlStateNormal];
     [settingButton setImage:settingImage forState:UIControlStateHighlighted];
     settingButton.frame = CGRectMake(screenWidth - settingImage.size.width - 10, 10, settingImage.size.width, settingImage.size.height);
@@ -141,10 +157,28 @@
     [super didReceiveMemoryWarning];
 }
 
+-(void) onExit:(UIButton*)button
+{
+    //CGPoint location = button.center;
+    //[[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+    
+    [UIView animateWithDuration:0.03 animations:^{
+        button.transform = CGAffineTransformMakeScale(0.95, 0.95);
+    }
+                     completion:^(BOOL finished){
+                         
+                         [UIView animateWithDuration:0.03f animations:^{
+                             button.transform = CGAffineTransformMakeScale(1, 1);
+                         } completion:^(BOOL finished) {
+                             [[AppDelegateInstance() rippleViewController] closeAppAndOpenRegistration];
+                         }];
+                     }];
+}
+
 -(void) onSetting:(UIButton*)btn
 {
-    CGPoint location = btn.center;
-    [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+    //CGPoint location = btn.center;
+    //[[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
     
     [UIView animateWithDuration:0.03 animations:^{
         btn.transform = CGAffineTransformMakeScale(0.95, 0.95);
@@ -253,7 +287,7 @@
 {
     switch (ids) {
         case eEye:
-            
+            [self showEyeViewController];
             break;
         case eVoice:
             [self showVoiceViewController];
@@ -328,6 +362,22 @@
     
     PMSiluetVC *siluetVC = [[PMSiluetVC alloc] initWithNibName:@"PMSiluetVC" bundle:[NSBundle mainBundle]];
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:siluetVC];
+    formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+    __weak id wself = self;
+    formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+        [wself showAllContext];
+    };
+    [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+        
+    }];
+}
+
+-(void) showEyeViewController
+{
+    [self hideAllContext];
+    
+    PMEyeVC *eyeVC = [[PMEyeVC alloc] initWithNibName:@"PMEyeVC" bundle:[NSBundle mainBundle]];
+    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:eyeVC];
     formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
     __weak id wself = self;
     formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {

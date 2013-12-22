@@ -54,4 +54,6 @@
 -(void) myTouchWithPoint:(CGPoint)point;
 -(void) touchByLocation:(CGPoint)location;
 
+-(void) refresh;
+
 @end

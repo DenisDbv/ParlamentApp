@@ -151,6 +151,9 @@
     
     titleLabel.alpha = saveBtn.alpha = monogramLabel.alpha = carousel.alpha = 0.0;
     
+    PMTimeManager *timeManager = [[PMTimeManager alloc] init];
+    finishTitle5.text = [NSString stringWithFormat:@"СПАСИБО И %@", [timeManager titleTimeArea]];
+    
     finishTitle1.alpha = finishTitle2.alpha = finishTitle3.alpha = finishTitle4.alpha = finishTitle5.alpha = 1.0;
     
     UIImage *settingImage = [[UIImage imageNamed:@"settings-close.png"] scaleProportionalToRetina];
@@ -184,17 +187,29 @@
         //don't do anything specific to the index within
         //this `if (view == nil) {...}` statement because the view will be
         //recycled and used with other index values later
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 100.0f)];
+        //view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 100.0f)];
+        //view.contentMode = UIViewContentModeCenter;
+        
+        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 100.0f)];
         view.contentMode = UIViewContentModeCenter;
+        view.backgroundColor = [UIColor clearColor];
+        UILabel *textLabel = [[UILabel alloc] initWithFrame:view.bounds];
+        textLabel.backgroundColor = [UIColor clearColor];
+        textLabel.textColor = [UIColor whiteColor];
+        textLabel.tag = 3;
+        textLabel.textAlignment = NSTextAlignmentCenter;
+        textLabel.minimumScaleFactor = 0.5;
+        textLabel.adjustsFontSizeToFitWidth = YES;
+        [view addSubview:textLabel];
     }
     
-    //set item label
-    //remember to always set any properties of your carousel item
-    //views outside of the `if (view == nil) {...}` check otherwise
-    //you'll get weird issues with carousel item content appearing
-    //in the wrong place in the carousel
-    UIImageView *imageView = (UIImageView*)view;
-    [imageView setImage:[UIImage imageNamed:[fontImages objectAtIndex:index]]];
+    UIFont *font = [UIFont fontWithName:[fontNames objectAtIndex:index] size:45];
+    UILabel *textLabel = (UILabel*)[view viewWithTag:3];
+    textLabel.font = font;
+    textLabel.text = initialsString;
+    
+    //UIImageView *imageView = (UIImageView*)view;
+    //[imageView setImage:[UIImage imageNamed:[fontImages objectAtIndex:index]]];
     
     return view;
 }
@@ -290,9 +305,11 @@
     {
         //iOS 7
         
+        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor blueColor]};
+        size = [text sizeWithAttributes:att];
         textRect.origin.x = (paperSize.width - size.width)/2;
         textRect.origin.y = 120.0 + (400.0 - size.height)/2;
-        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor blueColor]};
+
         [text drawInRect:textRect withAttributes:att];
     }
     else

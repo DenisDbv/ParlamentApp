@@ -6,6 +6,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PMSiluetVC">
             <connections>
+                <outlet property="finishTitle1" destination="svz-0C-w9N" id="1JR-Ki-Dk3"/>
+                <outlet property="finishTitle2" destination="AdY-oy-vpS" id="Sxh-VI-Oy1"/>
+                <outlet property="finishTitle3" destination="j4F-Qy-8Qt" id="gMp-Dq-vLh"/>
+                <outlet property="finishTitle4" destination="YeE-1I-J03" id="WNM-Bb-eTG"/>
+                <outlet property="finishTitle5" destination="99r-3Z-Ylq" id="8JM-5z-YmN"/>
+                <outlet property="onBackToRootMenu" destination="Vf6-Og-crw" id="4SX-pd-VcZ"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -13,8 +19,54 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2">
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vf6-Og-crw">
+                    <rect key="frame" x="188" y="308" width="115" height="116"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" backgroundImage="close-voice.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onBackToRootMenu:" destination="-1" eventType="touchUpInside" id="ybU-z0-eEc"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ВИЗУАЛИЗАЦИЯ ВАШГО СИЛУЭТА УСПЕШНА СОХРАНЕНА" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="604" translatesAutoresizingMaskIntoConstraints="NO" id="AdY-oy-vpS">
+                    <rect key="frame" x="232" y="218" width="604" height="70"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ЕСЛИ ВЫ НЕ ПОЛУЧИЛИ EMAIL В ТЕЧЕНИИ ЧАСА, ПОЖАЛУЙСТА, ОБРАТИТЕСЬ К ХОСТЕС САМОСТОЯТЕЛЬНО." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="273" translatesAutoresizingMaskIntoConstraints="NO" id="YeE-1I-J03">
+                    <rect key="frame" x="398" y="428" width="273" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ВАШ АРТ-ОБЪЕКТ ЗАПУЩЕН В ПРОИЗВОДСТВО ВЫ ПОЛУЧИТЕ EMAIL УВЕДОМЛЕНИЕ О ЕГО ГОТОВНОСТИ В БЛИЖАЙШЕЕ ВРЕМЯ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="458" translatesAutoresizingMaskIntoConstraints="NO" id="j4F-Qy-8Qt">
+                    <rect key="frame" x="311" y="286" width="458" height="110"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SILHOUETTE - СИЛУЭТ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="604" translatesAutoresizingMaskIntoConstraints="NO" id="svz-0C-w9N">
+                    <rect key="frame" x="232" y="185" width="604" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="СПАСИБО И ПРИЯТНОГО ВЕЧЕРА" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99r-3Z-Ylq">
+                    <rect key="frame" x="264" y="536" width="553" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
         </view>
     </objects>
+    <resources>
+        <image name="close-voice.png" width="233" height="234"/>
+    </resources>
 </document>

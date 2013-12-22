@@ -20,64 +20,64 @@
 
 + (void)initialize {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *defaultsDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"me@example.com", @"fromEmail",
-                                               @"denisdbv@gmail.com", @"toEmail",
-                                               @"smtp.gmail.com", @"relayHost",
-                                               @"denisdbv@gmail.com", @"login",
-                                               @"gmailiamcool14", @"pass",
-                                               [NSNumber numberWithBool:YES], @"requiresAuth",
-                                               [NSNumber numberWithBool:YES], @"wantsSecure", nil];
     
-    [userDefaults registerDefaults:defaultsDictionary];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)updateTextView {
-    NSMutableString *logText = [[NSMutableString alloc] init];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *_emailFrom = [userDefaults objectForKey:@"_emailFROM"];
+    NSString *_smtpFrom = [userDefaults objectForKey:@"_smtpFROM"];
+    NSString *_passwordFrom = [userDefaults objectForKey:@"_passwordFROM"];
     
-    [logText appendString:@"Use the iOS Settings app to change the values below.\n\n"];
-    [logText appendFormat:@"From: %@\n", [defaults objectForKey:@"fromEmail"]];
-    [logText appendFormat:@"To: %@\n", [defaults objectForKey:@"toEmail"]];
-    [logText appendFormat:@"Host: %@\n", [defaults objectForKey:@"relayHost"]];
-    [logText appendFormat:@"Auth: %@\n", ([[defaults objectForKey:@"requiresAuth"] boolValue] ? @"On" : @"Off")];
+    NSString *_emailTo = [userDefaults objectForKey:@"_emailTO"];
     
-    if ([[defaults objectForKey:@"requiresAuth"] boolValue]) {
-        [logText appendFormat:@"Login: %@\n", [defaults objectForKey:@"login"]];
-        [logText appendFormat:@"Password: %@\n", [defaults objectForKey:@"pass"]];
+    NSString *_operatorEmail = [userDefaults objectForKey:@"_operatorEmail"];
+    
+    if(_emailFrom.length == 0 || _smtpFrom.length == 0 || _passwordFrom.length == 0)
+    {
+        _emailFrom = @"art.individuality@gmail.com";
+        _smtpFrom = @"smtp.gmail.com";
+        _passwordFrom = @"QazWsx1234";
+        [userDefaults setObject:_emailFrom forKey:@"_emailFROM"];
+        [userDefaults setObject:_smtpFrom forKey:@"_smtpFROM"];
+        [userDefaults setObject:_passwordFrom forKey:@"_passwordFROM"];
     }
-    [logText appendFormat:@"Secure: %@\n", [[defaults objectForKey:@"wantsSecure"] boolValue] ? @"Yes" : @"No"];
     
-    NSLog(@"%@", logText);
+    if(_emailTo.length == 0)
+    {
+        _emailTo = @"denisdbv@gmail.com";
+        [userDefaults setObject:_emailTo forKey:@"_emailTO"];
+    }
+    
+    if(_operatorEmail.length == 0)
+    {
+        _operatorEmail = @"denisdbv@gmail.com";
+        [userDefaults setObject:_operatorEmail forKey:@"_operatorEmail"];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(void) sendMessageWithImage:(UIImage*)image imageName:(NSString*)imageName andText:(NSString*)text
 {
-    //[self updateTextView];
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     testMsg = [[SKPSMTPMessage alloc] init];
-    testMsg.fromEmail = [defaults objectForKey:@"fromEmail"];
+    testMsg.fromEmail = [defaults objectForKey:@"_emailFROM"];
     
-    NSString *_toEmail = [defaults objectForKey:@"_emailTO"];
-    if(_toEmail.length == 0) _toEmail = @"denisdbv@gmail.com";
+    //NSString *_toEmail = [defaults objectForKey:@"_emailTO"];
+    //if(_toEmail.length == 0) _toEmail = @"denisdbv@gmail.com";
     
-    testMsg.toEmail = _toEmail; //[defaults objectForKey:@"toEmail"];
+    testMsg.toEmail = [defaults objectForKey:@"_emailTO"]; //[defaults objectForKey:@"toEmail"];
     testMsg.bccEmail = [defaults objectForKey:@"bccEmal"];
-    testMsg.relayHost = [defaults objectForKey:@"relayHost"];
-    
-    testMsg.requiresAuth = [[defaults objectForKey:@"requiresAuth"] boolValue];
+    testMsg.relayHost = [defaults objectForKey:@"_smtpFROM"];
+    testMsg.requiresAuth = YES; //[[defaults objectForKey:@"requiresAuth"] boolValue];
     
     if (testMsg.requiresAuth) {
-        testMsg.login = [defaults objectForKey:@"login"];
+        testMsg.login = [defaults objectForKey:@"_emailFROM"];
         
-        testMsg.pass = [defaults objectForKey:@"pass"];
+        testMsg.pass = [defaults objectForKey:@"_passwordFROM"];
     }
     
-    testMsg.wantsSecure = [[defaults objectForKey:@"wantsSecure"] boolValue]; // smtp.gmail.com doesn't work without TLS!
+    testMsg.wantsSecure = YES; //[[defaults objectForKey:@"wantsSecure"] boolValue]; // smtp.gmail.com doesn't work without TLS!
     
-    testMsg.subject = @"Активация от Parlament";
+    testMsg.subject = @"Активация от Art of Individuality";
     //testMsg.bccEmail = @"testbcc@test.com";
     
     // Only do this for self-signed certs!

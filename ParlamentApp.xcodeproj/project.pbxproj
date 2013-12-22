@@ -22,6 +22,23 @@
 		18A54B071862224A0085B714 /* siluet-photo-make.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B031862224A0085B714 /* siluet-photo-make.png */; };
 		18A54B081862224A0085B714 /* siluet-save.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B041862224A0085B714 /* siluet-save.png */; };
 		18A54B0A186224B50085B714 /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B09186224B50085B714 /* exit.png */; };
+		18A54B0F186267020085B714 /* PMEyeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54B0D186267020085B714 /* PMEyeVC.m */; };
+		18A54B10186267020085B714 /* PMEyeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B0E186267020085B714 /* PMEyeVC.xib */; };
+		18A54B13186276BE0085B714 /* arrow_p.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B11186276BE0085B714 /* arrow_p.png */; };
+		18A54B14186276BE0085B714 /* back_p.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B12186276BE0085B714 /* back_p.png */; };
+		18A54B17186278680085B714 /* popover-background-red_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B15186278680085B714 /* popover-background-red_2.png */; };
+		18A54B18186278680085B714 /* popover-arrow-red_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B16186278680085B714 /* popover-arrow-red_2.png */; };
+		18A54B211866C11A0085B714 /* icon_100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B1A1866C11A0085B714 /* icon_100x100.png */; };
+		18A54B221866C11A0085B714 /* icon_1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B1B1866C11A0085B714 /* icon_1024x1024.png */; };
+		18A54B231866C11A0085B714 /* icon_144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B1C1866C11A0085B714 /* icon_144x144.png */; };
+		18A54B241866C11A0085B714 /* icon_29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B1D1866C11A0085B714 /* icon_29x29.png */; };
+		18A54B251866C11A0085B714 /* icon_50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B1E1866C11A0085B714 /* icon_50x50.png */; };
+		18A54B261866C11A0085B714 /* icon_58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B1F1866C11A0085B714 /* icon_58x58.png */; };
+		18A54B271866C11A0085B714 /* icon_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B201866C11A0085B714 /* icon_72x72.png */; };
+		18A54B2C1866C2910085B714 /* PMTimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54B2B1866C2910085B714 /* PMTimeManager.m */; };
+		18A54B2E1866FC300085B714 /* seperate.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B2D1866FC300085B714 /* seperate.png */; };
+		18A54B311867690D0085B714 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B2F1867690D0085B714 /* arrow.png */; };
+		18A54B321867690D0085B714 /* content.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A54B301867690D0085B714 /* content.png */; };
 		18A68F68185388F8009019BC /* RippleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F62185388F8009019BC /* RippleModel.m */; };
 		18A68F69185388F8009019BC /* RippleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F64185388F8009019BC /* RippleViewController.m */; };
 		18A68F7118538CF9009019BC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A68F7018538CF9009019BC /* OpenGLES.framework */; };
@@ -191,6 +208,25 @@
 		18A54B031862224A0085B714 /* siluet-photo-make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "siluet-photo-make.png"; sourceTree = "<group>"; };
 		18A54B041862224A0085B714 /* siluet-save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "siluet-save.png"; sourceTree = "<group>"; };
 		18A54B09186224B50085B714 /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
+		18A54B0C186267020085B714 /* PMEyeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMEyeVC.h; sourceTree = "<group>"; };
+		18A54B0D186267020085B714 /* PMEyeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMEyeVC.m; sourceTree = "<group>"; };
+		18A54B0E186267020085B714 /* PMEyeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMEyeVC.xib; sourceTree = "<group>"; };
+		18A54B11186276BE0085B714 /* arrow_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_p.png; sourceTree = "<group>"; };
+		18A54B12186276BE0085B714 /* back_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_p.png; sourceTree = "<group>"; };
+		18A54B15186278680085B714 /* popover-background-red_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover-background-red_2.png"; sourceTree = "<group>"; };
+		18A54B16186278680085B714 /* popover-arrow-red_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover-arrow-red_2.png"; sourceTree = "<group>"; };
+		18A54B1A1866C11A0085B714 /* icon_100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_100x100.png; sourceTree = "<group>"; };
+		18A54B1B1866C11A0085B714 /* icon_1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_1024x1024.png; sourceTree = "<group>"; };
+		18A54B1C1866C11A0085B714 /* icon_144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_144x144.png; sourceTree = "<group>"; };
+		18A54B1D1866C11A0085B714 /* icon_29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_29x29.png; sourceTree = "<group>"; };
+		18A54B1E1866C11A0085B714 /* icon_50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_50x50.png; sourceTree = "<group>"; };
+		18A54B1F1866C11A0085B714 /* icon_58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_58x58.png; sourceTree = "<group>"; };
+		18A54B201866C11A0085B714 /* icon_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_72x72.png; sourceTree = "<group>"; };
+		18A54B2A1866C2910085B714 /* PMTimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTimeManager.h; sourceTree = "<group>"; };
+		18A54B2B1866C2910085B714 /* PMTimeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTimeManager.m; sourceTree = "<group>"; };
+		18A54B2D1866FC300085B714 /* seperate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seperate.png; sourceTree = "<group>"; };
+		18A54B2F1867690D0085B714 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		18A54B301867690D0085B714 /* content.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = content.png; sourceTree = "<group>"; };
 		18A68F61185388F8009019BC /* RippleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RippleModel.h; sourceTree = "<group>"; };
 		18A68F62185388F8009019BC /* RippleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RippleModel.m; sourceTree = "<group>"; };
 		18A68F63185388F8009019BC /* RippleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RippleViewController.h; sourceTree = "<group>"; };
@@ -239,7 +275,7 @@
 		18A68FC01854D3FF009019BC /* close-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-voice.png"; sourceTree = "<group>"; };
 		18A68FC11854D3FF009019BC /* reset-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reset-voice.png"; sourceTree = "<group>"; };
 		18A68FC21854D3FF009019BC /* save-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save-voice.png"; sourceTree = "<group>"; };
-		18A84C601851D32600612BE5 /* ParlamentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParlamentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18A84C601851D32600612BE5 /* Parliament.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parliament.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A84C631851D32600612BE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18A84C651851D32600612BE5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		18A84C671851D32600612BE5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -401,6 +437,7 @@
 		18A54AE3186025060085B714 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				18A54B291866C2820085B714 /* TimeManager */,
 				18A54AE4186025360085B714 /* MailManager */,
 			);
 			path = Managers;
@@ -441,6 +478,39 @@
 				18A54B041862224A0085B714 /* siluet-save.png */,
 			);
 			path = Siluet;
+			sourceTree = "<group>";
+		};
+		18A54B0B186266EC0085B714 /* EyeVC */ = {
+			isa = PBXGroup;
+			children = (
+				18A54B0C186267020085B714 /* PMEyeVC.h */,
+				18A54B0D186267020085B714 /* PMEyeVC.m */,
+				18A54B0E186267020085B714 /* PMEyeVC.xib */,
+			);
+			path = EyeVC;
+			sourceTree = "<group>";
+		};
+		18A54B191866C11A0085B714 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				18A54B1A1866C11A0085B714 /* icon_100x100.png */,
+				18A54B1B1866C11A0085B714 /* icon_1024x1024.png */,
+				18A54B1C1866C11A0085B714 /* icon_144x144.png */,
+				18A54B1D1866C11A0085B714 /* icon_29x29.png */,
+				18A54B1E1866C11A0085B714 /* icon_50x50.png */,
+				18A54B1F1866C11A0085B714 /* icon_58x58.png */,
+				18A54B201866C11A0085B714 /* icon_72x72.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		18A54B291866C2820085B714 /* TimeManager */ = {
+			isa = PBXGroup;
+			children = (
+				18A54B2A1866C2910085B714 /* PMTimeManager.h */,
+				18A54B2B1866C2910085B714 /* PMTimeManager.m */,
+			);
+			path = TimeManager;
 			sourceTree = "<group>";
 		};
 		18A68F60185388F8009019BC /* RippleBackground */ = {
@@ -593,7 +663,7 @@
 		18A84C611851D32600612BE5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18A84C601851D32600612BE5 /* ParlamentApp.app */,
+				18A84C601851D32600612BE5 /* Parliament.app */,
 				18A84C801851D32700612BE5 /* ParlamentAppTests.xctest */,
 			);
 			name = Products;
@@ -670,6 +740,8 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A54B2D1866FC300085B714 /* seperate.png */,
+				18A54B191866C11A0085B714 /* Icons */,
 				18A54B001862224A0085B714 /* Siluet */,
 				18A54AFE18604A9D0085B714 /* background1024x768.png */,
 				18A54AE8186032FA0085B714 /* test.vcf */,
@@ -694,6 +766,7 @@
 		18A84C991851D54600612BE5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18A54B0B186266EC0085B714 /* EyeVC */,
 				18EA46B41859AE7C0066A22C /* RegistrationVC */,
 				18EA4684185734D50066A22C /* SiluetViewController */,
 				18EA46671856FE6A0066A22C /* FingerViewController */,
@@ -882,6 +955,12 @@
 		18EA46B11859AE520066A22C /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				18A54B2F1867690D0085B714 /* arrow.png */,
+				18A54B301867690D0085B714 /* content.png */,
+				18A54B15186278680085B714 /* popover-background-red_2.png */,
+				18A54B16186278680085B714 /* popover-arrow-red_2.png */,
+				18A54B11186276BE0085B714 /* arrow_p.png */,
+				18A54B12186276BE0085B714 /* back_p.png */,
 				18EA46BD1859BB110066A22C /* continue-button.png */,
 				18EA46B21859AE520066A22C /* reg-field.png */,
 			);
@@ -925,7 +1004,7 @@
 			);
 			name = ParlamentApp;
 			productName = ParlamentApp;
-			productReference = 18A84C601851D32600612BE5 /* ParlamentApp.app */;
+			productReference = 18A84C601851D32600612BE5 /* Parliament.app */;
 			productType = "com.apple.product-type.application";
 		};
 		18A84C7F1851D32700612BE5 /* ParlamentAppTests */ = {
@@ -1005,6 +1084,7 @@
 				18EA4655185661D90066A22C /* ariston.png in Resources */,
 				18EA4658185661D90066A22C /* adineki.ttf in Resources */,
 				18A84CC8185383CF00612BE5 /* PMRootViewController.xib in Resources */,
+				18A54B18186278680085B714 /* popover-arrow-red_2.png in Resources */,
 				18EA46191855D8AC0066A22C /* clear_button.png in Resources */,
 				18EA4656185661D90066A22C /* veron.png in Resources */,
 				18EA46AF1859610C0066A22C /* button-key.png in Resources */,
@@ -1014,9 +1094,12 @@
 				18EA4661185661D90066A22C /* bedini.ttf in Resources */,
 				18EA464F185661D90066A22C /* agatha.png in Resources */,
 				18EA464E185661D90066A22C /* adventur.png in Resources */,
+				18A54B271866C11A0085B714 /* icon_72x72.png in Resources */,
+				18A54B211866C11A0085B714 /* icon_100x100.png in Resources */,
 				18EA4665185661D90066A22C /* veron.ttf in Resources */,
 				18A68FC41854D3FF009019BC /* reset-voice.png in Resources */,
 				18A89069185E351D00BD094A /* FlatDatePicker-Icon-Check.png in Resources */,
+				18A54B2E1866FC300085B714 /* seperate.png in Resources */,
 				18A68F851853A009009019BC /* settings.png in Resources */,
 				18A68F981854682E009019BC /* active-eye-disable.png in Resources */,
 				18EA465C185661D90066A22C /* ampir.ttf in Resources */,
@@ -1028,18 +1111,25 @@
 				18A8906B185E351D00BD094A /* FlatDatePicker-Icon-Close.png in Resources */,
 				18EA465E185661D90066A22C /* annabel.ttf in Resources */,
 				18A54B081862224A0085B714 /* siluet-save.png in Resources */,
+				18A54B17186278680085B714 /* popover-background-red_2.png in Resources */,
 				18A84CA71851E04D00612BE5 /* PMSettingsViewContoller.xib in Resources */,
 				18A84C9B1851D56500612BE5 /* background.png in Resources */,
 				18EA46251855F23E0066A22C /* further.png in Resources */,
 				18EA46A51857ABC50066A22C /* test3.png in Resources */,
 				18A54AEB186032FA0085B714 /* Settings.bundle in Resources */,
 				18EA46211855F1590066A22C /* PMMonogramVC.xib in Resources */,
+				18A54B13186276BE0085B714 /* arrow_p.png in Resources */,
 				18EA464D185661D90066A22C /* acquests.png in Resources */,
+				18A54B14186276BE0085B714 /* back_p.png in Resources */,
+				18A54B321867690D0085B714 /* content.png in Resources */,
+				18A54B10186267020085B714 /* PMEyeVC.xib in Resources */,
 				18EA4652185661D90066A22C /* andantino.png in Resources */,
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
+				18A54B311867690D0085B714 /* arrow.png in Resources */,
 				18A54B071862224A0085B714 /* siluet-photo-make.png in Resources */,
 				18EA46B01859610C0066A22C /* delete.png in Resources */,
 				18EA46261855F23E0066A22C /* initial-textinput.png in Resources */,
+				18A54B221866C11A0085B714 /* icon_1024x1024.png in Resources */,
 				18EA4651185661D90066A22C /* ampir.png in Resources */,
 				18A54B051862224A0085B714 /* siluet-accept.png in Resources */,
 				18A68FB9185484A6009019BC /* ifs_vertex.glsl in Resources */,
@@ -1062,10 +1152,14 @@
 				18A68F991854682E009019BC /* active-finger-disable.png in Resources */,
 				18EA466C1856FE7E0066A22C /* PMFingerVC.xib in Resources */,
 				18A54B0A186224B50085B714 /* exit.png in Resources */,
+				18A54B261866C11A0085B714 /* icon_58x58.png in Resources */,
+				18A54B231866C11A0085B714 /* icon_144x144.png in Resources */,
 				18EA46B31859AE520066A22C /* reg-field.png in Resources */,
 				18EA464B185661D90066A22C /* adineki.png in Resources */,
 				18A84CB11852047700612BE5 /* PMVoiceVisualizationVC.xib in Resources */,
+				18A54B251866C11A0085B714 /* icon_50x50.png in Resources */,
 				18A68F801853A009009019BC /* active-eye.png in Resources */,
+				18A54B241866C11A0085B714 /* icon_29x29.png in Resources */,
 				18EA46A1185783FC0066A22C /* test.png in Resources */,
 				18EA465D185661D90066A22C /* andantino.ttf in Resources */,
 				18EA462E185601CD0066A22C /* scroll-background.png in Resources */,
@@ -1126,6 +1220,7 @@
 				18A68F8A1853ABEC009019BC /* PMActivationView.m in Sources */,
 				18A68FB4185484A6009019BC /* AudioFileReader.mm in Sources */,
 				18EA462B1855FB1C0066A22C /* PMChooseFontVC.m in Sources */,
+				18A54B0F186267020085B714 /* PMEyeVC.m in Sources */,
 				18A84C721851D32600612BE5 /* main.m in Sources */,
 				18A84CC7185383CF00612BE5 /* PMRootViewController.m in Sources */,
 				18A54AE7186025420085B714 /* PMMailManager.m in Sources */,
@@ -1155,6 +1250,7 @@
 				18A84CA61851E04D00612BE5 /* PMSettingsViewContoller.m in Sources */,
 				18A84CB01852047700612BE5 /* PMVoiceVisualizationVC.m in Sources */,
 				18A54AF918603F4F0085B714 /* Base64Transcoder.m in Sources */,
+				18A54B2C1866C2910085B714 /* PMTimeManager.m in Sources */,
 				18A68FB6185484A6009019BC /* Novocaine.m in Sources */,
 				18A68FBA185484A6009019BC /* ATTRactorView.m in Sources */,
 				18EA4688185734EC0066A22C /* PMSiluetVC.m in Sources */,
@@ -1286,10 +1382,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Parliament;
+				PROVISIONING_PROFILE = "5218B0D6-B13B-497C-ACF4-7799763EA345";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1301,12 +1399,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Parliament;
+				PROVISIONING_PROFILE = "5218B0D6-B13B-497C-ACF4-7799763EA345";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

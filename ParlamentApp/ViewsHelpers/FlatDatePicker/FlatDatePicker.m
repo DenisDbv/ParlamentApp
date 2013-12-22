@@ -1218,6 +1218,9 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
+    NSLog(@"!");
+    [[AppDelegateInstance() rippleViewController] refresh];
+    
     int index = [self getIndexForScrollViewPosition:scrollView];
     
     [self updateSelectedDateAtIndex:index forScrollView:scrollView];

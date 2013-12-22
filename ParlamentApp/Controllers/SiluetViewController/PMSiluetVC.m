@@ -31,10 +31,13 @@
     UIButton *recaptureButton;
     UIButton *savePhoto;
     
+    UIView *imageContainer;
     ALAssetsLibrary *_assetLibrary;
 }
 @synthesize _photoDict;
 @synthesize _finalImage;
+@synthesize finishTitle1, finishTitle2, finishTitle3, finishTitle4, finishTitle5;
+@synthesize onBackToRootMenu;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,6 +51,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    finishTitle1.alpha = 0;
+    finishTitle1.font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
+    finishTitle1.backgroundColor = [UIColor clearColor];
+    finishTitle1.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
+    finishTitle1.textAlignment = NSTextAlignmentCenter;
+    
+    finishTitle2.alpha = 0;
+    finishTitle2.font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
+    finishTitle2.backgroundColor = [UIColor clearColor];
+    finishTitle2.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
+    finishTitle2.textAlignment = NSTextAlignmentCenter;
+    
+    finishTitle3.alpha = 0;
+    finishTitle3.font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
+    finishTitle3.backgroundColor = [UIColor clearColor];
+    finishTitle3.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
+    finishTitle3.textAlignment = NSTextAlignmentCenter;
+    
+    finishTitle4.alpha = 0;
+    finishTitle4.font = [UIFont fontWithName:@"MyriadPro-Cond" size:15.0];
+    finishTitle4.backgroundColor = [UIColor clearColor];
+    finishTitle4.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
+    finishTitle4.textAlignment = NSTextAlignmentCenter;
+    
+    finishTitle5.alpha = 0;
+    finishTitle5.font = [UIFont fontWithName:@"MyriadPro-Cond" size:45.0];
+    finishTitle5.backgroundColor = [UIColor clearColor];
+    finishTitle5.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
+    finishTitle5.textAlignment = NSTextAlignmentCenter;
+    
+    onBackToRootMenu.alpha = 0;
     
     _assetLibrary = [[ALAssetsLibrary alloc] init];
     
@@ -214,11 +249,15 @@
 {
     [self tapAnimate:sender withBlock:nil];
     
+    sender.hidden = YES;
+    imageContainer.hidden = YES;
+    
+    PMTimeManager *timeManager = [[PMTimeManager alloc] init];
+    finishTitle5.text = [NSString stringWithFormat:@"СПАСИБО И %@", [timeManager titleTimeArea]];
+    
     [self savePhotoToAlbum:_finalImage completionBlock:^{
-        self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
-        [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-            //
-        }];
+        finishTitle1.alpha = finishTitle2.alpha = finishTitle3.alpha = finishTitle4.alpha = finishTitle5.alpha = 1.0;
+        onBackToRootMenu.alpha = 1.0;
     }];
 }
 
@@ -422,7 +461,7 @@ void rgbToHSV(float rgb[3], float hsv[3])
         dispatch_async( dispatch_get_main_queue(), ^{
             [[PBJVision sharedInstance] stopPreview];
             
-            UIView *imageContainer = [[UIView alloc] initWithFrame:self.view.bounds];
+            imageContainer = [[UIView alloc] initWithFrame:self.view.bounds];
             imageContainer.backgroundColor = [UIColor whiteColor];
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageContainer.bounds];
             [imageView setImage:_finalImage];
@@ -444,4 +483,15 @@ void rgbToHSV(float rgb[3], float hsv[3])
     }];
 }
 
+- (IBAction)onBackToRootMenu:(UIButton*)sender
+{
+    [self tapAnimate:sender withBlock:nil];
+    CGPoint location = sender.center;
+    [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+    
+     self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+     [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+     //
+     }];
+}
 @end
