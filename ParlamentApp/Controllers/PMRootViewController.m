@@ -48,11 +48,23 @@
 
 -(void) windowInitiailization
 {
-    PMRegistrationVC *rootMenuViewController = [[PMRegistrationVC alloc] initWithNibName:@"PMRegistrationVC" bundle:[NSBundle mainBundle]];
+    /*PMRegistrationVC *rootMenuViewController = [[PMRegistrationVC alloc] initWithNibName:@"PMRegistrationVC" bundle:[NSBundle mainBundle]];
     
     registraionSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
     [registraionSheet presentFormSheetController:registraionSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
         NSLog(@"Registartion view controller present");
+    }];*/
+    
+    PMRootMenuController *rootMenuViewController = [[PMRootMenuController alloc] initWithNibName:@"PMRootMenuController" bundle:[NSBundle mainBundle]];
+    
+    formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
+    formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+    [formSheet presentFormSheetController:formSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+        NSLog(@"Root menu view controller present");
+        
+        [registraionSheet dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            //
+        }];
     }];
 }
 

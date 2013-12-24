@@ -22,9 +22,9 @@
     
     [MBPopoverBackgroundView initialize];
     
-    [MBPopoverBackgroundView setArrowImageName:@"popover-arrow-red_2.png"];
-    [MBPopoverBackgroundView setBackgroundImageName:@"popover-background-red_2.png"];
-    [MBPopoverBackgroundView setBackgroundImageCapInsets:UIEdgeInsetsMake(12, 12, 12, 12)];
+    [MBPopoverBackgroundView setArrowImageName:@"arrow.png"];    //popover-arrow-red_2.png
+    [MBPopoverBackgroundView setBackgroundImageName:@"content.png"];    //popover-background-red_2.png
+    [MBPopoverBackgroundView setBackgroundImageCapInsets:UIEdgeInsetsMake(250, 10, 10, 10)];
     [MBPopoverBackgroundView setContentViewInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
 
     rippleViewController = [[PMRootViewController alloc] initWithNibName:@"PMRootViewController" bundle:[NSBundle mainBundle]];

@@ -56,8 +56,10 @@
     titleLabel.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     
+    UIImage *myGradient = [UIImage imageNamed:@"depositphotos_1318054-Liquid-metal.jpg"];
     monogramLabel.font = [UIFont fontWithName:@"AdineKirnberg" size:84];
     monogramLabel.text = initialsString;
+    monogramLabel.textColor   = [UIColor colorWithPatternImage:myGradient];
     
     [carousel reloadData];
     
@@ -126,11 +128,11 @@
         //Call your function or whatever work that needs to be done
         //Code in this part is run on a background thread
         UIImage *img = [self drawText:monogramLabel.text inImage:[UIImage imageNamed:@"background1024x768.png"] atPoint:CGPointMake(100, 100)];
-        NSLog(@"%@", NSStringFromCGSize(img.size));
+        //NSLog(@"%@", NSStringFromCGSize(img.size));
        
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = self;
-        [mailManager sendMessageWithImage:img imageName:@"test.png" andText:@"Монограмма"];
+        [mailManager sendMessageWithImage:img imageName:@"monogram.png" andText:@"Монограмма"];
     });
 }
 
@@ -236,6 +238,8 @@
     NSLog(@"Tapped font: %@", [fontNames objectAtIndex:index]);
     
     monogramLabel.font = [UIFont fontWithName:[fontNames objectAtIndex:index] size:84];
+    UIImage *myGradient = [UIImage imageNamed:@"depositphotos_1318054-Liquid-metal.jpg"];
+    monogramLabel.textColor   = [UIColor colorWithPatternImage:myGradient];
 }
 
 -(void) generateImage

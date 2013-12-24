@@ -17,12 +17,12 @@
 #define kFlatDatePickerBackgroundColorButtonValid [UIColor colorWithRed:51.0/255.0 green:181.0/255.0 blue:229.0/255.0 alpha:1.0]
 #define kFlatDatePickerBackgroundColorButtonCancel [UIColor colorWithRed:58.0/255.0 green:58.0/255.0 blue:58.0/255.0 alpha:1.0]
 #define kFlatDatePickerBackgroundColorScrolView [UIColor colorWithRed:34.0/255.0 green:34.0/255.0 blue:34.0/255.0 alpha:1.0]
-#define kFlatDatePickerBackgroundColorLines [UIColor colorWithRed:51.0/255.0 green:181.0/255.0 blue:229.0/255.0 alpha:1.0]
+#define kFlatDatePickerBackgroundColorLines [UIColor blueColor]//colorWithRed:51.0/255.0 green:181.0/255.0 blue:229.0/255.0 alpha:1.0]
 
 // Constants fonts colors :
 #define kFlatDatePickerFontColorTitle [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]
 #define kFlatDatePickerFontColorLabel [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]
-#define kFlatDatePickerFontColorLabelSelected [UIColor colorWithRed:51.0/255.0 green:181.0/255.0 blue:229.0/255.0 alpha:1.0]
+#define kFlatDatePickerFontColorLabelSelected [UIColor blueColor] //colorWithRed:51.0/255.0 green:181.0/255.0 blue:229.0/255.0 alpha:1.0]
 
 // Constants sizes :
 #define kFlatDatePickerHeight 260

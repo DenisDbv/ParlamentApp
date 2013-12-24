@@ -14,6 +14,7 @@
 #import "PMFingerVC.h"
 #import "PMSiluetVC.h"
 #import "PMEyeVC.h"
+#import "PMRegistrationVC.h"
 
 #import "UIView+GestureBlocks.h"
 #import "UIImage+UIImageFunctions.h"
@@ -53,7 +54,7 @@
     [self buttonsConfigure];
     [self buttonsReposition];
     
-    /*UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
+    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
     tapGesture2.numberOfTapsRequired = 2;
     [self.view addGestureRecognizer:tapGesture2];
     
@@ -61,7 +62,7 @@
     tapGesture1.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapGesture1];
 
-    [tapGesture1 requireGestureRecognizerToFail:tapGesture2];*/
+    [tapGesture1 requireGestureRecognizerToFail:tapGesture2];
 }
 
 - (void)handleTap1:(UIGestureRecognizer *)sender
@@ -74,29 +75,29 @@
             
             secret_disable = YES;
             
-            UIImage *settingImage = [[UIImage imageNamed:@"settings.png"] scaleProportionalToRetina];
+            /*UIImage *settingImage = [[UIImage imageNamed:@"settings.png"] scaleProportionalToRetina];
             [settingButton removeTarget:self action:@selector(onExit:) forControlEvents:UIControlEventTouchUpInside];
             [settingButton addTarget:self action:@selector(onSetting:) forControlEvents:UIControlEventTouchUpInside];
             [settingButton setImage:settingImage forState:UIControlStateNormal];
-            [settingButton setImage:settingImage forState:UIControlStateHighlighted];
+            [settingButton setImage:settingImage forState:UIControlStateHighlighted];*/
             
             [UIView animateWithDuration:0.3f animations:^{
-                [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:settingButton cache:NO];
+                //[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:settingButton cache:NO];
                 settingButton.alpha = 1.0;
             } completion:^(BOOL finished) {
                 int64_t delayInSeconds = 3.0;
                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
                 dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                     
-                    UIImage *settingImage = [[UIImage imageNamed:@"exit.png"] scaleProportionalToRetina];
+                    /*UIImage *settingImage = [[UIImage imageNamed:@"exit.png"] scaleProportionalToRetina];
                     [settingButton removeTarget:self action:@selector(onSetting:) forControlEvents:UIControlEventTouchUpInside];
                     [settingButton addTarget:self action:@selector(onExit:) forControlEvents:UIControlEventTouchUpInside];
                     [settingButton setImage:settingImage forState:UIControlStateNormal];
-                    [settingButton setImage:settingImage forState:UIControlStateHighlighted];
+                    [settingButton setImage:settingImage forState:UIControlStateHighlighted];*/
                     
                     [UIView animateWithDuration:0.3 animations:^{
-                        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:settingButton cache:NO];
-                        settingButton.alpha = 1.0;
+                        //[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:settingButton cache:NO];
+                        settingButton.alpha = 0.0;
                     } completion:^(BOOL finished) {
                         secret_disable = NO;
                     }];
@@ -142,10 +143,10 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.height;
     
-    UIImage *settingImage = [[UIImage imageNamed:@"exit.png"] scaleProportionalToRetina];
+    UIImage *settingImage = [[UIImage imageNamed:@"settings.png"] scaleProportionalToRetina];
     settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    settingButton.alpha = 1.0f;
-    [settingButton addTarget:self action:@selector(onExit:) forControlEvents:UIControlEventTouchUpInside];
+    settingButton.alpha = 0.0f;
+    [settingButton addTarget:self action:@selector(onSetting:) forControlEvents:UIControlEventTouchUpInside];
     [settingButton setImage:settingImage forState:UIControlStateNormal];
     [settingButton setImage:settingImage forState:UIControlStateHighlighted];
     settingButton.frame = CGRectMake(screenWidth - settingImage.size.width - 10, 10, settingImage.size.width, settingImage.size.height);
@@ -285,7 +286,7 @@
 
 -(void) activationView:(PMActivationView*)activationView didSelectWithID:(ActivationIDs)ids
 {
-    switch (ids) {
+    /*switch (ids) {
         case eEye:
             [self showEyeViewController];
             break;
@@ -304,12 +305,58 @@
             
         default:
             break;
-    }
+    }*/
+    
+    [self openRegistrationForm:ids];
+}
+
+-(void) openRegistrationForm:(ActivationIDs)ids
+{
+    [self hideAllContext];
+    
+    PMRegistrationVC *rootMenuViewController = [[PMRegistrationVC alloc] initWithNibName:@"PMRegistrationVC" bundle:[NSBundle mainBundle]];
+    
+    MZFormSheetController *registraionSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
+    
+    __weak id wself = self;
+    registraionSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+        PMRegistrationVC *regVC = (PMRegistrationVC*)presentedFSViewController;
+        if(regVC.isExitToMenu)  {
+            [wself showAllContext];
+        }
+        else
+        {
+            switch (ids) {
+                case eEye:
+                    [self showEyeViewController];
+                    break;
+                case eVoice:
+                    [self showVoiceViewController];
+                    break;
+                case eSiluet:
+                    [self showSiluetViewController];
+                    break;
+                case eFinger:
+                    [self showFingerViewController];
+                    break;
+                case eMonogram:
+                    [self showMonogramViewController];
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+    };
+        
+    [registraionSheet presentFormSheetController:registraionSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+        NSLog(@"Registartion view controller present");
+    }];
 }
 
 -(void) showVoiceViewController
 {
-    [self hideAllContext];
+    //[self hideAllContext];
     
     PMVoiceVisualizationVC *voiceVC = [[PMVoiceVisualizationVC alloc] initWithNibName:@"PMVoiceVisualizationVC" bundle:[NSBundle mainBundle]];
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:voiceVC];
@@ -325,7 +372,7 @@
 
 -(void) showMonogramViewController
 {
-    [self hideAllContext];
+    //[self hideAllContext];
     
     PMMonogramVC *monogramVC = [[PMMonogramVC alloc] initWithNibName:@"PMMonogramVC" bundle:[NSBundle mainBundle]];
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size
@@ -342,7 +389,7 @@
 
 -(void) showFingerViewController
 {
-    [self hideAllContext];
+    //[self hideAllContext];
     
     PMFingerVC *fingerVC = [[PMFingerVC alloc] initWithNibName:@"PMFingerVC" bundle:[NSBundle mainBundle]];
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:fingerVC];
@@ -358,7 +405,7 @@
 
 -(void) showSiluetViewController
 {
-    [self hideAllContext];
+    //[self hideAllContext];
     
     PMSiluetVC *siluetVC = [[PMSiluetVC alloc] initWithNibName:@"PMSiluetVC" bundle:[NSBundle mainBundle]];
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:siluetVC];
@@ -374,7 +421,7 @@
 
 -(void) showEyeViewController
 {
-    [self hideAllContext];
+    //[self hideAllContext];
     
     PMEyeVC *eyeVC = [[PMEyeVC alloc] initWithNibName:@"PMEyeVC" bundle:[NSBundle mainBundle]];
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:eyeVC];

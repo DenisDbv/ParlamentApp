@@ -44,6 +44,7 @@
 }
 @synthesize tableView;
 @synthesize continueButton;
+@synthesize isExitToMenu;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,7 +58,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     PMCustomKeyboard *customKeyboard = [[PMCustomKeyboard alloc] init];
     PMCustomKeyboard *customKeyboard2 = [[PMCustomKeyboard alloc] init];
     PMCustomKeyboard *customKeyboard3 = [[PMCustomKeyboard alloc] init];
@@ -86,7 +87,7 @@
     [customKeyboard6 setTextView:dateBirthField.titleField];
     
     fieldsArray = @[nameField, secondNameField, sexField, phoneField, emailField, dateBirthField];
-    
+
     tableView.scrollEnabled = NO;
     
     popoverContent = [[PMDatePickerVCViewController alloc] initWithNibName:@"PMDatePickerVCViewController"
@@ -106,24 +107,25 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.height;
     
-    UIImage *settingImage = [[UIImage imageNamed:@"settings.png"] scaleProportionalToRetina];
+    UIImage *settingImage = [[UIImage imageNamed:@"exit.png"] scaleProportionalToRetina];
     settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    settingButton.alpha = 0.0f;
-    [settingButton addTarget:self action:@selector(onSetting:) forControlEvents:UIControlEventTouchUpInside];
+    settingButton.alpha = 1.0f;
+    [settingButton addTarget:self action:@selector(onExit:) forControlEvents:UIControlEventTouchUpInside];
     [settingButton setImage:settingImage forState:UIControlStateNormal];
     [settingButton setImage:settingImage forState:UIControlStateHighlighted];
-    settingButton.frame = CGRectMake(screenWidth - settingImage.size.width - 10, 10, settingImage.size.width, settingImage.size.height);
+    //settingButton.frame = CGRectMake(screenWidth - settingImage.size.width - 10, 10, settingImage.size.width, settingImage.size.height);    //right side
+    settingButton.frame = CGRectMake(10, 10, settingImage.size.width, settingImage.size.height);
     [self.view addSubview:settingButton];
     
-    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
+    /*UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
     tapGesture2.numberOfTapsRequired = 2;
     [self.view addGestureRecognizer:tapGesture2];
     UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap1:)];
     tapGesture1.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapGesture1];
-    [tapGesture1 requireGestureRecognizerToFail:tapGesture2];
+    [tapGesture1 requireGestureRecognizerToFail:tapGesture2];*/
     
-    [self registrationFormRefresh];
+    //[self registrationFormRefresh];
 }
 
 - (void)handleTap1:(UIGestureRecognizer *)sender
@@ -170,6 +172,28 @@
             });
         }
     }
+}
+
+-(void) onExit:(UIButton*)btn
+{
+    isExitToMenu = YES;
+    
+    [UIView animateWithDuration:0.03 animations:^{
+        btn.transform = CGAffineTransformMakeScale(0.95, 0.95);
+    }
+                     completion:^(BOOL finished){
+                         
+                         [UIView animateWithDuration:0.03f animations:^{
+                             btn.transform = CGAffineTransformMakeScale(1, 1);
+                         } completion:^(BOOL finished) {
+                             CGPoint location = btn.center;
+                             [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+                             
+                             [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                                 //
+                             }];
+                         }];
+                     }];
 }
 
 -(void) onSetting:(UIButton*)btn
@@ -322,7 +346,7 @@
     else if(fieldView == sexField)
     {
         CGRect rect = [fieldView convertRect:fieldView.frame toView:self.view];
-        rect.origin.y += 20;
+        rect.origin.y += 40;
         [popoverControllerForSex presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
 }
@@ -384,13 +408,19 @@
         }
     }
     
+    isExitToMenu = NO;
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:nameField.titleField.text forKey:@"_firstname"];
     [userDefaults setObject:secondNameField.titleField.text forKey:@"_lastname"];
     [userDefaults setObject:emailField.titleField.text forKey:@"_emailTO"];
     [userDefaults synchronize];
     
-    [[AppDelegateInstance() rippleViewController] closeRegistrationAndOpenApp];
+    //[[AppDelegateInstance() rippleViewController] closeRegistrationAndOpenApp];
+    
+    [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+        //
+    }];
 }
 
 -(void) shakeIt:(UIView*)view withDelta:(CGFloat)delta

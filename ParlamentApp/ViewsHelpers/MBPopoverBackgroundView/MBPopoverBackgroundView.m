@@ -262,7 +262,7 @@ __strong static NSMutableDictionary *CustomValuesDic = nil;
             // get the frame (not bounds! because bounds ignore transformations)
             arrowRect = _arrowImageView.frame;  // get frame after (!) transformation
             arrowRect.origin.x = self.bounds.size.width / 2 + self.arrowOffset - arrowRect.size.width / 2;            
-            arrowRect.origin.y = self.bounds.size.height - arrowRect.size.height;                           
+            arrowRect.origin.y = self.bounds.size.height - arrowRect.size.height-1;
             // popovers are usually not scaled down by x, so no need to account for that now            
             break;
         case UIPopoverArrowDirectionLeft:
