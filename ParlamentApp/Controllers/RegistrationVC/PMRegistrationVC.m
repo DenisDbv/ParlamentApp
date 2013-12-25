@@ -125,7 +125,7 @@
     [self.view addGestureRecognizer:tapGesture1];
     [tapGesture1 requireGestureRecognizerToFail:tapGesture2];*/
     
-    //[self registrationFormRefresh];
+    [self registrationFormRefresh];
 }
 
 - (void)handleTap1:(UIGestureRecognizer *)sender

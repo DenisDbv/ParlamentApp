@@ -24,6 +24,8 @@
     UIActivityIndicatorView *saveIndicator;
     
     PMMailManager *mailManager;
+    
+    NSInteger _fontIndex;
 }
 @synthesize titleLabel;
 @synthesize monogramLabel;
@@ -60,6 +62,8 @@
     monogramLabel.font = [UIFont fontWithName:@"AdineKirnberg" size:84];
     monogramLabel.text = initialsString;
     monogramLabel.textColor   = [UIColor colorWithPatternImage:myGradient];
+    //monogramLabel.backgroundColor = [UIColor redColor];
+    //[monogramLabel sizeToFit];
     
     [carousel reloadData];
     
@@ -237,9 +241,12 @@
 {
     NSLog(@"Tapped font: %@", [fontNames objectAtIndex:index]);
     
+    _fontIndex = index;
+    
     monogramLabel.font = [UIFont fontWithName:[fontNames objectAtIndex:index] size:84];
     UIImage *myGradient = [UIImage imageNamed:@"depositphotos_1318054-Liquid-metal.jpg"];
     monogramLabel.textColor   = [UIColor colorWithPatternImage:myGradient];
+    //[monogramLabel sizeToFit];
 }
 
 -(void) generateImage
@@ -295,7 +302,7 @@
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();*/
     
-    CGSize paperSize = CGSizeMake(571.0, 791.0);
+    /*CGSize paperSize = CGSizeMake(571.0, 791.0);
     CGRect textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
     
     UIGraphicsBeginImageContextWithOptions(paperSize, NO, 2.0);
@@ -340,6 +347,58 @@
     {
         //legacy support
         [text drawInRect:CGRectIntegral(textRect) withFont:font];
+    }
+    
+    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return resultingImage;*/
+    
+    UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    myLabel.text = monogramLabel.text;
+    myLabel.font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:84.0*3];
+    myLabel.textColor = monogramLabel.textColor;
+    myLabel.backgroundColor = [UIColor clearColor];
+    myLabel.textAlignment = NSTextAlignmentCenter;
+    myLabel.adjustsFontSizeToFitWidth = YES;
+    myLabel.minimumScaleFactor = 0.05;
+    [myLabel sizeToFit];
+    myLabel.frame = CGRectMake(0, 0, 571, myLabel.frame.size.height);
+    
+    UIGraphicsBeginImageContextWithOptions(myLabel.bounds.size, myLabel.opaque, 0.0);
+    //CGContextTranslateCTM(UIGraphicsGetCurrentContext(), 0, myLabel.frame.size.height);
+    //CGContextScaleCTM(UIGraphicsGetCurrentContext(), 1.0, -1.0);
+    [myLabel.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *layerImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
+    CGSize paperSize = CGSizeMake(571.0, 791.0);
+    
+    UIGraphicsBeginImageContextWithOptions(paperSize, NO, 2.0);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(ctx, [UIColor blackColor].CGColor);
+    CGContextFillRect(ctx, CGRectMake(0, 0, paperSize.width, paperSize.height));
+    
+    [layerImage drawInRect:CGRectMake((paperSize.width - layerImage.size.width)/2,
+                                      120.0 + (400.0 - layerImage.size.height)/2,
+                                      layerImage.size.width,
+                                      layerImage.size.height)];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+    UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
+    CGRect textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
+    if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
+    {
+        //iOS 7
+        
+        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor whiteColor]};
+        CGSize size = [names sizeWithAttributes:att];
+        textRect.origin.x = (paperSize.width - size.width)/2;
+        textRect.origin.y = 120.0+400.0;
+        
+        [names drawInRect:textRect withAttributes:att];
     }
     
     UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
