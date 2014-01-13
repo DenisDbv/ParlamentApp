@@ -49,9 +49,9 @@
     
     NSString *value = [dateFormatter stringFromDate:date];
     
-    if([self.delegate respondsToSelector:@selector(datePickerSetString:)])
+    if([self.delegate respondsToSelector:@selector(datePickerSetString:withDate:)])
     {
-        [self.delegate datePickerSetString:value];
+        [self.delegate datePickerSetString:value withDate:date];
     }
 }
 

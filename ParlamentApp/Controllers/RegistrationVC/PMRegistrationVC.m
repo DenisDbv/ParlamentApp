@@ -41,6 +41,8 @@
     BOOL secret_doubleTap;
     BOOL secret_disable;
     UIButton *settingButton;
+    
+    NSDate *selectedBirthDate;
 }
 @synthesize tableView;
 @synthesize continueButton;
@@ -388,9 +390,10 @@
     [self.view endEditing:YES];
 }
 
--(void) datePickerSetString:(NSString*)dateText
+-(void) datePickerSetString:(NSString*)dateText withDate:(NSDate*)date
 {
     dateBirthField.titleField.text = dateText;
+    selectedBirthDate = date;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -405,6 +408,19 @@
         if(field.titleField.text.length == 0)   {
             [self shakeIt:field withDelta:-2.0];
             //return;
+        }
+    }
+    
+    if(fieldsArray.count == 6)   {
+        if(selectedBirthDate.description.length == 0)
+            selectedBirthDate = [NSDate date];
+        
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        int years = [[gregorian components:NSYearCalendarUnit fromDate:selectedBirthDate toDate:[NSDate date] options:0] year];
+        NSLog(@"%i years old", years);
+        if (years < 18) {
+            [self shakeIt:dateBirthField withDelta:-2.0];
+            return;
         }
     }
     

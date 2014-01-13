@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol PMDatePickerVCViewControllerDelegate <NSObject>
--(void) datePickerSetString:(NSString*)dateText;
+-(void) datePickerSetString:(NSString*)dateText withDate:(NSDate*)date;
 @end
 
 @interface PMDatePickerVCViewController : UIViewController
