@@ -15,6 +15,7 @@
     //ActivationIDs ids;
     BOOL _textShow;
     UIImageView *activationImageView;
+    UIButton *activeButton;
     UILabel *englishDesc;
     UILabel *russianDesc;
 }
@@ -35,7 +36,15 @@
 -(void) initializeActivation
 {
     activationImageView = [[UIImageView alloc] initWithImage:[[self imageActivation] scaleProportionalToRetina]];
-    [self addSubview:activationImageView];
+    //[self addSubview:activationImageView];
+    
+    UIImage *settingImage = [[self imageActivation] scaleProportionalToRetina];
+    activeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [activeButton addTarget:self action:@selector(onActiveClick:) forControlEvents:UIControlEventTouchDown];
+    [activeButton setImage:settingImage forState:UIControlStateNormal];
+    [activeButton setImage:settingImage forState:UIControlStateHighlighted];
+    activeButton.frame = CGRectMake(0, 0, settingImage.size.width, settingImage.size.height);
+    [self addSubview:activeButton];
     
     if(_textShow)   {
         englishDesc = [[UILabel alloc] init];
@@ -86,6 +95,27 @@
                              }];
                          }];
     } forTaps:1];
+}
+
+-(void) onActiveClick:(UIButton*)activeBtn
+{
+    CGPoint location = [self convertPoint:activeBtn.center toView:((UIViewController*)delegate).view];
+    [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+    
+    [UIView animateWithDuration:0.05 animations:^{
+        activeBtn.transform = CGAffineTransformMakeScale(0.95, 0.95);
+    }
+                     completion:^(BOOL finished){
+                         
+                         [UIView animateWithDuration:0.05f animations:^{
+                             activeBtn.transform = CGAffineTransformMakeScale(1, 1);
+                         } completion:^(BOOL finished) {
+                             if( [delegate respondsToSelector:@selector(activationView:didSelectWithID:)] )
+                             {
+                                 [delegate activationView:self didSelectWithID:ids];
+                             }
+                         }];
+                     }];
 }
 
 -(void) disableActivation:(BOOL)isDisable
