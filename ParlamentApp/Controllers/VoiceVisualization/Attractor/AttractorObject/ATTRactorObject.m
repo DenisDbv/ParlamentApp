@@ -40,6 +40,8 @@
     float limMinNearAt0, limMaxNearAt0;
     float limMinNearAt5, limMaxNearAt5;
     float limMinNearAt10, limMaxNearAt10;
+    
+    NSTimer *_timer;
 }
 @synthesize g_side, index, fade, phase, word, spherize, zoomer, holdFade, pointSize;
 @synthesize g_cbo, g_vbo;
@@ -74,6 +76,35 @@
     return self;
 }
 
+- (void) startTimer
+{
+    if (_timer == nil)
+    {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1f
+                                                  target:self
+                                                selector:@selector(_timerFired)
+                                                userInfo:nil
+                                                 repeats:YES];
+    }
+}
+
+- (void) stopTimer
+{
+    if (_timer != nil)
+    {
+        [_timer invalidate];
+        _timer = nil;
+    }
+}
+
+- (void)_timerFired
+{
+    self.fade -= 0.01;
+    
+    if(self.fade <= 0.2)
+        [self stopTimer];
+}
+
 -(float*) trArray
 {
     return tr;
@@ -106,7 +137,7 @@
     [self setTr5:tr5_new];
     [self setTr10:tr10_new];
     
-    lastWasFarNoice = YES;
+    //lastWasFarNoice = YES;
 }
 
 -(void) attractorNoiceNear
@@ -234,6 +265,8 @@
     pointSize = 1.0;
     
     memcpy(tr, trDef, sizeof(trDef));
+    
+    [self startTimer];
 }
 
 -(void) createVertexAndColorMatrix

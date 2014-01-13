@@ -43,6 +43,16 @@
     [attr_object attractorInfo];
 }
 
+-(void) replaceAttractor:(ATTRactorObject*)attr_object byIndex:(NSInteger)index
+{
+    if(attr_object == nil)
+        attr_object = [[ATTRactorObject alloc] init];
+    
+    [attractorArray replaceObjectAtIndex:index withObject:attr_object];
+    
+    //[attr_object attractorInfo];
+}
+
 -(void) attractorsRender:(GLuint)programHandle withTimeOffset:(CGFloat)timeOffset context:(EAGLContext*)context
 {
     for(ATTRactorObject *attr_object in attractorArray)
@@ -91,7 +101,8 @@
 
 -(ATTRactorObject*) attractorAccess:(NSInteger)index
 {
-    if(index < 0 || index > attractorArray.count-1)
+    NSLog(@"index=%i array=%i", index, attractorArray.count);
+    if(index < 0 || index > attractorArray.count-1 || attractorArray.count == 0)
         return nil;
     
     return [attractorArray objectAtIndex:index];

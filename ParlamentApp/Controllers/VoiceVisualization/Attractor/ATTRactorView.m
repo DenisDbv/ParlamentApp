@@ -66,6 +66,8 @@
 @synthesize delegate;
 @synthesize scale, lastScale;
 
+static int attrIndex = 0;
+
 + (Class)layerClass {
     return [CAEAGLLayer class];
 }
@@ -78,6 +80,7 @@
     //_eaglLayer.contentsScale = 2.0;
     
     attrManager = [[ATTRactorManager alloc] init];
+    attrIndex = 0;
 }
 
 -(void)layoutSubviews
@@ -143,6 +146,7 @@
 -(void) resetAttractors
 {
     [attrManager removeAll];
+    attrIndex = 0;
     isRedColor = YES;
     takeSnapshot = NO;
 }
@@ -175,14 +179,24 @@
                            [NSNumber numberWithFloat:0.3],
                            [NSNumber numberWithFloat:0.7],
                            [NSNumber numberWithFloat:0.2]];
-    
-    attractorFades = @[[NSNumber numberWithFloat:0.2],
-                           [NSNumber numberWithFloat:0.7],
-                           [NSNumber numberWithFloat:0.8],
-                           [NSNumber numberWithFloat:0.9],
+   
+    attractorFades = @[[NSNumber numberWithFloat:1.0],
                            [NSNumber numberWithFloat:1.0],
-                           [NSNumber numberWithFloat:0.2],
-                           [NSNumber numberWithFloat:0.4]];
+                           [NSNumber numberWithFloat:1.0],
+                           [NSNumber numberWithFloat:1.0],
+                           [NSNumber numberWithFloat:1.0],
+                           [NSNumber numberWithFloat:1.0],
+                           [NSNumber numberWithFloat:1.0]];
+    /*
+    
+     attractorFades = @[[NSNumber numberWithFloat:0.2],
+     [NSNumber numberWithFloat:0.7],
+     [NSNumber numberWithFloat:0.8],
+     [NSNumber numberWithFloat:0.9],
+     [NSNumber numberWithFloat:1.0],
+     [NSNumber numberWithFloat:0.2],
+     [NSNumber numberWithFloat:0.4]];
+    */
     
     attractorSperiz = @[[NSNumber numberWithFloat:0.96],
                        [NSNumber numberWithFloat:0.94],
@@ -232,7 +246,7 @@
 -(void) addAttractorToOpenGlBuffer
 {
     NSInteger count = [attrManager attractorsDepth];
-    if(count >= attractorIndexes.count) return;
+    //if(count >= attractorIndexes.count) return;
     
     if(count == 0)  {
         if([delegate respondsToSelector:@selector(createFirstAttractor)])
@@ -240,24 +254,35 @@
     }
     
     ATTRactorObject *attr = [[ATTRactorObject alloc] init];
-    attr.index = [[attractorIndexes objectAtIndex:count] integerValue];
-    attr.g_side = [[attractorSides objectAtIndex:count] integerValue];
+    attr.index = [[attractorIndexes objectAtIndex:attrIndex] integerValue];
+    attr.g_side = [[attractorSides objectAtIndex:attrIndex] integerValue];
     //if(!isRedColor) [attr setHueColor:0.14f];
-    attr.fade = [[attractorFades objectAtIndex:count] floatValue];
-    attr.pointSize = [[attractorPontsSize objectAtIndex:count] floatValue];
-    attr.phase = 0;//[attrManager attractorsDepth] * 10; //(arc4random() % ((unsigned)1000 + 1));
-    attr.spherize = [[attractorSperiz objectAtIndex:count] floatValue];
-    attr.dTime = [[attractorDeltaTime objectAtIndex:count] floatValue];
-    [attrManager addAttractor:attr];
+    attr.fade = [[attractorFades objectAtIndex:attrIndex] floatValue];
+    attr.pointSize = [[attractorPontsSize objectAtIndex:attrIndex] floatValue];
+    attr.phase = [attrManager attractorsDepth] * 10; //(arc4random() % ((unsigned)1000 + 1));
+    attr.spherize = [[attractorSperiz objectAtIndex:attrIndex] floatValue];
+    attr.dTime = [[attractorDeltaTime objectAtIndex:attrIndex] floatValue];
     
-    isRedColor = !isRedColor;
+    if(count >= attractorIndexes.count) {
+        [attrManager replaceAttractor:attr byIndex:attrIndex];
+        //NSLog(@"change %i", attrIndex);
+    } else  {
+        [attrManager addAttractor:attr];
+    }
+    
+    attrIndex++;
+    if(attrIndex >= attractorIndexes.count)
+        attrIndex = 0;
+    
+    //isRedColor = !isRedColor;
 }
 
 -(void) changeTRMatrixFar
 {
     NSInteger attractorCount = [attrManager attractorsDepth];
-    ATTRactorObject *object = [attrManager attractorAccess:attractorCount-1];
+    ATTRactorObject *object = [attrManager attractorAccess:attrIndex-1]; //attractorCount-1];
     if(object != nil)   {
+        NSLog(@"noice %i attractor", attrIndex);
         [object attractorNoiceFar];
     }
 }
@@ -353,7 +378,7 @@
     [EAGLContext setCurrentContext:_context];
     
     static float time = 0;
-    time += displayLink.duration * attractorIndexes.count;
+    time += displayLink.duration * attractorIndexes.count*2;
     
     if(startVoice)
         [self changeTRMatrixFar];

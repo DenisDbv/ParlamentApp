@@ -12,6 +12,7 @@
 @interface ATTRactorManager : NSObject
 
 -(void) addAttractor:(ATTRactorObject*)attr_object;
+-(void) replaceAttractor:(ATTRactorObject*)attr_object byIndex:(NSInteger)index;
 
 -(void) attractorsRender:(GLuint)programHandle withTimeOffset:(CGFloat)timeOffset context:(EAGLContext*)context;
 
