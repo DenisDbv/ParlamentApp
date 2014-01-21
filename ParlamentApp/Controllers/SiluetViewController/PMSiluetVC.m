@@ -54,6 +54,12 @@
 {
     [super viewDidLoad];
     
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(orientationChanged:)
+     name:UIDeviceOrientationDidChangeNotification
+     object:[UIDevice currentDevice]];
+    
     finishTitle1.alpha = 0;
     finishTitle1.font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
     finishTitle1.backgroundColor = [UIColor clearColor];
@@ -108,6 +114,28 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void) orientationChanged:(NSNotification *)note
+{
+    PBJVision *vision = [PBJVision sharedInstance];
+    
+    UIDevice * device = note.object;
+    switch(device.orientation)
+    {
+        case UIDeviceOrientationLandscapeLeft:
+            NSLog(@"left");
+            [vision setCameraOrientation:PBJCameraOrientationLandscapeRight];
+            break;
+            
+        case UIDeviceOrientationLandscapeRight:
+            NSLog(@"right");
+            [vision setCameraOrientation:PBJCameraOrientationLandscapeLeft];
+            break;
+            
+        default:
+            break;
+    };
 }
 
 -(void) initPreviewView

@@ -177,7 +177,7 @@
     //NSString *_toEmail = [defaults objectForKey:@"_emailTO"];
     //if(_toEmail.length == 0) _toEmail = @"denisdbv@gmail.com";
     
-    testMsg.toEmail = [defaults objectForKey:@"_emailTO"]; //[defaults objectForKey:@"toEmail"];
+    testMsg.toEmail = [defaults objectForKey:@"_emailPhotoPersonTo"]; //[defaults objectForKey:@"toEmail"];
     testMsg.bccEmail = [defaults objectForKey:@"bccEmal"];
     testMsg.relayHost = [defaults objectForKey:@"_smtpFROM"];
     testMsg.requiresAuth = YES; //[[defaults objectForKey:@"requiresAuth"] boolValue];
