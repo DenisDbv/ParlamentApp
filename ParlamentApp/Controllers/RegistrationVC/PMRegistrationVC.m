@@ -420,7 +420,7 @@
         NSLog(@"%i years old", years);
         if (years < 18) {
             [self shakeIt:dateBirthField withDelta:-2.0];
-            return;
+            //return;
         }
     }
     
@@ -429,7 +429,10 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:nameField.titleField.text forKey:@"_firstname"];
     [userDefaults setObject:secondNameField.titleField.text forKey:@"_lastname"];
+    [userDefaults setObject:sexField.titleField.text forKey:@"_sex"];
+    [userDefaults setObject:phoneField.titleField.text forKey:@"_telephone"];
     [userDefaults setObject:emailField.titleField.text forKey:@"_emailTO"];
+    [userDefaults setObject:dateBirthField.titleField.text forKey:@"_birthday"];
     [userDefaults synchronize];
     
     //[[AppDelegateInstance() rippleViewController] closeRegistrationAndOpenApp];

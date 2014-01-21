@@ -37,6 +37,7 @@
     PMRegistrationFieldView *smtpFromView;
     PMRegistrationFieldView *passwordFromView;
     PMRegistrationFieldView *emailToView;
+    PMRegistrationFieldView *emailPhotoPersonView;
 }
 @synthesize activationButtonsArray;
 @synthesize registrationFormView, regValueSwitcher, regTitleLeft, regTitleRight;
@@ -111,6 +112,7 @@
     NSString *_emailTo = [userDefaults objectForKey:@"_emailTO"];
     
     NSString *_operatorEmail = [userDefaults objectForKey:@"_operatorEmail"];
+    NSString *_emailPhotoPersonTo = [userDefaults objectForKey:@"_emailPhotoPersonTo"];
     
     if(_emailFrom.length == 0 || _smtpFrom.length == 0 || _passwordFrom.length == 0)
     {
@@ -134,12 +136,19 @@
         [userDefaults setObject:_operatorEmail forKey:@"_operatorEmail"];
     }
     
+    if(_emailPhotoPersonTo.length == 0)
+    {
+        _emailPhotoPersonTo = @"denisdbv@gmail.com";
+        [userDefaults setObject:_emailPhotoPersonTo forKey:@"_emailPhotoPersonTo"];
+    }
+    
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     emailFromView.titleField.text = _emailFrom;
     smtpFromView.titleField.text = _smtpFrom;
     passwordFromView.titleField.text = _passwordFrom;
     emailToView.titleField.text = _operatorEmail;
+    emailPhotoPersonView.titleField.text = _emailPhotoPersonTo;
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -196,6 +205,7 @@
     [userSettings setObject:passwordFromView.titleField.text forKey:@"_passwordFROM"];
     
     [userSettings setObject:emailToView.titleField.text forKey:@"_operatorEmail"];
+    [userSettings setObject:emailPhotoPersonView.titleField.text forKey:@"_emailPhotoPersonTo"];
     
     [userSettings synchronize];
 }
@@ -248,7 +258,13 @@
     emailToView = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"" subTitle:@"EMAIL ОПЕРАТОРА" withType:nil];
     [customKeyboard4 setTextView:emailToView.titleField];
     [emailFormView addSubview:emailToView];
-    emailToView.frame = CGRectOffset(emailToView.frame, 650, emailFormView.center.y-(emailToView.frame.size.height/2));
+    emailToView.frame = CGRectOffset(emailToView.frame, 650, 250.0); //emailFormView.center.y-(emailToView.frame.size.height/2));
+    
+    PMCustomKeyboard *customKeyboard5 = [[PMCustomKeyboard alloc] init];
+    emailPhotoPersonView = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"" subTitle:@"EMAIL ФОТОГРАФА" withType:nil];
+    [customKeyboard5 setTextView:emailPhotoPersonView.titleField];
+    [emailFormView addSubview:emailPhotoPersonView];
+    emailPhotoPersonView.frame = CGRectOffset(emailPhotoPersonView.frame, 650, emailFormView.center.y-(emailPhotoPersonView.frame.size.height/2));
     
     emailTitleLeft.font = [UIFont fontWithName:@"MyriadPro-Cond" size:22.0];
     emailTitleLeft.backgroundColor = [UIColor clearColor];

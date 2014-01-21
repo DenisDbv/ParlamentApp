@@ -21,4 +21,11 @@
                    imageName:(NSString*)imageName
                      andText:(NSString*)text;
 
+-(void) sendMessageWithImage:(UIImage*)image imageName:(NSString*)imageName
+                    andTitle:(NSString*)title
+                     andText:(NSString*)text;
+
+-(void) sendMessageToPhotoPersonWithSubject:(NSString*)subject
+                                    andDesc:(NSString*)desc;
+
 @end

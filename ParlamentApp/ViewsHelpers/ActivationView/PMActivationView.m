@@ -124,6 +124,9 @@
         activationImageView.image = [[self imageDisableActivation] scaleProportionalToRetina];
     else
         activationImageView.image = [[self imageActivation] scaleProportionalToRetina];
+    
+    [activeButton setImage:activationImageView.image forState:UIControlStateNormal];
+    [activeButton setImage:activationImageView.image forState:UIControlStateHighlighted];
 }
 
 -(UIImage*) imageActivation

@@ -10,6 +10,8 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
 	<array>
+		<string>icon_152x152.png</string>
+		<string>icon_76x76.png</string>
 		<string>icon_29x29.png</string>
 		<string>icon_50x50.png</string>
 		<string>icon_58x58.png</string>

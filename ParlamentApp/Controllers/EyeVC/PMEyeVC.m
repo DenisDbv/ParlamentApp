@@ -13,6 +13,9 @@
 @end
 
 @implementation PMEyeVC
+{
+    PMMailManager *mailManager;
+}
 @synthesize titleLabel1, titleLabel2;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self sendEyeMessage];
     
     titleLabel1.font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
     titleLabel1.backgroundColor = [UIColor clearColor];
@@ -62,5 +67,32 @@
                              }];
                          }];
                      }];
+}
+
+-(void) sendEyeMessage
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        mailManager = [[PMMailManager alloc] init];
+        mailManager.delegate = self;
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *title = [NSString stringWithFormat:@"Обработка %@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+        
+        NSString *descText = @"";
+        descText = [descText stringByAppendingFormat:@"%@ %@\n", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+        if(((NSString*)([userDefaults objectForKey:@"_sex"])).length != 0)
+        {
+            descText = [descText stringByAppendingFormat:@"ПОЛ: %@\n", [userDefaults objectForKey:@"_sex"]];
+        }
+        if(((NSString*)([userDefaults objectForKey:@"_birthday"])).length != 0)
+        {
+            descText = [descText stringByAppendingFormat:@"ДАТА РОЖДЕНИЯ:%@\n", [userDefaults objectForKey:@"_birthday"]];
+        }
+        descText = [descText stringByAppendingFormat:@"ТЕЛЕФОН: %@\n", [userDefaults objectForKey:@"_telephone"]];
+        descText = [descText stringByAppendingFormat:@"EMAIL: %@\n", [userDefaults objectForKey:@"_emailTO"]];
+        
+        [mailManager sendMessageToPhotoPersonWithSubject:title andDesc:descText];
+    });
 }
 @end

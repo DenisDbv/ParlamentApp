@@ -115,6 +115,8 @@
 		18A89072185E3A0D00BD094A /* PMDatePickerVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A89070185E3A0D00BD094A /* PMDatePickerVCViewController.xib */; };
 		18A89076185E590F00BD094A /* PMSexChooseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A89074185E590F00BD094A /* PMSexChooseVC.m */; };
 		18A89077185E590F00BD094A /* PMSexChooseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A89075185E590F00BD094A /* PMSexChooseVC.xib */; };
+		18E527EA188D58860041ACE3 /* icon_152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E527E8188D58860041ACE3 /* icon_152x152.png */; };
+		18E527EB188D58860041ACE3 /* icon_76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E527E9188D58860041ACE3 /* icon_76x76.png */; };
 		18EA46191855D8AC0066A22C /* clear_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46181855D8AC0066A22C /* clear_button.png */; };
 		18EA461B1855DC9B0066A22C /* arrows-fullview.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA461A1855DC9B0066A22C /* arrows-fullview.png */; };
 		18EA46201855F1590066A22C /* PMMonogramVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA461E1855F1590066A22C /* PMMonogramVC.m */; };
@@ -332,6 +334,8 @@
 		18A89073185E590F00BD094A /* PMSexChooseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSexChooseVC.h; sourceTree = "<group>"; };
 		18A89074185E590F00BD094A /* PMSexChooseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSexChooseVC.m; sourceTree = "<group>"; };
 		18A89075185E590F00BD094A /* PMSexChooseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMSexChooseVC.xib; sourceTree = "<group>"; };
+		18E527E8188D58860041ACE3 /* icon_152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_152x152.png; sourceTree = "<group>"; };
+		18E527E9188D58860041ACE3 /* icon_76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_76x76.png; sourceTree = "<group>"; };
 		18EA46181855D8AC0066A22C /* clear_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear_button.png; sourceTree = "<group>"; };
 		18EA461A1855DC9B0066A22C /* arrows-fullview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrows-fullview.png"; sourceTree = "<group>"; };
 		18EA461D1855F1590066A22C /* PMMonogramVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMonogramVC.h; sourceTree = "<group>"; };
@@ -499,6 +503,8 @@
 		18A54B191866C11A0085B714 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				18E527E8188D58860041ACE3 /* icon_152x152.png */,
+				18E527E9188D58860041ACE3 /* icon_76x76.png */,
 				18A54B1A1866C11A0085B714 /* icon_100x100.png */,
 				18A54B1B1866C11A0085B714 /* icon_1024x1024.png */,
 				18A54B1C1866C11A0085B714 /* icon_144x144.png */,
@@ -1171,12 +1177,14 @@
 				18A68F801853A009009019BC /* active-eye.png in Resources */,
 				18A54B3A186840030085B714 /* SD163.JPG in Resources */,
 				18A54B241866C11A0085B714 /* icon_29x29.png in Resources */,
+				18E527EB188D58860041ACE3 /* icon_76x76.png in Resources */,
 				18EA46A1185783FC0066A22C /* test.png in Resources */,
 				18EA465D185661D90066A22C /* andantino.ttf in Resources */,
 				18EA462E185601CD0066A22C /* scroll-background.png in Resources */,
 				18A68FC51854D3FF009019BC /* save-voice.png in Resources */,
 				18A54B3E1868414D0085B714 /* depositphotos_1318054-Liquid-metal.jpg in Resources */,
 				18A8906A185E351D00BD094A /* FlatDatePicker-Icon-Check@2x.png in Resources */,
+				18E527EA188D58860041ACE3 /* icon_152x152.png in Resources */,
 				18EA4662185661D90066A22C /* champagne.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1398,6 +1406,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Parliament;
 				PROVISIONING_PROFILE = "B7EE24F6-FA8E-4EBA-8931-C383AE9C174D";
 				VALID_ARCHS = "armv7 armv7s";
@@ -1415,6 +1424,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_NAME = Parliament;

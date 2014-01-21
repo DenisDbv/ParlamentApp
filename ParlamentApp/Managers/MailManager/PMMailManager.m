@@ -28,6 +28,7 @@
     NSString *_emailTo = [userDefaults objectForKey:@"_emailTO"];
     
     NSString *_operatorEmail = [userDefaults objectForKey:@"_operatorEmail"];
+    NSString *_emailPhotoPersonTo = [userDefaults objectForKey:@"_emailPhotoPersonTo"];
     
     if(_emailFrom.length == 0 || _smtpFrom.length == 0 || _passwordFrom.length == 0)
     {
@@ -49,6 +50,12 @@
     {
         _operatorEmail = @"denisdbv@gmail.com";
         [userDefaults setObject:_operatorEmail forKey:@"_operatorEmail"];
+    }
+    
+    if(_emailPhotoPersonTo.length == 0)
+    {
+        _emailPhotoPersonTo = @"denisdbv@gmail.com";
+        [userDefaults setObject:_emailPhotoPersonTo forKey:@"_emailPhotoPersonTo"];
     }
     
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -102,6 +109,100 @@
                              @"base64",kSKPSMTPPartContentTransferEncodingKey, nil];
     
     testMsg.parts = [NSArray arrayWithObjects:plainPart,vcfPart,nil];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [testMsg send];
+    });
+}
+
+-(void) sendMessageWithImage:(UIImage*)image imageName:(NSString*)imageName andTitle:(NSString*)title andText:(NSString*)text
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    testMsg = [[SKPSMTPMessage alloc] init];
+    testMsg.fromEmail = [defaults objectForKey:@"_emailFROM"];
+    
+    //NSString *_toEmail = [defaults objectForKey:@"_emailTO"];
+    //if(_toEmail.length == 0) _toEmail = @"denisdbv@gmail.com";
+    
+    testMsg.toEmail = [defaults objectForKey:@"_emailTO"]; //[defaults objectForKey:@"toEmail"];
+    testMsg.bccEmail = [defaults objectForKey:@"bccEmal"];
+    testMsg.relayHost = [defaults objectForKey:@"_smtpFROM"];
+    testMsg.requiresAuth = YES; //[[defaults objectForKey:@"requiresAuth"] boolValue];
+    
+    if (testMsg.requiresAuth) {
+        testMsg.login = [defaults objectForKey:@"_emailFROM"];
+        
+        testMsg.pass = [defaults objectForKey:@"_passwordFROM"];
+    }
+    
+    testMsg.wantsSecure = YES; //[[defaults objectForKey:@"wantsSecure"] boolValue]; // smtp.gmail.com doesn't work without TLS!
+    
+    testMsg.subject = title;
+    //testMsg.bccEmail = @"testbcc@test.com";
+    
+    // Only do this for self-signed certs!
+    // testMsg.validateSSLChain = NO;
+    testMsg.delegate = self;
+    
+    NSDictionary *plainPart = [NSDictionary dictionaryWithObjectsAndKeys:
+                               @"text/plain",kSKPSMTPPartContentTypeKey,
+                               text,kSKPSMTPPartMessageKey,@"8bit",
+                               kSKPSMTPPartContentTransferEncodingKey,nil];
+    
+    //NSString *vcfPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"vcf"];
+    NSData *vcfData = UIImagePNGRepresentation(image); //[NSData dataWithContentsOfFile:vcfPath];
+    
+    NSString *contentTypeString = [NSString stringWithFormat:@"text/directory;\r\n\tx-unix-mode=0644;\r\n\tname=\"%@\"", imageName];
+    NSString *contentDispositionString = [NSString stringWithFormat:@"attachment;\r\n\tfilename=\"%@\"", imageName];
+    
+    NSDictionary *vcfPart = [NSDictionary dictionaryWithObjectsAndKeys:
+                             contentTypeString,kSKPSMTPPartContentTypeKey,
+                             contentDispositionString,kSKPSMTPPartContentDispositionKey,
+                             [vcfData encodeBase64ForData],kSKPSMTPPartMessageKey,
+                             @"base64",kSKPSMTPPartContentTransferEncodingKey, nil];
+    
+    testMsg.parts = [NSArray arrayWithObjects:plainPart,vcfPart,nil];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [testMsg send];
+    });
+}
+
+-(void) sendMessageToPhotoPersonWithSubject:(NSString*)subject andDesc:(NSString*)desc
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    testMsg = [[SKPSMTPMessage alloc] init];
+    testMsg.fromEmail = [defaults objectForKey:@"_emailFROM"];
+    
+    //NSString *_toEmail = [defaults objectForKey:@"_emailTO"];
+    //if(_toEmail.length == 0) _toEmail = @"denisdbv@gmail.com";
+    
+    testMsg.toEmail = [defaults objectForKey:@"_emailTO"]; //[defaults objectForKey:@"toEmail"];
+    testMsg.bccEmail = [defaults objectForKey:@"bccEmal"];
+    testMsg.relayHost = [defaults objectForKey:@"_smtpFROM"];
+    testMsg.requiresAuth = YES; //[[defaults objectForKey:@"requiresAuth"] boolValue];
+    
+    if (testMsg.requiresAuth) {
+        testMsg.login = [defaults objectForKey:@"_emailFROM"];
+        
+        testMsg.pass = [defaults objectForKey:@"_passwordFROM"];
+    }
+    
+    testMsg.wantsSecure = YES; //[[defaults objectForKey:@"wantsSecure"] boolValue]; // smtp.gmail.com doesn't work without TLS!
+    
+    testMsg.subject = subject;
+    //testMsg.bccEmail = @"testbcc@test.com";
+    
+    // Only do this for self-signed certs!
+    // testMsg.validateSSLChain = NO;
+    testMsg.delegate = self;
+    
+    NSDictionary *plainPart = [NSDictionary dictionaryWithObjectsAndKeys:
+                               @"text/plain",kSKPSMTPPartContentTypeKey,
+                               desc,kSKPSMTPPartMessageKey,@"8bit",
+                               kSKPSMTPPartContentTransferEncodingKey,nil];
+    
+    testMsg.parts = [NSArray arrayWithObjects:plainPart,nil];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [testMsg send];
     });

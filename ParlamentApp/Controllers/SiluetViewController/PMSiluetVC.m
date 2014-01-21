@@ -33,6 +33,8 @@
     
     UIView *imageContainer;
     ALAssetsLibrary *_assetLibrary;
+    
+    PMMailManager *mailManager;
 }
 @synthesize _photoDict;
 @synthesize _finalImage;
@@ -242,7 +244,8 @@
     
     [self tapAnimate:sender withBlock:nil];
     
-    [self imageProcessing];
+    //[self imageProcessing];
+    [self imageSend];
 }
 
 -(void) onFinishSavePhoto:(UIButton*)sender
@@ -471,6 +474,52 @@ void rgbToHSV(float rgb[3], float hsv[3])
             [self initFinishSaveButton];
         });
     });
+}
+
+-(void) imageSend
+{
+    UIImage *image = [_photoDict objectForKey:PBJVisionPhotoImageKey];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *title = [NSString stringWithFormat:@"Силуэт (%@ %@)", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+    
+    NSString *descText = @"";
+    descText = [descText stringByAppendingFormat:@"%@ %@\n", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+    if(((NSString*)([userDefaults objectForKey:@"_sex"])).length != 0)
+    {
+        descText = [descText stringByAppendingFormat:@"ПОЛ: %@\n", [userDefaults objectForKey:@"_sex"]];
+    }
+    if(((NSString*)([userDefaults objectForKey:@"_birthday"])).length != 0)
+    {
+        descText = [descText stringByAppendingFormat:@"ДАТА РОЖДЕНИЯ:%@\n", [userDefaults objectForKey:@"_birthday"]];
+    }
+    descText = [descText stringByAppendingFormat:@"ТЕЛЕФОН: %@\n", [userDefaults objectForKey:@"_telephone"]];
+    descText = [descText stringByAppendingFormat:@"EMAIL: %@\n", [userDefaults objectForKey:@"_emailTO"]];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        mailManager = [[PMMailManager alloc] init];
+        mailManager.delegate = self;
+        [mailManager sendMessageWithImage:image imageName:@"siluet.png" andTitle:title andText:descText];
+    });
+}
+
+-(void) mailSendSuccessfully
+{
+    [self performSelector:@selector(finishSavingSiluet) withObject:nil afterDelay:0.0];
+}
+
+-(void) mailSendFailed
+{
+    [self performSelector:@selector(finishSavingSiluet) withObject:nil afterDelay:0.0];
+}
+
+-(void) finishSavingSiluet
+{
+    [[PBJVision sharedInstance] stopPreview];
+    
+    finishTitle1.alpha = finishTitle2.alpha = finishTitle3.alpha = finishTitle4.alpha = finishTitle5.alpha = 1.0;
+    onBackToRootMenu.alpha = 1.0;
 }
 
 -(void) savePhotoToAlbum:(UIImage*)image completionBlock:(void (^)(void))block
