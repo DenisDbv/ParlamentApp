@@ -279,12 +279,16 @@
         NSString *text = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
         UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
         CGRect textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
+        CGFloat oneHeight = 0;
+        
         if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
         {
             //iOS 7
             
             NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
             CGSize size = [text sizeWithAttributes:att];
+            oneHeight = size.height;
+            
             textRect.origin.x = (paperSize.width - size.width)/2;
             textRect.origin.y = 120.0+attractorSnapshot.size.height+128.0;
             
@@ -294,6 +298,36 @@
         {
             //legacy support
             [text drawInRect:CGRectIntegral(textRect) withFont:font];
+        }
+        
+        text = @"The Art of Individuality*";
+        font = [UIFont fontWithName:@"MyriadPro-Cond" size:20.0];
+        textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
+        if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
+        {
+            //iOS 7
+            
+            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
+            CGSize size = [text sizeWithAttributes:att];
+            textRect.origin.x = (paperSize.width - size.width)/2;
+            textRect.origin.y = 120.0+attractorSnapshot.size.height+128.0+oneHeight+5.0;
+            
+            [text drawInRect:textRect withAttributes:att];
+        }
+        
+        text = @"*Индивидуальность как искусство";
+        font = [UIFont fontWithName:@"MyriadPro-Cond" size:15.0];
+        textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
+        if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
+        {
+            //iOS 7
+            
+            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
+            CGSize size = [text sizeWithAttributes:att];
+            textRect.origin.x = (paperSize.width - size.width)-10;
+            textRect.origin.y = paperSize.height-7-size.height;
+            
+            [text drawInRect:textRect withAttributes:att];
         }
         
         UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();

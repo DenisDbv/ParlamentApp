@@ -120,6 +120,33 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
     [super dealloc];
 }
 
+-(void) destroyObject
+{
+    NSLog(@"dealloc %@", self);
+    self.login = nil;
+    self.pass = nil;
+    self.relayHost = nil;
+    self.relayPorts = nil;
+    self.subject = nil;
+    self.fromEmail = nil;
+    self.toEmail = nil;
+	self.ccEmail = nil;
+	self.bccEmail = nil;
+    self.parts = nil;
+    self.inputString = nil;
+    
+    [inputStream release];
+    inputStream = nil;
+    
+    [outputStream release];
+    outputStream = nil;
+    
+    [self.connectTimer invalidate];
+    self.connectTimer = nil;
+    
+    [self stopWatchdog];
+}
+
 - (id)copyWithZone:(NSZone *)zone
 {
     SKPSMTPMessage *smtpMessageCopy = [[[self class] allocWithZone:zone] init];

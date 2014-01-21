@@ -58,7 +58,7 @@
     
     userSettings = [NSUserDefaults standardUserDefaults];
     
-    navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Активации", @"Регистрация", @"Сеть", nil]];
+    navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Механики", @"Регистрация", @"Сеть", nil]];
     navSC.thumb.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:1];
     navSC.height = 46;
     navSC.changeHandler = ^(NSUInteger newIndex) {

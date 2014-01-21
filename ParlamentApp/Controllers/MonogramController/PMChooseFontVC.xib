@@ -54,7 +54,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ДД" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VNJ-ba-j84">
-                    <rect key="frame" x="283" y="326" width="458" height="116"/>
+                    <rect key="frame" x="283" y="324" width="458" height="120"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="84"/>
                     <color key="textColor" red="0.84705882352941175" green="0.85882352941176465" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>

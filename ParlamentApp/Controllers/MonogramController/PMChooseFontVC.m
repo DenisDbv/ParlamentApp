@@ -356,14 +356,14 @@
     
     UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     myLabel.text = monogramLabel.text;
-    myLabel.font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:84.0*3];
+    myLabel.font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:84.0*2.5];
     myLabel.textColor = monogramLabel.textColor;
     myLabel.backgroundColor = [UIColor clearColor];
     myLabel.textAlignment = NSTextAlignmentCenter;
     myLabel.adjustsFontSizeToFitWidth = YES;
-    myLabel.minimumScaleFactor = 0.05;
+    myLabel.minimumScaleFactor = 0.5;
     [myLabel sizeToFit];
-    myLabel.frame = CGRectMake(0, 0, 571, myLabel.frame.size.height);
+    myLabel.frame = CGRectMake(0, 0, 571.0, myLabel.frame.size.height);
     
     UIGraphicsBeginImageContextWithOptions(myLabel.bounds.size, myLabel.opaque, 0.0);
     //CGContextTranslateCTM(UIGraphicsGetCurrentContext(), 0, myLabel.frame.size.height);
@@ -389,6 +389,24 @@
     NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
     UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
     CGRect textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
+    CGFloat oneHeight = 0;
+    if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
+    {
+        //iOS 7
+        
+        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor whiteColor]};
+        CGSize size = [names sizeWithAttributes:att];
+        oneHeight = size.height;
+        
+        textRect.origin.x = (paperSize.width - size.width)/2;
+        textRect.origin.y = 120.0+400.0;
+        
+        [names drawInRect:textRect withAttributes:att];
+    }
+    
+    names = @"The Art of Individuality*";
+    font = [UIFont fontWithName:@"MyriadPro-Cond" size:20.0];
+    textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
     if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
     {
         //iOS 7
@@ -396,7 +414,22 @@
         NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor whiteColor]};
         CGSize size = [names sizeWithAttributes:att];
         textRect.origin.x = (paperSize.width - size.width)/2;
-        textRect.origin.y = 120.0+400.0;
+        textRect.origin.y = 120.0+400.0+oneHeight+5.0;
+        
+        [names drawInRect:textRect withAttributes:att];
+    }
+    
+    names = @"*Индивидуальность как искусство";
+    font = [UIFont fontWithName:@"MyriadPro-Cond" size:15.0];
+    textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
+    if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
+    {
+        //iOS 7
+        
+        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor whiteColor]};
+        CGSize size = [names sizeWithAttributes:att];
+        textRect.origin.x = (paperSize.width - size.width)-10;
+        textRect.origin.y = paperSize.height-7-size.height;
         
         [names drawInRect:textRect withAttributes:att];
     }

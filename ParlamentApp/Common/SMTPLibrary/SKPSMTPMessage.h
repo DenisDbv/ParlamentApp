@@ -137,5 +137,6 @@ extern NSString *kSKPSMTPPartContentTransferEncodingKey;
 @property(nonatomic, assign) id <SKPSMTPMessageDelegate> delegate;
 
 - (BOOL)send;
+-(void) destroyObject;
 
 @end
