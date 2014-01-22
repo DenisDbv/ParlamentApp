@@ -216,6 +216,8 @@
     {
         [self.delegate mailSendSuccessfully];
     }
+    
+    testMsg = nil;
 }
 
 - (void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error
@@ -226,5 +228,7 @@
     {
         [self.delegate mailSendFailed];
     }
+    
+    testMsg = nil;
 }
 @end

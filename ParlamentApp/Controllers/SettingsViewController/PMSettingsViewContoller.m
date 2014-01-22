@@ -68,18 +68,23 @@
     [self.view addSubview:navSC];
     
     BOOL shortRegForm = [[userSettings objectForKey:@"ShortRegForm"] boolValue];
-    [regValueSwitcher setOnTintColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:1.00f]];
-    [regValueSwitcher setTintColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:1.00f]];
+    regValueSwitcher.delegate = self;
+    [regValueSwitcher setOnTintColor:[UIColor lightGrayColor]];//[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:1.00f]];
+    [regValueSwitcher setOffTintColor:[UIColor lightGrayColor]];//[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:1.00f]];
+    [regValueSwitcher setTintColor:[UIColor lightGrayColor]];//[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:1.00f]
+    [regValueSwitcher setThumbTintColor:[UIColor colorWithRed:11.0/255.0 green:23.0/255.0 blue:110.0/255.0 alpha:1.0]];
     [regValueSwitcher setOn:shortRegForm];
     
-    regTitleLeft.font = [UIFont fontWithName:@"MyriadPro-Cond" size:25.0];
+    regTitleLeft.font = [UIFont fontWithName:@"MyriadPro-Cond" size:20.0];
     regTitleLeft.backgroundColor = [UIColor clearColor];
     regTitleLeft.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
     regTitleLeft.textAlignment = NSTextAlignmentCenter;
-    regTitleRight.font = [UIFont fontWithName:@"MyriadPro-Cond" size:25.0];
+    regTitleRight.font = [UIFont fontWithName:@"MyriadPro-Cond" size:20.0];
     regTitleRight.backgroundColor = [UIColor clearColor];
     regTitleRight.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
     regTitleRight.textAlignment = NSTextAlignmentCenter;
+    
+    [self switchSetRightPosition:shortRegForm];
 
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.height;
@@ -376,6 +381,26 @@
     
     [userSettings setObject:[NSNumber numberWithBool:!activationStatus] forKey:activationName];
     [userSettings synchronize];
+}
+
+-(void) switchSetRightPosition:(BOOL)on
+{
+    if(on)
+    {
+        regTitleLeft.font = [UIFont fontWithName:@"MyriadPro-Cond" size:20.0];
+        regTitleRight.font = [UIFont fontWithName:@"MyriadPro-Cond" size:32.0];
+        
+        CGPoint location = regTitleRight.center;
+        [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+    }
+    else
+    {
+        regTitleLeft.font = [UIFont fontWithName:@"MyriadPro-Cond" size:32.0];
+        regTitleRight.font = [UIFont fontWithName:@"MyriadPro-Cond" size:20.0];
+        
+        CGPoint location = regTitleLeft.center;
+        [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+    }
 }
 
 - (void)keyboardWillShow:(NSNotification*)notification
