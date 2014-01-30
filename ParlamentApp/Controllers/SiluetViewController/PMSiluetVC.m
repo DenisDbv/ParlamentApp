@@ -203,7 +203,7 @@
         recaptureButton.alpha = 1.0;
         savePhoto.alpha = 1.0;
         recaptureButton.frame = CGRectMake(self.view.bounds.size.width - recaptureImage.size.width - 10, self.view.center.y-recaptureImage.size.height-10, recaptureImage.size.width, recaptureImage.size.height);
-        savePhoto.frame = CGRectMake(self.view.bounds.size.width - saveVoiceImage.size.width - 10, self.view.center.y+10, saveVoiceImage.size.width, saveVoiceImage.size.height);
+        savePhoto.frame = CGRectMake(self.view.bounds.size.width - saveVoiceImage.size.width - 19, self.view.center.y+10, saveVoiceImage.size.width, saveVoiceImage.size.height);
     } completion:^(BOOL finished) {
     }];
 }
@@ -261,6 +261,11 @@
 
 -(void) onSavePhoto:(UIButton*)sender
 {
+    UIImage *exitImage = [[UIImage imageNamed:@"close-voice.png"] scaleProportionalToRetina];
+    [recaptureButton addTarget:self action:@selector(exit) forControlEvents:UIControlEventTouchUpInside];
+    [recaptureButton setImage:exitImage forState:UIControlStateNormal];
+    [recaptureButton setImage:exitImage forState:UIControlStateHighlighted];
+    
     UIImage *clearImage = [[UIImage imageNamed:@"clear_button.png"] scaleProportionalToRetina];
     [sender setImage:clearImage forState:UIControlStateNormal];
     [sender setImage:clearImage forState:UIControlStateHighlighted];
@@ -274,6 +279,14 @@
     
     //[self imageProcessing];
     [self imageSend];
+}
+
+-(void) exit
+{
+    self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+    [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+        //
+    }];
 }
 
 -(void) onFinishSavePhoto:(UIButton*)sender

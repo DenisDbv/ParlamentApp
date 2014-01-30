@@ -37,7 +37,7 @@
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ЕСЛИ ВЫ НЕ ПОЛУЧИЛИ EMAIL В ТЕЧЕНИИ ЧАСА, ПОЖАЛУЙСТА, ОБРАТИТЕСЬ К ХОСТЕС САМОСТОЯТЕЛЬНО." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="273" translatesAutoresizingMaskIntoConstraints="NO" id="YeE-1I-J03">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ЕСЛИ ВЫ НЕ ПОЛУЧИЛИ EMAIL В ТЕЧЕНИЕ ЧАСА, ПОЖАЛУЙСТА, ОБРАТИТЕСЬ К ХОСТЕС САМОСТОЯТЕЛЬНО." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="273" translatesAutoresizingMaskIntoConstraints="NO" id="YeE-1I-J03">
                     <rect key="frame" x="398" y="428" width="273" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>

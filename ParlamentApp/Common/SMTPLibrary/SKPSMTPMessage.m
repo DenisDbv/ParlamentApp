@@ -696,6 +696,7 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
                         sendState = kSKPSMTPWaitingFromReply;
                         
                         NSString *mailFrom = server8bitMessages ? [NSString stringWithFormat:@"MAIL FROM:<%@> BODY=8BITMIME\r\n", fromEmail] : [NSString stringWithFormat:@"MAIL FROM:<%@>\r\n", fromEmail];
+                        
                         NSLog(@"C: %@", mailFrom);
                         if (CFWriteStreamWriteFully((CFWriteStreamRef)outputStream, (const uint8_t *)[mailFrom cStringUsingEncoding:NSASCIIStringEncoding], [mailFrom lengthOfBytesUsingEncoding:NSASCIIStringEncoding]) < 0)
                         {
@@ -876,7 +877,6 @@ NSString *kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTransfer
     [uuid release];
     
     [message appendFormat:@"From:%@\r\n", fromEmail];
-	
     
 	if ((self.toEmail != nil) && (![self.toEmail isEqualToString:@""])) 
     {

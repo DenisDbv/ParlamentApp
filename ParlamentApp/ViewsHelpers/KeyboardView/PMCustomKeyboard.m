@@ -7,8 +7,14 @@
 //
 
 #import "PMCustomKeyboard.h"
+#import "UIImage+UIImageFunctions.h"
+
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
 @implementation PMCustomKeyboard
+{
+    UIImageView *arrowUpDown;
+}
 @synthesize textView = _textView;
 
 #define kFont [UIFont fontWithName:@"MyriadPro-Cond" size:27]
@@ -16,6 +22,9 @@
 #define kChar @[ @"Й", @"Ц", @"У", @"К", @"Е", @"Н", @"Г", @"Ш", @"Щ", @"З", @"Х", @"Ъ", @"Ф", @"Ы", @"В", @"А", @"П", @"Р", @"О", @"Л", @"Д", @"Ж", @"Э", @"Я", @"Ч", @"С", @"М", @"И", @"Т", @"Ь", @"Б", @"Ю", @"-", @" " ]
 #define kCharEng @[ @"Q", @"W", @"E", @"R", @"T", @"Y", @"U", @"I", @"O", @"P", @"A", @"S", @"D", @"F", @"G", @"H", @"J", @"K", @"L", @"_", @"Z", @"X", @"C", @"V", @"B", @"N", @"M", @".", @"-", @"@", @" "]
 #define kNumberChar @[ @"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9"]
+
+#define kCharDown @[ @"й", @"ц", @"у", @"к", @"е", @"н", @"г", @"ш", @"щ", @"з", @"х", @"ъ", @"ф", @"ы", @"в", @"а", @"п", @"р", @"о", @"л", @"д", @"ж", @"э", @"я", @"ч", @"с", @"м", @"и", @"т", @"ь", @"б", @"ю", @"-", @" " ]
+#define kCharEngDown @[ @"q", @"w", @"e", @"r", @"t", @"y", @"u", @"i", @"o", @"p", @"a", @"s", @"d", @"f", @"g", @"h", @"j", @"k", @"l", @"_", @"z", @"x", @"c", @"v", @"b", @"n", @"m", @".", @"-", @"@", @" "]
 
 - (id)init {
     
@@ -37,6 +46,20 @@
     }
     
     self.isRu = YES;
+    self.isUP = YES;
+    
+    arrowUpDown = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"arrowUpDown.png"] scaleProportionalToRetina]];
+    arrowUpDown.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    arrowUpDown.center = self.upDownButton.center;
+    [self addSubview:arrowUpDown];
+    
+    CABasicAnimation *animation = [CABasicAnimation   animationWithKeyPath:@"transform.rotation.z"];
+    animation.additive = YES;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.fromValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(0)];
+    animation.toValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(180)];
+    [arrowUpDown.layer addAnimation:animation forKey:@"180rotation"];
 	
     [self loadCharactersWithArray:kChar];
     [self loadNumberCharactersWithArray:kNumberChar];
@@ -66,7 +89,12 @@
             [b.titleLabel setFont:kFont];
             
             UIEdgeInsets btnEdge = b.titleEdgeInsets;
-            btnEdge.top = 4;
+            
+            if(self.isUP)   {
+                btnEdge.top = 4;
+            } else  {
+                btnEdge.top = 0;
+            }
             [b setTitleEdgeInsets:btnEdge];
             
             [b addTarget:self action:@selector(characterPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -179,10 +207,38 @@
     [self flipCharacterButtons];
 }
 
+- (IBAction)upDownPressed:(id)sender
+{
+    self.isUP = !self.isUP;
+    
+    CABasicAnimation *animation = [CABasicAnimation   animationWithKeyPath:@"transform.rotation.z"];
+    animation.duration = 0.1f;
+    animation.additive = YES;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    
+    if(!self.isUP)  {
+        animation.fromValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(180)];
+        animation.toValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(0)];
+    } else  {
+        animation.fromValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(0)];
+        animation.toValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(180)];
+    }
+    
+    [arrowUpDown.layer addAnimation:animation forKey:@"180rotation"];
+    
+    [self loadCharactersWithArray:((self.isRu)?((self.isUP)?kChar:kCharDown):((self.isUP)?kCharEng:kCharEngDown))];
+}
+
 -(void) flipCharacterButtons
 {
     self.isRu = !self.isRu;
-    [self loadCharactersWithArray:((self.isRu)?kChar:kCharEng)];
+    
+    if(self.isUP)
+        [self loadCharactersWithArray:((self.isRu)?kChar:kCharEng)];
+    else
+        [self loadCharactersWithArray:((self.isRu)?kCharDown:kCharEngDown)];
+    
     [self refreshLanguageTitleOnButton];
     
     for (UIButton *b in self.characterKeys) {

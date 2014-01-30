@@ -25,3 +25,4 @@
 #import "PMCustomKeyboard.h"
 #import "PMMailManager.h"
 #import "PMTimeManager.h"
+#import "NSString+Enc.h"

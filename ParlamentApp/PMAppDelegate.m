@@ -33,6 +33,9 @@
     
     //[self showFontsList];
     
+    //PMMailManager *mailManager = [[PMMailManager alloc] init];
+    //[mailManager sendTestMessage];
+    
     return YES;
 }
 

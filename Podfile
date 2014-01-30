@@ -1,3 +1,7 @@
+platform :ios, '7.0'
+
+# Network
+pod "AFNetworking", "~> 2.0"
 
 # Interface
 pod 'MZFormSheetController'

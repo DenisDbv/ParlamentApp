@@ -10,6 +10,9 @@
 #import <CFNetwork/CFNetwork.h>
 #import "SKPSMTPMessage.h"
 #import "NSData+Base64Additions.h"
+#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/AFHTTPSessionManager.h>
+#import "NSData+Base64Additions.h"
 
 @interface PMMailManager() <UIApplicationDelegate, SKPSMTPMessageDelegate>
 @property (nonatomic, strong) SKPSMTPMessage *testMsg;
@@ -59,6 +62,75 @@
     }
     
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding {
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                 (CFStringRef)self,
+                                                                                 NULL,
+                                                                                 (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
+                                                                                 CFStringConvertNSStringEncodingToEncoding(encoding)));
+}
+
+-(void) sendTestMessage
+{
+    /*AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    /*NSDictionary *parameters = @{@"emailTo": [@"denisdbv@gmail.com" urlEncodeUsingEncoding:NSUTF8StringEncoding],
+                                 @"title": [@"title" urlEncodeUsingEncoding:NSUTF8StringEncoding],
+                                 @"text": [@"text" urlEncodeUsingEncoding:NSUTF8StringEncoding],
+                                 @"image": @"",
+                                 @"filename": @""};*/
+    
+   /* NSDictionary *parameters = @{@"emailTo": @"denisdbv@gmail.com",
+                                 @"title": @"title",
+                                 @"text": @"text",
+                                 @"image": @"",
+                                 @"filename": @""};
+    //[[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://brandmill.ru/sendparliament" parameters:parameters];
+    [manager POST:@"http://brandmill.ru/sendparliament" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        NSLog(@"%@", operation.responseString);
+    }];*/
+    
+    UIImage *image = [UIImage imageNamed:@"active-voice.png"];
+    NSData *imageData = UIImagePNGRepresentation(image);
+    NSString *imageString = [NSString stringWithFormat:@"%@", [imageData encodeBase64ForData]];
+    
+    NSDictionary *parameters = @{@"emailTo": @"denisdbv@gmail.com",
+                                 @"title": @"Привет Брендмилл!",
+                                 @"text": @"Тут текст",
+                                 @"image": imageString,
+                                 @"filename": @"file.png"};
+    
+     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"image/png"];
+    [manager POST:@"http://brandmill.ru/sendparliament/index.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) { //http://brandmill.ru/sendparliament
+        NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"responseString: %@", responseString);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        NSLog(@"%@", operation.responseString);
+    }];
+    
+    /*AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+    [manager POST:@"http://brandmill.ru/sendparliament/index.php" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
+    [formData appendPartWithFileData:UIImagePNGRepresentation(image)
+                                name:@"image"
+                            fileName:@"photo.png"
+                            mimeType:@"image/png"];
+    }
+          success:^(AFHTTPRequestOperation *operation, id responseObject){
+              NSLog(@"Success: %@", responseObject);
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error %@", operation.responseString);
+          }];*/
 }
 
 -(void) sendMessageWithImage:(UIImage*)image imageName:(NSString*)imageName andText:(NSString*)text

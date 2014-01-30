@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1822F60718916991009407D0 /* NSString+Enc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F60618916991009407D0 /* NSString+Enc.m */; };
+		1822F611189A51CB009407D0 /* button_up_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F60D189A51CB009407D0 /* button_up_down.png */; };
+		1822F612189A51CB009407D0 /* button_space.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F60E189A51CB009407D0 /* button_space.png */; };
+		1822F613189A51CB009407D0 /* button_key.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F60F189A51CB009407D0 /* button_key.png */; };
+		1822F614189A51CB009407D0 /* button_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F610189A51CB009407D0 /* button_delete.png */; };
+		1822F616189A66E8009407D0 /* button_ru_eng.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F615189A66E8009407D0 /* button_ru_eng.png */; };
+		1822F61A189A7201009407D0 /* arrowUpDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F619189A7201009407D0 /* arrowUpDown.png */; };
 		18A54AE7186025420085B714 /* PMMailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AE6186025420085B714 /* PMMailManager.m */; };
 		18A54AEA186032FA0085B714 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE8186032FA0085B714 /* test.vcf */; };
 		18A54AEB186032FA0085B714 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE9186032FA0085B714 /* Settings.bundle */; };
@@ -192,6 +199,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1822F60518916991009407D0 /* NSString+Enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Enc.h"; sourceTree = "<group>"; };
+		1822F60618916991009407D0 /* NSString+Enc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Enc.m"; sourceTree = "<group>"; };
+		1822F60D189A51CB009407D0 /* button_up_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_up_down.png; sourceTree = "<group>"; };
+		1822F60E189A51CB009407D0 /* button_space.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_space.png; sourceTree = "<group>"; };
+		1822F60F189A51CB009407D0 /* button_key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_key.png; sourceTree = "<group>"; };
+		1822F610189A51CB009407D0 /* button_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_delete.png; sourceTree = "<group>"; };
+		1822F615189A66E8009407D0 /* button_ru_eng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_ru_eng.png; sourceTree = "<group>"; };
+		1822F619189A7201009407D0 /* arrowUpDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowUpDown.png; sourceTree = "<group>"; };
 		18A54AE5186025420085B714 /* PMMailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailManager.h; sourceTree = "<group>"; };
 		18A54AE6186025420085B714 /* PMMailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMailManager.m; sourceTree = "<group>"; };
 		18A54AE8186032FA0085B714 /* test.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.vcf; sourceTree = "<group>"; };
@@ -835,6 +850,8 @@
 				18EA469B185766F20066A22C /* UIColor+HSVAdditions.m */,
 				18EA469D185767560066A22C /* UIColor+Expanded.h */,
 				18EA469E185767560066A22C /* UIColor+Expanded.m */,
+				1822F60518916991009407D0 /* NSString+Enc.h */,
+				1822F60618916991009407D0 /* NSString+Enc.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -962,6 +979,12 @@
 		18EA46AC185960BC0066A22C /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				1822F619189A7201009407D0 /* arrowUpDown.png */,
+				1822F615189A66E8009407D0 /* button_ru_eng.png */,
+				1822F60D189A51CB009407D0 /* button_up_down.png */,
+				1822F60E189A51CB009407D0 /* button_space.png */,
+				1822F60F189A51CB009407D0 /* button_key.png */,
+				1822F610189A51CB009407D0 /* button_delete.png */,
 				18EA46AD1859610C0066A22C /* button-key.png */,
 				18EA46AE1859610C0066A22C /* delete.png */,
 			);
@@ -1104,6 +1127,7 @@
 				18EA46191855D8AC0066A22C /* clear_button.png in Resources */,
 				18EA4656185661D90066A22C /* veron.png in Resources */,
 				18EA46AF1859610C0066A22C /* button-key.png in Resources */,
+				1822F616189A66E8009407D0 /* button_ru_eng.png in Resources */,
 				18A68F9D18546DD3009019BC /* active-monogram-disable.png in Resources */,
 				18EA46AB18595F0C0066A22C /* PMCustomKeyboard.xib in Resources */,
 				18A89061185E323600BD094A /* popover-arrow-red.png in Resources */,
@@ -1128,6 +1152,7 @@
 				18EA465E185661D90066A22C /* annabel.ttf in Resources */,
 				18A54B081862224A0085B714 /* siluet-save.png in Resources */,
 				18A54B17186278680085B714 /* popover-background-red_2.png in Resources */,
+				1822F612189A51CB009407D0 /* button_space.png in Resources */,
 				18A84CA71851E04D00612BE5 /* PMSettingsViewContoller.xib in Resources */,
 				18A84C9B1851D56500612BE5 /* background.png in Resources */,
 				18A54B341867789A0085B714 /* content.png in Resources */,
@@ -1143,6 +1168,7 @@
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
 				18A54B3818677DB40085B714 /* arrow.png in Resources */,
 				18A54B071862224A0085B714 /* siluet-photo-make.png in Resources */,
+				1822F614189A51CB009407D0 /* button_delete.png in Resources */,
 				18EA46B01859610C0066A22C /* delete.png in Resources */,
 				18EA46261855F23E0066A22C /* initial-textinput.png in Resources */,
 				18A54B221866C11A0085B714 /* icon_1024x1024.png in Resources */,
@@ -1159,6 +1185,7 @@
 				18EA4650185661D90066A22C /* alexandr.png in Resources */,
 				18EA465B185661D90066A22C /* alexandr.ttf in Resources */,
 				18EA4664185661D90066A22C /* dolphian.TTF in Resources */,
+				1822F61A189A7201009407D0 /* arrowUpDown.png in Resources */,
 				18A68F9218546058009019BC /* settings-close.png in Resources */,
 				18EA4663185661D90066A22C /* comfortaa.ttf in Resources */,
 				18A54B061862224A0085B714 /* siluet-back.png in Resources */,
@@ -1173,12 +1200,14 @@
 				18EA46B31859AE520066A22C /* reg-field.png in Resources */,
 				18EA464B185661D90066A22C /* adineki.png in Resources */,
 				18A84CB11852047700612BE5 /* PMVoiceVisualizationVC.xib in Resources */,
+				1822F611189A51CB009407D0 /* button_up_down.png in Resources */,
 				18A54B251866C11A0085B714 /* icon_50x50.png in Resources */,
 				18A68F801853A009009019BC /* active-eye.png in Resources */,
 				18A54B3A186840030085B714 /* SD163.JPG in Resources */,
 				18A54B241866C11A0085B714 /* icon_29x29.png in Resources */,
 				18E527EB188D58860041ACE3 /* icon_76x76.png in Resources */,
 				18EA46A1185783FC0066A22C /* test.png in Resources */,
+				1822F613189A51CB009407D0 /* button_key.png in Resources */,
 				18EA465D185661D90066A22C /* andantino.ttf in Resources */,
 				18EA462E185601CD0066A22C /* scroll-background.png in Resources */,
 				18A68FC51854D3FF009019BC /* save-voice.png in Resources */,
@@ -1274,6 +1303,7 @@
 				18A68FB6185484A6009019BC /* Novocaine.m in Sources */,
 				18A68FBA185484A6009019BC /* ATTRactorView.m in Sources */,
 				18EA4688185734EC0066A22C /* PMSiluetVC.m in Sources */,
+				1822F60718916991009407D0 /* NSString+Enc.m in Sources */,
 				18EA469018573E500066A22C /* RippleShader.fsh in Sources */,
 				18EA469F185767560066A22C /* UIColor+Expanded.m in Sources */,
 				18A68FB3185484A6009019BC /* ATTRactorObject.m in Sources */,
@@ -1408,7 +1438,7 @@
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Parliament;
-				PROVISIONING_PROFILE = "B7EE24F6-FA8E-4EBA-8931-C383AE9C174D";
+				PROVISIONING_PROFILE = "6E98989C-65CA-487C-9E38-68F3A671C0F3";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1428,7 +1458,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_NAME = Parliament;
-				PROVISIONING_PROFILE = "B7EE24F6-FA8E-4EBA-8931-C383AE9C174D";
+				PROVISIONING_PROFILE = "6E98989C-65CA-487C-9E38-68F3A671C0F3";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

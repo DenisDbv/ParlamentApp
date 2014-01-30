@@ -15,11 +15,14 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *numberKeys;
 @property (strong, nonatomic) IBOutlet UIButton *deleteButton;
 @property (strong, nonatomic) IBOutlet UIButton *languageButton;
+@property (strong, nonatomic) IBOutlet UIButton *upDownButton;
 @property (strong) id<UITextInput> textView;
 
 @property (nonatomic, assign) BOOL isRu;
+@property (nonatomic, assign) BOOL isUP;
 
 - (IBAction)deletePressed:(id)sender;
 - (IBAction)languagePressed:(id)sender;
+- (IBAction)upDownPressed:(id)sender;
 
 @end

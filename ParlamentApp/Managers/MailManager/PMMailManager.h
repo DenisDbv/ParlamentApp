@@ -28,4 +28,6 @@
 -(void) sendMessageToPhotoPersonWithSubject:(NSString*)subject
                                     andDesc:(NSString*)desc;
 
+-(void) sendTestMessage;
+
 @end
