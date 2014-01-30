@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PMChooseFontVC">
             <connections>
+                <outlet property="blueLineImageView" destination="itM-UL-rrZ" id="yMX-hR-a5v"/>
                 <outlet property="carousel" destination="Kwl-se-kTc" id="Avv-1V-emE"/>
                 <outlet property="carouselContainer" destination="rwK-7M-wa4" id="iVq-zR-lZR"/>
                 <outlet property="closeBtn" destination="and-q8-4pE" id="2WM-De-iWo"/>
@@ -60,7 +61,7 @@
                     <color key="textColor" red="0.84705882352941175" green="0.85882352941176465" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВИЗУАЛИЗАЦИЯ ВАШЕЙ МОНОГРАММЫ УСПЕШНА СОХРАНЕНА" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ixl-Cz-COi">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВИЗУАЛИЗАЦИЯ ВАШЕЙ МОНОГРАММЫ УСПЕШНА СОХРАНЕНА И ОТПРАВЛЕНА ВАМ НА ЭЛЕКТРОННУЮ ПОЧТУ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ixl-Cz-COi">
                     <rect key="frame" x="204" y="236" width="604" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>

@@ -21,47 +21,53 @@
 @implementation PMMailManager
 @synthesize testMsg;
 
-+ (void)initialize {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//+ (void)initialize {
+-(id) init  {
     
-    NSString *_emailFrom = [userDefaults objectForKey:@"_emailFROM"];
-    NSString *_smtpFrom = [userDefaults objectForKey:@"_smtpFROM"];
-    NSString *_passwordFrom = [userDefaults objectForKey:@"_passwordFROM"];
-    
-    NSString *_emailTo = [userDefaults objectForKey:@"_emailTO"];
-    
-    NSString *_operatorEmail = [userDefaults objectForKey:@"_operatorEmail"];
-    NSString *_emailPhotoPersonTo = [userDefaults objectForKey:@"_emailPhotoPersonTo"];
-    
-    if(_emailFrom.length == 0 || _smtpFrom.length == 0 || _passwordFrom.length == 0)
-    {
-        _emailFrom = @"art.individuality@gmail.com";
-        _smtpFrom = @"smtp.gmail.com";
-        _passwordFrom = @"QazWsx1234";
-        [userDefaults setObject:_emailFrom forKey:@"_emailFROM"];
-        [userDefaults setObject:_smtpFrom forKey:@"_smtpFROM"];
-        [userDefaults setObject:_passwordFrom forKey:@"_passwordFROM"];
+    if (self = [super init]) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        
+        NSString *_emailFrom = [userDefaults objectForKey:@"_emailFROM"];
+        NSString *_smtpFrom = [userDefaults objectForKey:@"_smtpFROM"];
+        NSString *_passwordFrom = [userDefaults objectForKey:@"_passwordFROM"];
+        
+        NSString *_emailTo = [userDefaults objectForKey:@"_emailTO"];
+        
+        NSString *_operatorEmail = [userDefaults objectForKey:@"_operatorEmail"];
+        NSString *_emailPhotoPersonTo = [userDefaults objectForKey:@"_emailPhotoPersonTo"];
+        
+        if(_emailFrom.length == 0 || _smtpFrom.length == 0 || _passwordFrom.length == 0)
+        {
+            _emailFrom = @"art.individuality@gmail.com";
+            _smtpFrom = @"smtp.gmail.com";
+            _passwordFrom = @"QazWsx1234";
+            [userDefaults setObject:_emailFrom forKey:@"_emailFROM"];
+            [userDefaults setObject:_smtpFrom forKey:@"_smtpFROM"];
+            [userDefaults setObject:_passwordFrom forKey:@"_passwordFROM"];
+        }
+        
+        if(_emailTo.length == 0)
+        {
+            _emailTo = @"denisdbv@gmail.com";
+            [userDefaults setObject:_emailTo forKey:@"_emailTO"];
+        }
+        
+        if(_operatorEmail.length == 0)
+        {
+            _operatorEmail = @"denisdbv@gmail.com";
+            [userDefaults setObject:_operatorEmail forKey:@"_operatorEmail"];
+        }
+        
+        if(_emailPhotoPersonTo.length == 0)
+        {
+            _emailPhotoPersonTo = @"denisdbv@gmail.com";
+            [userDefaults setObject:_emailPhotoPersonTo forKey:@"_emailPhotoPersonTo"];
+        }
+        
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
-    if(_emailTo.length == 0)
-    {
-        _emailTo = @"denisdbv@gmail.com";
-        [userDefaults setObject:_emailTo forKey:@"_emailTO"];
-    }
-    
-    if(_operatorEmail.length == 0)
-    {
-        _operatorEmail = @"denisdbv@gmail.com";
-        [userDefaults setObject:_operatorEmail forKey:@"_operatorEmail"];
-    }
-    
-    if(_emailPhotoPersonTo.length == 0)
-    {
-        _emailPhotoPersonTo = @"denisdbv@gmail.com";
-        [userDefaults setObject:_emailPhotoPersonTo forKey:@"_emailPhotoPersonTo"];
-    }
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    return self;
 }
 
 -(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding {
@@ -131,6 +137,58 @@
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
               NSLog(@"Error %@", operation.responseString);
           }];*/
+}
+
+-(void) sendMessageWithTitle:(NSString*)title
+                      text:(NSString*)text
+                     image:(UIImage*)image
+                  filename:(NSString*)filename
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    NSString *imageString;
+    
+    if(image != nil)    {
+        NSData *imageData = UIImagePNGRepresentation(image);
+        imageString = [NSString stringWithFormat:@"%@", [imageData encodeBase64ForData]];
+    } else  {
+        imageString = @"";
+        filename = @"";
+    }
+    
+    //imageString = @"";
+    //imageString = [imageString substringToIndex:imageString.length/2];
+    
+    NSDictionary *parameters = @{@"emailTo": [defaults objectForKey:@"_emailTO"],
+                                 @"title": title,
+                                 @"text": text,
+                                 @"image": imageString,
+                                 @"filename": filename};
+    
+    //NSLog(@"==>%@", [parameters objectForKey:@"emailTo"] );
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager POST:@"http://brandmill.ru/sendparliament/index.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        
+        if(responseString.length < 10000)
+            NSLog(@"responseString: %@", responseString);
+        
+        if([self.delegate respondsToSelector:@selector(mailSendSuccessfully)])
+        {
+            [self.delegate mailSendSuccessfully];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        NSLog(@"%@", operation.responseString);
+        
+        if([self.delegate respondsToSelector:@selector(mailSendFailed)])
+        {
+            [self.delegate mailSendFailed];
+        }
+    }];
 }
 
 -(void) sendMessageWithImage:(UIImage*)image imageName:(NSString*)imageName andText:(NSString*)text

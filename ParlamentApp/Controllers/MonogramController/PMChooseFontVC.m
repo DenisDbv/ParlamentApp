@@ -136,7 +136,8 @@
        
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = self;
-        [mailManager sendMessageWithImage:img imageName:@"monogram.png" andText:@"Монограмма"];
+        //[mailManager sendMessageWithImage:img imageName:@"monogram.png" andText:@"Монограмма"];
+        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Монограмма" image:img filename:@"monogram.png"];
     });
 }
 
@@ -152,6 +153,8 @@
 
 -(void) finishSavingMonogram
 {
+    self.blueLineImageView.hidden = YES;
+    
     [saveIndicator stopAnimating];
     [saveIndicator removeFromSuperview];
     

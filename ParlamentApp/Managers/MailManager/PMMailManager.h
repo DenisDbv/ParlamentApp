@@ -29,5 +29,9 @@
                                     andDesc:(NSString*)desc;
 
 -(void) sendTestMessage;
+-(void) sendMessageWithTitle:(NSString*)title
+                         text:(NSString*)text
+                        image:(UIImage*)image
+                     filename:(NSString*)filename;
 
 @end

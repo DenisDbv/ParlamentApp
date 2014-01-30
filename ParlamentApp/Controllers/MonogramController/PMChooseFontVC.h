@@ -25,6 +25,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *finishTitle4;
 @property (strong, nonatomic) IBOutlet UILabel *finishTitle5;
 
+@property (nonatomic, strong) IBOutlet UIImageView *blueLineImageView;
+
 -(id) initWithInitials:(NSString*)initials;
 
 @end

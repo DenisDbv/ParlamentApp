@@ -229,7 +229,8 @@
     NSLog(@"%@", NSStringFromCGSize(attractorView.snapshotImage.size));
     mailManager = [[PMMailManager alloc] init];
     mailManager.delegate = self;
-    [mailManager sendMessageWithImage:attractorView.snapshotImage imageName:@"voice.png" andText:@"Изображение голоса"];
+    //[mailManager sendMessageWithImage:attractorView.snapshotImage imageName:@"voice.png" andText:@"Изображение голоса"];
+    [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:attractorView.snapshotImage filename:@"voice.png"];
 }
 
 -(void) mailSendSuccessfully
@@ -354,7 +355,8 @@
         
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = self;
-        [mailManager sendMessageWithImage:resultingImage imageName:@"voice.png" andText:@"Изображение голоса"];
+        //[mailManager sendMessageWithImage:resultingImage imageName:@"voice.png" andText:@"Изображение голоса"];
+        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
 
         /*UIImageView *imgView = [[UIImageView alloc] initWithImage:resultingImage];
         imgView.frame = CGRectOffset(imgView.frame, 0, 0);

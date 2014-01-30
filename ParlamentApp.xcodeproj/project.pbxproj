@@ -14,6 +14,8 @@
 		1822F614189A51CB009407D0 /* button_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F610189A51CB009407D0 /* button_delete.png */; };
 		1822F616189A66E8009407D0 /* button_ru_eng.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F615189A66E8009407D0 /* button_ru_eng.png */; };
 		1822F61A189A7201009407D0 /* arrowUpDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F619189A7201009407D0 /* arrowUpDown.png */; };
+		1822F61E189A78F5009407D0 /* settings-close.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F61D189A78F5009407D0 /* settings-close.png */; };
+		1822F620189A7913009407D0 /* settings-close-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F61F189A7913009407D0 /* settings-close-small.png */; };
 		18A54AE7186025420085B714 /* PMMailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AE6186025420085B714 /* PMMailManager.m */; };
 		18A54AEA186032FA0085B714 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE8186032FA0085B714 /* test.vcf */; };
 		18A54AEB186032FA0085B714 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE9186032FA0085B714 /* Settings.bundle */; };
@@ -64,7 +66,6 @@
 		18A68F8A1853ABEC009019BC /* PMActivationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F891853ABEC009019BC /* PMActivationView.m */; };
 		18A68F8D1853AD89009019BC /* UIImage+UIImageFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A68F8C1853AD89009019BC /* UIImage+UIImageFunctions.m */; };
 		18A68F901853BF52009019BC /* MyriadPro-Cond.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F8F1853BF52009019BC /* MyriadPro-Cond.otf */; };
-		18A68F9218546058009019BC /* settings-close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F9118546058009019BC /* settings-close.png */; };
 		18A68F981854682E009019BC /* active-eye-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F941854682E009019BC /* active-eye-disable.png */; };
 		18A68F991854682E009019BC /* active-finger-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F951854682E009019BC /* active-finger-disable.png */; };
 		18A68F9A1854682E009019BC /* active-siluet-disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A68F961854682E009019BC /* active-siluet-disable.png */; };
@@ -207,6 +208,8 @@
 		1822F610189A51CB009407D0 /* button_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_delete.png; sourceTree = "<group>"; };
 		1822F615189A66E8009407D0 /* button_ru_eng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_ru_eng.png; sourceTree = "<group>"; };
 		1822F619189A7201009407D0 /* arrowUpDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowUpDown.png; sourceTree = "<group>"; };
+		1822F61D189A78F5009407D0 /* settings-close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-close.png"; sourceTree = "<group>"; };
+		1822F61F189A7913009407D0 /* settings-close-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-close-small.png"; sourceTree = "<group>"; };
 		18A54AE5186025420085B714 /* PMMailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailManager.h; sourceTree = "<group>"; };
 		18A54AE6186025420085B714 /* PMMailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMailManager.m; sourceTree = "<group>"; };
 		18A54AE8186032FA0085B714 /* test.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.vcf; sourceTree = "<group>"; };
@@ -271,7 +274,6 @@
 		18A68F8B1853AD89009019BC /* UIImage+UIImageFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImageFunctions.h"; sourceTree = "<group>"; };
 		18A68F8C1853AD89009019BC /* UIImage+UIImageFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImageFunctions.m"; sourceTree = "<group>"; };
 		18A68F8F1853BF52009019BC /* MyriadPro-Cond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Cond.otf"; sourceTree = "<group>"; };
-		18A68F9118546058009019BC /* settings-close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-close.png"; sourceTree = "<group>"; };
 		18A68F941854682E009019BC /* active-eye-disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-eye-disable.png"; sourceTree = "<group>"; };
 		18A68F951854682E009019BC /* active-finger-disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-finger-disable.png"; sourceTree = "<group>"; };
 		18A68F961854682E009019BC /* active-siluet-disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-siluet-disable.png"; sourceTree = "<group>"; };
@@ -564,8 +566,9 @@
 		18A68F791853A009009019BC /* RootMenu */ = {
 			isa = PBXGroup;
 			children = (
+				1822F61F189A7913009407D0 /* settings-close-small.png */,
+				1822F61D189A78F5009407D0 /* settings-close.png */,
 				18A54B09186224B50085B714 /* exit.png */,
-				18A68F9118546058009019BC /* settings-close.png */,
 				18A68F7A1853A009009019BC /* active-eye.png */,
 				18A68F7B1853A009009019BC /* active-finger.png */,
 				18A68F7C1853A009009019BC /* active-monogram.png */,
@@ -1140,6 +1143,7 @@
 				18A68FC41854D3FF009019BC /* reset-voice.png in Resources */,
 				18A89069185E351D00BD094A /* FlatDatePicker-Icon-Check.png in Resources */,
 				18A54B2E1866FC300085B714 /* seperate.png in Resources */,
+				1822F61E189A78F5009407D0 /* settings-close.png in Resources */,
 				18A68F851853A009009019BC /* settings.png in Resources */,
 				18A68F981854682E009019BC /* active-eye-disable.png in Resources */,
 				18EA465C185661D90066A22C /* ampir.ttf in Resources */,
@@ -1186,13 +1190,13 @@
 				18EA465B185661D90066A22C /* alexandr.ttf in Resources */,
 				18EA4664185661D90066A22C /* dolphian.TTF in Resources */,
 				1822F61A189A7201009407D0 /* arrowUpDown.png in Resources */,
-				18A68F9218546058009019BC /* settings-close.png in Resources */,
 				18EA4663185661D90066A22C /* comfortaa.ttf in Resources */,
 				18A54B061862224A0085B714 /* siluet-back.png in Resources */,
 				18A68FB8185484A6009019BC /* ifs_fragment.glsl in Resources */,
 				18A8906C185E351D00BD094A /* FlatDatePicker-Icon-Close@2x.png in Resources */,
 				18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */,
 				18A68F991854682E009019BC /* active-finger-disable.png in Resources */,
+				1822F620189A7913009407D0 /* settings-close-small.png in Resources */,
 				18EA466C1856FE7E0066A22C /* PMFingerVC.xib in Resources */,
 				18A54B0A186224B50085B714 /* exit.png in Resources */,
 				18A54B261866C11A0085B714 /* icon_58x58.png in Resources */,

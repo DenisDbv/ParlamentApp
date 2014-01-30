@@ -410,12 +410,14 @@
     PMSiluetVC *siluetVC = [[PMSiluetVC alloc] initWithNibName:@"PMSiluetVC" bundle:[NSBundle mainBundle]];
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:siluetVC];
     formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+    formSheet.landscapeTopInset = 0.0f;
     __weak id wself = self;
     formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
         [wself showAllContext];
     };
     [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
-        
+        //NSLog(@"%@",NSStringFromCGRect(formSheetController.view.frame));
+        //formSheetController.view.frame = CGRectOffset(formSheetController.view.frame, 5, 0);
     }];
 }
 

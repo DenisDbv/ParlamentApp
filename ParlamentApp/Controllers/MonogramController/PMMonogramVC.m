@@ -44,11 +44,62 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     onClose.alpha = onFurther.alpha = initialContainerView.alpha = titleLabel.alpha = 1.0;
+    
+    [self addKeyboardNotifications];
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [self removeKeyboardNotifications];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - UIKeyboard Notifications
+
+- (void)willShowKeyboardNotification:(NSNotification *)notification
+{
+    CGRect screenRect = [[notification userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.frame = CGRectOffset(self.view.frame, 0, -50);
+    }];
+}
+
+- (void)willHideKeyboardNotification:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.frame = CGRectOffset(self.view.frame, 0, 50);
+    }];
+}
+
+- (void)addKeyboardNotifications
+{
+    [self removeKeyboardNotifications];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(willShowKeyboardNotification:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(willHideKeyboardNotification:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)removeKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
 }
 
 - (IBAction)onTapClose:(UIButton*)sender

@@ -131,6 +131,7 @@
         case UIDeviceOrientationLandscapeRight:
             NSLog(@"right");
             [vision setCameraOrientation:PBJCameraOrientationLandscapeLeft];
+
             break;
             
         default:
@@ -519,6 +520,9 @@ void rgbToHSV(float rgb[3], float hsv[3])
 
 -(void) imageSend
 {
+    mailManager = [[PMMailManager alloc] init];
+    mailManager.delegate = self;
+    
     UIImage *image = [_photoDict objectForKey:PBJVisionPhotoImageKey];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -538,10 +542,8 @@ void rgbToHSV(float rgb[3], float hsv[3])
     descText = [descText stringByAppendingFormat:@"EMAIL: %@\n", [userDefaults objectForKey:@"_emailTO"]];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        mailManager = [[PMMailManager alloc] init];
-        mailManager.delegate = self;
-        [mailManager sendMessageWithImage:image imageName:@"siluet.png" andTitle:title andText:descText];
+        //[mailManager sendMessageWithImage:image imageName:@"siluet.png" andTitle:title andText:descText];
+        [mailManager sendMessageWithTitle:title text:descText image:image filename:@"siluet.png"];
     });
 }
 

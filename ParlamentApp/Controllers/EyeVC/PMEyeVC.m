@@ -92,7 +92,8 @@
         descText = [descText stringByAppendingFormat:@"ТЕЛЕФОН: %@\n", [userDefaults objectForKey:@"_telephone"]];
         descText = [descText stringByAppendingFormat:@"EMAIL: %@\n", [userDefaults objectForKey:@"_emailTO"]];
         
-        [mailManager sendMessageToPhotoPersonWithSubject:title andDesc:descText];
+        //[mailManager sendMessageToPhotoPersonWithSubject:title andDesc:descText];
+        [mailManager sendMessageWithTitle:title text:descText image:nil filename:@""];
     });
 }
 @end
