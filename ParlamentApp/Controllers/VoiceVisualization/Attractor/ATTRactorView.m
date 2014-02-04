@@ -393,7 +393,8 @@ static int attrIndex = 0;
     //glBlendFunc(GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA);
     glBlendFunc(GL_SRC_COLOR, GL_ONE_MINUS_SRC_COLOR);
     
-    glClearColor(1.0,1.0,1.0,1.0);
+    glClearColor(1.0, 1.0, 1.0, 0.0);
+    //glClearColor(0.0, 0.0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);

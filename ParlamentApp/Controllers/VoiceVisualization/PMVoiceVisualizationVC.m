@@ -353,7 +353,7 @@
          UIGraphicsEndImageContext();
          */
         
-        mailManager = [[PMMailManager alloc] init];
+       /* mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = self;
         //[mailManager sendMessageWithImage:resultingImage imageName:@"voice.png" andText:@"Изображение голоса"];
         [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
@@ -362,6 +362,135 @@
         imgView.frame = CGRectOffset(imgView.frame, 0, 0);
         [self.view addSubview:imgView];*/
     }
+    
+    [self initResultImage];
+}
+
+-(void) initResultImage
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        UIImage *backgroundImage = [UIImage imageNamed:@"back_2.png"];
+        CGRect backgroundRect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
+        CGRect figureRect = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, 250, backgroundImage.size.width - 110, 530);
+        
+        UIGraphicsBeginImageContextWithOptions(backgroundImage.size, NO, 0.0);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextDrawImage(context, backgroundRect, backgroundImage.CGImage);
+        
+        [attractorSnapshot drawInRect:figureRect];
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+        UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:40.0];
+        CGRect textRect = CGRectMake(0, 0, backgroundRect.size.width, backgroundRect.size.height);
+        CGFloat oneHeight = 0;
+        if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
+        {
+            //iOS 7
+            
+            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5]};
+            CGSize size = [names sizeWithAttributes:att];
+            oneHeight = size.height;
+            
+            textRect.origin.x = (backgroundRect.size.width - size.width)/2;
+            textRect.origin.y = figureRect.origin.y + figureRect.size.height + 40;
+            
+            [names drawInRect:textRect withAttributes:att];
+        }
+        
+        UIImage *logoImage = [UIImage imageNamed:@"the-art-text.png"];
+        [logoImage drawInRect:CGRectMake((backgroundRect.size.width-logoImage.size.width)/2, textRect.origin.y + oneHeight + 20, logoImage.size.width, logoImage.size.height)];
+        
+        names = @"*Индивидуальность как искусство";
+        font = [UIFont fontWithName:@"MyriadPro-Cond" size:16.0];
+        textRect = backgroundRect;
+        if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
+        {
+            //iOS 7
+            
+            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5]};
+            CGSize size = [names sizeWithAttributes:att];
+            textRect.origin.x = (backgroundRect.size.width - size.width)-10;
+            textRect.origin.y = backgroundRect.size.height-20-size.height;
+            
+            [names drawInRect:textRect withAttributes:att];
+        }
+        
+        UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        mailManager = [[PMMailManager alloc] init];
+        mailManager.delegate = (id)self;
+        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
+    });
+}
+
+-(UIImage *)changeWhiteColorTransparent: (UIImage *)image
+{
+    CGImageRef rawImageRef=image.CGImage;
+    const float colorMasking[6] = {222, 255, 222, 255, 222, 255};
+    UIGraphicsBeginImageContext(image.size);
+    CGImageRef maskedImageRef=CGImageCreateWithMaskingColors(rawImageRef, colorMasking);
+    {
+        //if in iPhone
+        CGContextTranslateCTM(UIGraphicsGetCurrentContext(), 0.0, image.size.height);
+        CGContextScaleCTM(UIGraphicsGetCurrentContext(), 1.0, -1.0);
+    }
+    
+    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, image.size.width, image.size.height), maskedImageRef);
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+    CGImageRelease(maskedImageRef);
+    UIGraphicsEndImageContext();
+    return result;
+}
+
+- (UIImage *)convertImageToGrayScale:(UIImage *)image
+{
+    // Create image rectangle with current image width/height
+    CGRect imageRect = CGRectMake(0, 0, image.size.width, image.size.height);
+    
+    // Grayscale color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+    
+    // Create bitmap content with current image size and grayscale colorspace
+    CGContextRef context = CGBitmapContextCreate(nil, image.size.width, image.size.height, 8, 0, colorSpace, kCGImageAlphaNone);
+    
+    // Draw image into current context, with specified rectangle
+    // using previously defined context (with grayscale colorspace)
+    CGContextDrawImage(context, imageRect, [image CGImage]);
+    
+    /* changes start here */
+    // Create bitmap image info from pixel data in current context
+    CGImageRef grayImage = CGBitmapContextCreateImage(context);
+    
+    // release the colorspace and graphics context
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    
+    // make a new alpha-only graphics context
+    context = CGBitmapContextCreate(nil, image.size.width, image.size.height, 8, 0, nil, kCGImageAlphaOnly);
+    
+    // draw image into context with no colorspace
+    CGContextDrawImage(context, imageRect, [image CGImage]);
+    
+    // create alpha bitmap mask from current context
+    CGImageRef mask = CGBitmapContextCreateImage(context);
+    
+    // release graphics context
+    CGContextRelease(context);
+    
+    // make UIImage from grayscale image with alpha mask
+    UIImage *grayScaleImage = [UIImage imageWithCGImage:CGImageCreateWithMask(grayImage, mask) scale:image.scale orientation:image.imageOrientation];
+    
+    // release the CG images
+    CGImageRelease(grayImage);
+    CGImageRelease(mask);
+    
+    // return the new grayscale image
+    return grayScaleImage;
+    
+    /* changes end here */
 }
 
 -(void) onVoiceReset:(UIButton*)btn

@@ -28,7 +28,7 @@
                 <view contentMode="scaleToFill" id="EXj-Qd-Qm3" customClass="ATTRactorView">
                     <rect key="frame" x="337" y="189" width="350" height="350"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="np6-KO-8hp"/>
                     </connections>

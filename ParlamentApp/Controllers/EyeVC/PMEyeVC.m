@@ -37,7 +37,7 @@
     titleLabel1.backgroundColor = [UIColor clearColor];
     titleLabel1.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
     
-    titleLabel2.font = [UIFont fontWithName:@"MyriadPro-Cond" size:60.0];
+    titleLabel2.font = [UIFont fontWithName:@"MyriadPro-Cond" size:50.0];
     titleLabel2.backgroundColor = [UIColor clearColor];
     titleLabel2.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
 }

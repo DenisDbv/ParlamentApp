@@ -127,7 +127,7 @@
     saveIndicator.center = sender.center;
     [saveIndicator startAnimating];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         //Call your function or whatever work that needs to be done
         //Code in this part is run on a background thread
@@ -138,6 +138,135 @@
         mailManager.delegate = self;
         //[mailManager sendMessageWithImage:img imageName:@"monogram.png" andText:@"Монограмма"];
         [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Монограмма" image:img filename:@"monogram.png"];
+    });*/
+    
+    [self generateImage];
+}
+
+-(void) generateImage
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        UIImage *backgroundImage = [UIImage imageNamed:@"back_2.png"];
+        CGRect backgroundRect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
+        
+        //CGSize maximumSize = CGSizeMake(backgroundImage.size.width, backgroundImage.size.height);
+        //UIFont *font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:84.0*2.5];
+        //CGSize monogramSize = [monogramLabel.text sizeWithFont:font constrainedToSize:maximumSize lineBreakMode:UILineBreakModeWordWrap];
+        
+        //Текст
+        UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        myLabel.text = monogramLabel.text;
+        myLabel.font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:84.0*4.0];
+        myLabel.textColor = [UIColor redColor];
+        myLabel.backgroundColor = [UIColor clearColor];
+        myLabel.textAlignment = NSTextAlignmentCenter;
+        myLabel.adjustsFontSizeToFitWidth = YES;
+        myLabel.minimumScaleFactor = 0.5;
+        myLabel.opaque = NO;
+        [myLabel sizeToFit];
+        //CGRect labelRect = myLabel.frame;
+        myLabel.frame = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, 250, backgroundImage.size.width - 110, 530);
+        //myLabel.frame = CGRectMake((backgroundRect.size.width - (labelRect.size.width+150))/2, (backgroundRect.size.height - labelRect.size.height)/2, labelRect.size.width+150, labelRect.size.height);
+        
+        //Получаем изображение текста
+        UIGraphicsBeginImageContextWithOptions(myLabel.bounds.size, myLabel.opaque, 2.0);
+        [myLabel.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *labelImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        //Накладываем текст на холст требуемого размера с прозрычным фоном
+        UIGraphicsBeginImageContextWithOptions(backgroundImage.size, NO, 2.0);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        //CGContextTranslateCTM(context, 0, backgroundImage.size.height);
+        //CGContextScaleCTM(context, 1.0, -1.0);
+        CGContextDrawImage(context, myLabel.frame, labelImage.CGImage);
+        UIImage *textLayerImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        //Получаем текст с закраской фонового рисунка холста
+        UIGraphicsBeginImageContextWithOptions(backgroundRect.size, NO, 2.0);
+        context = UIGraphicsGetCurrentContext();
+        //CGContextTranslateCTM(context, 0, backgroundImage.size.height);
+        //CGContextScaleCTM(context, 1.0, -1.0);
+        CGContextClipToMask(context, backgroundRect, textLayerImage.CGImage);
+        CGContextDrawImage(context, backgroundRect, backgroundImage.CGImage);
+        UIImage *textColorImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        //Создаем холст с задним фоном и белым кругом
+        UIGraphicsBeginImageContextWithOptions(backgroundRect.size, NO, 2.0);
+        context = UIGraphicsGetCurrentContext();
+        CGContextDrawImage(context, backgroundRect, backgroundImage.CGImage);
+        CGContextSetLineWidth(context, 0.0);
+        CGContextSetStrokeColorWithColor(context, [UIColor clearColor].CGColor);
+        CGContextBeginPath(context);
+        CGContextSetFillColorWithColor(context, [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor);
+        CGContextAddEllipseInRect(context, myLabel.frame);
+        CGContextDrawPath(context, kCGPathFillStroke);
+        UIImage *backImageWithCircle = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        //Накладываем изображение текста на холст
+        UIImageView *backImageView = [[UIImageView alloc] initWithImage:backImageWithCircle];
+        UIImageView *frontImageView = [[UIImageView alloc] initWithImage:textColorImage];
+        frontImageView.alpha = 1.0;
+        [backImageView addSubview:frontImageView];
+        UIGraphicsBeginImageContext(backImageView.frame.size);
+        [backImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *resultMonogramImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        UIGraphicsBeginImageContextWithOptions(backgroundRect.size, NO, 2.0);
+        context = UIGraphicsGetCurrentContext();
+        //CGContextDrawImage(context, backgroundRect, resultMonogramImage.CGImage);
+        
+        [resultMonogramImage drawInRect:backgroundRect];
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+        UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:40.0];
+        CGRect textRect = CGRectMake(0, 0, backgroundRect.size.width, backgroundRect.size.height);
+        CGFloat oneHeight = 0;
+        if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
+        {
+            //iOS 7
+            
+            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5]};
+            CGSize size = [names sizeWithAttributes:att];
+            oneHeight = size.height;
+            
+            textRect.origin.x = (backgroundRect.size.width - size.width)/2;
+            textRect.origin.y = myLabel.frame.origin.y + myLabel.frame.size.height + 40;
+            
+            [names drawInRect:textRect withAttributes:att];
+        }
+        
+        UIImage *logoImage = [UIImage imageNamed:@"the-art-text.png"];
+        [logoImage drawInRect:CGRectMake((backgroundRect.size.width-logoImage.size.width)/2, textRect.origin.y + oneHeight + 20, logoImage.size.width, logoImage.size.height)];
+        
+        names = @"*Индивидуальность как искусство";
+        font = [UIFont fontWithName:@"MyriadPro-Cond" size:16.0];
+        textRect = backgroundRect;
+        if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
+        {
+            //iOS 7
+            
+            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5]};
+            CGSize size = [names sizeWithAttributes:att];
+            textRect.origin.x = (backgroundRect.size.width - size.width)-10;
+            textRect.origin.y = backgroundRect.size.height-20-size.height;
+            
+            [names drawInRect:textRect withAttributes:att];
+        }
+        
+        UIImage *finishImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        //Отсылаем изображение на email пользователя
+        mailManager = [[PMMailManager alloc] init];
+        mailManager.delegate = (id)self;
+        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Монограмма" image:finishImage filename:@"monogram.png"];
     });
 }
 
@@ -250,27 +379,6 @@
     UIImage *myGradient = [UIImage imageNamed:@"depositphotos_1318054-Liquid-metal.jpg"];
     monogramLabel.textColor   = [UIColor colorWithPatternImage:myGradient];
     //[monogramLabel sizeToFit];
-}
-
--(void) generateImage
-{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        //Call your function or whatever work that needs to be done
-        //Code in this part is run on a background thread
-        UIImage *img = [self drawText:monogramLabel.text inImage:[UIImage new] atPoint:CGPointMake(100, 100)];
-        NSLog(@"%@", NSStringFromCGSize(img.size));
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            
-            //Stop your activity indicator or anything else with the GUI
-            //Code here is run on the main thread
-            UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-            [self.view addSubview:imgView];
-            NSLog(@"%@", imgView);
-            
-        });
-    });
 }
 
 -(UIImage*) drawText:(NSString*) text
