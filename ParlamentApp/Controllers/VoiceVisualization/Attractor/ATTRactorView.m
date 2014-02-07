@@ -58,6 +58,8 @@
     NSArray *attractorFades;
     NSArray *attractorSperiz;
     NSArray *attractorDeltaTime;
+    
+    CGFloat components[3];
 }
 @synthesize audioManager;
 @synthesize startVoice;
@@ -74,13 +76,38 @@ static int attrIndex = 0;
 
 - (void)setupLayer {
     
+    UIColor *ccc = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_2.png"]];
+    
+    [self getRGBComponents:components forColor:ccc];
+    NSLog(@"-------->%f %f %f", components[0], components[1], components[2]);
+    
     _eaglLayer = (CAEAGLLayer*) self.layer;
-    _eaglLayer.opaque = NO;
+    _eaglLayer.opaque = YES;
     _eaglLayer.drawableProperties = @{kEAGLDrawablePropertyRetainedBacking : @(NO), kEAGLDrawablePropertyColorFormat:kEAGLColorFormatRGBA8 };
     //_eaglLayer.contentsScale = 2.0;
     
     attrManager = [[ATTRactorManager alloc] init];
     attrIndex = 0;
+}
+
+- (void)getRGBComponents:(CGFloat [3])components forColor:(UIColor *)color {
+    CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
+    unsigned char resultingPixel[4];
+    CGContextRef context = CGBitmapContextCreate(&resultingPixel,
+                                                 1,
+                                                 1,
+                                                 8,
+                                                 4,
+                                                 rgbColorSpace,
+                                                 kCGImageAlphaNoneSkipLast);
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, CGRectMake(0, 0, 1, 1));
+    CGContextRelease(context);
+    CGColorSpaceRelease(rgbColorSpace);
+    
+    for (int component = 0; component < 3; component++) {
+        components[component] = resultingPixel[component] / 255.0f;
+    }
 }
 
 -(void)layoutSubviews
@@ -385,20 +412,22 @@ static int attrIndex = 0;
     //else
     //    [self changeTRMatrixNear];
     
-    glDisable(GL_DEPTH_TEST);
+    //glEnable(GL_DEPTH_TEST);
     glEnable(GL_POINT_SPRITE_OES);
     glEnable(GL_POINT_SMOOTH);
     glEnable(GL_BLEND);
     //glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_COLOR);
     //glBlendFunc(GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA);
     glBlendFunc(GL_SRC_COLOR, GL_ONE_MINUS_SRC_COLOR);
+    //glBlendFunc(GL_ONE, GL_SRC_COLOR);
     
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
     glClearColor(1.0, 1.0, 1.0, 0.0);
+    //glClearColor(components[0], components[1], components[2], 0.0);
     //glClearColor(0.0, 0.0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
-    //glViewport(0, 0, self.frame.size.height, self.frame.size.width);
     
     glUseProgram(programHandle);
     
@@ -423,9 +452,11 @@ static int attrIndex = 0;
     if(takeSnapshot)    {
         takeSnapshot = NO;
         snapshotImage = [self snapshot:self];
+        //snapshotImage = [self glToUIImage];
     }
     
     [_context presentRenderbuffer:GL_RENDERBUFFER_OES];
+
 }
 
 -(void) pinchGestureCaptured:(UIPinchGestureRecognizer*)gestureRecognizer
@@ -471,22 +502,22 @@ static int attrIndex = 0;
 }
 
 - (void)setupRenderBuffer {
-    glGenRenderbuffers(1, &_colorRenderBuffer);
-    glBindRenderbuffer(GL_RENDERBUFFER_OES, _colorRenderBuffer);
+    glGenRenderbuffersOES(1, &_colorRenderBuffer);
+    glBindRenderbufferOES(GL_RENDERBUFFER_OES, _colorRenderBuffer);
     [_context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:_eaglLayer];
 }
 
 - (void)setupDepthBuffer {
-    glGenRenderbuffers(1, &_depthRenderBuffer);
-    glBindRenderbuffer(GL_RENDERBUFFER_OES, _depthRenderBuffer);
-    glRenderbufferStorage(GL_RENDERBUFFER_OES, GL_DEPTH_COMPONENT16_OES, self.frame.size.width, self.frame.size.height);
+    glGenRenderbuffersOES(1, &_depthRenderBuffer);
+    glBindRenderbufferOES(GL_RENDERBUFFER_OES, _depthRenderBuffer);
+    glRenderbufferStorageOES(GL_RENDERBUFFER_OES, GL_DEPTH_COMPONENT16_OES, self.frame.size.width, self.frame.size.height);
 }
 
 - (void)setupFrameBuffer {
-    glGenFramebuffers(1, &framebuffer);
-    glBindFramebuffer(GL_FRAMEBUFFER_OES, framebuffer);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, _colorRenderBuffer);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, _depthRenderBuffer);
+    glGenFramebuffersOES(1, &framebuffer);
+    glBindFramebufferOES(GL_FRAMEBUFFER_OES, framebuffer);
+    glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, _colorRenderBuffer);
+    glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, _depthRenderBuffer);
 }
 
 - (GLuint)compileShader:(NSString*)shaderName withType:(GLenum)shaderType {
@@ -612,7 +643,7 @@ static int attrIndex = 0;
     // If your application only creates a single color renderbuffer which is already bound at this point,
     // this call is redundant, but it is needed if you're dealing with multiple renderbuffers.
     // Note, replace "_colorRenderbuffer" with the actual name of the renderbuffer object defined in your class.
-    glBindRenderbufferOES(GL_RENDERBUFFER_OES, _colorRenderBuffer);
+    //glBindRenderbufferOES(GL_RENDERBUFFER_OES, _colorRenderBuffer);
     
     // Get the size of the backing CAEAGLLayer
     glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth);
@@ -631,7 +662,7 @@ static int attrIndex = 0;
     // otherwise, use kCGImageAlphaPremultipliedLast
     CGDataProviderRef ref = CGDataProviderCreateWithData(NULL, data, dataLength, NULL);
     CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-    CGImageRef iref = CGImageCreate(width, height, 8, 32, width * 4, colorspace, kCGBitmapByteOrder32Big | kCGImageAlphaPremultipliedLast | kCGBitmapByteOrderDefault,
+    CGImageRef iref = CGImageCreate(width, height, 8, 32, width * 4, colorspace, kCGBitmapByteOrder32Big | kCGImageAlphaPremultipliedLast,
                                     ref, NULL, true, kCGRenderingIntentDefault);
     
     // OpenGL ES measures data in PIXELS
@@ -674,6 +705,61 @@ static int attrIndex = 0;
     CGImageRelease(iref);
     
     return image;
+}
+
+-(UIImage *) glToUIImage
+{
+    
+    GLint backingWidth, backingHeight;
+    
+    // Bind the color renderbuffer used to render the OpenGL ES view
+    // If your application only creates a single color renderbuffer which is already bound at this point,
+    // this call is redundant, but it is needed if you're dealing with multiple renderbuffers.
+    // Note, replace "_colorRenderbuffer" with the actual name of the renderbuffer object defined in your class.
+    //glBindRenderbufferOES(GL_RENDERBUFFER_OES, _colorRenderBuffer);
+    
+    // Get the size of the backing CAEAGLLayer
+    glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth);
+    glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &backingHeight);
+    
+    GLint imageWidth = backingWidth;
+    GLint imageHeight = backingHeight;
+    
+    NSInteger myDataLength = imageWidth * imageHeight * 4;
+    
+    
+    // allocate array and read pixels into it.
+    GLubyte *buffer = (GLubyte *) malloc(myDataLength);
+    glReadPixels(0, 0, imageWidth, imageHeight, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    
+    // gl renders "upside down" so swap top to bottom into new array.
+    // there's gotta be a better way, but this works.
+    GLubyte *buffer2 = (GLubyte *) malloc(myDataLength);
+    for(int y = 0; y < imageHeight; y++)
+    {
+        for(int x = 0; x < imageWidth * 4; x++)
+        {
+            buffer2[((imageHeight - 1) - y) * imageWidth * 4 + x] = buffer[y * 4 * imageWidth + x];
+        }
+    }
+    
+    // make data provider with data.
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, NULL);
+    
+    // prep the ingredients
+    int bitsPerComponent = 8;
+    int bitsPerPixel = 32;
+    int bytesPerRow = 4 * imageWidth;
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+    
+    // make the cgimage
+    CGImageRef imageRef = CGImageCreate(imageWidth, imageHeight, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    
+    // then make the uiimage from that
+    UIImage *myImage = [UIImage imageWithCGImage:imageRef];
+    return myImage;
 }
 
 -(void) snapShoting

@@ -19,6 +19,8 @@
 		1822F624189E4172009407D0 /* back_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F622189E4172009407D0 /* back_texture.png */; };
 		1822F625189E4172009407D0 /* the-art-text.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F623189E4172009407D0 /* the-art-text.png */; };
 		1822F66A18A0C307009407D0 /* back_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F66918A0C307009407D0 /* back_2.png */; };
+		1822F66D18A0E9FD009407D0 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F66C18A0E9FD009407D0 /* UIView+Screenshot.m */; };
+		1822F66F18A4BF92009407D0 /* shiny-metal-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */; };
 		18A54AE7186025420085B714 /* PMMailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AE6186025420085B714 /* PMMailManager.m */; };
 		18A54AEA186032FA0085B714 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE8186032FA0085B714 /* test.vcf */; };
 		18A54AEB186032FA0085B714 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE9186032FA0085B714 /* Settings.bundle */; };
@@ -216,6 +218,9 @@
 		1822F622189E4172009407D0 /* back_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_texture.png; sourceTree = "<group>"; };
 		1822F623189E4172009407D0 /* the-art-text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "the-art-text.png"; sourceTree = "<group>"; };
 		1822F66918A0C307009407D0 /* back_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_2.png; sourceTree = "<group>"; };
+		1822F66B18A0E9FD009407D0 /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
+		1822F66C18A0E9FD009407D0 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
+		1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "shiny-metal-background.jpg"; sourceTree = "<group>"; };
 		18A54AE5186025420085B714 /* PMMailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailManager.h; sourceTree = "<group>"; };
 		18A54AE6186025420085B714 /* PMMailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMailManager.m; sourceTree = "<group>"; };
 		18A54AE8186032FA0085B714 /* test.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.vcf; sourceTree = "<group>"; };
@@ -786,6 +791,7 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */,
 				1822F621189E4172009407D0 /* result */,
 				18A54B3F186841B10085B714 /* liquid-metal-background-5650257.jpg */,
 				18A54B3D1868414D0085B714 /* depositphotos_1318054-Liquid-metal.jpg */,
@@ -872,6 +878,8 @@
 				18EA469E185767560066A22C /* UIColor+Expanded.m */,
 				1822F60518916991009407D0 /* NSString+Enc.h */,
 				1822F60618916991009407D0 /* NSString+Enc.m */,
+				1822F66B18A0E9FD009407D0 /* UIView+Screenshot.h */,
+				1822F66C18A0E9FD009407D0 /* UIView+Screenshot.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1131,6 +1139,7 @@
 				1822F625189E4172009407D0 /* the-art-text.png in Resources */,
 				18EA4653185661D90066A22C /* annabel.png in Resources */,
 				18A68F901853BF52009019BC /* MyriadPro-Cond.otf in Resources */,
+				1822F66F18A4BF92009407D0 /* shiny-metal-background.jpg in Resources */,
 				18A68F811853A009009019BC /* active-finger.png in Resources */,
 				18A89077185E590F00BD094A /* PMSexChooseVC.xib in Resources */,
 				18EA4660185661D90066A22C /* ariston.ttf in Resources */,
@@ -1316,6 +1325,7 @@
 				18A68FB2185484A6009019BC /* ATTRactorManager.m in Sources */,
 				18A54AFB18603F4F0085B714 /* NSData+Base64Additions.m in Sources */,
 				18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */,
+				1822F66D18A0E9FD009407D0 /* UIView+Screenshot.m in Sources */,
 				18A68F7818538DC7009019BC /* PMParentController.m in Sources */,
 				18EA469118573E500066A22C /* RippleShader.vsh in Sources */,
 				18A84C791851D32600612BE5 /* ParlamentApp.xcdatamodeld in Sources */,
@@ -1462,7 +1472,7 @@
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Parliament;
-				PROVISIONING_PROFILE = "6E98989C-65CA-487C-9E38-68F3A671C0F3";
+				PROVISIONING_PROFILE = "4A9A17A7-EBD2-4162-B1DE-ACB565377178";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1482,7 +1492,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_NAME = Parliament;
-				PROVISIONING_PROFILE = "6E98989C-65CA-487C-9E38-68F3A671C0F3";
+				PROVISIONING_PROFILE = "4A9A17A7-EBD2-4162-B1DE-ACB565377178";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

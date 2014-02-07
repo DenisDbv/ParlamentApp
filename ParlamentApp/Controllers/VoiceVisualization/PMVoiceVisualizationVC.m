@@ -10,6 +10,7 @@
 #import "UIImage+UIImageFunctions.h"
 #import "UIView+GestureBlocks.h"
 #import <MZTimerLabel/MZTimerLabel.h>
+#import "UIView+Screenshot.h"
 
 @interface PMVoiceVisualizationVC ()
 
@@ -221,7 +222,10 @@
     
     [self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:2.0];
     
-    //[self performSelector:@selector(snapshotWaiting) withObject:nil afterDelay:2.0];
+    /*UIImage *img = [attractorView imageRepresentation];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[self changeWhiteColorTransparent:img]];
+    imgView.frame = CGRectInset(imgView.frame, -50, -50);
+    [self.view addSubview:imgView];*/
 }
 
 -(void) snapshotWaiting
@@ -258,7 +262,7 @@
     attractorView.alpha = 0.0;
     
     PMTimeManager *timeManager = [[PMTimeManager alloc] init];
-    finishTitle4.text = [NSString stringWithFormat:@"СПАСИБО И %@", [timeManager titleTimeArea]];
+    finishTitle4.text = [NSString stringWithFormat:@"СПАСИБО И %@!", [timeManager titleTimeArea]];
     finishView.alpha = 1.0;
     
     UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
@@ -374,11 +378,31 @@
         CGRect backgroundRect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
         CGRect figureRect = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, 250, backgroundImage.size.width - 110, 530);
         
-        UIGraphicsBeginImageContextWithOptions(backgroundImage.size, NO, 0.0);
+        /*UIGraphicsBeginImageContextWithOptions(attractorSnapshot.size, NO, 2.0);
         CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextDrawImage(context, backgroundRect, backgroundImage.CGImage);
+        [[UIColor blackColor] set];
+        CGContextFillRect(context, CGRectMake(0, 0, attractorSnapshot.size.width, attractorSnapshot.size.height));
+        //CGContextSetBlendMode(context, kCGBlendModeCopy);
+        CGContextDrawImage(context, CGRectMake(0, 0, attractorSnapshot.size.width, attractorSnapshot.size.height), attractorSnapshot.CGImage);
+        UIImage *resultingImage2 = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
         
-        [attractorSnapshot drawInRect:figureRect];
+        NSData* imageData =  UIImageJPEGRepresentation(attractorSnapshot, 1.0);
+        UIImage *jpgImage = [self changeWhiteColorTransparent:[UIImage imageWithData:imageData]];*/
+        
+        NSData* imageData =  UIImagePNGRepresentation(attractorSnapshot);
+        UIImage *pngImage = [UIImage imageWithData:imageData];
+        
+        UIGraphicsBeginImageContextWithOptions(backgroundImage.size, NO, 2.0);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextTranslateCTM(context, 0, backgroundImage.size.height);
+        CGContextScaleCTM(context, 1.0, -1.0);
+        CGContextDrawImage(context, backgroundRect, backgroundImage.CGImage);
+        CGContextTranslateCTM(context, 0, backgroundImage.size.height);
+        CGContextScaleCTM(context, 1.0, -1.0);
+        CGContextDrawImage(context, figureRect, pngImage.CGImage);
+        //[attractorSnapshot drawInRect:figureRect];
+        //CGRectMake((backgroundRect.size.width-attractorSnapshot.size.width)/2, (backgroundRect.size.height-attractorSnapshot.size.height)/2, attractorSnapshot.size.width, attractorSnapshot.size.height)
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
@@ -420,10 +444,28 @@
         UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            
+            NSData* imageData =  UIImagePNGRepresentation(attractorSnapshot);
+            UIImage *pngImage = [UIImage imageWithData:imageData];
+            UIImageWriteToSavedPhotosAlbum(pngImage, nil, nil, nil);
+            
+            UIImageView *imgView = [[UIImageView alloc] initWithImage:attractorSnapshot];
+            UIImageView *imgView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back_2.png"]];
+            UIView *secondView = [[UIView alloc] initWithFrame:imgView2.frame];
+            [secondView addSubview:imgView2];
+            //imgView.frame = CGRectOffset(imgView.frame, (imgView2.frame.size.width - attractorSnapshot.size.width)/2, (imgView2.frame.size.height - attractorSnapshot.size.height)/2);
+            [secondView addSubview:imgView];
+            [self.view addSubview:imgView];
+
+        });
+        
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = (id)self;
         [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
     });
+    
+    
 }
 
 -(UIImage *)changeWhiteColorTransparent: (UIImage *)image

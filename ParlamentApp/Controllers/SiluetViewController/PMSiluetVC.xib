@@ -9,7 +9,6 @@
                 <outlet property="finishTitle1" destination="svz-0C-w9N" id="1JR-Ki-Dk3"/>
                 <outlet property="finishTitle2" destination="AdY-oy-vpS" id="Sxh-VI-Oy1"/>
                 <outlet property="finishTitle3" destination="j4F-Qy-8Qt" id="gMp-Dq-vLh"/>
-                <outlet property="finishTitle4" destination="YeE-1I-J03" id="WNM-Bb-eTG"/>
                 <outlet property="finishTitle5" destination="99r-3Z-Ylq" id="8JM-5z-YmN"/>
                 <outlet property="onBackToRootMenu" destination="Vf6-Og-crw" id="4SX-pd-VcZ"/>
                 <outlet property="view" destination="2" id="3"/>
@@ -31,32 +30,26 @@
                         <action selector="onBackToRootMenu:" destination="-1" eventType="touchUpInside" id="ybU-z0-eEc"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВИЗУАЛИЗАЦИЯ ВАШГО СИЛУЭТА УСПЕШНА СОХРАНЕНА" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AdY-oy-vpS">
-                    <rect key="frame" x="232" y="218" width="604" height="70"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВИЗУАЛИЗАЦИЯ ВАШГО СИЛУЭТА ОТПРАВЛЕНА НА ОБРАБОТКУ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AdY-oy-vpS">
+                    <rect key="frame" x="238" y="218" width="604" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЕСЛИ ВЫ НЕ ПОЛУЧИЛИ EMAIL В ТЕЧЕНИЕ ЧАСА, ПОЖАЛУЙСТА, ОБРАТИТЕСЬ К ХОСТЕС САМОСТОЯТЕЛЬНО." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YeE-1I-J03">
-                    <rect key="frame" x="398" y="428" width="273" height="41"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВАШ АРТ-ОБЪЕКТ ЗАПУЩЕН В ПРОИЗВОДСТВО ВЫ ПОЛУЧИТЕ EMAIL УВЕДОМЛЕНИЕ О ЕГО ГОТОВНОСТИ В БЛИЖАЙШЕЕ ВРЕМЯ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j4F-Qy-8Qt">
-                    <rect key="frame" x="311" y="286" width="458" height="110"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВАШ АРТ-ОБЪЕКТ ЗАПУЩЕН В ПРОИЗВОДСТВО ВЫ ПОЛУЧИТЕ УВЕДОМЛЕНИЕ НА ЭЛЕКТРОННУЮ ПОЧТУ О ЕГО ГОТОВНОСТИ В БЛИЖАЙШЕЕ ВРЕМЯ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j4F-Qy-8Qt">
+                    <rect key="frame" x="334" y="278" width="458" height="210"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SILHOUETTE - СИЛУЭТ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="svz-0C-w9N">
-                    <rect key="frame" x="232" y="185" width="604" height="41"/>
+                    <rect key="frame" x="238" y="180" width="604" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="СПАСИБО И ПРИЯТНОГО ВЕЧЕРА" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="99r-3Z-Ylq">
-                    <rect key="frame" x="264" y="536" width="553" height="46"/>
+                    <rect key="frame" x="197" y="519" width="735" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="45"/>
                     <nil key="highlightedColor"/>

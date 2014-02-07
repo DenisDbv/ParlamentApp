@@ -260,6 +260,19 @@
     word = 1.0f;
     spherize = 0.96f;
 
+    /*UIColor *colorMetal = [UIColor colorWithPatternImage:[UIImage imageNamed:@"shiny-metal-background.jpg"]];
+    CGFloat components[3];
+    [self getRGBComponents:components forColor:colorMetal];
+    color[0] = components[0];
+    color[1] = components[1];
+    color[2] = components[2];
+    color[3] = components[3];*/
+    
+    /*color[0] = 1.0;
+    color[1] = 0.0;
+    color[2] = 0.0;
+    color[3] = 1.0;*/
+    
     zoomer = 1.23;
     holdFade = 0.15;
     pointSize = 1.0;
@@ -267,6 +280,26 @@
     memcpy(tr, trDef, sizeof(trDef));
     
     [self startTimer];
+}
+
+- (void)getRGBComponents:(CGFloat [3])components forColor:(UIColor *)color {
+    CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
+    unsigned char resultingPixel[4];
+    CGContextRef context = CGBitmapContextCreate(&resultingPixel,
+                                                 1,
+                                                 1,
+                                                 8,
+                                                 4,
+                                                 rgbColorSpace,
+                                                 kCGImageAlphaNoneSkipLast);
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, CGRectMake(0, 0, 1, 1));
+    CGContextRelease(context);
+    CGColorSpaceRelease(rgbColorSpace);
+    
+    for (int component = 0; component < 3; component++) {
+        components[component] = resultingPixel[component] / 255.0f;
+    }
 }
 
 -(void) createVertexAndColorMatrix

@@ -11,9 +11,7 @@
                 <outlet property="carouselContainer" destination="rwK-7M-wa4" id="iVq-zR-lZR"/>
                 <outlet property="closeBtn" destination="and-q8-4pE" id="2WM-De-iWo"/>
                 <outlet property="finishTitle1" destination="GVs-l4-9e4" id="caV-S6-inQ"/>
-                <outlet property="finishTitle2" destination="Ixl-Cz-COi" id="OcJ-YA-cQA"/>
                 <outlet property="finishTitle3" destination="G4w-WH-Y5a" id="xXf-A8-f4R"/>
-                <outlet property="finishTitle4" destination="WAa-rj-u32" id="9kv-kS-961"/>
                 <outlet property="finishTitle5" destination="VyD-RM-z4d" id="0nR-Hu-wee"/>
                 <outlet property="monogramLabel" destination="VNJ-ba-j84" id="LfW-VZ-q0I"/>
                 <outlet property="saveBtn" destination="3w0-77-TGE" id="pYR-iR-Pux"/>
@@ -61,20 +59,8 @@
                     <color key="textColor" red="0.84705882352941175" green="0.85882352941176465" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВИЗУАЛИЗАЦИЯ ВАШЕЙ МОНОГРАММЫ УСПЕШНА СОХРАНЕНА И ОТПРАВЛЕНА ВАМ НА ЭЛЕКТРОННУЮ ПОЧТУ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ixl-Cz-COi">
-                    <rect key="frame" x="204" y="236" width="604" height="41"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЕСЛИ ВЫ НЕ ПОЛУЧИЛИ EMAIL В ТЕЧЕНИИ ЧАСА, ПОЖАЛУЙСТА, ОБРАТИТЕСЬ К ХОСТЕС САМОСТОЯТЕЛЬНО." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WAa-rj-u32">
-                    <rect key="frame" x="370" y="446" width="273" height="41"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВАШ АРТ-ОБЪЕКТ ЗАПУЩЕН В ПРОИЗВОДСТВО ВЫ ПОЛУЧИТЕ EMAIL УВЕДОМЛЕНИЕ О ЕГО ГОТОВНОСТИ В БЛИЖАЙШЕЕ ВРЕМЯ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G4w-WH-Y5a">
-                    <rect key="frame" x="283" y="304" width="458" height="110"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВИЗУАЛИЗАЦИЯ ВАШЕЙ МОНОГРАММЫ УСПЕШНО СОХРАНЕНА И ОТПРАВЛЕНА ВАМ НА ЭЛЕКТРОННУЮ ПОЧТУ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G4w-WH-Y5a">
+                    <rect key="frame" x="295" y="304" width="458" height="175"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                     <nil key="highlightedColor"/>
@@ -100,13 +86,13 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MONOGRAM - МОНОГРАММА" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GVs-l4-9e4">
-                    <rect key="frame" x="204" y="203" width="604" height="41"/>
+                    <rect key="frame" x="210" y="224" width="604" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="СПАСИБО И ПРИЯТНОГО ВЕЧЕРА" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VyD-RM-z4d">
-                    <rect key="frame" x="236" y="554" width="553" height="46"/>
+                    <rect key="frame" x="248" y="527" width="553" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="45"/>
                     <nil key="highlightedColor"/>

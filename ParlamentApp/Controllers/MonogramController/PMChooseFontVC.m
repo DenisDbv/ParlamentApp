@@ -290,7 +290,7 @@
     titleLabel.alpha = saveBtn.alpha = monogramLabel.alpha = carousel.alpha = 0.0;
     
     PMTimeManager *timeManager = [[PMTimeManager alloc] init];
-    finishTitle5.text = [NSString stringWithFormat:@"СПАСИБО И %@", [timeManager titleTimeArea]];
+    finishTitle5.text = [NSString stringWithFormat:@"СПАСИБО И %@!", [timeManager titleTimeArea]];
     
     finishTitle1.alpha = finishTitle2.alpha = finishTitle3.alpha = finishTitle4.alpha = finishTitle5.alpha = 1.0;
     
