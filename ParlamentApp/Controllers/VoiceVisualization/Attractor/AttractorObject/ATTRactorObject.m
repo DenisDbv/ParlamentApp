@@ -101,7 +101,7 @@
 {
     self.fade -= 0.01;
     
-    if(self.fade <= 0.2)
+    if(self.fade <= 0.2) //0.2
         [self stopTimer];
 }
 
@@ -178,6 +178,14 @@
     hsvColor[0] = _randomInRadius(hue, randomWidth / 2.0f);
     _hsv2rgb(hsvColor, color);
     color[3] = 0.01f;
+}
+
+-(void) setRGBColor:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
+{
+    color[0] = red;
+    color[1] = green;
+    color[2] = blue;
+    color[3] = alpha;
 }
 
 -(void) setTr0:(float)trZero
@@ -268,9 +276,9 @@
     color[2] = components[2];
     color[3] = components[3];*/
     
-    /*color[0] = 1.0;
-    color[1] = 0.0;
-    color[2] = 0.0;
+    /*color[0] = 0.2;
+    color[1] = 0.2;
+    color[2] = 0.2;
     color[3] = 1.0;*/
     
     zoomer = 1.23;
@@ -279,7 +287,7 @@
     
     memcpy(tr, trDef, sizeof(trDef));
     
-    [self startTimer];
+    //[self startTimer];
 }
 
 - (void)getRGBComponents:(CGFloat [3])components forColor:(UIColor *)color {

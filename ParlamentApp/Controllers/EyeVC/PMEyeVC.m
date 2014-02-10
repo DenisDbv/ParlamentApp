@@ -92,8 +92,9 @@
         descText = [descText stringByAppendingFormat:@"ТЕЛЕФОН: %@\n", [userDefaults objectForKey:@"_telephone"]];
         descText = [descText stringByAppendingFormat:@"EMAIL: %@\n", [userDefaults objectForKey:@"_emailTO"]];
         
+        NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
         //[mailManager sendMessageToPhotoPersonWithSubject:title andDesc:descText];
-        [mailManager sendMessageWithTitle:title text:descText image:nil filename:@""];
+        [mailManager sendMessageWithTitle:names text:descText image:nil filename:@""];
     });
 }
 @end

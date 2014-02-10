@@ -21,6 +21,17 @@
 		1822F66A18A0C307009407D0 /* back_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F66918A0C307009407D0 /* back_2.png */; };
 		1822F66D18A0E9FD009407D0 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F66C18A0E9FD009407D0 /* UIView+Screenshot.m */; };
 		1822F66F18A4BF92009407D0 /* shiny-metal-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */; };
+		1822F67B18A8A9A2009407D0 /* adinekir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67118A8A9A2009407D0 /* adinekir.ttf */; };
+		1822F67C18A8A9A2009407D0 /* Allura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67218A8A9A2009407D0 /* Allura-Regular.ttf */; };
+		1822F67D18A8A9A2009407D0 /* Bickham_Script_Two.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67318A8A9A2009407D0 /* Bickham_Script_Two.ttf */; };
+		1822F67E18A8A9A2009407D0 /* BirchStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67418A8A9A2009407D0 /* BirchStd.otf */; };
+		1822F67F18A8A9A2009407D0 /* cour.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67518A8A9A2009407D0 /* cour.ttf */; };
+		1822F68018A8A9A2009407D0 /* courbd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67618A8A9A2009407D0 /* courbd.ttf */; };
+		1822F68118A8A9A2009407D0 /* courbi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67718A8A9A2009407D0 /* courbi.ttf */; };
+		1822F68218A8A9A2009407D0 /* courer.fon in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67818A8A9A2009407D0 /* courer.fon */; };
+		1822F68318A8A9A2009407D0 /* couri.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67918A8A9A2009407D0 /* couri.ttf */; };
+		1822F68418A8A9A2009407D0 /* DelphianC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67A18A8A9A2009407D0 /* DelphianC.ttf */; };
+		1822F68C18A8F6F3009407D0 /* NSString+SizeToFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F68B18A8F6F3009407D0 /* NSString+SizeToFit.m */; };
 		18A54AE7186025420085B714 /* PMMailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AE6186025420085B714 /* PMMailManager.m */; };
 		18A54AEA186032FA0085B714 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE8186032FA0085B714 /* test.vcf */; };
 		18A54AEB186032FA0085B714 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE9186032FA0085B714 /* Settings.bundle */; };
@@ -221,6 +232,18 @@
 		1822F66B18A0E9FD009407D0 /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
 		1822F66C18A0E9FD009407D0 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
 		1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "shiny-metal-background.jpg"; sourceTree = "<group>"; };
+		1822F67118A8A9A2009407D0 /* adinekir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = adinekir.ttf; sourceTree = "<group>"; };
+		1822F67218A8A9A2009407D0 /* Allura-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Allura-Regular.ttf"; sourceTree = "<group>"; };
+		1822F67318A8A9A2009407D0 /* Bickham_Script_Two.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bickham_Script_Two.ttf; sourceTree = "<group>"; };
+		1822F67418A8A9A2009407D0 /* BirchStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BirchStd.otf; sourceTree = "<group>"; };
+		1822F67518A8A9A2009407D0 /* cour.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = cour.ttf; sourceTree = "<group>"; };
+		1822F67618A8A9A2009407D0 /* courbd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = courbd.ttf; sourceTree = "<group>"; };
+		1822F67718A8A9A2009407D0 /* courbi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = courbi.ttf; sourceTree = "<group>"; };
+		1822F67818A8A9A2009407D0 /* courer.fon */ = {isa = PBXFileReference; lastKnownFileType = file; path = courer.fon; sourceTree = "<group>"; };
+		1822F67918A8A9A2009407D0 /* couri.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = couri.ttf; sourceTree = "<group>"; };
+		1822F67A18A8A9A2009407D0 /* DelphianC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DelphianC.ttf; sourceTree = "<group>"; };
+		1822F68A18A8F6F3009407D0 /* NSString+SizeToFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SizeToFit.h"; sourceTree = "<group>"; };
+		1822F68B18A8F6F3009407D0 /* NSString+SizeToFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SizeToFit.m"; sourceTree = "<group>"; };
 		18A54AE5186025420085B714 /* PMMailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailManager.h; sourceTree = "<group>"; };
 		18A54AE6186025420085B714 /* PMMailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMailManager.m; sourceTree = "<group>"; };
 		18A54AE8186032FA0085B714 /* test.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.vcf; sourceTree = "<group>"; };
@@ -482,6 +505,32 @@
 			path = result;
 			sourceTree = "<group>";
 		};
+		1822F67018A8A9A2009407D0 /* MonogramsFont */ = {
+			isa = PBXGroup;
+			children = (
+				1822F67118A8A9A2009407D0 /* adinekir.ttf */,
+				1822F67218A8A9A2009407D0 /* Allura-Regular.ttf */,
+				1822F67318A8A9A2009407D0 /* Bickham_Script_Two.ttf */,
+				1822F67418A8A9A2009407D0 /* BirchStd.otf */,
+				1822F67518A8A9A2009407D0 /* cour.ttf */,
+				1822F67618A8A9A2009407D0 /* courbd.ttf */,
+				1822F67718A8A9A2009407D0 /* courbi.ttf */,
+				1822F67818A8A9A2009407D0 /* courer.fon */,
+				1822F67918A8A9A2009407D0 /* couri.ttf */,
+				1822F67A18A8A9A2009407D0 /* DelphianC.ttf */,
+			);
+			path = MonogramsFont;
+			sourceTree = "<group>";
+		};
+		1822F68918A8F683009407D0 /* SizeToFit */ = {
+			isa = PBXGroup;
+			children = (
+				1822F68A18A8F6F3009407D0 /* NSString+SizeToFit.h */,
+				1822F68B18A8F6F3009407D0 /* NSString+SizeToFit.m */,
+			);
+			path = SizeToFit;
+			sourceTree = "<group>";
+		};
 		18A54AE3186025060085B714 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -623,6 +672,7 @@
 		18A68F8E1853BF52009019BC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1822F67018A8A9A2009407D0 /* MonogramsFont */,
 				18EA462F185661A80066A22C /* Monograms */,
 				18A68F8F1853BF52009019BC /* MyriadPro-Cond.otf */,
 			);
@@ -864,6 +914,7 @@
 		18A84CA81851E1CE00612BE5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1822F68918A8F683009407D0 /* SizeToFit */,
 				18A54AEE18603F4F0085B714 /* SMTPLibrary */,
 				18A68F8B1853AD89009019BC /* UIImage+UIImageFunctions.h */,
 				18A68F8C1853AD89009019BC /* UIImage+UIImageFunctions.m */,
@@ -1131,17 +1182,22 @@
 			files = (
 				18EA469218573E8A0066A22C /* RippleShader.fsh in Resources */,
 				18EA469318573E8A0066A22C /* RippleShader.vsh in Resources */,
+				1822F68118A8A9A2009407D0 /* courbi.ttf in Resources */,
 				18A89072185E3A0D00BD094A /* PMDatePickerVCViewController.xib in Resources */,
 				18EA4654185661D90066A22C /* aquarelle.png in Resources */,
 				18A54B3C186840D50085B714 /* Liquid_Metal_by_Acid_Killer.jpg in Resources */,
+				1822F68418A8A9A2009407D0 /* DelphianC.ttf in Resources */,
 				18A68F9A1854682E009019BC /* active-siluet-disable.png in Resources */,
 				18EA465F185661D90066A22C /* aquarelle.ttf in Resources */,
 				1822F625189E4172009407D0 /* the-art-text.png in Resources */,
 				18EA4653185661D90066A22C /* annabel.png in Resources */,
+				1822F67F18A8A9A2009407D0 /* cour.ttf in Resources */,
+				1822F67C18A8A9A2009407D0 /* Allura-Regular.ttf in Resources */,
 				18A68F901853BF52009019BC /* MyriadPro-Cond.otf in Resources */,
 				1822F66F18A4BF92009407D0 /* shiny-metal-background.jpg in Resources */,
 				18A68F811853A009009019BC /* active-finger.png in Resources */,
 				18A89077185E590F00BD094A /* PMSexChooseVC.xib in Resources */,
+				1822F67E18A8A9A2009407D0 /* BirchStd.otf in Resources */,
 				18EA4660185661D90066A22C /* ariston.ttf in Resources */,
 				18A68FC31854D3FF009019BC /* close-voice.png in Resources */,
 				18A68F821853A009009019BC /* active-monogram.png in Resources */,
@@ -1164,6 +1220,7 @@
 				18EA4661185661D90066A22C /* bedini.ttf in Resources */,
 				18EA464F185661D90066A22C /* agatha.png in Resources */,
 				18EA464E185661D90066A22C /* adventur.png in Resources */,
+				1822F68318A8A9A2009407D0 /* couri.ttf in Resources */,
 				18A54B271866C11A0085B714 /* icon_72x72.png in Resources */,
 				18A54B211866C11A0085B714 /* icon_100x100.png in Resources */,
 				18EA4665185661D90066A22C /* veron.ttf in Resources */,
@@ -1176,6 +1233,7 @@
 				18EA465C185661D90066A22C /* ampir.ttf in Resources */,
 				18A89060185E323600BD094A /* popover-background-red.png in Resources */,
 				18EA465A185661D90066A22C /* agatha.ttf in Resources */,
+				1822F67B18A8A9A2009407D0 /* adinekir.ttf in Resources */,
 				18EA462C1855FB1C0066A22C /* PMChooseFontVC.xib in Resources */,
 				18A54AFF18604A9D0085B714 /* background1024x768.png in Resources */,
 				18EA464C185661D90066A22C /* bedini.png in Resources */,
@@ -1184,6 +1242,7 @@
 				18A54B081862224A0085B714 /* siluet-save.png in Resources */,
 				18A54B17186278680085B714 /* popover-background-red_2.png in Resources */,
 				1822F612189A51CB009407D0 /* button_space.png in Resources */,
+				1822F68018A8A9A2009407D0 /* courbd.ttf in Resources */,
 				18A84CA71851E04D00612BE5 /* PMSettingsViewContoller.xib in Resources */,
 				18A84C9B1851D56500612BE5 /* background.png in Resources */,
 				18A54B341867789A0085B714 /* content.png in Resources */,
@@ -1199,6 +1258,7 @@
 				18EA4652185661D90066A22C /* andantino.png in Resources */,
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
 				18A54B3818677DB40085B714 /* arrow.png in Resources */,
+				1822F67D18A8A9A2009407D0 /* Bickham_Script_Two.ttf in Resources */,
 				18A54B071862224A0085B714 /* siluet-photo-make.png in Resources */,
 				1822F614189A51CB009407D0 /* button_delete.png in Resources */,
 				18EA46B01859610C0066A22C /* delete.png in Resources */,
@@ -1221,6 +1281,7 @@
 				18EA4663185661D90066A22C /* comfortaa.ttf in Resources */,
 				18A54B061862224A0085B714 /* siluet-back.png in Resources */,
 				18A68FB8185484A6009019BC /* ifs_fragment.glsl in Resources */,
+				1822F68218A8A9A2009407D0 /* courer.fon in Resources */,
 				18A8906C185E351D00BD094A /* FlatDatePicker-Icon-Close@2x.png in Resources */,
 				18A84CA11851D5A600612BE5 /* PMRootMenuController.xib in Resources */,
 				18A68F991854682E009019BC /* active-finger-disable.png in Resources */,
@@ -1335,6 +1396,7 @@
 				18A54AF918603F4F0085B714 /* Base64Transcoder.m in Sources */,
 				18A54B2C1866C2910085B714 /* PMTimeManager.m in Sources */,
 				18A68FB6185484A6009019BC /* Novocaine.m in Sources */,
+				1822F68C18A8F6F3009407D0 /* NSString+SizeToFit.m in Sources */,
 				18A68FBA185484A6009019BC /* ATTRactorView.m in Sources */,
 				18EA4688185734EC0066A22C /* PMSiluetVC.m in Sources */,
 				1822F60718916991009407D0 /* NSString+Enc.m in Sources */,

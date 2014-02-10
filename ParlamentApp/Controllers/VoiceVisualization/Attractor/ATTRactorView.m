@@ -174,40 +174,40 @@ static int attrIndex = 0;
 {
     [attrManager removeAll];
     attrIndex = 0;
-    isRedColor = YES;
+    isRedColor = NO;
     takeSnapshot = NO;
 }
 
 -(void) setupVBO
 {
-    isRedColor = YES;
+    isRedColor = NO;
     takeSnapshot = NO;
     
-    attractorIndexes = @[[NSNumber numberWithInt:1],
-                         [NSNumber numberWithInt:2],
+    attractorIndexes = @[[NSNumber numberWithInt:4], //1
+                         [NSNumber numberWithInt:4],
                          [NSNumber numberWithInt:3],
                          [NSNumber numberWithInt:4],
                          [NSNumber numberWithInt:5],
                          [NSNumber numberWithInt:6],
                          [NSNumber numberWithInt:7]];
     
-    attractorSides = @[[NSNumber numberWithInt:256],
-                       [NSNumber numberWithInt:128],
+    attractorSides = @[[NSNumber numberWithInt:256], //256
+                       [NSNumber numberWithInt:256],
                        [NSNumber numberWithInt:128],
                        [NSNumber numberWithInt:128],
                        [NSNumber numberWithInt:128],
                        [NSNumber numberWithInt:256],
                        [NSNumber numberWithInt:256]];
     
-    attractorPontsSize = @[[NSNumber numberWithFloat:0.6],
-                           [NSNumber numberWithFloat:0.5],
+    attractorPontsSize = @[[NSNumber numberWithFloat:0.3], //0.6
+                           [NSNumber numberWithFloat:0.3], //0.5
                            [NSNumber numberWithFloat:0.4],
                            [NSNumber numberWithFloat:0.4],
                            [NSNumber numberWithFloat:0.3],
                            [NSNumber numberWithFloat:0.7],
                            [NSNumber numberWithFloat:0.2]];
    
-    attractorFades = @[[NSNumber numberWithFloat:1.0],
+    attractorFades = @[[NSNumber numberWithFloat:0.95],
                            [NSNumber numberWithFloat:1.0],
                            [NSNumber numberWithFloat:1.0],
                            [NSNumber numberWithFloat:1.0],
@@ -225,7 +225,7 @@ static int attrIndex = 0;
      [NSNumber numberWithFloat:0.4]];
     */
     
-    attractorSperiz = @[[NSNumber numberWithFloat:0.96],
+    attractorSperiz = @[[NSNumber numberWithFloat:1.1], //0.96
                        [NSNumber numberWithFloat:0.94],
                        [NSNumber numberWithFloat:0.96],
                        [NSNumber numberWithFloat:1.2],
@@ -233,7 +233,7 @@ static int attrIndex = 0;
                        [NSNumber numberWithFloat:1.0],
                        [NSNumber numberWithFloat:1.9]];
     
-    attractorDeltaTime = @[[NSNumber numberWithFloat:0.4],
+    attractorDeltaTime = @[[NSNumber numberWithFloat:0.2], //0.4
                         [NSNumber numberWithFloat:0.3],
                         [NSNumber numberWithFloat:0.2],
                         [NSNumber numberWithFloat:0.6],
@@ -283,7 +283,7 @@ static int attrIndex = 0;
     ATTRactorObject *attr = [[ATTRactorObject alloc] init];
     attr.index = [[attractorIndexes objectAtIndex:attrIndex] integerValue];
     attr.g_side = [[attractorSides objectAtIndex:attrIndex] integerValue];
-    //if(!isRedColor) [attr setHueColor:0.14f];
+    if(!isRedColor) [attr setRGBColor:0.1 green:0.1 blue:0.1 alpha:0.04];
     attr.fade = [[attractorFades objectAtIndex:attrIndex] floatValue];
     attr.pointSize = [[attractorPontsSize objectAtIndex:attrIndex] floatValue];
     attr.phase = [attrManager attractorsDepth] * 10; //(arc4random() % ((unsigned)1000 + 1));
@@ -301,7 +301,7 @@ static int attrIndex = 0;
     if(attrIndex >= attractorIndexes.count)
         attrIndex = 0;
     
-    //isRedColor = !isRedColor;
+    isRedColor = !isRedColor;
 }
 
 -(void) changeTRMatrixFar
@@ -422,6 +422,7 @@ static int attrIndex = 0;
     //glBlendFunc(GL_ONE, GL_SRC_COLOR);
     
     glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    //glClearColor(0.96, 0.96, 0.96, 0.0);
     glClearColor(1.0, 1.0, 1.0, 0.0);
     //glClearColor(components[0], components[1], components[2], 0.0);
     //glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -456,7 +457,6 @@ static int attrIndex = 0;
     }
     
     [_context presentRenderbuffer:GL_RENDERBUFFER_OES];
-
 }
 
 -(void) pinchGestureCaptured:(UIPinchGestureRecognizer*)gestureRecognizer

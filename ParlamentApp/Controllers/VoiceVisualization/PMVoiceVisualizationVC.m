@@ -406,6 +406,7 @@
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+        names = @"АЙДАР + ЮЛЯ";
         UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:40.0];
         CGRect textRect = CGRectMake(0, 0, backgroundRect.size.width, backgroundRect.size.height);
         CGFloat oneHeight = 0;
@@ -460,9 +461,10 @@
 
         });
         
+        names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = (id)self;
-        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
+        [mailManager sendMessageWithTitle:names text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
     });
     
     

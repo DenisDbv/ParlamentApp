@@ -37,6 +37,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>DelphianC.ttf</string>
 		<string>veron.ttf</string>
 		<string>comfortaa.ttf</string>
 		<string>dolphian.TTF</string>

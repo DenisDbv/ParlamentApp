@@ -9,6 +9,7 @@
 #import "PMChooseFontVC.h"
 #import "UIImage+UIImageFunctions.h"
 #import "UIView+GestureBlocks.h"
+#import "NSString+SizeToFit.h"
 
 @interface PMChooseFontVC ()
 
@@ -49,7 +50,7 @@
     [super viewDidLoad];
     
     fontImages = @[@"adineki", @"bedini", @"acquests", @"adventur", @"agatha", @"alexandr", @"ampir", @"andantino", @"annabel", @"aquarelle", @"ariston", @"veron"];
-    fontNames = @[@"AdineKirnberg", @"Bedini", @"AcquestScript", @"Adventure", @"Agatha-Modern", @"AlexandraZeferinoThree", @"AmpirDeco", @"Andantinoscript", @"Annabelle", @"Aquarelle", @"Ariston-Normal", @"Veron"];
+    fontNames = @[@"AdineKirnberg", @"Bedini", @"AcquestScript", @"Adventure", @"Agatha-Modern", @"AlexandraZeferinoThree", @"AmpirDeco", @"Andantinoscript", @"Annabelle", @"Aquarelle", @"Ariston-Normal", @"Veron", @"DelphianC"];
     
     carousel.type = iCarouselTypeLinear;
     
@@ -165,15 +166,21 @@
         myLabel.minimumScaleFactor = 0.5;
         myLabel.opaque = NO;
         [myLabel sizeToFit];
-        //CGRect labelRect = myLabel.frame;
+        
         myLabel.frame = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, 250, backgroundImage.size.width - 110, 530);
-        //myLabel.frame = CGRectMake((backgroundRect.size.width - (labelRect.size.width+150))/2, (backgroundRect.size.height - labelRect.size.height)/2, labelRect.size.width+150, labelRect.size.height);
+        //CGSize monogramSize = [monogramLabel.text sizeToFitWithFont:myLabel.font];
+        //myLabel.frame = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, 250, monogramSize.width, monogramSize.height);
+        
+        //UIImage *rezz = [monogramLabel.text imageToFitWithFont:myLabel.font];
         
         //Получаем изображение текста
         UIGraphicsBeginImageContextWithOptions(myLabel.bounds.size, myLabel.opaque, 2.0);
         [myLabel.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *labelImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
+        
+        //labelImage = [monogramLabel.text imageToFitWithFont:myLabel.font];
+        //myLabel.frame = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, 250, backgroundImage.size.width - 110, 530);
         
         //Накладываем текст на холст требуемого размера с прозрычным фоном
         UIGraphicsBeginImageContextWithOptions(backgroundImage.size, NO, 2.0);
@@ -187,8 +194,8 @@
         //Получаем текст с закраской фонового рисунка холста
         UIGraphicsBeginImageContextWithOptions(backgroundRect.size, NO, 2.0);
         context = UIGraphicsGetCurrentContext();
-        //CGContextTranslateCTM(context, 0, backgroundImage.size.height);
-        //CGContextScaleCTM(context, 1.0, -1.0);
+        CGContextTranslateCTM(context, 0, backgroundImage.size.height);
+        CGContextScaleCTM(context, 1.0, -1.0);
         CGContextClipToMask(context, backgroundRect, textLayerImage.CGImage);
         CGContextDrawImage(context, backgroundRect, backgroundImage.CGImage);
         UIImage *textColorImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -266,7 +273,7 @@
         //Отсылаем изображение на email пользователя
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = (id)self;
-        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Монограмма" image:finishImage filename:@"monogram.png"];
+        [mailManager sendMessageWithTitle:names text:@"Монограмма" image:finishImage filename:@"monogram.png"]; //@"Активация от Art of Individuality"
     });
 }
 
@@ -314,7 +321,7 @@
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     //return the total number of items in the carousel
-    return [fontImages count];
+    return [fontNames count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
@@ -473,7 +480,7 @@
     myLabel.textAlignment = NSTextAlignmentCenter;
     myLabel.adjustsFontSizeToFitWidth = YES;
     myLabel.minimumScaleFactor = 0.5;
-    [myLabel sizeToFit];
+    //[myLabel sizeToFit];
     myLabel.frame = CGRectMake(0, 0, 571.0, myLabel.frame.size.height);
     
     UIGraphicsBeginImageContextWithOptions(myLabel.bounds.size, myLabel.opaque, 0.0);
