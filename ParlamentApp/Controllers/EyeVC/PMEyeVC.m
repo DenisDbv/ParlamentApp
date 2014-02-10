@@ -93,7 +93,7 @@
         descText = [descText stringByAppendingFormat:@"EMAIL: %@\n", [userDefaults objectForKey:@"_emailTO"]];
         
         //[mailManager sendMessageToPhotoPersonWithSubject:title andDesc:descText];
-        [mailManager sendMessageWithTitle:title text:descText image:nil filename:@""];
+        [mailManager sendMessageWithTitle:title text:descText image:nil filename:@"" toPerson:eToPhotoPerson];
     });
 }
 @end

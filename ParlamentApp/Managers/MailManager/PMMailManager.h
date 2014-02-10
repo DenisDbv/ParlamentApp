@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum
+{
+    eToUser = 0,
+    eToPhotoPerson,
+    eToOperator
+    
+} MailToEnums;
+
 @protocol PMMailManagerDelegate <NSObject>
 -(void) mailSendSuccessfully;
 -(void) mailSendFailed;
@@ -32,6 +40,7 @@
 -(void) sendMessageWithTitle:(NSString*)title
                          text:(NSString*)text
                         image:(UIImage*)image
-                     filename:(NSString*)filename;
+                     filename:(NSString*)filename
+                    toPerson:(MailToEnums)toEnum;
 
 @end

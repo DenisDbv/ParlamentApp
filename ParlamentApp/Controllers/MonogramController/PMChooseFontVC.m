@@ -9,6 +9,7 @@
 #import "PMChooseFontVC.h"
 #import "UIImage+UIImageFunctions.h"
 #import "UIView+GestureBlocks.h"
+#import "NSString+SizeToFit.h"
 
 @interface PMChooseFontVC ()
 
@@ -150,59 +151,74 @@
         UIImage *backgroundImage = [UIImage imageNamed:@"back_2.png"];
         CGRect backgroundRect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
         
-        //CGSize maximumSize = CGSizeMake(backgroundImage.size.width, backgroundImage.size.height);
-        //UIFont *font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:84.0*2.5];
-        //CGSize monogramSize = [monogramLabel.text sizeWithFont:font constrainedToSize:maximumSize lineBreakMode:UILineBreakModeWordWrap];
+        CGFloat yOffset = -60.0f;
         
-        //Текст
-        UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        myLabel.text = monogramLabel.text;
-        myLabel.font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:84.0*4.0];
-        myLabel.textColor = [UIColor redColor];
-        myLabel.backgroundColor = [UIColor clearColor];
-        myLabel.textAlignment = NSTextAlignmentCenter;
-        myLabel.adjustsFontSizeToFitWidth = YES;
-        myLabel.minimumScaleFactor = 0.5;
-        myLabel.opaque = NO;
-        [myLabel sizeToFit];
-        //CGRect labelRect = myLabel.frame;
-        myLabel.frame = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, 250, backgroundImage.size.width - 110, 530);
-        //myLabel.frame = CGRectMake((backgroundRect.size.width - (labelRect.size.width+150))/2, (backgroundRect.size.height - labelRect.size.height)/2, labelRect.size.width+150, labelRect.size.height);
+        UIImage *labelImage = nil;
+        CGRect labelFrame = CGRectZero;
+        CGFloat sideLength = 0.0f;
+        CGFloat fontSize = 100.0f;
+        BOOL isFirstTime = YES;
         
-        //Получаем изображение текста
-        UIGraphicsBeginImageContextWithOptions(myLabel.bounds.size, myLabel.opaque, 2.0);
-        [myLabel.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImage *labelImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+        while (YES) {
+            UIImage *_labelImage = [monogramLabel.text imageToFitWithFont:[UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:fontSize]];
+            CGRect _labelFrame = CGRectMake((backgroundRect.size.width - _labelImage.size.width)/2,
+                                            (backgroundRect.size.height - _labelImage.size.height)/2 - yOffset,
+                                            _labelImage.size.width, _labelImage.size.height);
+            CGFloat _sideLength = (_labelFrame.size.width/_labelFrame.size.height > 0)?_labelFrame.size.width:_labelFrame.size.height;
+            
+            NSLog(@"New font size. Ellipse rect %@", NSStringFromCGRect(_labelFrame));
+            
+            if(_sideLength < 562.0 || isFirstTime == YES)
+            {
+                isFirstTime = NO;
+                
+                labelImage = _labelImage;
+                labelFrame = _labelFrame;
+                sideLength = _sideLength;
+                
+                if(_sideLength >= 562) break;
+                
+                fontSize += 10.0f;
+            }
+            else
+                break;
+        }
         
         //Накладываем текст на холст требуемого размера с прозрычным фоном
         UIGraphicsBeginImageContextWithOptions(backgroundImage.size, NO, 2.0);
         CGContextRef context = UIGraphicsGetCurrentContext();
-        //CGContextTranslateCTM(context, 0, backgroundImage.size.height);
-        //CGContextScaleCTM(context, 1.0, -1.0);
-        CGContextDrawImage(context, myLabel.frame, labelImage.CGImage);
+        CGContextTranslateCTM(context, 0, backgroundImage.size.height);
+        CGContextScaleCTM(context, 1.0, -1.0);
+        CGContextDrawImage(context, labelFrame, labelImage.CGImage);
         UIImage *textLayerImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
         //Получаем текст с закраской фонового рисунка холста
         UIGraphicsBeginImageContextWithOptions(backgroundRect.size, NO, 2.0);
         context = UIGraphicsGetCurrentContext();
-        //CGContextTranslateCTM(context, 0, backgroundImage.size.height);
-        //CGContextScaleCTM(context, 1.0, -1.0);
+        CGContextTranslateCTM(context, 0, backgroundImage.size.height);
+        CGContextScaleCTM(context, 1.0, -1.0);
         CGContextClipToMask(context, backgroundRect, textLayerImage.CGImage);
         CGContextDrawImage(context, backgroundRect, backgroundImage.CGImage);
         UIImage *textColorImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
         //Создаем холст с задним фоном и белым кругом
+        CGRect ellipseRect = CGRectMake((backgroundRect.size.width - sideLength)/2,
+                                        (backgroundRect.size.height - sideLength)/2 - yOffset,
+                                        sideLength, sideLength);
+        //CGRect ellipseRect = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2,
+        //                                (backgroundRect.size.height - 530)/2, backgroundImage.size.width - 110, 530);
         UIGraphicsBeginImageContextWithOptions(backgroundRect.size, NO, 2.0);
         context = UIGraphicsGetCurrentContext();
+        CGContextTranslateCTM(context, 0, backgroundImage.size.height);
+        CGContextScaleCTM(context, 1.0, -1.0);
         CGContextDrawImage(context, backgroundRect, backgroundImage.CGImage);
         CGContextSetLineWidth(context, 0.0);
         CGContextSetStrokeColorWithColor(context, [UIColor clearColor].CGColor);
         CGContextBeginPath(context);
         CGContextSetFillColorWithColor(context, [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor);
-        CGContextAddEllipseInRect(context, myLabel.frame);
+        CGContextAddEllipseInRect(context, ellipseRect);
         CGContextDrawPath(context, kCGPathFillStroke);
         UIImage *backImageWithCircle = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
@@ -219,7 +235,6 @@
         
         UIGraphicsBeginImageContextWithOptions(backgroundRect.size, NO, 2.0);
         context = UIGraphicsGetCurrentContext();
-        //CGContextDrawImage(context, backgroundRect, resultMonogramImage.CGImage);
         
         [resultMonogramImage drawInRect:backgroundRect];
         
@@ -237,7 +252,7 @@
             oneHeight = size.height;
             
             textRect.origin.x = (backgroundRect.size.width - size.width)/2;
-            textRect.origin.y = myLabel.frame.origin.y + myLabel.frame.size.height + 40;
+            textRect.origin.y = (ellipseRect.origin.y + ellipseRect.size.height) + yOffset;
             
             [names drawInRect:textRect withAttributes:att];
         }
@@ -266,7 +281,7 @@
         //Отсылаем изображение на email пользователя
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = (id)self;
-        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Монограмма" image:finishImage filename:@"monogram.png"];
+        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Монограмма" image:finishImage filename:@"monogram.png" toPerson:eToUser];
     });
 }
 

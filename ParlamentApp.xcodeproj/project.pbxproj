@@ -21,6 +21,7 @@
 		1822F66A18A0C307009407D0 /* back_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1822F66918A0C307009407D0 /* back_2.png */; };
 		1822F66D18A0E9FD009407D0 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F66C18A0E9FD009407D0 /* UIView+Screenshot.m */; };
 		1822F66F18A4BF92009407D0 /* shiny-metal-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */; };
+		1822F69618A93ED8009407D0 /* NSString+SizeToFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F69518A93ED8009407D0 /* NSString+SizeToFit.m */; };
 		18A54AE7186025420085B714 /* PMMailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AE6186025420085B714 /* PMMailManager.m */; };
 		18A54AEA186032FA0085B714 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE8186032FA0085B714 /* test.vcf */; };
 		18A54AEB186032FA0085B714 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE9186032FA0085B714 /* Settings.bundle */; };
@@ -221,6 +222,8 @@
 		1822F66B18A0E9FD009407D0 /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
 		1822F66C18A0E9FD009407D0 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
 		1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "shiny-metal-background.jpg"; sourceTree = "<group>"; };
+		1822F69418A93ED8009407D0 /* NSString+SizeToFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SizeToFit.h"; sourceTree = "<group>"; };
+		1822F69518A93ED8009407D0 /* NSString+SizeToFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SizeToFit.m"; sourceTree = "<group>"; };
 		18A54AE5186025420085B714 /* PMMailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailManager.h; sourceTree = "<group>"; };
 		18A54AE6186025420085B714 /* PMMailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMailManager.m; sourceTree = "<group>"; };
 		18A54AE8186032FA0085B714 /* test.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.vcf; sourceTree = "<group>"; };
@@ -480,6 +483,15 @@
 				1822F623189E4172009407D0 /* the-art-text.png */,
 			);
 			path = result;
+			sourceTree = "<group>";
+		};
+		1822F69318A93ED8009407D0 /* SizeToFit */ = {
+			isa = PBXGroup;
+			children = (
+				1822F69418A93ED8009407D0 /* NSString+SizeToFit.h */,
+				1822F69518A93ED8009407D0 /* NSString+SizeToFit.m */,
+			);
+			path = SizeToFit;
 			sourceTree = "<group>";
 		};
 		18A54AE3186025060085B714 /* Managers */ = {
@@ -864,6 +876,7 @@
 		18A84CA81851E1CE00612BE5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1822F69318A93ED8009407D0 /* SizeToFit */,
 				18A54AEE18603F4F0085B714 /* SMTPLibrary */,
 				18A68F8B1853AD89009019BC /* UIImage+UIImageFunctions.h */,
 				18A68F8C1853AD89009019BC /* UIImage+UIImageFunctions.m */,
@@ -1335,6 +1348,7 @@
 				18A54AF918603F4F0085B714 /* Base64Transcoder.m in Sources */,
 				18A54B2C1866C2910085B714 /* PMTimeManager.m in Sources */,
 				18A68FB6185484A6009019BC /* Novocaine.m in Sources */,
+				1822F69618A93ED8009407D0 /* NSString+SizeToFit.m in Sources */,
 				18A68FBA185484A6009019BC /* ATTRactorView.m in Sources */,
 				18EA4688185734EC0066A22C /* PMSiluetVC.m in Sources */,
 				1822F60718916991009407D0 /* NSString+Enc.m in Sources */,

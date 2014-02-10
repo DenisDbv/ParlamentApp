@@ -11,6 +11,7 @@
 #import "UIView+GestureBlocks.h"
 #import <MZTimerLabel/MZTimerLabel.h>
 #import "UIView+Screenshot.h"
+#import "NSString+SizeToFit.h"
 
 @interface PMVoiceVisualizationVC ()
 
@@ -234,7 +235,7 @@
     mailManager = [[PMMailManager alloc] init];
     mailManager.delegate = self;
     //[mailManager sendMessageWithImage:attractorView.snapshotImage imageName:@"voice.png" andText:@"Изображение голоса"];
-    [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:attractorView.snapshotImage filename:@"voice.png"];
+    [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:attractorView.snapshotImage filename:@"voice.png" toPerson:eToUser];
 }
 
 -(void) mailSendSuccessfully
@@ -444,7 +445,7 @@
         UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        /*dispatch_sync(dispatch_get_main_queue(), ^{
             
             NSData* imageData =  UIImagePNGRepresentation(attractorSnapshot);
             UIImage *pngImage = [UIImage imageWithData:imageData];
@@ -458,11 +459,11 @@
             [secondView addSubview:imgView];
             [self.view addSubview:imgView];
 
-        });
+        });*/
         
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = (id)self;
-        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
+        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:resultingImage filename:@"voice.png" toPerson:eToUser];
     });
     
     

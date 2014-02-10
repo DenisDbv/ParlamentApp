@@ -546,7 +546,7 @@ void rgbToHSV(float rgb[3], float hsv[3])
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //[mailManager sendMessageWithImage:image imageName:@"siluet.png" andTitle:title andText:descText];
-        [mailManager sendMessageWithTitle:title text:descText image:image filename:@"siluet.png"];
+        [mailManager sendMessageWithTitle:title text:descText image:image filename:@"siluet.png" toPerson:eToOperator];
     });
 }
 

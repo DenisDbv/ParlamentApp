@@ -407,7 +407,7 @@
     {
         if(field.titleField.text.length == 0)   {
             [self shakeIt:field withDelta:-2.0];
-            //return;
+            return;
         }
     }
     
@@ -420,7 +420,7 @@
         NSLog(@"%i years old", years);
         if (years < 18) {
             [self shakeIt:dateBirthField withDelta:-2.0];
-            //return;
+            return;
         }
     }
     

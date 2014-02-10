@@ -143,6 +143,7 @@
                       text:(NSString*)text
                      image:(UIImage*)image
                   filename:(NSString*)filename
+                    toPerson:(MailToEnums)toEnum
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
@@ -156,10 +157,15 @@
         filename = @"";
     }
     
-    //imageString = @"";
-    //imageString = [imageString substringToIndex:imageString.length/2];
+    NSString *toEmail = @"";
+    if(toEnum == eToUser)
+        toEmail = [defaults objectForKey:@"_emailTO"];
+    else if(toEnum == eToPhotoPerson)
+        toEmail = [defaults objectForKey:@"_emailPhotoPersonTo"];
+    else if(toEnum == eToOperator)
+        toEmail = [defaults objectForKey:@"_operatorEmail"];
     
-    NSDictionary *parameters = @{@"emailTo": [defaults objectForKey:@"_emailTO"],
+    NSDictionary *parameters = @{@"emailTo": toEmail,
                                  @"title": title,
                                  @"text": text,
                                  @"image": imageString,
