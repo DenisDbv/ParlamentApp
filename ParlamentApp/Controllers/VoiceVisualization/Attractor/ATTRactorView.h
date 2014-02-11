@@ -26,4 +26,7 @@
 -(void) releaseView;
 -(void) resetAttractors;
 
+-(NSInteger) getCurrentAttractorIndex;
+-(void) attractorAllow;
+
 @end

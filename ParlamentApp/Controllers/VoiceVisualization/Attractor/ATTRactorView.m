@@ -60,6 +60,8 @@
     NSArray *attractorDeltaTime;
     
     CGFloat components[3];
+    
+    BOOL women;
 }
 @synthesize audioManager;
 @synthesize startVoice;
@@ -108,6 +110,16 @@ static int attrIndex = 0;
     for (int component = 0; component < 3; component++) {
         components[component] = resultingPixel[component] / 255.0f;
     }
+}
+
+-(NSInteger) getCurrentAttractorIndex
+{
+    return attrIndex;
+}
+
+-(void) attractorAllow
+{
+    women = NO;
 }
 
 -(void)layoutSubviews
@@ -174,12 +186,14 @@ static int attrIndex = 0;
 {
     [attrManager removeAll];
     attrIndex = 0;
+    women = NO;
     isRedColor = NO;
     takeSnapshot = NO;
 }
 
 -(void) setupVBO
 {
+    women = NO;
     isRedColor = NO;
     takeSnapshot = NO;
     
@@ -199,7 +213,7 @@ static int attrIndex = 0;
                        [NSNumber numberWithInt:256],
                        [NSNumber numberWithInt:256]];
     
-    attractorPontsSize = @[[NSNumber numberWithFloat:0.3], //0.6
+    attractorPontsSize = @[[NSNumber numberWithFloat:0.5], //0.6
                            [NSNumber numberWithFloat:0.3], //0.5
                            [NSNumber numberWithFloat:0.4],
                            [NSNumber numberWithFloat:0.4],
@@ -207,7 +221,7 @@ static int attrIndex = 0;
                            [NSNumber numberWithFloat:0.7],
                            [NSNumber numberWithFloat:0.2]];
    
-    attractorFades = @[[NSNumber numberWithFloat:0.95],
+    attractorFades = @[[NSNumber numberWithFloat:0.1], //0.95
                            [NSNumber numberWithFloat:1.0],
                            [NSNumber numberWithFloat:1.0],
                            [NSNumber numberWithFloat:1.0],
@@ -283,7 +297,7 @@ static int attrIndex = 0;
     ATTRactorObject *attr = [[ATTRactorObject alloc] init];
     attr.index = [[attractorIndexes objectAtIndex:attrIndex] integerValue];
     attr.g_side = [[attractorSides objectAtIndex:attrIndex] integerValue];
-    if(!isRedColor) [attr setRGBColor:0.1 green:0.1 blue:0.1 alpha:0.04];
+    if(!isRedColor) [attr setRGBColor:0.0 green:0.58 blue:0.96 alpha:0.1]; //[attr setRGBColor:0.1 green:0.1 blue:0.1 alpha:0.04];
     attr.fade = [[attractorFades objectAtIndex:attrIndex] floatValue];
     attr.pointSize = [[attractorPontsSize objectAtIndex:attrIndex] floatValue];
     attr.phase = [attrManager attractorsDepth] * 10; //(arc4random() % ((unsigned)1000 + 1));
@@ -359,7 +373,8 @@ static int attrIndex = 0;
         {
             if(!wself.startVoice && dBFloatValue != 1.0)   {    //Первый проход в цикле dbFloatValue = 1.0000000 поэтому пропускаем создание аттрактора
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [wself addAttractorToOpenGlBuffer];
+                    if(!women) [wself addAttractorToOpenGlBuffer];
+                    if(women == NO) women = YES;
                 });
             }
             

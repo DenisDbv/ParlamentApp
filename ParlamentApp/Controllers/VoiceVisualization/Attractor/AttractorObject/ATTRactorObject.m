@@ -168,7 +168,7 @@
 
 -(void) setHueColor:(CGFloat)hueColor
 {
-    // Width parameter from RandomSpread object in VVVV
+    /*// Width parameter from RandomSpread object in VVVV
     float randomWidth = 0.05f;
     
     // hsv color [0.53, 0.18, 0.96]
@@ -177,7 +177,14 @@
     
     hsvColor[0] = _randomInRadius(hue, randomWidth / 2.0f);
     _hsv2rgb(hsvColor, color);
-    color[3] = 0.01f;
+    color[3] = 0.01f;*/
+    
+    float hsvColor[] = { 0.0, 0.18f, 0.96f }; //{0.99, 1.0f, 0.75f};   //0.51
+    
+    //hsvColor[0] = _randomInRadius(hue, randomWidth / 2.0f);
+    _hsv2rgb(hsvColor, color);
+    
+    NSLog(@"==> %f %f %f", color[0]*255, color[1]*255, color[2]*255);
 }
 
 -(void) setRGBColor:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
@@ -258,7 +265,7 @@
     
     //hsvColor[0] = _randomInRadius(hue, randomWidth / 2.0f);
     _hsv2rgb(hsvColor, color);
-    //NSLog(@"==> %f %f %f", color[0]*255, color[1]*255, color[2]*255);
+    NSLog(@"==> %f %f %f", color[0]*255, color[1]*255, color[2]*255);
     /*color[0] = 0.41;
     color[1] = 0.96;
     color[2] = 0.98;*/
@@ -267,6 +274,8 @@
     phase = 0.0f;
     word = 1.0f;
     spherize = 0.96f;
+    
+    NSLog(@"==>%f %f %f", color[0], color[1], color[2]);
 
     /*UIColor *colorMetal = [UIColor colorWithPatternImage:[UIImage imageNamed:@"shiny-metal-background.jpg"]];
     CGFloat components[3];

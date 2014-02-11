@@ -89,7 +89,7 @@
     closeButton.frame = CGRectMake(139.0, 313.0, closeImage.size.width, closeImage.size.height);
     [self.view addSubview:closeButton];
     
-    UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
+    UIImage *saveVoiceImage = [[UIImage imageNamed:@"further.png"] scaleProportionalToRetina];
     saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [saveButton addTarget:self action:@selector(onVoiceSave:) forControlEvents:UIControlEventTouchUpInside];
     [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
@@ -133,6 +133,8 @@
     titleLabel4.backgroundColor = [UIColor clearColor];
     titleLabel4.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
     titleLabel4.textAlignment = NSTextAlignmentCenter;
+    
+    [self titleRefresh:1];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -192,40 +194,72 @@
     attractorView = nil;
 }
 
+-(void) titleRefresh:(NSInteger)status
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if(status == 1)
+    {
+        titleLabel2.text = [NSString stringWithFormat:@"%@, СКАЖИТЕ СВОИ ДАННЫЕ В МИКРОФОН", [userDefaults objectForKey:@"_firstnameW"]];
+    }
+    else
+    {
+        titleLabel2.text = [NSString stringWithFormat:@"%@, СКАЖИТЕ СВОИ ДАННЫЕ В МИКРОФОН", [userDefaults objectForKey:@"_firstname"]];
+    }
+}
+
 -(void) onVoiceSave:(UIButton*)btn
 {
-    [btn setEnabled:NO];
-    UIImage *saveClearImage = [UIImage imageNamed:@"clear_button.png"];
-    [btn setImage:saveClearImage forState:UIControlStateNormal];
-    [btn setImage:saveClearImage forState:UIControlStateHighlighted];
+    NSInteger currentIndex = [attractorView getCurrentAttractorIndex];
     
-    saveIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    [self.view addSubview:saveIndicator];
-    //saveIndicator.frame = CGRectMake(btn.frame.origin.x+10, btn.frame.origin.y+10, 25, 25);
-    saveIndicator.center = btn.center;
-    [saveIndicator startAnimating];
-    
-    [UIView animateWithDuration:0.05 animations:^{
-        btn.transform = CGAffineTransformMakeScale(0.95, 0.95);
-    }
-                     completion:^(BOOL finished){
-                         
-                         [UIView animateWithDuration:0.05f animations:^{
-                             btn.transform = CGAffineTransformMakeScale(1, 1);
-                         } completion:^(BOOL finished) {
-                             //
+    if(currentIndex >= 2)   {
+        [btn setEnabled:NO];
+        UIImage *saveClearImage = [UIImage imageNamed:@"clear_button.png"];
+        [btn setImage:saveClearImage forState:UIControlStateNormal];
+        [btn setImage:saveClearImage forState:UIControlStateHighlighted];
+        
+        saveIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        [self.view addSubview:saveIndicator];
+        //saveIndicator.frame = CGRectMake(btn.frame.origin.x+10, btn.frame.origin.y+10, 25, 25);
+        saveIndicator.center = btn.center;
+        [saveIndicator startAnimating];
+        
+        [UIView animateWithDuration:0.05 animations:^{
+            btn.transform = CGAffineTransformMakeScale(0.95, 0.95);
+        }
+                         completion:^(BOOL finished){
+                             
+                             [UIView animateWithDuration:0.05f animations:^{
+                                 btn.transform = CGAffineTransformMakeScale(1, 1);
+                             } completion:^(BOOL finished) {
+                                 //
+                             }];
                          }];
-                     }];
-    
-    [timer pause];
-    [attractorView snapShoting];
-    
-    [self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:2.0];
-    
-    /*UIImage *img = [attractorView imageRepresentation];
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:[self changeWhiteColorTransparent:img]];
-    imgView.frame = CGRectInset(imgView.frame, -50, -50);
-    [self.view addSubview:imgView];*/
+        
+        [timer pause];
+        [attractorView snapShoting];
+        
+        [self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:2.0];
+    }
+    else    {
+        [UIView animateWithDuration:0.05 animations:^{
+            btn.transform = CGAffineTransformMakeScale(0.95, 0.95);
+        }
+                         completion:^(BOOL finished){
+                             
+                             [UIView animateWithDuration:0.05f animations:^{
+                                 btn.transform = CGAffineTransformMakeScale(1, 1);
+                             } completion:^(BOOL finished) {
+                                 UIImage *saveClearImage = [UIImage imageNamed:@"save-voice.png"];
+                                 [btn setImage:saveClearImage forState:UIControlStateNormal];
+                                 [btn setImage:saveClearImage forState:UIControlStateHighlighted];
+                             }];
+                         }];
+        
+        [timer reset];
+        [self titleRefresh:2];
+        [attractorView attractorAllow];
+    }
 }
 
 -(void) snapshotWaiting
@@ -405,8 +439,7 @@
         //CGRectMake((backgroundRect.size.width-attractorSnapshot.size.width)/2, (backgroundRect.size.height-attractorSnapshot.size.height)/2, attractorSnapshot.size.width, attractorSnapshot.size.height)
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
-        names = @"АЙДАР + ЮЛЯ";
+        NSString *names = [NSString stringWithFormat:@"%@ + %@", [userDefaults objectForKey:@"_firstnameW"], [userDefaults objectForKey:@"_firstname"]];
         UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:40.0];
         CGRect textRect = CGRectMake(0, 0, backgroundRect.size.width, backgroundRect.size.height);
         CGFloat oneHeight = 0;
@@ -445,7 +478,7 @@
         UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        /*dispatch_sync(dispatch_get_main_queue(), ^{
             
             NSData* imageData =  UIImagePNGRepresentation(attractorSnapshot);
             UIImage *pngImage = [UIImage imageWithData:imageData];
@@ -459,9 +492,9 @@
             [secondView addSubview:imgView];
             [self.view addSubview:imgView];
 
-        });
+        });*/
         
-        names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+        names = [NSString stringWithFormat:@"%@ + %@", [userDefaults objectForKey:@"_firstnameW"], [userDefaults objectForKey:@"_firstname"]];
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = (id)self;
         [mailManager sendMessageWithTitle:names text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
@@ -551,6 +584,11 @@
                          }];
                      }];
     
+    UIImage *saveVoiceImage = [[UIImage imageNamed:@"further.png"] scaleProportionalToRetina];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
+    
+    [self titleRefresh:1];
     [attractorView resetAttractors];
 }
 

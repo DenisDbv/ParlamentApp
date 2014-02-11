@@ -8,6 +8,7 @@
 
 #import "PMAppDelegate.h"
 #import "MBPopoverBackgroundView.h"
+#import "PMActivationView.h"
 
 @implementation PMAppDelegate
 @synthesize rippleViewController;
@@ -18,6 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSUserDefaults *userSettings = [NSUserDefaults standardUserDefaults];
+    [userSettings setObject:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%i", eEye]];
+    [userSettings setObject:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%i", eSiluet]];
+    [userSettings setObject:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%i", eFinger]];
+    [userSettings synchronize];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [MBPopoverBackgroundView initialize];

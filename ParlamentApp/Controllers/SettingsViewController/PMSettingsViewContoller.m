@@ -115,6 +115,7 @@
     NSString *_passwordFrom = [userDefaults objectForKey:@"_passwordFROM"];
     
     NSString *_emailTo = [userDefaults objectForKey:@"_emailTO"];
+    NSString *_emailToW = [userDefaults objectForKey:@"_emailTOW"];
     
     NSString *_operatorEmail = [userDefaults objectForKey:@"_operatorEmail"];
     NSString *_emailPhotoPersonTo = [userDefaults objectForKey:@"_emailPhotoPersonTo"];
@@ -133,6 +134,12 @@
     {
         _emailTo = @"denisdbv@gmail.com";
         [userDefaults setObject:_emailTo forKey:@"_emailTO"];
+    }
+    
+    if(_emailToW.length == 0)
+    {
+        _emailToW = @"denisdbv@gmail.com";
+        [userDefaults setObject:_emailToW forKey:@"_emailTOW"];
     }
     
     if(_operatorEmail.length == 0)

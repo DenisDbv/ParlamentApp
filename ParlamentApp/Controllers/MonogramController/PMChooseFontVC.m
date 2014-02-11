@@ -292,7 +292,7 @@ CGFloat DegreesToRadians(CGFloat degrees)
         CGFloat yOffset = -60.0f;
         
         CGFloat squareSideLength = 400.0f;
-        CGFloat fontSize = 100.0f;
+        CGFloat fontSize = 130.0f;
         NSString *firstCharacter = _letter1; //[monogramLabel.text substringToIndex:1];
         NSString *secondCharacter = _letter2; //[monogramLabel.text substringFromIndex:1];
         UIFont *font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:fontSize];
