@@ -278,10 +278,11 @@
         UIImage *finishImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
+        names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
         //Отсылаем изображение на email пользователя
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = (id)self;
-        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Монограмма" image:finishImage filename:@"monogram.png" toPerson:eToUser];
+        [mailManager sendMessageWithTitle:names text:@"Монограмма" image:finishImage filename:@"monogram.png" toPerson:eToUser]; //@"Активация от Art of Individuality"
     });
 }
 
