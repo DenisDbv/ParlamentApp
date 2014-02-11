@@ -420,7 +420,7 @@ CGFloat DegreesToRadians(CGFloat degrees)
         [resultMonogramImage drawInRect:backgroundRect];
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSString *names = [NSString stringWithFormat:@"%@ + %@", [userDefaults objectForKey:@"_firstnameW"], [userDefaults objectForKey:@"_firstname"]];
+        NSString *names = [NSString stringWithFormat:@"%@ + %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_firstnameW"]];
         font = [UIFont fontWithName:@"MyriadPro-Cond" size:40.0];
         CGRect textRect = CGRectMake(0, 0, backgroundRect.size.width, backgroundRect.size.height);
         CGFloat oneHeight = 0;
@@ -459,10 +459,11 @@ CGFloat DegreesToRadians(CGFloat degrees)
         UIImage *finishImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
+        names = [NSString stringWithFormat:@"%@ + %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_firstnameW"]];
         //Отсылаем изображение на email пользователя
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = (id)self;
-        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Монограмма" image:finishImage filename:@"monogram.png"];
+        [mailManager sendMessageWithTitle:names text:@"Монограмма" image:finishImage filename:@"monogram.png"];
         
         /*CGFloat yOffset = -60.0f;
         
