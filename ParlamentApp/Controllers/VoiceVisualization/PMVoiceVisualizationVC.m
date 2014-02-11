@@ -499,8 +499,6 @@
         mailManager.delegate = (id)self;
         [mailManager sendMessageWithTitle:names text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
     });
-    
-    
 }
 
 -(UIImage *)changeWhiteColorTransparent: (UIImage *)image

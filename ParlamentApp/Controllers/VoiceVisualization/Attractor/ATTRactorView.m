@@ -197,8 +197,8 @@ static int attrIndex = 0;
     isRedColor = NO;
     takeSnapshot = NO;
     
-    attractorIndexes = @[[NSNumber numberWithInt:4], //1
-                         [NSNumber numberWithInt:4],
+    attractorIndexes = @[[NSNumber numberWithInt:1], //4
+                         [NSNumber numberWithInt:2], //4
                          [NSNumber numberWithInt:3],
                          [NSNumber numberWithInt:4],
                          [NSNumber numberWithInt:5],
@@ -213,7 +213,7 @@ static int attrIndex = 0;
                        [NSNumber numberWithInt:256],
                        [NSNumber numberWithInt:256]];
     
-    attractorPontsSize = @[[NSNumber numberWithFloat:0.5], //0.6
+    attractorPontsSize = @[[NSNumber numberWithFloat:0.3], //0.6
                            [NSNumber numberWithFloat:0.3], //0.5
                            [NSNumber numberWithFloat:0.4],
                            [NSNumber numberWithFloat:0.4],
@@ -221,7 +221,7 @@ static int attrIndex = 0;
                            [NSNumber numberWithFloat:0.7],
                            [NSNumber numberWithFloat:0.2]];
    
-    attractorFades = @[[NSNumber numberWithFloat:0.1], //0.95
+    attractorFades = @[[NSNumber numberWithFloat:1.0], //0.95
                            [NSNumber numberWithFloat:1.0],
                            [NSNumber numberWithFloat:1.0],
                            [NSNumber numberWithFloat:1.0],
@@ -239,7 +239,7 @@ static int attrIndex = 0;
      [NSNumber numberWithFloat:0.4]];
     */
     
-    attractorSperiz = @[[NSNumber numberWithFloat:1.1], //0.96
+    attractorSperiz = @[[NSNumber numberWithFloat:0.94], //1.1
                        [NSNumber numberWithFloat:0.94],
                        [NSNumber numberWithFloat:0.96],
                        [NSNumber numberWithFloat:1.2],
@@ -297,7 +297,7 @@ static int attrIndex = 0;
     ATTRactorObject *attr = [[ATTRactorObject alloc] init];
     attr.index = [[attractorIndexes objectAtIndex:attrIndex] integerValue];
     attr.g_side = [[attractorSides objectAtIndex:attrIndex] integerValue];
-    if(!isRedColor) [attr setRGBColor:0.0 green:0.58 blue:0.96 alpha:0.1]; //[attr setRGBColor:0.1 green:0.1 blue:0.1 alpha:0.04];
+    if(!isRedColor) [attr setRGBColor:0.88 green:0.92 blue:0.96 alpha:1.0]; //[attr setRGBColor:0.1 green:0.1 blue:0.1 alpha:0.04];
     attr.fade = [[attractorFades objectAtIndex:attrIndex] floatValue];
     attr.pointSize = [[attractorPontsSize objectAtIndex:attrIndex] floatValue];
     attr.phase = [attrManager attractorsDepth] * 10; //(arc4random() % ((unsigned)1000 + 1));
@@ -439,6 +439,11 @@ static int attrIndex = 0;
     glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
     //glClearColor(0.96, 0.96, 0.96, 0.0);
     glClearColor(1.0, 1.0, 1.0, 0.0);
+    if(takeSnapshot)
+    {
+        glClearColor(0.88, 0.92, 0.96, 0.0);
+        //glClearColor(0.7872, 0.9288, 0.9600, 0.0);
+    }
     //glClearColor(components[0], components[1], components[2], 0.0);
     //glClearColor(0.0, 0.0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
