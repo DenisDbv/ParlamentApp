@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface PMCustomKeyboard : UIView <UIInputViewAudioFeedback>
+@interface PMCustomKeyboard : UIView <UIInputViewAudioFeedback, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *characterKeys;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *numberKeys;

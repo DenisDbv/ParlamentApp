@@ -334,10 +334,10 @@
     
     activationButtonsArray = [[NSMutableArray alloc] init];
     
-    [activationButtonsArray addObject: [[PMActivationView alloc] initWithActivationID:eEye withText:NO]];
+    //[activationButtonsArray addObject: [[PMActivationView alloc] initWithActivationID:eEye withText:NO]];
     [activationButtonsArray addObject: [[PMActivationView alloc] initWithActivationID:eVoice withText:NO]];
-    [activationButtonsArray addObject: [[PMActivationView alloc] initWithActivationID:eSiluet withText:NO]];
-    [activationButtonsArray addObject: [[PMActivationView alloc] initWithActivationID:eFinger withText:NO]];
+    //[activationButtonsArray addObject: [[PMActivationView alloc] initWithActivationID:eSiluet withText:NO]];
+    //[activationButtonsArray addObject: [[PMActivationView alloc] initWithActivationID:eFinger withText:NO]];
     [activationButtonsArray addObject: [[PMActivationView alloc] initWithActivationID:eMonogram withText:NO]];
     
     [self activationsStatusRefresh];

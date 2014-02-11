@@ -9,7 +9,7 @@
 #import "PMMonogramVC.h"
 #import "PMChooseFontVC.h"
 
-@interface PMMonogramVC ()
+@interface PMMonogramVC () <UITextFieldDelegate>
 
 @end
 
@@ -19,6 +19,8 @@
     NSString *_letter2;
     NSInteger _font1;
     NSInteger _font2;
+    
+    UITextField *ttt;
 }
 @synthesize onClose, initialContainerView, initialTextField, onFurther;
 @synthesize titleLabel;
@@ -65,11 +67,11 @@
     
     if(_letter1.length == 0)
     {
-        titleLabel.text = @"ПОЖАЛУЙСТА ВВЕДИТЕ ИНИЦИАЛЫ МУЖЧИНЫ";
+        titleLabel.text = @"ПОЖАЛУЙСТА ВВЕДИТЕ ВАШИ ИНИЦИАЛЫ";
     }
     else
     {
-        titleLabel.text = @"ПОЖАЛУЙСТА ВВЕДИТЕ ИНИЦИАЛЫ ЖЕНЩИНЫ";
+        titleLabel.text = @"ПОЖАЛУЙСТА ВВЕДИТЕ ВАШИ ИНИЦИАЛЫ";
     }
 }
 
@@ -78,16 +80,28 @@
     onClose.alpha = onFurther.alpha = initialContainerView.alpha = titleLabel.alpha = 1.0;
     
     [self addKeyboardNotifications];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange2:) name:UITextFieldTextDidChangeNotification object: nil];
 }
 
 -(void) viewWillDisappear:(BOOL)animated
 {
     [self removeKeyboardNotifications];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void)textDidChange2:(UITextField *)textField
+{
+    if ([initialTextField.text length] > 1) {
+        initialTextField.text = [initialTextField.text substringToIndex:1];
+    }
+    //NSLog(@"%@", initialTextField.text);
 }
 
 #pragma mark - UIKeyboard Notifications
