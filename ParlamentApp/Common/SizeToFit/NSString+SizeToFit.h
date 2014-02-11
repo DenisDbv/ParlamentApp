@@ -12,5 +12,6 @@
 
 -(CGSize) sizeToFitWithFont:(UIFont*)font;
 -(UIImage*) imageToFitWithFont:(UIFont*)font;
+-(UIImage*) imageToFit:(UIImage*)labelImage;
 
 @end

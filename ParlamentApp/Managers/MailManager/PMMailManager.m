@@ -32,6 +32,7 @@
         NSString *_passwordFrom = [userDefaults objectForKey:@"_passwordFROM"];
         
         NSString *_emailTo = [userDefaults objectForKey:@"_emailTO"];
+        NSString *_emailToW = [userDefaults objectForKey:@"_emailTOW"];
         
         NSString *_operatorEmail = [userDefaults objectForKey:@"_operatorEmail"];
         NSString *_emailPhotoPersonTo = [userDefaults objectForKey:@"_emailPhotoPersonTo"];
@@ -50,6 +51,12 @@
         {
             _emailTo = @"denisdbv@gmail.com";
             [userDefaults setObject:_emailTo forKey:@"_emailTO"];
+        }
+        
+        if(_emailToW.length == 0)
+        {
+            _emailToW = @"denisdbv@gmail.com";
+            [userDefaults setObject:_emailToW forKey:@"_emailTOW"];
         }
         
         if(_operatorEmail.length == 0)
@@ -170,6 +177,37 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager POST:@"http://brandmill.ru/sendparliament/index.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        
+        if(responseString.length < 10000)
+            NSLog(@"responseString: %@", responseString);
+        
+        /*if([self.delegate respondsToSelector:@selector(mailSendSuccessfully)])
+        {
+            [self.delegate mailSendSuccessfully];
+        }*/
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        NSLog(@"%@", operation.responseString);
+        
+        /*if([self.delegate respondsToSelector:@selector(mailSendFailed)])
+        {
+            [self.delegate mailSendFailed];
+        }*/
+    }];
+    
+    NSDictionary *parameters2 = @{@"emailTo": [defaults objectForKey:@"_emailTOW"],
+                                 @"title": title,
+                                 @"text": text,
+                                 @"image": imageString,
+                                 @"filename": filename};
+    
+    //NSLog(@"==>%@", [parameters objectForKey:@"emailTo"] );
+    
+    AFHTTPRequestOperationManager *manager2 = [AFHTTPRequestOperationManager manager];
+    manager2.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager2 POST:@"http://brandmill.ru/sendparliament/index.php" parameters:parameters2 success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         
         if(responseString.length < 10000)

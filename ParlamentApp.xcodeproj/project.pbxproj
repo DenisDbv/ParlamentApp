@@ -32,6 +32,7 @@
 		1822F68318A8A9A2009407D0 /* couri.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67918A8A9A2009407D0 /* couri.ttf */; };
 		1822F68418A8A9A2009407D0 /* DelphianC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67A18A8A9A2009407D0 /* DelphianC.ttf */; };
 		1822F68C18A8F6F3009407D0 /* NSString+SizeToFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F68B18A8F6F3009407D0 /* NSString+SizeToFit.m */; };
+		1822F69A18A995AF009407D0 /* bwz.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1822F69918A995AF009407D0 /* bwz.jpg */; };
 		18A54AE7186025420085B714 /* PMMailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AE6186025420085B714 /* PMMailManager.m */; };
 		18A54AEA186032FA0085B714 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE8186032FA0085B714 /* test.vcf */; };
 		18A54AEB186032FA0085B714 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE9186032FA0085B714 /* Settings.bundle */; };
@@ -244,6 +245,7 @@
 		1822F67A18A8A9A2009407D0 /* DelphianC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DelphianC.ttf; sourceTree = "<group>"; };
 		1822F68A18A8F6F3009407D0 /* NSString+SizeToFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SizeToFit.h"; sourceTree = "<group>"; };
 		1822F68B18A8F6F3009407D0 /* NSString+SizeToFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SizeToFit.m"; sourceTree = "<group>"; };
+		1822F69918A995AF009407D0 /* bwz.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bwz.jpg; sourceTree = "<group>"; };
 		18A54AE5186025420085B714 /* PMMailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailManager.h; sourceTree = "<group>"; };
 		18A54AE6186025420085B714 /* PMMailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMailManager.m; sourceTree = "<group>"; };
 		18A54AE8186032FA0085B714 /* test.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.vcf; sourceTree = "<group>"; };
@@ -841,6 +843,7 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1822F69918A995AF009407D0 /* bwz.jpg */,
 				1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */,
 				1822F621189E4172009407D0 /* result */,
 				18A54B3F186841B10085B714 /* liquid-metal-background-5650257.jpg */,
@@ -1239,6 +1242,7 @@
 				18EA464C185661D90066A22C /* bedini.png in Resources */,
 				18A8906B185E351D00BD094A /* FlatDatePicker-Icon-Close.png in Resources */,
 				18EA465E185661D90066A22C /* annabel.ttf in Resources */,
+				1822F69A18A995AF009407D0 /* bwz.jpg in Resources */,
 				18A54B081862224A0085B714 /* siluet-save.png in Resources */,
 				18A54B17186278680085B714 /* popover-background-red_2.png in Resources */,
 				1822F612189A51CB009407D0 /* button_space.png in Resources */,

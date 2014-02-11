@@ -11,6 +11,7 @@
 @interface PMRegistrationVC : PMParentController
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableViewW;
 @property (nonatomic, strong) IBOutlet UIButton *continueButton;
 
 @property (nonatomic, assign) BOOL isExitToMenu;

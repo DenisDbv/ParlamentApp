@@ -30,8 +30,17 @@
     PMRegistrationFieldView *phoneField;
     PMRegistrationFieldView *emailField;
     PMRegistrationFieldView *dateBirthField;
-    
     NSArray *fieldsArray;
+    
+    PMRegistrationFieldView *nameFieldW;
+    PMRegistrationFieldView *secondNameFieldW;
+    PMRegistrationFieldView *sexFieldW;
+    PMRegistrationFieldView *phoneFieldW;
+    PMRegistrationFieldView *emailFieldW;
+    PMRegistrationFieldView *dateBirthFieldW;
+    NSArray *fieldsArrayW;
+    
+    int controlIndex;
     
     UIPopoverController *popoverControllerForDate;
     UIPopoverController *popoverControllerForSex;
@@ -43,8 +52,10 @@
     UIButton *settingButton;
     
     NSDate *selectedBirthDate;
+    NSDate *selectedBirthDateW;
 }
 @synthesize tableView;
+@synthesize tableViewW;
 @synthesize continueButton;
 @synthesize isExitToMenu;
 
@@ -60,6 +71,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    controlIndex = 0;
         
     PMCustomKeyboard *customKeyboard = [[PMCustomKeyboard alloc] init];
     PMCustomKeyboard *customKeyboard2 = [[PMCustomKeyboard alloc] init];
@@ -91,6 +104,8 @@
     fieldsArray = @[nameField, secondNameField, sexField, phoneField, emailField, dateBirthField];
 
     tableView.scrollEnabled = NO;
+    
+    [self initCellsInW];
     
     popoverContent = [[PMDatePickerVCViewController alloc] initWithNibName:@"PMDatePickerVCViewController"
                                                                                                   bundle:[NSBundle mainBundle]];
@@ -128,6 +143,40 @@
     [tapGesture1 requireGestureRecognizerToFail:tapGesture2];*/
     
     [self registrationFormRefresh];
+}
+
+-(void) initCellsInW
+{
+    PMCustomKeyboard *customKeyboard = [[PMCustomKeyboard alloc] init];
+    PMCustomKeyboard *customKeyboard2 = [[PMCustomKeyboard alloc] init];
+    PMCustomKeyboard *customKeyboard3 = [[PMCustomKeyboard alloc] init];
+    PMCustomKeyboard *customKeyboard4 = [[PMCustomKeyboard alloc] init];
+    PMCustomKeyboard *customKeyboard5 = [[PMCustomKeyboard alloc] init];
+    PMCustomKeyboard *customKeyboard6 = [[PMCustomKeyboard alloc] init];
+    
+    nameFieldW = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ИМЯ" subTitle:@"ПРИМЕР: АНЯ" withType:nil];
+    [customKeyboard setTextView:nameFieldW.titleField];
+    
+    secondNameFieldW = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ФАМИЛИЯ" subTitle:@"ПРИМЕР: ИВАНОВА" withType:nil];
+    [customKeyboard2 setTextView:secondNameFieldW.titleField];
+    
+    sexFieldW = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ПОЛ" subTitle:@"ПРИМЕР: ЖЕНСКИЙ" withType:kNoKeyboard];
+    sexFieldW.delegate = self;
+    [customKeyboard3 setTextView:sexFieldW.titleField];
+    
+    phoneFieldW = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ТЕЛЕФОН" subTitle:@"ПРИМЕР: +79005432121" withType:kPhoneField];
+    [customKeyboard4 setTextView:phoneFieldW.titleField];
+    
+    emailFieldW = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"E-MAIL" subTitle:@"ПРИМЕР: ANYA@MAIL.RU" withType:nil];
+    [customKeyboard5 setTextView:emailFieldW.titleField];
+    
+    dateBirthFieldW = [[PMRegistrationFieldView alloc] initWithPlaceholder:@"ДАТА РОЖДЕНИЯ" subTitle:@"ПРИМЕР: 14 МАРТА 1987" withType:kNoKeyboard];
+    dateBirthFieldW.delegate = self;
+    [customKeyboard6 setTextView:dateBirthFieldW.titleField];
+    
+    fieldsArrayW = @[nameFieldW, secondNameFieldW, sexFieldW, phoneFieldW, emailFieldW, dateBirthFieldW];
+    
+    tableViewW.scrollEnabled = NO;
 }
 
 - (void)handleTap1:(UIGestureRecognizer *)sender
@@ -245,13 +294,20 @@
     if(shortRegForm)    {
         fieldsArray = @[nameField, secondNameField, phoneField, emailField];
         tableView.frame = CGRectMake(387, 190, tableView.frame.size.width, tableView.frame.size.height);
+        
+        fieldsArrayW = @[nameFieldW, secondNameFieldW, phoneFieldW, emailFieldW];
+        tableViewW.frame = CGRectMake(tableView.frame.origin.x+tableView.frame.size.width+40, 190, tableViewW.frame.size.width, tableViewW.frame.size.height);
     }
     else    {
         fieldsArray = @[nameField, secondNameField, sexField, phoneField, emailField, dateBirthField];
         tableView.frame = CGRectMake(387, 90, tableView.frame.size.width, tableView.frame.size.height);
+        
+        fieldsArrayW = @[nameFieldW, secondNameFieldW, sexFieldW, phoneFieldW, emailFieldW, dateBirthFieldW];
+        tableViewW.frame = CGRectMake(tableView.frame.origin.x+tableView.frame.size.width+40, 90, tableViewW.frame.size.width, tableViewW.frame.size.height);
     }
     
     [tableView reloadData];
+    [tableViewW reloadData];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -300,7 +356,15 @@
         //cell setSelectedBackgroundView:<#(UIView *)#>
     }
 
-    PMRegistrationFieldView *field = [fieldsArray objectAtIndex:indexPath.section];
+    PMRegistrationFieldView *field;
+    
+    if(tableView == self.tableView) {
+        field = [fieldsArray objectAtIndex:indexPath.section];
+    }
+    else    {
+        field = [fieldsArrayW objectAtIndex:indexPath.section];
+    }
+    
     [cell addSubview:field];
     
     return cell;
@@ -341,12 +405,28 @@
 {
     if(fieldView == dateBirthField)
     {
+        controlIndex = 0;
         CGRect rect = [fieldView convertRect:fieldView.frame toView:self.view];
         rect.origin.y += 20;
         [popoverControllerForDate presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
     else if(fieldView == sexField)
     {
+        controlIndex = 1;
+        CGRect rect = [fieldView convertRect:fieldView.frame toView:self.view];
+        rect.origin.y += 40;
+        [popoverControllerForSex presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    else if(fieldView == dateBirthFieldW)
+    {
+        controlIndex = 2;
+        CGRect rect = [fieldView convertRect:fieldView.frame toView:self.view];
+        rect.origin.y += 20;
+        [popoverControllerForDate presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    else if(fieldView == sexFieldW)
+    {
+        controlIndex = 3;
         CGRect rect = [fieldView convertRect:fieldView.frame toView:self.view];
         rect.origin.y += 40;
         [popoverControllerForSex presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
@@ -357,7 +437,10 @@
 {
     [popoverControllerForSex dismissPopoverAnimated:YES];
     
-    sexField.titleField.text = sexString;
+    if(controlIndex == 1)
+        sexField.titleField.text = sexString;
+    else
+        sexFieldW.titleField.text = sexString;
 }
 
 - (void)keyboardWillShow:(NSNotification*)notification
@@ -368,8 +451,10 @@
     
     //[tableView setContentOffset:CGPointMake(0, 5) animated:YES];
     CGRect tableViewRect = tableView.frame;
+    CGRect tableViewRectW = tableViewW.frame;
     [UIView animateWithDuration:0.3 animations:^{
         tableView.frame = CGRectMake(tableViewRect.origin.x, (shortRegForm)?90.0:10.0, tableViewRect.size.width, tableViewRect.size.height);
+        tableViewW.frame = CGRectMake(tableViewRectW.origin.x, (shortRegForm)?90.0:10.0, tableViewRectW.size.width, tableViewRectW.size.height);
         continueButton.alpha = 0;
     }];
 }
@@ -377,8 +462,10 @@
 - (void)keyboardWillHide:(NSNotification*)notification
 {
     CGRect tableViewRect = tableView.frame;
+    CGRect tableViewRectW = tableViewW.frame;
     [UIView animateWithDuration:0.3 animations:^{
         tableView.frame = CGRectMake(tableViewRect.origin.x, (shortRegForm)?190.0:90.0, tableViewRect.size.width, tableViewRect.size.height);
+        tableViewW.frame = CGRectMake(tableViewRectW.origin.x, (shortRegForm)?190.0:90.0, tableViewRectW.size.width, tableViewRectW.size.height);
         continueButton.alpha = 1;
     }];
 }
@@ -392,8 +479,14 @@
 
 -(void) datePickerSetString:(NSString*)dateText withDate:(NSDate*)date
 {
-    dateBirthField.titleField.text = dateText;
-    selectedBirthDate = date;
+    if(controlIndex == 0)   {
+        dateBirthField.titleField.text = dateText;
+        selectedBirthDate = date;
+    }
+    else    {
+        dateBirthFieldW.titleField.text = dateText;
+        selectedBirthDateW = date;
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -435,11 +528,58 @@
     [userDefaults setObject:dateBirthField.titleField.text forKey:@"_birthday"];
     [userDefaults synchronize];
     
-    //[[AppDelegateInstance() rippleViewController] closeRegistrationAndOpenApp];
+    if(tableViewW.hidden == YES)
+    {
+        CGFloat leftSide = tableView.frame.size.width + 40 +tableViewW.frame.size.width;
+        
+        leftSide = (self.view.frame.size.width - leftSide)/2;
+        tableViewW.alpha = 0;
+        tableViewW.hidden = NO;
+        
+        [UIView animateWithDuration:0.3f animations:^{
+            tableView.frame = CGRectMake(leftSide, tableView.frame.origin.y, tableView.frame.size.width, tableView.frame.size.height);
+            tableViewW.frame = CGRectMake(tableView.frame.origin.x+tableView.frame.size.width+40, tableViewW.frame.origin.y, tableViewW.frame.size.width, tableViewW.frame.size.height);
+            tableViewW.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            //
+        }];
+    }
+    else {
+        
+        for(PMRegistrationFieldView *field in fieldsArrayW)
+        {
+            if(field.titleField.text.length == 0)   {
+                [self shakeIt:field withDelta:-2.0];
+                //return;
+            }
+        }
+        
+        if(fieldsArrayW.count == 6)   {
+            if(selectedBirthDateW.description.length == 0)
+                selectedBirthDateW = [NSDate date];
+            
+            NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+            int years = [[gregorian components:NSYearCalendarUnit fromDate:selectedBirthDateW toDate:[NSDate date] options:0] year];
+            NSLog(@"%i years old", years);
+            if (years < 18) {
+                [self shakeIt:dateBirthField withDelta:-2.0];
+                //return;
+            }
+        }
+        
+        [userDefaults setObject:nameFieldW.titleField.text forKey:@"_firstnameW"];
+        [userDefaults setObject:secondNameFieldW.titleField.text forKey:@"_lastnameW"];
+        [userDefaults setObject:sexFieldW.titleField.text forKey:@"_sexW"];
+        [userDefaults setObject:phoneFieldW.titleField.text forKey:@"_telephoneW"];
+        [userDefaults setObject:emailFieldW.titleField.text forKey:@"_emailTOW"];
+        [userDefaults setObject:dateBirthFieldW.titleField.text forKey:@"_birthdayW"];
+        [userDefaults synchronize];
+        
+        [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            //
+        }];
+    }
     
-    [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-        //
-    }];
 }
 
 -(void) shakeIt:(UIView*)view withDelta:(CGFloat)delta

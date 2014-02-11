@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="continueButton" destination="r7l-fP-pxU" id="58j-VA-t4L"/>
                 <outlet property="tableView" destination="ULa-4E-U3d" id="DBK-Rs-W7S"/>
+                <outlet property="tableViewW" destination="X7Z-PX-IvJ" id="VBW-PG-5wT"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -36,6 +37,15 @@
                         <action selector="onContinue:" destination="-1" eventType="touchUpInside" id="RnX-pU-yjZ"/>
                     </connections>
                 </button>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="X7Z-PX-IvJ">
+                    <rect key="frame" x="704" y="90" width="230" height="447"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="NXy-XF-0bZ"/>
+                        <outlet property="delegate" destination="-1" id="0rl-wO-k3M"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>

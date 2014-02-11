@@ -16,4 +16,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *onFurther;
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
+-(id) initMonogramVC:(NSString*)letter1 :(NSInteger)font1 :(NSString*)letter2 :(NSInteger)font2;
 @end

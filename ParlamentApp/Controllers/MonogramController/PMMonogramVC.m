@@ -14,6 +14,12 @@
 @end
 
 @implementation PMMonogramVC
+{
+    NSString *_letter1;
+    NSString *_letter2;
+    NSInteger _font1;
+    NSInteger _font2;
+}
 @synthesize onClose, initialContainerView, initialTextField, onFurther;
 @synthesize titleLabel;
 
@@ -21,7 +27,24 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
+        _letter1 = @"";
+        _letter2 = @"";
+        _font1 = -1;
+        _font2 = -1;
+        
+    }
+    return self;
+}
+
+-(id) initMonogramVC:(NSString*)letter1 :(NSInteger)font1 :(NSString*)letter2 :(NSInteger)font2
+{
+    self = [super initWithNibName:@"PMMonogramVC" bundle:[NSBundle mainBundle]];
+    if (self) {
+        _letter1 = letter1;
+        _letter2 = letter2;
+        _font1 = font1;
+        _font2 = font2;
     }
     return self;
 }
@@ -39,6 +62,15 @@
     
     PMCustomKeyboard *customKeyboard = [[PMCustomKeyboard alloc] init];
     [customKeyboard setTextView:initialTextField];
+    
+    if(_letter1.length == 0)
+    {
+        titleLabel.text = @"ПОЖАЛУЙСТА ВВЕДИТЕ ИНИЦИАЛЫ МУЖЧИНЫ";
+    }
+    else
+    {
+        titleLabel.text = @"ПОЖАЛУЙСТА ВВЕДИТЕ ИНИЦИАЛЫ ЖЕНЩИНЫ";
+    }
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -121,14 +153,18 @@
     
     [self.view endEditing:YES];
     
-    self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
-    /*[self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-        //
-    }];*/
-    
-    [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-        //
-    }];
+    if(_letter2.length != 0)
+    {
+        _letter2 = @"";
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+        [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            //
+        }];
+    }
 }
 
 - (IBAction)onTapFurther:(UIButton*)sender
@@ -154,8 +190,17 @@
     else    {
         [self.view endEditing:YES];
         onClose.alpha = onFurther.alpha = initialContainerView.alpha = titleLabel.alpha = 0.0;
-        PMChooseFontVC *chooseFontVC = [[PMChooseFontVC alloc] initWithInitials:initialTextField.text];
+        
+        if(_letter1.length == 0)
+            _letter1 = initialTextField.text;
+        else
+            _letter2 = initialTextField.text;
+        
+        PMChooseFontVC *chooseFontVC = [[PMChooseFontVC alloc] initChooseFontVC:_letter1 :_font1 :_letter2 :_font2];
         [self.navigationController pushViewController:chooseFontVC animated:YES];
+        
+        //PMChooseFontVC *chooseFontVC = [[PMChooseFontVC alloc] initWithInitials:initialTextField.text];
+        //[self.navigationController pushViewController:chooseFontVC animated:YES];
     }
 }
 
