@@ -28,6 +28,6 @@
 @property (nonatomic, strong) IBOutlet UIImageView *blueLineImageView;
 
 -(id) initWithInitials:(NSString*)initials;
--(id) initChooseFontVC:(NSString*)letter1 :(NSInteger)font1 :(NSString*)letter2 :(NSInteger)font2;
+-(id) initChooseFontVC:(NSString*)letter1 :(NSString*)letter2;
 
 @end

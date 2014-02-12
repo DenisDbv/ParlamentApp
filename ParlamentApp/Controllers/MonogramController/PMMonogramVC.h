@@ -17,5 +17,5 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
--(id) initMonogramVC:(NSString*)letter1 :(NSInteger)font1 :(NSString*)letter2 :(NSInteger)font2;
+-(id) initMonogramVC:(NSString*)letter1 :(NSString*)letter2;
 @end

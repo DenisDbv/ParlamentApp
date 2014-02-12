@@ -165,6 +165,9 @@
 
 -(void) onVoiceClose:(UIButton*)btn
 {
+    CGPoint location = btn.center;
+    [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+    
     [UIView animateWithDuration:0.05 animations:^{
         btn.transform = CGAffineTransformMakeScale(0.95, 0.95);
     }

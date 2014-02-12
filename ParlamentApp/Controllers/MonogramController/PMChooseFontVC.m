@@ -32,8 +32,6 @@
     
     NSString *_letter1;
     NSString *_letter2;
-    NSInteger _font1;
-    NSInteger _font2;
 }
 @synthesize titleLabel;
 @synthesize monogramLabel;
@@ -51,25 +49,18 @@
         
         _letter1 = @"";
         _letter2 = @"";
-        _font1 = -1;
-        _font2 = -1;
     }
     return self;
 }
 
--(id) initChooseFontVC:(NSString*)letter1 :(NSInteger)font1 :(NSString*)letter2 :(NSInteger)font2
+-(id) initChooseFontVC:(NSString*)letter1 :(NSString*)letter2
 {
     self = [super initWithNibName:@"PMChooseFontVC" bundle:[NSBundle mainBundle]];
     if (self) {
         _letter1 = letter1;
         _letter2 = letter2;
-        _font1 = font1;
-        _font2 = font2;
         
-        if(_letter2.length == 0)
-            initialsString = _letter1;
-        else
-            initialsString = _letter2;
+        initialsString = [NSString stringWithFormat:@"%@ %@", _letter1, _letter2];
     }
     return self;
 }
@@ -152,12 +143,11 @@
     CGPoint location = sender.center;
     [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
     
-    if(_font2 != -1)
-        _font2 = -1;
-    else
-        _font1 = -1;
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+    [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+        //
+    }];
 }
 
 - (IBAction)onNext:(UIButton*)sender
@@ -165,31 +155,17 @@
     CGPoint location = sender.center;
     [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
     
-    if(_font1 == -1)
-    {
-        _font1 = _fontIndex;
-        
-        self.view.alpha = 0;
-        
-        PMMonogramVC *monogramVC = [[PMMonogramVC alloc] initMonogramVC:_letter1 :_font1 :_letter2 :_font2];
-        [self.navigationController pushViewController:monogramVC animated:YES];
-    }
-    else
-    {
-        _font2 = _fontIndex;
-        
-        [sender setEnabled:NO];
-        UIImage *saveClearImage = [UIImage imageNamed:@"clear_button.png"];
-        [sender setBackgroundImage:saveClearImage forState:UIControlStateNormal];
-        [sender setBackgroundImage:saveClearImage forState:UIControlStateHighlighted];
-        
-        saveIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        [self.view addSubview:saveIndicator];
-        saveIndicator.center = sender.center;
-        [saveIndicator startAnimating];
-        
-        [self generateImage];
-    }
+    [sender setEnabled:NO];
+    UIImage *saveClearImage = [UIImage imageNamed:@"clear_button.png"];
+    [sender setBackgroundImage:saveClearImage forState:UIControlStateNormal];
+    [sender setBackgroundImage:saveClearImage forState:UIControlStateHighlighted];
+    
+    saveIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [self.view addSubview:saveIndicator];
+    saveIndicator.center = sender.center;
+    [saveIndicator startAnimating];
+    
+    [self generateImage];
 }
 
 -(UIImage*) getColorTextImage:(UIImage*)labelImage
@@ -358,7 +334,7 @@
 
 -(void) generateImage
 {
-    NSLog(@"letter1=%@ letter2=%@ font1=%i font2=%i", _letter1, _letter2, _font1, _font2);
+    NSLog(@"letter1=%@ letter2=%@", _letter1, _letter2);
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
@@ -404,7 +380,7 @@
             textLabel1.backgroundColor = [UIColor clearColor];
             textLabel1.textColor = [UIColor blueColor];
             textLabel1.text = [NSString stringWithFormat:@" %@", firstCharacter];
-            textLabel1.font = [UIFont fontWithName:[fontNames objectAtIndex:_font1] size:50.0];
+            textLabel1.font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:50.0];
             textLabel1.minimumScaleFactor = 0.5f;
             textLabel1.numberOfLines = 1;
             textLabel1.adjustsFontSizeToFitWidth = YES;
@@ -418,7 +394,7 @@
             
             CGFloat sss = 50;
             while (YES) {
-                UIFont *fff = [UIFont fontWithName:[fontNames objectAtIndex:_font1] size:sss];
+                UIFont *fff = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:sss];
                 CGSize size = [firstCharacter sizeWithFont:fff
                                          constrainedToSize:CGSizeMake(inSquareView.frame.size.width, 10000.0)
                                              lineBreakMode:textLabel1.lineBreakMode];
@@ -429,14 +405,14 @@
                 sss++;
             }
             //NSLog(@"===>%f", sss*2);
-            textLabel1.font = [UIFont fontWithName:[fontNames objectAtIndex:_font1] size:sss+50.0];
+            textLabel1.font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:sss+50.0];
             
             UILabel *textLabel2 = [[UILabel alloc] initWithFrame:CGRectZero];
             textLabel2.opaque = NO;
             textLabel2.backgroundColor = [UIColor clearColor];
             textLabel2.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bwz.jpg"]];
             textLabel2.text = [NSString stringWithFormat:@"%@  ", secondCharacter];
-            textLabel2.font = [UIFont fontWithName:[fontNames objectAtIndex:_font2] size:150.0];
+            textLabel2.font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:150.0];
             textLabel2.minimumScaleFactor = 0.5f;
             textLabel2.adjustsFontSizeToFitWidth = YES;
             textLabel2.numberOfLines = 1;
@@ -450,7 +426,7 @@
             
             sss = 50;
             while (YES) {
-                UIFont *fff = [UIFont fontWithName:[fontNames objectAtIndex:_font2] size:sss];
+                UIFont *fff = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:sss];
                 CGSize size = [secondCharacter sizeWithFont:fff
                                          constrainedToSize:CGSizeMake(inSquareView.frame.size.width, 10000.0)
                                              lineBreakMode:textLabel2.lineBreakMode];
@@ -461,7 +437,7 @@
                 sss++;
             }
             //NSLog(@"===>%f", sss*2);
-            textLabel2.font = [UIFont fontWithName:[fontNames objectAtIndex:_font2] size:sss+50.0];
+            textLabel2.font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:sss+50.0];
             
             //[inSquareView addSubview:textLabel1];
             //[inSquareView addSubview:textLabel2];
@@ -510,13 +486,20 @@
         plusImageView.frame = CGRectOffset(plusImageView.frame, (imgView.frame.size.width-plusImageView.frame.size.width)/2, exEllipseRect.origin.y+(exEllipseRect.size.height-plusImageView.frame.size.height)/2);
         
             UIImageView *firstLetterImage = [[UIImageView alloc] initWithImage:labelImage1];
+            firstLetterImage.contentMode = UIViewContentModeScaleAspectFit;
             UIImageView *secondLetterImage = [[UIImageView alloc] initWithImage:labelImage2];
+            secondLetterImage.contentMode = UIViewContentModeScaleAspectFit;
             firstLetterImage.alpha = secondLetterImage.alpha = 1.0;
-            firstLetterImage.frame = CGRectMake(0, 0,
+        firstLetterImage.frame = CGRectMake(0, 0,
+                                            inSquareView.frame.size.width/2, inSquareView.frame.size.height/2);
+        secondLetterImage.frame = CGRectMake(inSquareView.frame.size.width/2,
+                                             inSquareView.frame.size.height/2,
+                                             inSquareView.frame.size.width/2, inSquareView.frame.size.height/2);
+            /*firstLetterImage.frame = CGRectMake(0, 0,
                                                 firstLetterImage.frame.size.width/2, firstLetterImage.frame.size.height/2);
             secondLetterImage.frame = CGRectMake((inSquareView.frame.size.width-secondLetterImage.frame.size.width/2),
                                                  (inSquareView.frame.size.height-secondLetterImage.frame.size.height/2),
-                                                 secondLetterImage.frame.size.width/2, secondLetterImage.frame.size.height/2);
+                                                 secondLetterImage.frame.size.width/2, secondLetterImage.frame.size.height/2);*/
             [imgView addSubview:plusImageView];
             [inSquareView addSubview:firstLetterImage];
             [inSquareView addSubview:secondLetterImage];
@@ -932,10 +915,28 @@
 
 -(void) onClose:(UIButton*)sender
 {
-    self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+    /*self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
     [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
         //
-    }];
+    }];*/
+    
+    CGPoint location = sender.center;
+    [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+    
+    [UIView animateWithDuration:0.05 animations:^{
+        sender.transform = CGAffineTransformMakeScale(0.95, 0.95);
+    }
+                     completion:^(BOOL finished){
+                         
+                         [UIView animateWithDuration:0.05f animations:^{
+                             sender.transform = CGAffineTransformMakeScale(1, 1);
+                         } completion:^(BOOL finished) {
+                             self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+                             [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                                 //
+                             }];
+                         }];
+                     }];
 }
 
 #pragma mark -

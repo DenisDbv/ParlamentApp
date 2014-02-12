@@ -17,8 +17,6 @@
 {
     NSString *_letter1;
     NSString *_letter2;
-    NSInteger _font1;
-    NSInteger _font2;
     
     UITextField *ttt;
 }
@@ -32,21 +30,17 @@
         
         _letter1 = @"";
         _letter2 = @"";
-        _font1 = -1;
-        _font2 = -1;
         
     }
     return self;
 }
 
--(id) initMonogramVC:(NSString*)letter1 :(NSInteger)font1 :(NSString*)letter2 :(NSInteger)font2
+-(id) initMonogramVC:(NSString*)letter1 :(NSString*)letter2
 {
     self = [super initWithNibName:@"PMMonogramVC" bundle:[NSBundle mainBundle]];
     if (self) {
         _letter1 = letter1;
         _letter2 = letter2;
-        _font1 = font1;
-        _font2 = font2;
     }
     return self;
 }
@@ -84,6 +78,11 @@
     [self addKeyboardNotifications];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange2:) name:UITextFieldTextDidChangeNotification object: nil];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [initialTextField becomeFirstResponder];
 }
 
 -(void) viewWillDisappear:(BOOL)animated
@@ -169,18 +168,10 @@
     
     [self.view endEditing:YES];
     
-    if(_letter2.length != 0)
-    {
-        _letter2 = @"";
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    else
-    {
-        self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
-        [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-            //
-        }];
-    }
+    self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+    [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+        //
+    }];
 }
 
 - (IBAction)onTapFurther:(UIButton*)sender
@@ -212,11 +203,14 @@
         else
             _letter2 = initialTextField.text;
         
-        PMChooseFontVC *chooseFontVC = [[PMChooseFontVC alloc] initChooseFontVC:_letter1 :_font1 :_letter2 :_font2];
-        [self.navigationController pushViewController:chooseFontVC animated:YES];
-        
-        //PMChooseFontVC *chooseFontVC = [[PMChooseFontVC alloc] initWithInitials:initialTextField.text];
-        //[self.navigationController pushViewController:chooseFontVC animated:YES];
+        if(_letter1.length == 0 || _letter2.length == 0)    {
+            PMMonogramVC *monogramVC = [[PMMonogramVC alloc] initMonogramVC:_letter1 :_letter2];
+            [self.navigationController pushViewController:monogramVC animated:YES];
+        } else
+        {
+            PMChooseFontVC *cooseFontVC = [[PMChooseFontVC alloc] initChooseFontVC:_letter1 :_letter2];
+            [self.navigationController pushViewController:cooseFontVC animated:YES];
+        }
     }
 }
 
