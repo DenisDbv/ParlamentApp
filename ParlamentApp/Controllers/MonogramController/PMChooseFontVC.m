@@ -11,6 +11,7 @@
 #import "UIView+GestureBlocks.h"
 #import "NSString+SizeToFit.h"
 #import "PMMonogramVC.h"
+#import <DTAlertView/DTAlertView.h>
 
 @interface PMChooseFontVC ()
 
@@ -89,10 +90,10 @@
     
     if(_letter2.length == 0)
     {
-        titleLabel.text = @"ПОЖАЛУЙСТА ВЫБЕРИТЕ ШРИФТ ДЛЯ СОЗДАНИЯ МОНОГРАММЫ МУЖЧИНЫ";
+        titleLabel.text = @"ПОЖАЛУЙСТА ВЫБЕРИТЕ ШРИФТ ДЛЯ СОЗДАНИЯ МОНОГРАММЫ";
     }
     else    {
-        titleLabel.text = @"ПОЖАЛУЙСТА ВЫБЕРИТЕ ШРИФТ ДЛЯ СОЗДАНИЯ МОНОГРАММЫ ЖЕНЩИНЫ";
+        titleLabel.text = @"ПОЖАЛУЙСТА ВЫБЕРИТЕ ШРИФТ ДЛЯ СОЗДАНИЯ МОНОГРАММЫ";
     }
     
     UIImage *myGradient = [UIImage imageNamed:@"depositphotos_1318054-Liquid-metal.jpg"];
@@ -881,6 +882,32 @@
 -(void) mailSendFailed
 {
     [self performSelector:@selector(finishSavingMonogram) withObject:nil afterDelay:0.0];
+}
+
+-(void) mailSendFailed:(NSInteger)status
+{
+    if(status == 1)
+    {
+        DTAlertView *alertView = [DTAlertView alertViewWithTitle:@"Отсутствие связи" message:@"Убедитесь что устройство подключено к интернету" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"OK"];
+        alertView.dismissAnimationWhenButtonClicked = DTAlertViewAnimationSlideBottom;
+        [alertView setBlurBackgroundWithColor:[UIColor whiteColor] alpha:0.8];
+        [alertView show];
+    }
+    else
+    {
+        DTAlertView *alertView = [DTAlertView alertViewWithTitle:@"Медленный интернет" message:@"Пожалуйста, подключитесь к более скоростному каналу связи" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"OK"];
+        alertView.dismissAnimationWhenButtonClicked = DTAlertViewAnimationSlideBottom;
+        [alertView setBlurBackgroundWithColor:[UIColor whiteColor] alpha:0.8];
+        [alertView show];
+    }
+    
+    [saveBtn setEnabled:YES];
+    [saveIndicator stopAnimating];
+    [saveIndicator removeFromSuperview];
+    
+    UIImage *saveClearImage = [UIImage imageNamed:@"further.png"];
+    [saveBtn setBackgroundImage:saveClearImage forState:UIControlStateNormal];
+    [saveBtn setBackgroundImage:saveClearImage forState:UIControlStateHighlighted];
 }
 
 -(void) finishSavingMonogram

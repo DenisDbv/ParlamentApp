@@ -11,6 +11,7 @@
 @protocol PMMailManagerDelegate <NSObject>
 -(void) mailSendSuccessfully;
 -(void) mailSendFailed;
+-(void) mailSendFailed:(NSInteger)status;
 @end
 
 @interface PMMailManager : NSObject

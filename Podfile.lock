@@ -17,6 +17,7 @@ PODS:
   - AFNetworking/Serialization (2.1.0)
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
+  - DTAlertView (1.2.1)
   - iCarousel (1.7.6)
   - MBSwitch (0.0.1)
   - MZAppearance (1.1.1)
@@ -29,6 +30,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - DTAlertView
   - iCarousel
   - MBSwitch
   - MZFormSheetController
@@ -39,6 +41,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
+  DTAlertView: 366f517b23483842dca5ef4e56c2fc9abf70b826
   iCarousel: e23a26d7ba722215a42144e80adb0dcb59bebc41
   MBSwitch: fab7ee1b5d48efeafbd98f2141a4d0cc7d2428d8
   MZAppearance: 8b02683f0019f725557ae9839ed6cab153fff669

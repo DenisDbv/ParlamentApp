@@ -33,6 +33,7 @@
 		1822F68418A8A9A2009407D0 /* DelphianC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67A18A8A9A2009407D0 /* DelphianC.ttf */; };
 		1822F68C18A8F6F3009407D0 /* NSString+SizeToFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F68B18A8F6F3009407D0 /* NSString+SizeToFit.m */; };
 		1822F69A18A995AF009407D0 /* bwz.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1822F69918A995AF009407D0 /* bwz.jpg */; };
+		1822F6C318AB37DB009407D0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F6C218AB37DB009407D0 /* Reachability.m */; };
 		18A54AE7186025420085B714 /* PMMailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AE6186025420085B714 /* PMMailManager.m */; };
 		18A54AEA186032FA0085B714 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE8186032FA0085B714 /* test.vcf */; };
 		18A54AEB186032FA0085B714 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE9186032FA0085B714 /* Settings.bundle */; };
@@ -246,6 +247,8 @@
 		1822F68A18A8F6F3009407D0 /* NSString+SizeToFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SizeToFit.h"; sourceTree = "<group>"; };
 		1822F68B18A8F6F3009407D0 /* NSString+SizeToFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SizeToFit.m"; sourceTree = "<group>"; };
 		1822F69918A995AF009407D0 /* bwz.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bwz.jpg; sourceTree = "<group>"; };
+		1822F6C118AB37DB009407D0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		1822F6C218AB37DB009407D0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		18A54AE5186025420085B714 /* PMMailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailManager.h; sourceTree = "<group>"; };
 		18A54AE6186025420085B714 /* PMMailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMailManager.m; sourceTree = "<group>"; };
 		18A54AE8186032FA0085B714 /* test.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.vcf; sourceTree = "<group>"; };
@@ -917,6 +920,8 @@
 		18A84CA81851E1CE00612BE5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1822F6C118AB37DB009407D0 /* Reachability.h */,
+				1822F6C218AB37DB009407D0 /* Reachability.m */,
 				1822F68918A8F683009407D0 /* SizeToFit */,
 				18A54AEE18603F4F0085B714 /* SMTPLibrary */,
 				18A68F8B1853AD89009019BC /* UIImage+UIImageFunctions.h */,
@@ -1374,6 +1379,7 @@
 				18A84C761851D32600612BE5 /* PMAppDelegate.m in Sources */,
 				18EA46201855F1590066A22C /* PMMonogramVC.m in Sources */,
 				18A54AFD18603F4F0085B714 /* SKPSMTPMessage.m in Sources */,
+				1822F6C318AB37DB009407D0 /* Reachability.m in Sources */,
 				18A68FB5185484A6009019BC /* AudioFileWriter.m in Sources */,
 				18EA46A918595EF20066A22C /* PMCustomKeyboard.m in Sources */,
 				18A68F68185388F8009019BC /* RippleModel.m in Sources */,

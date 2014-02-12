@@ -13,6 +13,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import "NSData+Base64Additions.h"
+#import <DTAlertView/DTAlertView.h>
 
 @interface PMMailManager() <UIApplicationDelegate, SKPSMTPMessageDelegate>
 @property (nonatomic, strong) SKPSMTPMessage *testMsg;
@@ -151,6 +152,28 @@
                      image:(UIImage*)image
                   filename:(NSString*)filename
 {
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    //[reachability startNotifier];
+    
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    
+    if(status == NotReachable)
+    {
+        if([self.delegate respondsToSelector:@selector(mailSendFailed:)])
+        {
+            [self.delegate mailSendFailed:1];
+            return;
+        }
+    }
+    else if (status == ReachableViaWWAN)
+    {
+        if([self.delegate respondsToSelector:@selector(mailSendFailed:)])
+        {
+            [self.delegate mailSendFailed:2];
+            return;
+        }
+    }
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     NSString *imageString;

@@ -11,6 +11,7 @@
 #import "UIView+GestureBlocks.h"
 #import <MZTimerLabel/MZTimerLabel.h>
 #import "UIView+Screenshot.h"
+#import <DTAlertView/DTAlertView.h>
 
 @interface PMVoiceVisualizationVC ()
 
@@ -239,7 +240,8 @@
         [timer pause];
         [attractorView snapShoting];
         
-        [self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:2.0];
+        [self finishSavingSnapshot];
+        //[self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:0.0];
     }
     else    {
         [UIView animateWithDuration:0.05 animations:^{
@@ -273,16 +275,6 @@
 
 -(void) mailSendSuccessfully
 {
-    //[self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:0.0];
-}
-
--(void) mailSendFailed
-{
-    //[self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:0.0];
-}
-
--(void) finishSavingSnapshot
-{
     [self unload];
     
     [saveIndicator stopAnimating];
@@ -303,103 +295,82 @@
     [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
     [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
     [saveButton setEnabled:YES];
-    
-   // NSLog(@"%@", NSStringFromCGSize(attractorSnapshot.size));
-    if(attractorSnapshot.size.width != 0)   {
-        
-        CGSize paperSize = CGSizeMake(571.0, 791.0);
-        UIGraphicsBeginImageContextWithOptions(paperSize, NO, 1.0);
-        CGContextRef ctx = UIGraphicsGetCurrentContext();
-        CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
-        CGContextFillRect(ctx, CGRectMake(0, 0, paperSize.width, paperSize.height));
-        [attractorSnapshot drawInRect:CGRectMake((paperSize.width-attractorSnapshot.size.width)/2, 120.0, attractorSnapshot.size.width,attractorSnapshot.size.height)];
-        
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSString *text = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
-        UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
-        CGRect textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
-        CGFloat oneHeight = 0;
-        
-        if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
-        {
-            //iOS 7
-            
-            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
-            CGSize size = [text sizeWithAttributes:att];
-            oneHeight = size.height;
-            
-            textRect.origin.x = (paperSize.width - size.width)/2;
-            textRect.origin.y = 120.0+attractorSnapshot.size.height+128.0;
-            
-            [text drawInRect:textRect withAttributes:att];
-        }
-        else
-        {
-            //legacy support
-            [text drawInRect:CGRectIntegral(textRect) withFont:font];
-        }
-        
-        text = @"The Art of Individuality*";
-        font = [UIFont fontWithName:@"MyriadPro-Cond" size:20.0];
-        textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
-        if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
-        {
-            //iOS 7
-            
-            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
-            CGSize size = [text sizeWithAttributes:att];
-            textRect.origin.x = (paperSize.width - size.width)/2;
-            textRect.origin.y = 120.0+attractorSnapshot.size.height+128.0+oneHeight+5.0;
-            
-            [text drawInRect:textRect withAttributes:att];
-        }
-        
-        text = @"*Индивидуальность как искусство";
-        font = [UIFont fontWithName:@"MyriadPro-Cond" size:15.0];
-        textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
-        if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
-        {
-            //iOS 7
-            
-            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
-            CGSize size = [text sizeWithAttributes:att];
-            textRect.origin.x = (paperSize.width - size.width)-10;
-            textRect.origin.y = paperSize.height-7-size.height;
-            
-            [text drawInRect:textRect withAttributes:att];
-        }
-        
-        UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        /*UIGraphicsBeginImageContextWithOptions(CGSizeMake(attractorSnapshot.size.width,attractorSnapshot.size.height), NO, 1.0);
-        CGContextRef ctx = UIGraphicsGetCurrentContext();
-        CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
-        CGContextFillRect(ctx, CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height));
-        [attractorSnapshot drawInRect:CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height)];
-        UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();*/
-        
-        /*
-         UIGraphicsBeginImageContextWithOptions(CGSizeMake(attractorSnapshot.size.width,attractorSnapshot.size.height), NO, 1.0);
-         [attractorSnapshot drawInRect:CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height)];
-         CGContextRef ctx = UIGraphicsGetCurrentContext();
-         CGContextSetBlendMode(ctx, kCGBlendModeSourceIn);
-         CGContextSetFillColorWithColor(ctx, [UIColor blackColor].CGColor);
-         CGContextFillRect(ctx, CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height));
-         UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-         UIGraphicsEndImageContext();
-         */
-        
-       /* mailManager = [[PMMailManager alloc] init];
-        mailManager.delegate = self;
-        //[mailManager sendMessageWithImage:resultingImage imageName:@"voice.png" andText:@"Изображение голоса"];
-        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
+}
 
-        /*UIImageView *imgView = [[UIImageView alloc] initWithImage:resultingImage];
-        imgView.frame = CGRectOffset(imgView.frame, 0, 0);
-        [self.view addSubview:imgView];*/
+-(void) mailSendFailed
+{
+    //[self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:0.0];
+}
+
+-(void) mailSendFailed:(NSInteger)status
+{
+    /*if(status == 1)
+    {
+        DTAlertView *alertView = [DTAlertView alertViewWithTitle:@"Отсутствие связи" message:@"Убедитесь что устройство подключено к интернету" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"OK"];
+        alertView.dismissAnimationWhenButtonClicked = DTAlertViewAnimationSlideBottom;
+        [alertView setBlurBackgroundWithColor:[UIColor whiteColor] alpha:0.8];
+        [alertView show];
     }
+    else
+    {
+        DTAlertView *alertView = [DTAlertView alertViewWithTitle:@"Медленный интернет" message:@"Пожалуйста, подключитесь к более скоростному каналу связи" delegate:nil cancelButtonTitle:nil positiveButtonTitle:@"OK"];
+        alertView.dismissAnimationWhenButtonClicked = DTAlertViewAnimationSlideBottom;
+        [alertView setBlurBackgroundWithColor:[UIColor whiteColor] alpha:0.8];
+        [alertView show];
+    }
+    
+    [saveIndicator stopAnimating];
+    [saveIndicator removeFromSuperview];
+    
+    UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
+    [saveButton setEnabled:YES];*/
+    
+    [self unload];
+    
+    [saveIndicator stopAnimating];
+    [saveIndicator removeFromSuperview];
+    
+    saveButton.alpha = 0.0;
+    resetButton.alpha = 0.0;
+    titleLabel1.alpha = titleLabel2.alpha = titleLabel3.alpha = titleLabel4.alpha = 0.0;
+    timerLabel.alpha = 0.0;
+    settingButton.alpha = 0.0;
+    attractorView.alpha = 0.0;
+    
+    PMTimeManager *timeManager = [[PMTimeManager alloc] init];
+    finishTitle4.text = [NSString stringWithFormat:@"СПАСИБО И %@!", [timeManager titleTimeArea]];
+    finishView.alpha = 1.0;
+    
+    UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
+    [saveButton setEnabled:YES];
+}
+
+-(void) finishSavingSnapshot
+{
+    /*[self unload];
+    
+    [saveIndicator stopAnimating];
+    [saveIndicator removeFromSuperview];
+    
+    saveButton.alpha = 0.0;
+    resetButton.alpha = 0.0;
+    titleLabel1.alpha = titleLabel2.alpha = titleLabel3.alpha = titleLabel4.alpha = 0.0;
+    timerLabel.alpha = 0.0;
+    settingButton.alpha = 0.0;
+    attractorView.alpha = 0.0;
+    
+    PMTimeManager *timeManager = [[PMTimeManager alloc] init];
+    finishTitle4.text = [NSString stringWithFormat:@"СПАСИБО И %@!", [timeManager titleTimeArea]];
+    finishView.alpha = 1.0;
+    
+    UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
+    [saveButton setEnabled:YES];*/
     
     [self initResultImage];
 }
