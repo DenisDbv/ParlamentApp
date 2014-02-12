@@ -65,13 +65,15 @@
     PMCustomKeyboard *customKeyboard = [[PMCustomKeyboard alloc] init];
     [customKeyboard setTextView:initialTextField];
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
     if(_letter1.length == 0)
     {
-        titleLabel.text = @"ПОЖАЛУЙСТА ВВЕДИТЕ ВАШИ ИНИЦИАЛЫ";
+        titleLabel.text = [NSString stringWithFormat:@"%@, ПОЖАЛУЙСТА, ВВЕДИТЕ ВАШИ ИНИЦИАЛЫ", [userDefaults objectForKey:@"_firstname"]];
     }
     else
     {
-        titleLabel.text = @"ПОЖАЛУЙСТА ВВЕДИТЕ ВАШИ ИНИЦИАЛЫ";
+        titleLabel.text = [NSString stringWithFormat:@"%@, ПОЖАЛУЙСТА, ВВЕДИТЕ ВАШИ ИНИЦИАЛЫ", [userDefaults objectForKey:@"_firstnameW"]];
     }
 }
 

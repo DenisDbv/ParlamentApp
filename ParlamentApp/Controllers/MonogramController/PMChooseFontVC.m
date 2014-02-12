@@ -90,10 +90,10 @@
     
     if(_letter2.length == 0)
     {
-        titleLabel.text = @"ПОЖАЛУЙСТА ВЫБЕРИТЕ ШРИФТ ДЛЯ СОЗДАНИЯ МОНОГРАММЫ";
+        titleLabel.text = @"ПОЖАЛУЙСТА, ВЫБЕРИТЕ ШРИФТ ДЛЯ СОЗДАНИЯ МОНОГРАММЫ";
     }
     else    {
-        titleLabel.text = @"ПОЖАЛУЙСТА ВЫБЕРИТЕ ШРИФТ ДЛЯ СОЗДАНИЯ МОНОГРАММЫ";
+        titleLabel.text = @"ПОЖАЛУЙСТА, ВЫБЕРИТЕ ШРИФТ ДЛЯ СОЗДАНИЯ МОНОГРАММЫ";
     }
     
     UIImage *myGradient = [UIImage imageNamed:@"depositphotos_1318054-Liquid-metal.jpg"];
