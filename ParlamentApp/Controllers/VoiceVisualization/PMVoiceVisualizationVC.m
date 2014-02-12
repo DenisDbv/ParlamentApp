@@ -240,8 +240,8 @@
         [timer pause];
         [attractorView snapShoting];
         
-        [self finishSavingSnapshot];
-        //[self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:0.0];
+        //[self finishSavingSnapshot];
+        [self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:2.0];
     }
     else    {
         [UIView animateWithDuration:0.05 animations:^{
@@ -275,7 +275,7 @@
 
 -(void) mailSendSuccessfully
 {
-    [self unload];
+    /*[self unload];
     
     [saveIndicator stopAnimating];
     [saveIndicator removeFromSuperview];
@@ -294,7 +294,7 @@
     UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
     [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
     [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
-    [saveButton setEnabled:YES];
+    [saveButton setEnabled:YES];*/
 }
 
 -(void) mailSendFailed
@@ -327,30 +327,6 @@
     [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
     [saveButton setEnabled:YES];*/
     
-    [self unload];
-    
-    [saveIndicator stopAnimating];
-    [saveIndicator removeFromSuperview];
-    
-    saveButton.alpha = 0.0;
-    resetButton.alpha = 0.0;
-    titleLabel1.alpha = titleLabel2.alpha = titleLabel3.alpha = titleLabel4.alpha = 0.0;
-    timerLabel.alpha = 0.0;
-    settingButton.alpha = 0.0;
-    attractorView.alpha = 0.0;
-    
-    PMTimeManager *timeManager = [[PMTimeManager alloc] init];
-    finishTitle4.text = [NSString stringWithFormat:@"СПАСИБО И %@!", [timeManager titleTimeArea]];
-    finishView.alpha = 1.0;
-    
-    UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
-    [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
-    [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
-    [saveButton setEnabled:YES];
-}
-
--(void) finishSavingSnapshot
-{
     /*[self unload];
     
     [saveIndicator stopAnimating];
@@ -371,6 +347,30 @@
     [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
     [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
     [saveButton setEnabled:YES];*/
+}
+
+-(void) finishSavingSnapshot
+{
+    [self unload];
+    
+    [saveIndicator stopAnimating];
+    [saveIndicator removeFromSuperview];
+    
+    saveButton.alpha = 0.0;
+    resetButton.alpha = 0.0;
+    titleLabel1.alpha = titleLabel2.alpha = titleLabel3.alpha = titleLabel4.alpha = 0.0;
+    timerLabel.alpha = 0.0;
+    settingButton.alpha = 0.0;
+    attractorView.alpha = 0.0;
+    
+    PMTimeManager *timeManager = [[PMTimeManager alloc] init];
+    finishTitle4.text = [NSString stringWithFormat:@"СПАСИБО И %@!", [timeManager titleTimeArea]];
+    finishView.alpha = 1.0;
+    
+    UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
+    [saveButton setEnabled:YES];
     
     [self initResultImage];
 }

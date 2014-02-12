@@ -1542,7 +1542,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "The Art of Individuality (special occasions)";
 				PROVISIONING_PROFILE = "D3CCC59F-35D1-420F-A012-3FD3585425F3";
 				VALID_ARCHS = "armv7 armv7s";
@@ -1560,7 +1560,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_NAME = "The Art of Individuality (special occasions)";
