@@ -58,11 +58,21 @@
     
     PMRootMenuController *rootMenuViewController = [[PMRootMenuController alloc] initWithNibName:@"PMRootMenuController" bundle:[NSBundle mainBundle]];
     
-    formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
+    /*formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
     formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+    formSheet.landscapeTopInset = 0.0f;
     [self presentFormSheetController:formSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
         NSLog(@"Root menu view controller present");
         [TestFlight passCheckpoint:@"Root menu view controller present"];
+    }];*/
+    
+    [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:(__bridge CGColorRef)([UIColor clearColor])];
+    [self mz_presentFormSheetWithViewController:[[UINavigationController alloc] init] animated:YES transitionStyle:MZFormSheetTransitionStyleSlideAndBounceFromLeft completionHandler:^(MZFormSheetController *formSheetController) {
+        
+        [formSheetController presentViewController:rootMenuViewController animated:YES completion:^{
+            
+        }];
+        
     }];
     
     /*formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];

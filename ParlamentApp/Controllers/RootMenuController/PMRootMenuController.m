@@ -362,14 +362,32 @@
     //[self hideAllContext];
     
     PMVoiceVisualizationVC *voiceVC = [[PMVoiceVisualizationVC alloc] initWithNibName:@"PMVoiceVisualizationVC" bundle:[NSBundle mainBundle]];
-    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:voiceVC];
+    /*MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:voiceVC];
     formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+    formSheet.landscapeTopInset = 0.0f;
     __weak id wself = self;
     formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
         [wself showAllContext];
     };
     [self presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
         [TestFlight passCheckpoint:@"presentFormSheetController() voice"];
+    }];*/
+    
+    __weak id wself = self;
+    
+    [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:(__bridge CGColorRef)([UIColor clearColor])];
+    [self mz_presentFormSheetWithViewController:[[UINavigationController alloc] init] animated:YES transitionStyle:MZFormSheetTransitionStyleSlideAndBounceFromLeft completionHandler:^(MZFormSheetController *formSheetController) {
+        
+        formSheetController.landscapeTopInset = 0.0f;
+        
+        formSheetController.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+            [wself showAllContext];
+        };
+        
+        [formSheetController presentViewController:voiceVC animated:YES completion:^{
+            
+        }];
+        
     }];
 }
 

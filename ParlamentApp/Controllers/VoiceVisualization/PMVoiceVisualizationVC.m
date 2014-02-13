@@ -181,9 +181,13 @@
                          } completion:^(BOOL finished) {
                              [self unload];
                              
-                             self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+                             /*self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
                              [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
                                  
+                             }];*/
+                             
+                             [self mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+                                 formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
                              }];
                          }];
                      }];
@@ -601,6 +605,7 @@
     [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
     [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
     
+    [timer reset];
     [self titleRefresh:1];
     [attractorView resetAttractors];
 }
