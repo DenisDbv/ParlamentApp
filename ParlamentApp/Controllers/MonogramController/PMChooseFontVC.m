@@ -378,7 +378,7 @@
             UILabel *textLabel1 = [[UILabel alloc] initWithFrame:CGRectZero];
             textLabel1.opaque = NO;
             textLabel1.backgroundColor = [UIColor clearColor];
-            textLabel1.textColor = [UIColor blueColor];
+            textLabel1.textColor = [UIColor lightTextColor];
             textLabel1.text = [NSString stringWithFormat:@" %@", firstCharacter];
             textLabel1.font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:50.0];
             textLabel1.minimumScaleFactor = 0.5f;
@@ -486,15 +486,15 @@
         plusImageView.frame = CGRectOffset(plusImageView.frame, (imgView.frame.size.width-plusImageView.frame.size.width)/2, exEllipseRect.origin.y+(exEllipseRect.size.height-plusImageView.frame.size.height)/2);
         
             UIImageView *firstLetterImage = [[UIImageView alloc] initWithImage:labelImage1];
-            firstLetterImage.contentMode = UIViewContentModeScaleAspectFit;
+            //firstLetterImage.contentMode = UIViewContentModeScaleAspectFit;
             UIImageView *secondLetterImage = [[UIImageView alloc] initWithImage:labelImage2];
-            secondLetterImage.contentMode = UIViewContentModeScaleAspectFit;
+            //secondLetterImage.contentMode = UIViewContentModeScaleAspectFit;
             firstLetterImage.alpha = secondLetterImage.alpha = 1.0;
         firstLetterImage.frame = CGRectMake(0, 0,
-                                            inSquareView.frame.size.width/2, inSquareView.frame.size.height/2);
-        secondLetterImage.frame = CGRectMake(inSquareView.frame.size.width/2,
-                                             inSquareView.frame.size.height/2,
-                                             inSquareView.frame.size.width/2, inSquareView.frame.size.height/2);
+                                            inSquareView.frame.size.width/2+inSquareView.frame.size.width/6, inSquareView.frame.size.height/2+inSquareView.frame.size.height/6);
+        secondLetterImage.frame = CGRectMake(inSquareView.frame.size.width/2-inSquareView.frame.size.width/6,
+                                             inSquareView.frame.size.height/2-inSquareView.frame.size.height/6,
+                                             inSquareView.frame.size.width/2+inSquareView.frame.size.width/6, inSquareView.frame.size.height/2+inSquareView.frame.size.height/6);
             /*firstLetterImage.frame = CGRectMake(0, 0,
                                                 firstLetterImage.frame.size.width/2, firstLetterImage.frame.size.height/2);
             secondLetterImage.frame = CGRectMake((inSquareView.frame.size.width-secondLetterImage.frame.size.width/2),
