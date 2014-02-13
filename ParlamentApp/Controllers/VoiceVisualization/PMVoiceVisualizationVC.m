@@ -151,6 +151,9 @@
         [self onVoiceClose:closeButton];
     }];
     [timer start];
+    
+    [TestFlight passCheckpoint:@"timer start"];
+    [TestFlight passCheckpoint:[NSString stringWithFormat:@"voice rect = %@", NSStringFromCGRect(self.view.frame)]];
 }
 
 - (void)didReceiveMemoryWarning

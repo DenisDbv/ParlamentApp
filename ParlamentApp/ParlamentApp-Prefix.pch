@@ -27,3 +27,4 @@
 #import "PMTimeManager.h"
 #import "NSString+Enc.h"
 #import "Reachability.h"
+#import "TestFlight.h"

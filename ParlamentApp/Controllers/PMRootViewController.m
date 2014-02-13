@@ -60,13 +60,20 @@
     
     formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
     formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+    [self presentFormSheetController:formSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+        NSLog(@"Root menu view controller present");
+        [TestFlight passCheckpoint:@"Root menu view controller present"];
+    }];
+    
+    /*formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
+    formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
     [formSheet presentFormSheetController:formSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
         NSLog(@"Root menu view controller present");
         
         [registraionSheet dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
             //
         }];
-    }];
+    }];*/
 }
 
 -(void) closeRegistrationAndOpenApp

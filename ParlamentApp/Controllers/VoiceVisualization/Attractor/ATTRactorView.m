@@ -616,6 +616,8 @@ static int attrIndex = 0;
 
 -(void) initialization
 {
+    [TestFlight passCheckpoint:@"initialization() start"];
+    
     [self setupLayer];
     [self setupContext];
     [self setupDepthBuffer];
@@ -630,6 +632,8 @@ static int attrIndex = 0;
     [self voiceListener];
     
     [self setupDisplayLink];
+    
+    [TestFlight passCheckpoint:@"initialization() finish"];
 }
 
 -(void) awakeFromNib

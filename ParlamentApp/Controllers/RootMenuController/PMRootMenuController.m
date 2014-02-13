@@ -358,6 +358,7 @@
 
 -(void) showVoiceViewController
 {
+    [TestFlight passCheckpoint:@"showVoiceViewController()"];
     //[self hideAllContext];
     
     PMVoiceVisualizationVC *voiceVC = [[PMVoiceVisualizationVC alloc] initWithNibName:@"PMVoiceVisualizationVC" bundle:[NSBundle mainBundle]];
@@ -367,8 +368,8 @@
     formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
         [wself showAllContext];
     };
-    [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
-        
+    [self presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+        [TestFlight passCheckpoint:@"presentFormSheetController() voice"];
     }];
 }
 
