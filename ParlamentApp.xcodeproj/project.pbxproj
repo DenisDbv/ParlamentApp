@@ -342,7 +342,7 @@
 		18A68FC01854D3FF009019BC /* close-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-voice.png"; sourceTree = "<group>"; };
 		18A68FC11854D3FF009019BC /* reset-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reset-voice.png"; sourceTree = "<group>"; };
 		18A68FC21854D3FF009019BC /* save-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save-voice.png"; sourceTree = "<group>"; };
-		18A84C601851D32600612BE5 /* The Art of Individuality (special occasions).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Art of Individuality (special occasions).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18A84C601851D32600612BE5 /* The Art of Individuality (special occasions) Rostov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Art of Individuality (special occasions) Rostov.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A84C631851D32600612BE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18A84C651851D32600612BE5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		18A84C671851D32600612BE5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -782,7 +782,7 @@
 		18A84C611851D32600612BE5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18A84C601851D32600612BE5 /* The Art of Individuality (special occasions).app */,
+				18A84C601851D32600612BE5 /* The Art of Individuality (special occasions) Rostov.app */,
 				18A84C801851D32700612BE5 /* ParlamentAppTests.xctest */,
 			);
 			name = Products;
@@ -1157,7 +1157,7 @@
 			);
 			name = ParlamentApp;
 			productName = ParlamentApp;
-			productReference = 18A84C601851D32600612BE5 /* The Art of Individuality (special occasions).app */;
+			productReference = 18A84C601851D32600612BE5 /* The Art of Individuality (special occasions) Rostov.app */;
 			productType = "com.apple.product-type.application";
 		};
 		18A84C7F1851D32700612BE5 /* ParlamentAppTests */ = {
