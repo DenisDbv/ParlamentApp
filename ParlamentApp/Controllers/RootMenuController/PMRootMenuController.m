@@ -18,6 +18,7 @@
 
 #import "UIView+GestureBlocks.h"
 #import "UIImage+UIImageFunctions.h"
+#import <MZFormSheetController/MZFormSheetController.h>
 
 #define SCREEN_MARGIN   130.0f/2
 #define BUTTON_MARGIN   90.0f/2
@@ -314,7 +315,7 @@
 {
     [self hideAllContext];
     
-    PMRegistrationVC *rootMenuViewController = [[PMRegistrationVC alloc] initWithNibName:@"PMRegistrationVC" bundle:[NSBundle mainBundle]];
+    /*PMRegistrationVC *rootMenuViewController = [[PMRegistrationVC alloc] initWithNibName:@"PMRegistrationVC" bundle:[NSBundle mainBundle]];
     
     MZFormSheetController *registraionSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
     
@@ -351,7 +352,8 @@
         
     [registraionSheet presentFormSheetController:registraionSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
         NSLog(@"Registartion view controller present");
-    }];
+    }];*/
+    [self showVoiceViewController];
 }
 
 -(void) showVoiceViewController

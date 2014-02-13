@@ -7,6 +7,7 @@
 //
 
 #import "PMParentController.h"
+#import <MZFormSheetController/MZFormSheetController.h>
 
 @interface PMParentController ()
 
@@ -31,7 +32,7 @@
     
     self.view.multipleTouchEnabled = YES;
     
-    [[MZFormSheetBackgroundWindow appearance] setBlurRadius:5.0];
+    //[[MZFormSheetBackgroundWindow appearance] setBlurRadius:5.0];
     [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:(__bridge CGColorRef)([UIColor clearColor])];
 }
 

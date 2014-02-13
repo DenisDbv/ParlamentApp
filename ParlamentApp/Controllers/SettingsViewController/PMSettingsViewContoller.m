@@ -14,6 +14,7 @@
 #import <MBSwitch/MBSwitch.h>
 #import "PMRegistrationFieldView.h"
 #import "UIImage+UIImageFunctions.h"
+#import <MZFormSheetController/MZFormSheetController.h>
 
 @interface PMSettingsViewContoller ()
 @property (nonatomic, strong) NSMutableArray *activationButtonsArray;

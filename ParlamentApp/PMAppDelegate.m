@@ -9,6 +9,7 @@
 #import "PMAppDelegate.h"
 #import "MBPopoverBackgroundView.h"
 #import "PMActivationView.h"
+#import "TestFlight.h"
 
 @implementation PMAppDelegate
 @synthesize rippleViewController;
@@ -17,8 +18,36 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+void HandleExceptions(NSException *exception) {
+    NSLog(@"This is where we save the application data during a exception");
+    // Save application data on crash
+}
+/*
+ My Apps Custom signal catcher, we do special stuff here, and TestFlight takes care of the rest
+ */
+void SignalHandler(int sig) {
+    NSLog(@"This is where we save the application data during a signal");
+    // Save application data on crash
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // installs HandleExceptions as the Uncaught Exception Handler
+    NSSetUncaughtExceptionHandler(&HandleExceptions);
+    // create the signal action structure
+    struct sigaction newSignalAction;
+    // initialize the signal action structure
+    memset(&newSignalAction, 0, sizeof(newSignalAction));
+    // set SignalHandler as the handler in the signal action structure
+    newSignalAction.sa_handler = &SignalHandler;
+    // set SignalHandler as the handlers for SIGABRT, SIGILL and SIGBUS
+    sigaction(SIGABRT, &newSignalAction, NULL);
+    sigaction(SIGILL, &newSignalAction, NULL);
+    sigaction(SIGBUS, &newSignalAction, NULL);
+    // Call takeOff after install your own unhandled exception and signal handlers
+    [TestFlight takeOff:@"ef792bfc-3ad8-4552-b3ae-3bfef6853eb4"];
+    // continue with your application initialization
+    
     NSUserDefaults *userSettings = [NSUserDefaults standardUserDefaults];
     [userSettings setObject:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%i", eEye]];
     [userSettings setObject:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%i", eSiluet]];
@@ -28,7 +57,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [MBPopoverBackgroundView initialize];
-    
     [MBPopoverBackgroundView setArrowImageName:@"arrow.png"];    //popover-arrow-red_2.png
     [MBPopoverBackgroundView setBackgroundImageName:@"content.png"];    //popover-background-red_2.png
     [MBPopoverBackgroundView setBackgroundImageCapInsets:UIEdgeInsetsMake(250, 10, 10, 10)];

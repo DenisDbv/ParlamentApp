@@ -9,6 +9,7 @@
 #import "PMRootViewController.h"
 #import "PMRootMenuController.h"
 #import "PMRegistrationVC.h"
+#import <MZFormSheetController/MZFormSheetController.h>
 
 @interface PMRootViewController ()
 

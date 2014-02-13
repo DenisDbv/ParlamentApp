@@ -386,22 +386,60 @@
         CGRect backgroundRect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
         CGRect figureRect = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, 250, backgroundImage.size.width - 110, 530);
         
-        /*UIGraphicsBeginImageContextWithOptions(attractorSnapshot.size, NO, 2.0);
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        [[UIColor blackColor] set];
-        CGContextFillRect(context, CGRectMake(0, 0, attractorSnapshot.size.width, attractorSnapshot.size.height));
-        //CGContextSetBlendMode(context, kCGBlendModeCopy);
-        CGContextDrawImage(context, CGRectMake(0, 0, attractorSnapshot.size.width, attractorSnapshot.size.height), attractorSnapshot.CGImage);
-        UIImage *resultingImage2 = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        NSData* imageData =  UIImageJPEGRepresentation(attractorSnapshot, 1.0);
-        UIImage *jpgImage = [self changeWhiteColorTransparent:[UIImage imageWithData:imageData]];*/
-        
         NSData* imageData =  UIImagePNGRepresentation(attractorSnapshot);
         UIImage *pngImage = [UIImage imageWithData:imageData];
         
-        UIGraphicsBeginImageContextWithOptions(backgroundImage.size, NO, 2.0);
+        UIImageView *imgView = [[UIImageView alloc] initWithImage:backgroundImage];
+        
+        UIImageView *attractorImageView = [[UIImageView alloc] initWithImage:pngImage];
+        attractorImageView.frame = figureRect;
+        [imgView addSubview:attractorImageView];
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *names = [NSString stringWithFormat:@"%@ + %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_firstnameW"]];
+        UILabel *namesLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        namesLabel.opaque = NO;
+        namesLabel.backgroundColor = [UIColor clearColor];
+        namesLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+        namesLabel.text = names;
+        namesLabel.font = [UIFont fontWithName:@"MyriadPro-Cond" size:40.0];
+        namesLabel.numberOfLines = 1;
+        namesLabel.textAlignment = NSTextAlignmentCenter;
+        namesLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+        [namesLabel sizeToFit];
+        namesLabel.frame = CGRectOffset(namesLabel.frame, (imgView.frame.size.width - namesLabel.frame.size.width)/2, figureRect.origin.y + figureRect.size.height + 20);
+        [imgView addSubview:namesLabel];
+
+        UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"the-art-text.png"]];
+        logo.frame = CGRectOffset(logo.frame, (imgView.frame.size.width - logo.frame.size.width)/2, namesLabel.frame.origin.y+namesLabel.frame.size.height+20);
+        [imgView addSubview:logo];
+        
+        UILabel *bottomLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        bottomLabel.opaque = NO;
+        bottomLabel.backgroundColor = [UIColor clearColor];
+        bottomLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+        bottomLabel.text = @"*Индивидуальность как искусство";
+        bottomLabel.font = [UIFont fontWithName:@"MyriadPro-Cond" size:16.0];
+        bottomLabel.numberOfLines = 1;
+        bottomLabel.textAlignment = NSTextAlignmentCenter;
+        bottomLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+        [bottomLabel sizeToFit];
+        bottomLabel.frame = CGRectOffset(bottomLabel.frame, (imgView.frame.size.width - bottomLabel.frame.size.width) - 10, imgView.frame.size.height-bottomLabel.frame.size.height-20);
+        [imgView addSubview:bottomLabel];
+        
+        UIGraphicsBeginImageContext(imgView.frame.size);
+        [imgView.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *resultMonogramImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        UIImageWriteToSavedPhotosAlbum(resultMonogramImage, nil, nil, nil);
+        
+        names = [NSString stringWithFormat:@"%@ + %@", [userDefaults objectForKey:@"_firstnameW"], [userDefaults objectForKey:@"_firstname"]];
+        mailManager = [[PMMailManager alloc] init];
+        mailManager.delegate = (id)self;
+        [mailManager sendMessageWithTitle:names text:@"Изображение голоса" image:resultMonogramImage filename:@"voice.png"];
+        
+        /*UIGraphicsBeginImageContextWithOptions(backgroundImage.size, NO, 2.0);
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextTranslateCTM(context, 0, backgroundImage.size.height);
         CGContextScaleCTM(context, 1.0, -1.0);
@@ -468,10 +506,10 @@
 
         });*/
         
-        names = [NSString stringWithFormat:@"%@ + %@", [userDefaults objectForKey:@"_firstnameW"], [userDefaults objectForKey:@"_firstname"]];
+        /*names = [NSString stringWithFormat:@"%@ + %@", [userDefaults objectForKey:@"_firstnameW"], [userDefaults objectForKey:@"_firstname"]];
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = (id)self;
-        [mailManager sendMessageWithTitle:names text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
+        [mailManager sendMessageWithTitle:names text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];*/
     });
 }
 

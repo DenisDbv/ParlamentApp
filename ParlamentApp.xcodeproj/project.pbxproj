@@ -32,7 +32,6 @@
 		1822F68318A8A9A2009407D0 /* couri.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67918A8A9A2009407D0 /* couri.ttf */; };
 		1822F68418A8A9A2009407D0 /* DelphianC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1822F67A18A8A9A2009407D0 /* DelphianC.ttf */; };
 		1822F68C18A8F6F3009407D0 /* NSString+SizeToFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F68B18A8F6F3009407D0 /* NSString+SizeToFit.m */; };
-		1822F69A18A995AF009407D0 /* bwz.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1822F69918A995AF009407D0 /* bwz.jpg */; };
 		1822F6C318AB37DB009407D0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F6C218AB37DB009407D0 /* Reachability.m */; };
 		18A54AE7186025420085B714 /* PMMailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AE6186025420085B714 /* PMMailManager.m */; };
 		18A54AEA186032FA0085B714 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE8186032FA0085B714 /* test.vcf */; };
@@ -141,6 +140,11 @@
 		18A89072185E3A0D00BD094A /* PMDatePickerVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A89070185E3A0D00BD094A /* PMDatePickerVCViewController.xib */; };
 		18A89076185E590F00BD094A /* PMSexChooseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A89074185E590F00BD094A /* PMSexChooseVC.m */; };
 		18A89077185E590F00BD094A /* PMSexChooseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A89075185E590F00BD094A /* PMSexChooseVC.xib */; };
+		18AD8F0218ABBDD10077A583 /* bwz.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18AD8F0118ABBDD10077A583 /* bwz.jpg */; };
+		18AD8F0A18ACB35A0077A583 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AD8F0418ACB35A0077A583 /* libTestFlight.a */; };
+		18AD8F0B18ACB35A0077A583 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18AD8F0518ACB35A0077A583 /* README.md */; };
+		18AD8F0C18ACB35A0077A583 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 18AD8F0618ACB35A0077A583 /* release_notes.md */; };
+		18AD8F0E18ACB4A80077A583 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AD8F0D18ACB4A80077A583 /* libz.dylib */; };
 		18E527EA188D58860041ACE3 /* icon_152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E527E8188D58860041ACE3 /* icon_152x152.png */; };
 		18E527EB188D58860041ACE3 /* icon_76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E527E9188D58860041ACE3 /* icon_76x76.png */; };
 		18EA46191855D8AC0066A22C /* clear_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46181855D8AC0066A22C /* clear_button.png */; };
@@ -246,7 +250,6 @@
 		1822F67A18A8A9A2009407D0 /* DelphianC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DelphianC.ttf; sourceTree = "<group>"; };
 		1822F68A18A8F6F3009407D0 /* NSString+SizeToFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SizeToFit.h"; sourceTree = "<group>"; };
 		1822F68B18A8F6F3009407D0 /* NSString+SizeToFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SizeToFit.m"; sourceTree = "<group>"; };
-		1822F69918A995AF009407D0 /* bwz.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bwz.jpg; sourceTree = "<group>"; };
 		1822F6C118AB37DB009407D0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		1822F6C218AB37DB009407D0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		18A54AE5186025420085B714 /* PMMailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailManager.h; sourceTree = "<group>"; };
@@ -390,6 +393,14 @@
 		18A89073185E590F00BD094A /* PMSexChooseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSexChooseVC.h; sourceTree = "<group>"; };
 		18A89074185E590F00BD094A /* PMSexChooseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSexChooseVC.m; sourceTree = "<group>"; };
 		18A89075185E590F00BD094A /* PMSexChooseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMSexChooseVC.xib; sourceTree = "<group>"; };
+		18AD8F0118ABBDD10077A583 /* bwz.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bwz.jpg; sourceTree = "<group>"; };
+		18AD8F0418ACB35A0077A583 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		18AD8F0518ACB35A0077A583 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		18AD8F0618ACB35A0077A583 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		18AD8F0718ACB35A0077A583 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		18AD8F0818ACB35A0077A583 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		18AD8F0918ACB35A0077A583 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		18AD8F0D18ACB4A80077A583 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		18E527E8188D58860041ACE3 /* icon_152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_152x152.png; sourceTree = "<group>"; };
 		18E527E9188D58860041ACE3 /* icon_76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_76x76.png; sourceTree = "<group>"; };
 		18EA46181855D8AC0066A22C /* clear_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear_button.png; sourceTree = "<group>"; };
@@ -469,6 +480,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AD8F0E18ACB4A80077A583 /* libz.dylib in Frameworks */,
+				18AD8F0A18ACB35A0077A583 /* libTestFlight.a in Frameworks */,
 				18A54AED186035E90085B714 /* CFNetwork.framework in Frameworks */,
 				18EA4699185766430066A22C /* CoreVideo.framework in Frameworks */,
 				18EA469718575F9E0066A22C /* QuartzCore.framework in Frameworks */,
@@ -778,6 +791,7 @@
 		18A84C621851D32600612BE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18AD8F0D18ACB4A80077A583 /* libz.dylib */,
 				18A54AEC186035E90085B714 /* CFNetwork.framework */,
 				18EA4698185766430066A22C /* CoreVideo.framework */,
 				18EA469618575F9E0066A22C /* QuartzCore.framework */,
@@ -846,7 +860,7 @@
 		18A84C981851D4CA00612BE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1822F69918A995AF009407D0 /* bwz.jpg */,
+				18AD8F0118ABBDD10077A583 /* bwz.jpg */,
 				1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */,
 				1822F621189E4172009407D0 /* result */,
 				18A54B3F186841B10085B714 /* liquid-metal-background-5650257.jpg */,
@@ -920,6 +934,7 @@
 		18A84CA81851E1CE00612BE5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				18AD8F0318ACB35A0077A583 /* TestFlightSDK2.2.1 */,
 				1822F6C118AB37DB009407D0 /* Reachability.h */,
 				1822F6C218AB37DB009407D0 /* Reachability.m */,
 				1822F68918A8F683009407D0 /* SizeToFit */,
@@ -974,6 +989,19 @@
 				18A89068185E351D00BD094A /* FlatDatePicker.m */,
 			);
 			path = FlatDatePicker;
+			sourceTree = "<group>";
+		};
+		18AD8F0318ACB35A0077A583 /* TestFlightSDK2.2.1 */ = {
+			isa = PBXGroup;
+			children = (
+				18AD8F0418ACB35A0077A583 /* libTestFlight.a */,
+				18AD8F0518ACB35A0077A583 /* README.md */,
+				18AD8F0618ACB35A0077A583 /* release_notes.md */,
+				18AD8F0718ACB35A0077A583 /* TestFlight+AsyncLogging.h */,
+				18AD8F0818ACB35A0077A583 /* TestFlight+ManualSessions.h */,
+				18AD8F0918ACB35A0077A583 /* TestFlight.h */,
+			);
+			path = TestFlightSDK2.2.1;
 			sourceTree = "<group>";
 		};
 		18EA461C1855F13A0066A22C /* MonogramController */ = {
@@ -1236,6 +1264,7 @@
 				18A89069185E351D00BD094A /* FlatDatePicker-Icon-Check.png in Resources */,
 				18A54B2E1866FC300085B714 /* seperate.png in Resources */,
 				1822F61E189A78F5009407D0 /* settings-close.png in Resources */,
+				18AD8F0C18ACB35A0077A583 /* release_notes.md in Resources */,
 				18A68F851853A009009019BC /* settings.png in Resources */,
 				18A68F981854682E009019BC /* active-eye-disable.png in Resources */,
 				18EA465C185661D90066A22C /* ampir.ttf in Resources */,
@@ -1247,7 +1276,7 @@
 				18EA464C185661D90066A22C /* bedini.png in Resources */,
 				18A8906B185E351D00BD094A /* FlatDatePicker-Icon-Close.png in Resources */,
 				18EA465E185661D90066A22C /* annabel.ttf in Resources */,
-				1822F69A18A995AF009407D0 /* bwz.jpg in Resources */,
+				18AD8F0218ABBDD10077A583 /* bwz.jpg in Resources */,
 				18A54B081862224A0085B714 /* siluet-save.png in Resources */,
 				18A54B17186278680085B714 /* popover-background-red_2.png in Resources */,
 				1822F612189A51CB009407D0 /* button_space.png in Resources */,
@@ -1268,6 +1297,7 @@
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
 				18A54B3818677DB40085B714 /* arrow.png in Resources */,
 				1822F67D18A8A9A2009407D0 /* Bickham_Script_Two.ttf in Resources */,
+				18AD8F0B18ACB35A0077A583 /* README.md in Resources */,
 				18A54B071862224A0085B714 /* siluet-photo-make.png in Resources */,
 				1822F614189A51CB009407D0 /* button_delete.png in Resources */,
 				18EA46B01859610C0066A22C /* delete.png in Resources */,
@@ -1536,15 +1566,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F248A30DA07F413CB7568B8E /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "The Art of Individuality (special occasions)";
-				PROVISIONING_PROFILE = "D2F426E9-9BA5-447B-8D94-418FBF5FBCF3";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/apple/Documents/ParlamentApp/ParlamentApp/Common/TestFlightSDK2.2.1,
+				);
+				PRODUCT_NAME = "The Art of Individuality (special occasions) Rostov";
+				PROVISIONING_PROFILE = "C08BD178-4B87-4012-B8B6-714C93B2BB19";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1554,17 +1589,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F248A30DA07F413CB7568B8E /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/apple/Documents/ParlamentApp/ParlamentApp/Common/TestFlightSDK2.2.1,
+				);
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "";
-				PRODUCT_NAME = "The Art of Individuality (special occasions)";
-				PROVISIONING_PROFILE = "D2F426E9-9BA5-447B-8D94-418FBF5FBCF3";
+				PRODUCT_NAME = "The Art of Individuality (special occasions) Rostov";
+				PROVISIONING_PROFILE = "C08BD178-4B87-4012-B8B6-714C93B2BB19";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
