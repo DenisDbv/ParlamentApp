@@ -33,6 +33,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBarHidden = YES;
+    
     titleLabel.font = [UIFont fontWithName:@"MyriadPro-Cond" size:23.0];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
@@ -82,10 +84,16 @@
                          [UIView animateWithDuration:0.05f animations:^{
                              sender.transform = CGAffineTransformMakeScale(1, 1);
                          } completion:^(BOOL finished) {
-                             self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
-                             [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-                                 //
-                             }];
+                             if(IS_OS_7_OR_LATER)   {
+                                 self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+                                 [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                                     
+                                 }];
+                             } else {
+                                 [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                                     formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+                                 }];
+                             }
                          }];
                      }];
 }

@@ -76,7 +76,7 @@ static int attrIndex = 0;
 
 - (void)setupLayer {
     
-    UIColor *ccc = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_2.png"]];
+    UIColor *ccc = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_texture2.png"]];
     
     [self getRGBComponents:components forColor:ccc];
     NSLog(@"-------->%f %f %f", components[0], components[1], components[2]);
@@ -199,8 +199,8 @@ static int attrIndex = 0;
                        [NSNumber numberWithInt:256],
                        [NSNumber numberWithInt:256]];
     
-    attractorPontsSize = @[[NSNumber numberWithFloat:0.6],
-                           [NSNumber numberWithFloat:0.5],
+    attractorPontsSize = @[[NSNumber numberWithFloat:0.3], //0.6
+                           [NSNumber numberWithFloat:0.3], //0.5
                            [NSNumber numberWithFloat:0.4],
                            [NSNumber numberWithFloat:0.4],
                            [NSNumber numberWithFloat:0.3],
@@ -225,7 +225,7 @@ static int attrIndex = 0;
      [NSNumber numberWithFloat:0.4]];
     */
     
-    attractorSperiz = @[[NSNumber numberWithFloat:0.96],
+    attractorSperiz = @[[NSNumber numberWithFloat:0.94], //0.96
                        [NSNumber numberWithFloat:0.94],
                        [NSNumber numberWithFloat:0.96],
                        [NSNumber numberWithFloat:1.2],
@@ -233,7 +233,7 @@ static int attrIndex = 0;
                        [NSNumber numberWithFloat:1.0],
                        [NSNumber numberWithFloat:1.9]];
     
-    attractorDeltaTime = @[[NSNumber numberWithFloat:0.4],
+    attractorDeltaTime = @[[NSNumber numberWithFloat:0.2], //0.4
                         [NSNumber numberWithFloat:0.3],
                         [NSNumber numberWithFloat:0.2],
                         [NSNumber numberWithFloat:0.6],
@@ -426,9 +426,8 @@ static int attrIndex = 0;
     
     if(takeSnapshot)    {
         glClearColor(0.270588, 0.588235, 0.741176, 0.0);
+        //glClearColor(components[0], components[1], components[2], 0.0);
     }
-    //glClearColor(components[0], components[1], components[2], 0.0);
-    //glClearColor(0.0, 0.0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);

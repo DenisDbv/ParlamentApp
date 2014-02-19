@@ -9,6 +9,7 @@
 #import "PMRootViewController.h"
 #import "PMRootMenuController.h"
 #import "PMRegistrationVC.h"
+#import <MZFormSheetController/MZFormSheetController.h>
 
 @interface PMRootViewController ()
 
@@ -48,24 +49,31 @@
 
 -(void) windowInitiailization
 {
-    /*PMRegistrationVC *rootMenuViewController = [[PMRegistrationVC alloc] initWithNibName:@"PMRegistrationVC" bundle:[NSBundle mainBundle]];
-    
-    registraionSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
-    [registraionSheet presentFormSheetController:registraionSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-        NSLog(@"Registartion view controller present");
-    }];*/
-    
     PMRootMenuController *rootMenuViewController = [[PMRootMenuController alloc] initWithNibName:@"PMRootMenuController" bundle:[NSBundle mainBundle]];
     
-    formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
-    formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
-    [formSheet presentFormSheetController:formSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-        NSLog(@"Root menu view controller present");
-        
-        [registraionSheet dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-            //
+    if( IS_OS_7_OR_LATER )  {
+        formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
+        formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
+        [formSheet presentFormSheetController:formSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            NSLog(@"Root menu view controller present");
+            
+            [registraionSheet dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                //
+            }];
         }];
-    }];
+    } else  {
+        UINavigationController *navCntrl = [[UINavigationController alloc] init];
+        navCntrl.navigationBarHidden = YES;
+        
+        [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:(__bridge CGColorRef)([UIColor clearColor])];
+        [self presentFormSheetWithViewController:navCntrl animated:NO transitionStyle:MZFormSheetTransitionStyleFade completionHandler:^(MZFormSheetController *formSheetController) {
+            formSheetController.landscapeTopInset = 0.0f;
+            //formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+            [formSheetController presentViewController:rootMenuViewController animated:YES completion:^{
+                
+            }];
+        }];
+    }
 }
 
 -(void) closeRegistrationAndOpenApp

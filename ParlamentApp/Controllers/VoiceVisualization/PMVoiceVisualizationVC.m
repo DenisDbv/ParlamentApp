@@ -54,6 +54,9 @@
 {
     [super viewDidLoad];
     
+    if(!IS_OS_7_OR_LATER)
+        [[AppDelegateInstance() rippleViewController] disableDraw:YES];
+    
     finishView.alpha = 0;
     finishView.backgroundColor = [UIColor clearColor];
     
@@ -125,6 +128,9 @@
     titleLabel2.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
     titleLabel2.textAlignment = NSTextAlignmentCenter;
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    titleLabel2.text = [NSString stringWithFormat:@"%@, СКАЖИТЕ СВОИ ДАННЫЕ В МИКРОФОН", [userDefaults objectForKey:@"_firstname"]];
+    
     titleLabel3.font = [UIFont fontWithName:@"MyriadPro-Cond" size:15.0];
     titleLabel3.backgroundColor = [UIColor clearColor];
     titleLabel3.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
@@ -163,6 +169,14 @@
 
 -(void) onVoiceClose:(UIButton*)btn
 {
+    [self unload];
+    
+    if(!IS_OS_7_OR_LATER)
+        [[AppDelegateInstance() rippleViewController] disableDraw:NO];
+    
+    CGPoint location = btn.center;
+    [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
+    
     [UIView animateWithDuration:0.05 animations:^{
         btn.transform = CGAffineTransformMakeScale(0.95, 0.95);
     }
@@ -171,12 +185,17 @@
                          [UIView animateWithDuration:0.05f animations:^{
                              btn.transform = CGAffineTransformMakeScale(1, 1);
                          } completion:^(BOOL finished) {
-                             [self unload];
-                             
-                             self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
-                             [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-                                 
-                             }];
+        
+                             if(IS_OS_7_OR_LATER)   {
+                                 self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+                                 [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                                     
+                                 }];
+                             } else {
+                                 [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                                     formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+                                 }];
+                             }
                          }];
                      }];
 }
@@ -252,6 +271,9 @@
 {
     [self unload];
     
+    if(!IS_OS_7_OR_LATER)
+        [[AppDelegateInstance() rippleViewController] disableDraw:NO];
+    
     [saveIndicator stopAnimating];
     [saveIndicator removeFromSuperview];
     
@@ -271,103 +293,6 @@
     [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
     [saveButton setEnabled:YES];
     
-   // NSLog(@"%@", NSStringFromCGSize(attractorSnapshot.size));
-    if(attractorSnapshot.size.width != 0)   {
-        
-        CGSize paperSize = CGSizeMake(571.0, 791.0);
-        UIGraphicsBeginImageContextWithOptions(paperSize, NO, 1.0);
-        CGContextRef ctx = UIGraphicsGetCurrentContext();
-        CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
-        CGContextFillRect(ctx, CGRectMake(0, 0, paperSize.width, paperSize.height));
-        [attractorSnapshot drawInRect:CGRectMake((paperSize.width-attractorSnapshot.size.width)/2, 120.0, attractorSnapshot.size.width,attractorSnapshot.size.height)];
-        
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSString *text = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
-        UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
-        CGRect textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
-        CGFloat oneHeight = 0;
-        
-        if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
-        {
-            //iOS 7
-            
-            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
-            CGSize size = [text sizeWithAttributes:att];
-            oneHeight = size.height;
-            
-            textRect.origin.x = (paperSize.width - size.width)/2;
-            textRect.origin.y = 120.0+attractorSnapshot.size.height+128.0;
-            
-            [text drawInRect:textRect withAttributes:att];
-        }
-        else
-        {
-            //legacy support
-            [text drawInRect:CGRectIntegral(textRect) withFont:font];
-        }
-        
-        text = @"The Art of Individuality*";
-        font = [UIFont fontWithName:@"MyriadPro-Cond" size:20.0];
-        textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
-        if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
-        {
-            //iOS 7
-            
-            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
-            CGSize size = [text sizeWithAttributes:att];
-            textRect.origin.x = (paperSize.width - size.width)/2;
-            textRect.origin.y = 120.0+attractorSnapshot.size.height+128.0+oneHeight+5.0;
-            
-            [text drawInRect:textRect withAttributes:att];
-        }
-        
-        text = @"*Индивидуальность как искусство";
-        font = [UIFont fontWithName:@"MyriadPro-Cond" size:15.0];
-        textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
-        if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
-        {
-            //iOS 7
-            
-            NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
-            CGSize size = [text sizeWithAttributes:att];
-            textRect.origin.x = (paperSize.width - size.width)-10;
-            textRect.origin.y = paperSize.height-7-size.height;
-            
-            [text drawInRect:textRect withAttributes:att];
-        }
-        
-        UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        /*UIGraphicsBeginImageContextWithOptions(CGSizeMake(attractorSnapshot.size.width,attractorSnapshot.size.height), NO, 1.0);
-        CGContextRef ctx = UIGraphicsGetCurrentContext();
-        CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
-        CGContextFillRect(ctx, CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height));
-        [attractorSnapshot drawInRect:CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height)];
-        UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();*/
-        
-        /*
-         UIGraphicsBeginImageContextWithOptions(CGSizeMake(attractorSnapshot.size.width,attractorSnapshot.size.height), NO, 1.0);
-         [attractorSnapshot drawInRect:CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height)];
-         CGContextRef ctx = UIGraphicsGetCurrentContext();
-         CGContextSetBlendMode(ctx, kCGBlendModeSourceIn);
-         CGContextSetFillColorWithColor(ctx, [UIColor blackColor].CGColor);
-         CGContextFillRect(ctx, CGRectMake(0, 0, attractorSnapshot.size.width,attractorSnapshot.size.height));
-         UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-         UIGraphicsEndImageContext();
-         */
-        
-       /* mailManager = [[PMMailManager alloc] init];
-        mailManager.delegate = self;
-        //[mailManager sendMessageWithImage:resultingImage imageName:@"voice.png" andText:@"Изображение голоса"];
-        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:resultingImage filename:@"voice.png"];
-
-        /*UIImageView *imgView = [[UIImageView alloc] initWithImage:resultingImage];
-        imgView.frame = CGRectOffset(imgView.frame, 0, 0);
-        [self.view addSubview:imgView];*/
-    }
-    
     [self initResultImage];
 }
 
@@ -375,7 +300,7 @@
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        UIImage *backgroundImage = [UIImage imageNamed:@"back_2.png"];
+        UIImage *backgroundImage = [UIImage imageNamed:@"back_texture2.png"];
         CGRect backgroundRect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
         CGRect figureRect = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, 250, backgroundImage.size.width - 110, 530);
         
@@ -410,7 +335,7 @@
         UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:40.0];
         CGRect textRect = CGRectMake(0, 0, backgroundRect.size.width, backgroundRect.size.height);
         CGFloat oneHeight = 0;
-        if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
+        if([names respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)])
         {
             //iOS 7
             
@@ -423,6 +348,17 @@
             
             [names drawInRect:textRect withAttributes:att];
         }
+        else
+        {
+            CGSize size = [names sizeWithFont:font];
+            oneHeight = size.height;
+            
+            textRect.origin.x = (backgroundRect.size.width - size.width)/2;
+            textRect.origin.y = figureRect.origin.y + figureRect.size.height + 40;
+            
+            [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5] set];
+            [names drawInRect:textRect withFont:font];
+        }
         
         UIImage *logoImage = [UIImage imageNamed:@"the-art-text.png"];
         [logoImage drawInRect:CGRectMake((backgroundRect.size.width-logoImage.size.width)/2, textRect.origin.y + oneHeight + 20, logoImage.size.width, logoImage.size.height)];
@@ -430,7 +366,7 @@
         names = @"*Индивидуальность как искусство";
         font = [UIFont fontWithName:@"MyriadPro-Cond" size:16.0];
         textRect = backgroundRect;
-        if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
+        if([names respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)])
         {
             //iOS 7
             
@@ -440,6 +376,17 @@
             textRect.origin.y = backgroundRect.size.height-20-size.height;
             
             [names drawInRect:textRect withAttributes:att];
+        }
+        else
+        {
+            CGSize size = [names sizeWithFont:font];
+            oneHeight = size.height;
+            
+            textRect.origin.x = (backgroundRect.size.width - size.width)-10;
+            textRect.origin.y = backgroundRect.size.height-20-size.height;
+            
+            [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5] set];
+            [names drawInRect:textRect withFont:font];
         }
         
         UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();

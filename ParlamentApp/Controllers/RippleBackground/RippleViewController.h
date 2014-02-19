@@ -54,6 +54,8 @@
 -(void) myTouchWithPoint:(CGPoint)point;
 -(void) touchByLocation:(CGPoint)location;
 
+-(void) disableDraw:(BOOL)isDisable;
+
 -(void) refresh;
 
 @end

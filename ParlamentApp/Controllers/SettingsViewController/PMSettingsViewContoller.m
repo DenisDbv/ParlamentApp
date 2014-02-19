@@ -195,10 +195,16 @@
                          }];
                      }];
     
-    //self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
-    [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-        //
-    }];
+    if(IS_OS_7_OR_LATER)   {
+        //self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+        [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            
+        }];
+    } else {
+        [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            //formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+        }];
+    }
 }
 
 -(void) saveSettings

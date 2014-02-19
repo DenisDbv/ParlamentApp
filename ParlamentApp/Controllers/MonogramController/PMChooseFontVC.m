@@ -59,6 +59,8 @@
     titleLabel.textColor = [UIColor colorWithRed:216.0/255.0 green:219.0/255.0 blue:228.0/255.0 alpha:1.0];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     
+    titleLabel.text = @"ПОЖАЛУЙСТА, ВЫБЕРИТЕ ШРИФТ ДЛЯ СОЗДАНИЯ МОНОГРАММЫ";
+    
     UIImage *myGradient = [UIImage imageNamed:@"depositphotos_1318054-Liquid-metal.jpg"];
     monogramLabel.font = [UIFont fontWithName:@"AdineKirnberg" size:84];
     monogramLabel.text = initialsString;
@@ -128,19 +130,6 @@
     saveIndicator.center = sender.center;
     [saveIndicator startAnimating];
     
-    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        //Call your function or whatever work that needs to be done
-        //Code in this part is run on a background thread
-        UIImage *img = [self drawText:monogramLabel.text inImage:[UIImage imageNamed:@"background1024x768.png"] atPoint:CGPointMake(100, 100)];
-        //NSLog(@"%@", NSStringFromCGSize(img.size));
-       
-        mailManager = [[PMMailManager alloc] init];
-        mailManager.delegate = self;
-        //[mailManager sendMessageWithImage:img imageName:@"monogram.png" andText:@"Монограмма"];
-        [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Монограмма" image:img filename:@"monogram.png"];
-    });*/
-    
     [self generateImage];
 }
 
@@ -148,7 +137,7 @@
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        UIImage *backgroundImage = [UIImage imageNamed:@"back_2.png"];
+        UIImage *backgroundImage = [UIImage imageNamed:@"back_texture2.png"];
         CGRect backgroundRect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
         
         CGFloat yOffset = -60.0f;
@@ -243,10 +232,9 @@
         UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:40.0];
         CGRect textRect = CGRectMake(0, 0, backgroundRect.size.width, backgroundRect.size.height);
         CGFloat oneHeight = 0;
-        if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
+        if([names respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)])
         {
             //iOS 7
-            
             NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5]};
             CGSize size = [names sizeWithAttributes:att];
             oneHeight = size.height;
@@ -256,6 +244,17 @@
             
             [names drawInRect:textRect withAttributes:att];
         }
+        else
+        {
+            CGSize size = [names sizeWithFont:font];
+            oneHeight = size.height;
+            
+            textRect.origin.x = (backgroundRect.size.width - size.width)/2;
+            textRect.origin.y = (ellipseRect.origin.y + ellipseRect.size.height) + yOffset;
+            
+            [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5] set];
+            [names drawInRect:textRect withFont:font];
+        }
         
         UIImage *logoImage = [UIImage imageNamed:@"the-art-text.png"];
         [logoImage drawInRect:CGRectMake((backgroundRect.size.width-logoImage.size.width)/2, textRect.origin.y + oneHeight + 20, logoImage.size.width, logoImage.size.height)];
@@ -263,7 +262,7 @@
         names = @"*Индивидуальность как искусство";
         font = [UIFont fontWithName:@"MyriadPro-Cond" size:16.0];
         textRect = backgroundRect;
-        if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
+        if([names respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)])
         {
             //iOS 7
             
@@ -273,6 +272,15 @@
             textRect.origin.y = backgroundRect.size.height-20-size.height;
             
             [names drawInRect:textRect withAttributes:att];
+        }
+        else
+        {
+            CGSize size = [names sizeWithFont:font];
+            textRect.origin.x = (backgroundRect.size.width - size.width)-10;
+            textRect.origin.y = backgroundRect.size.height-20-size.height;
+            
+            [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5] set];
+            [names drawInRect:textRect withFont:font];
         }
         
         UIImage *finishImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -395,176 +403,6 @@
     UIImage *myGradient = [UIImage imageNamed:@"depositphotos_1318054-Liquid-metal.jpg"];
     monogramLabel.textColor   = [UIColor colorWithPatternImage:myGradient];
     //[monogramLabel sizeToFit];
-}
-
--(UIImage*) drawText:(NSString*) text
-             inImage:(UIImage*)  image
-             atPoint:(CGPoint)   point
-{
-    /*CGSize windowSize = image.size;
-    if(image.size.width == 0) windowSize = CGSizeMake(1024.0, 768.0);
-    
-    UIGraphicsBeginImageContextWithOptions(windowSize, NO, 2.0);
-    [image drawInRect:CGRectMake(0,0,windowSize.width,windowSize.height)];
-    CGRect rect = CGRectMake(point.x, point.y, windowSize.width, windowSize.height);
-    [[UIColor whiteColor] set];
-    
-    UIFont *font = [UIFont fontWithName:monogramLabel.font.fontName size:84.0*3.0];
-    if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
-    {
-        //iOS 7
-        
-        CGSize size = [text sizeWithFont:font];
-        rect.origin.x = (windowSize.width - size.width)/2;
-        rect.origin.y = (windowSize.height - size.height)/2;
-        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor whiteColor]};
-        [text drawInRect:rect withAttributes:att];
-    }
-    else
-    {
-        //legacy support
-        [text drawInRect:CGRectIntegral(rect) withFont:font];
-    }
-    
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();*/
-    
-    /*CGSize paperSize = CGSizeMake(571.0, 791.0);
-    CGRect textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
-    
-    UIGraphicsBeginImageContextWithOptions(paperSize, NO, 2.0);
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
-    CGContextFillRect(ctx, CGRectMake(0, 0, paperSize.width, paperSize.height));
-    
-    UIFont *font = [UIFont fontWithName:monogramLabel.font.fontName size:84.0*3.0];
-    CGSize size = [text sizeWithFont:font];
-    if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
-    {
-        //iOS 7
-        
-        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor blueColor]};
-        size = [text sizeWithAttributes:att];
-        textRect.origin.x = (paperSize.width - size.width)/2;
-        textRect.origin.y = 120.0 + (400.0 - size.height)/2;
-
-        [text drawInRect:textRect withAttributes:att];
-    }
-    else
-    {
-        //legacy support
-        [text drawInRect:CGRectIntegral(textRect) withFont:font];
-    }
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
-    font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
-    if([text respondsToSelector:@selector(drawInRect:withAttributes:)])
-    {
-        //iOS 7
-        
-        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor lightGrayColor]};
-        size = [names sizeWithAttributes:att];
-        textRect.origin.x = (paperSize.width - size.width)/2;
-        textRect.origin.y = 120.0+400.0+128.0;
-        
-        [names drawInRect:textRect withAttributes:att];
-    }
-    else
-    {
-        //legacy support
-        [text drawInRect:CGRectIntegral(textRect) withFont:font];
-    }
-    
-    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return resultingImage;*/
-    
-    UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    myLabel.text = monogramLabel.text;
-    myLabel.font = [UIFont fontWithName:[fontNames objectAtIndex:_fontIndex] size:84.0*2.5];
-    myLabel.textColor = monogramLabel.textColor;
-    myLabel.backgroundColor = [UIColor clearColor];
-    myLabel.textAlignment = NSTextAlignmentCenter;
-    myLabel.adjustsFontSizeToFitWidth = YES;
-    myLabel.minimumScaleFactor = 0.5;
-    [myLabel sizeToFit];
-    myLabel.frame = CGRectMake(0, 0, 571.0, myLabel.frame.size.height);
-    
-    UIGraphicsBeginImageContextWithOptions(myLabel.bounds.size, myLabel.opaque, 0.0);
-    //CGContextTranslateCTM(UIGraphicsGetCurrentContext(), 0, myLabel.frame.size.height);
-    //CGContextScaleCTM(UIGraphicsGetCurrentContext(), 1.0, -1.0);
-    [myLabel.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *layerImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    
-    CGSize paperSize = CGSizeMake(571.0, 791.0);
-    
-    UIGraphicsBeginImageContextWithOptions(paperSize, NO, 2.0);
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(ctx, [UIColor blackColor].CGColor);
-    CGContextFillRect(ctx, CGRectMake(0, 0, paperSize.width, paperSize.height));
-    
-    [layerImage drawInRect:CGRectMake((paperSize.width - layerImage.size.width)/2,
-                                      120.0 + (400.0 - layerImage.size.height)/2,
-                                      layerImage.size.width,
-                                      layerImage.size.height)];
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
-    UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:30.0];
-    CGRect textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
-    CGFloat oneHeight = 0;
-    if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
-    {
-        //iOS 7
-        
-        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor whiteColor]};
-        CGSize size = [names sizeWithAttributes:att];
-        oneHeight = size.height;
-        
-        textRect.origin.x = (paperSize.width - size.width)/2;
-        textRect.origin.y = 120.0+400.0;
-        
-        [names drawInRect:textRect withAttributes:att];
-    }
-    
-    names = @"The Art of Individuality*";
-    font = [UIFont fontWithName:@"MyriadPro-Cond" size:20.0];
-    textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
-    if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
-    {
-        //iOS 7
-        
-        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor whiteColor]};
-        CGSize size = [names sizeWithAttributes:att];
-        textRect.origin.x = (paperSize.width - size.width)/2;
-        textRect.origin.y = 120.0+400.0+oneHeight+5.0;
-        
-        [names drawInRect:textRect withAttributes:att];
-    }
-    
-    names = @"*Индивидуальность как искусство";
-    font = [UIFont fontWithName:@"MyriadPro-Cond" size:15.0];
-    textRect = CGRectMake(0, 0, paperSize.width, paperSize.height);
-    if([names respondsToSelector:@selector(drawInRect:withAttributes:)])
-    {
-        //iOS 7
-        
-        NSDictionary *att = @{NSFontAttributeName:font, NSForegroundColorAttributeName: [UIColor whiteColor]};
-        CGSize size = [names sizeWithAttributes:att];
-        textRect.origin.x = (paperSize.width - size.width)-10;
-        textRect.origin.y = paperSize.height-7-size.height;
-        
-        [names drawInRect:textRect withAttributes:att];
-    }
-    
-    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return resultingImage;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

@@ -191,9 +191,15 @@
                              CGPoint location = btn.center;
                              [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
                              
-                             [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-                                 //
-                             }];
+                             if( IS_OS_7_OR_LATER )  {
+                                 [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                                     //
+                                 }];
+                             } else  {
+                                 [self dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+                                     //
+                                 }];
+                             }
                          }];
                      }];
 }
@@ -214,16 +220,25 @@
                              [self hideAllContext];
                              
                              PMSettingsViewContoller *settingVC = [[PMSettingsViewContoller alloc] initWithNibName:@"PMSettingsViewContoller" bundle:[NSBundle mainBundle]];
-                             MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:settingVC];
-                             formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
                              __weak id wself = self;
-                             formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
-                                 [wself registrationFormRefresh];
-                                 [wself showAllContext];
-                             };
-                             [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+                             
+                             if(IS_OS_7_OR_LATER)
+                             {
+                                 MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:settingVC];
+                                 formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
                                  
-                             }];
+                                 formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+                                     [wself registrationFormRefresh];
+                                     [wself showAllContext];
+                                 };
+                                 [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+                                     
+                                 }];
+                             }
+                             else
+                             {
+                                 
+                             }
                          }];
                      }];
 }
@@ -437,9 +452,15 @@
     
     //[[AppDelegateInstance() rippleViewController] closeRegistrationAndOpenApp];
     
-    [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-        //
-    }];
+    if( IS_OS_7_OR_LATER )  {
+        [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            //
+        }];
+    } else  {
+        [self dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+            //
+        }];
+    }
 }
 
 -(void) shakeIt:(UIView*)view withDelta:(CGFloat)delta

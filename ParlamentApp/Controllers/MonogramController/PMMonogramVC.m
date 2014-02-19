@@ -39,6 +39,9 @@
     
     PMCustomKeyboard *customKeyboard = [[PMCustomKeyboard alloc] init];
     [customKeyboard setTextView:initialTextField];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    titleLabel.text = [NSString stringWithFormat:@"%@, ПОЖАЛУЙСТА, ВВЕДИТЕ ВАШИ ИНИЦИАЛЫ", [userDefaults objectForKey:@"_firstname"]];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -122,9 +125,6 @@
     [self.view endEditing:YES];
     
     self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
-    /*[self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-        //
-    }];*/
     
     [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
         //

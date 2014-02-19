@@ -54,6 +54,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBarHidden = YES;
+    
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(orientationChanged:)
@@ -287,10 +289,16 @@
 
 -(void) exit
 {
-    self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
-    [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-        //
-    }];
+    if(IS_OS_7_OR_LATER)   {
+        self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+        [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            
+        }];
+    } else {
+        [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+        }];
+    }
 }
 
 -(void) onFinishSavePhoto:(UIButton*)sender
@@ -584,9 +592,15 @@ void rgbToHSV(float rgb[3], float hsv[3])
     CGPoint location = sender.center;
     [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
     
-     self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
-     [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
-     //
-     }];
+    if(IS_OS_7_OR_LATER)   {
+        self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+        [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            
+        }];
+    } else {
+        [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+        }];
+    }
 }
 @end

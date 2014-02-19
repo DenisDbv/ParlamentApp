@@ -22,6 +22,7 @@
 		1822F66D18A0E9FD009407D0 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F66C18A0E9FD009407D0 /* UIView+Screenshot.m */; };
 		1822F66F18A4BF92009407D0 /* shiny-metal-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */; };
 		1822F69618A93ED8009407D0 /* NSString+SizeToFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F69518A93ED8009407D0 /* NSString+SizeToFit.m */; };
+		1864C24818B556A10027B1C9 /* back_texture2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1864C24718B556A10027B1C9 /* back_texture2.png */; };
 		18A54AE7186025420085B714 /* PMMailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AE6186025420085B714 /* PMMailManager.m */; };
 		18A54AEA186032FA0085B714 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE8186032FA0085B714 /* test.vcf */; };
 		18A54AEB186032FA0085B714 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE9186032FA0085B714 /* Settings.bundle */; };
@@ -224,6 +225,7 @@
 		1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "shiny-metal-background.jpg"; sourceTree = "<group>"; };
 		1822F69418A93ED8009407D0 /* NSString+SizeToFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SizeToFit.h"; sourceTree = "<group>"; };
 		1822F69518A93ED8009407D0 /* NSString+SizeToFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SizeToFit.m"; sourceTree = "<group>"; };
+		1864C24718B556A10027B1C9 /* back_texture2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_texture2.png; sourceTree = "<group>"; };
 		18A54AE5186025420085B714 /* PMMailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailManager.h; sourceTree = "<group>"; };
 		18A54AE6186025420085B714 /* PMMailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMailManager.m; sourceTree = "<group>"; };
 		18A54AE8186032FA0085B714 /* test.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.vcf; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 		1822F621189E4172009407D0 /* result */ = {
 			isa = PBXGroup;
 			children = (
+				1864C24718B556A10027B1C9 /* back_texture2.png */,
 				1822F66918A0C307009407D0 /* back_2.png */,
 				1822F622189E4172009407D0 /* back_texture.png */,
 				1822F623189E4172009407D0 /* the-art-text.png */,
@@ -1157,6 +1160,7 @@
 				18A89077185E590F00BD094A /* PMSexChooseVC.xib in Resources */,
 				18EA4660185661D90066A22C /* ariston.ttf in Resources */,
 				18A68FC31854D3FF009019BC /* close-voice.png in Resources */,
+				1864C24818B556A10027B1C9 /* back_texture2.png in Resources */,
 				18A68F821853A009009019BC /* active-monogram.png in Resources */,
 				18A54AEA186032FA0085B714 /* test.vcf in Resources */,
 				18EA46A318578A430066A22C /* test2.png in Resources */,
@@ -1478,15 +1482,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F248A30DA07F413CB7568B8E /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "The Art of Individuality";
-				PROVISIONING_PROFILE = "816A9295-DDA7-44D9-ADC2-5B6F76E1C466";
+				PROVISIONING_PROFILE = "75B8AF36-E852-45AF-A449-945B8971920A";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1496,17 +1501,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F248A30DA07F413CB7568B8E /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Denis Dubov (696B5QNB3Y)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_NAME = "The Art of Individuality";
-				PROVISIONING_PROFILE = "816A9295-DDA7-44D9-ADC2-5B6F76E1C466";
+				PROVISIONING_PROFILE = "75B8AF36-E852-45AF-A449-945B8971920A";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
