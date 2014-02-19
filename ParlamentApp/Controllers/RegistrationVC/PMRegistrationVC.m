@@ -212,7 +212,7 @@
     CGPoint coords = [sender locationInView:sender.view];
     if(coords.x < 100 && coords.y < 100)    {
         //NSLog(@"%@", NSStringFromCGPoint(coords));
-        
+        NSLog(@"SECRET1");
         if(!secret_disable) {
             secret_doubleTap = YES;
             
@@ -240,7 +240,11 @@
                              CGPoint location = btn.center;
                              [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
                              
-                             [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                             /*[self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                                 //
+                             }];*/
+                             
+                             [self mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
                                  //
                              }];
                          }];
@@ -532,7 +536,7 @@
     {
         CGFloat leftSide = tableView.frame.size.width + 40 +tableViewW.frame.size.width;
         
-        leftSide = (self.view.frame.size.width - leftSide)/2;
+        leftSide = (self.view.frame.size.height - leftSide)/2;
         tableViewW.alpha = 0;
         tableViewW.hidden = NO;
         
@@ -567,6 +571,8 @@
             }
         }
         
+        isExitToMenu = NO;
+        
         [userDefaults setObject:nameFieldW.titleField.text forKey:@"_firstnameW"];
         [userDefaults setObject:secondNameFieldW.titleField.text forKey:@"_lastnameW"];
         [userDefaults setObject:sexFieldW.titleField.text forKey:@"_sexW"];
@@ -575,7 +581,10 @@
         [userDefaults setObject:dateBirthFieldW.titleField.text forKey:@"_birthdayW"];
         [userDefaults synchronize];
         
-        [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+        /*[self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+            //
+        }];*/
+        [self mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
             //
         }];
     }

@@ -91,6 +91,8 @@ enum
     CVOpenGLESTextureCacheRef _videoTextureCache;
     
     CVImageBufferRef _pixelBuffer;
+    
+    BOOL isDisableDraw;
 }
 
 - (void)cleanUpTextures;
@@ -111,6 +113,8 @@ enum
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    isDisableDraw = NO;
     
     _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 
@@ -278,7 +282,8 @@ enum
 
 - (void)update
 {
-    [EAGLContext setCurrentContext:_context];
+    if(isDisableDraw) return;
+    //[EAGLContext setCurrentContext:_context];
     
     if (_ripple)
     {
@@ -294,6 +299,8 @@ enum
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
+    if(isDisableDraw) return;
+    
     //[EAGLContext setCurrentContext:_context];
     
     glClear(GL_COLOR_BUFFER_BIT);
@@ -311,6 +318,11 @@ enum
 {
     //[self glkView:self.view drawInRect:self.view.frame];
     [self update];
+}
+
+-(void) disableDraw:(BOOL)isDisable
+{
+    isDisableDraw = isDisable;
 }
 
 #pragma mark - Touch delegate methods

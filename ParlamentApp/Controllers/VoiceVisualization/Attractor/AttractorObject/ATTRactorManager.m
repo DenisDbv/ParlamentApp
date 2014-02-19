@@ -15,10 +15,13 @@
 
 @interface ATTRactorManager()
 @property (nonatomic, strong) NSMutableArray *attractorArray;
+@property (assign) GLuint g_vbo;
+@property (assign) GLuint g_cbo;
 @end
 
 @implementation ATTRactorManager
 @synthesize attractorArray;
+@synthesize g_vbo, g_cbo;
 
 -(id) init
 {
@@ -89,6 +92,8 @@
         glUniform1f(glGetUniformLocation(programHandle, "Zoomer"), attr_object.zoomer);
         glUniform1f(glGetUniformLocation(programHandle, "HoldFade"), attr_object.holdFade);
         glUniform1f(glGetUniformLocation(programHandle, "PointSize"), attr_object.pointSize);
+        
+        //NSLog(@"%i", attr_object.g_vbo);
         
         glDrawArrays(GL_POINTS, 0, attr_object.g_side * attr_object.g_side);
     }

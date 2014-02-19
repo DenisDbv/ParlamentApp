@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "RippleViewController.h"
 
-@interface PMRootViewController : RippleViewController
+@interface PMRootViewController : RippleViewController //UIViewController //
 
 -(void) closeRegistrationAndOpenApp;
 -(void) closeAppAndOpenRegistration;
+
+//-(void) myTouchWithPoint:(CGPoint)point;
+//-(void) touchByLocation:(CGPoint)location;
 
 @end

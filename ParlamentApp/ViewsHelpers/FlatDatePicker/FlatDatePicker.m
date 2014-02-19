@@ -1218,8 +1218,8 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
-    NSLog(@"!");
-    [[AppDelegateInstance() rippleViewController] refresh];
+    //NSLog(@"!");
+    //[[AppDelegateInstance() rippleViewController] refresh];
     
     int index = [self getIndexForScrollViewPosition:scrollView];
     

@@ -64,13 +64,17 @@
     [self.view addGestureRecognizer:tapGesture1];
 
     [tapGesture1 requireGestureRecognizerToFail:tapGesture2];
+    
+    /*UIView *v = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width-100, self.view.frame.size.height-100, 100, 100)];
+    v.backgroundColor = [UIColor redColor];
+    [self.view addSubview:v];*/
 }
 
 - (void)handleTap1:(UIGestureRecognizer *)sender
 {
     CGPoint coords = [sender locationInView:sender.view];
-    if(coords.x > self.view.frame.size.width-100 && coords.y > self.view.frame.size.height-100)    {
-        //NSLog(@"!%@", NSStringFromCGPoint(coords));
+    if(coords.x > self.view.frame.size.height-100 && coords.y > self.view.frame.size.width-100)    {
+        //NSLog(@"!%@ (%@)", NSStringFromCGPoint(coords), NSStringFromCGRect(self.view.frame));
         if(secret_doubleTap == YES) {
             NSLog(@"Show settings secret button");
             
@@ -113,10 +117,10 @@
     CGPoint coords = [sender locationInView:sender.view];
     if(coords.x < 100 && coords.y < 100)    {
         //NSLog(@"%@", NSStringFromCGPoint(coords));
-        
+    
         if(!secret_disable) {
             secret_doubleTap = YES;
-            
+            NSLog(@"SECRET1");
             int64_t delayInSeconds = 1.6;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -315,9 +319,11 @@
 {
     [self hideAllContext];
     
-    /*PMRegistrationVC *rootMenuViewController = [[PMRegistrationVC alloc] initWithNibName:@"PMRegistrationVC" bundle:[NSBundle mainBundle]];
+    PMRegistrationVC *rootMenuViewController = [[PMRegistrationVC alloc] initWithNibName:@"PMRegistrationVC" bundle:[NSBundle mainBundle]];
     
-    MZFormSheetController *registraionSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
+    __weak id wself = self;
+    
+    /*MZFormSheetController *registraionSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];
     
     __weak id wself = self;
     registraionSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
@@ -353,7 +359,51 @@
     [registraionSheet presentFormSheetController:registraionSheet animated:NO completionHandler:^(MZFormSheetController *formSheetController) {
         NSLog(@"Registartion view controller present");
     }];*/
-    [self showVoiceViewController];
+    
+    UINavigationController *navCntrl = [[UINavigationController alloc] init];
+    navCntrl.navigationBarHidden = YES;
+    
+    rootMenuViewController.formSheetController.transitionStyle = MZFormSheetTransitionStyleSlideFromLeft;
+    [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:(__bridge CGColorRef)([UIColor clearColor])];
+    [self mz_presentFormSheetWithViewController:navCntrl animated:NO transitionStyle:MZFormSheetTransitionStyleSlideAndBounceFromLeft completionHandler:^(MZFormSheetController *formSheetController) {
+        
+        formSheetController.landscapeTopInset = 0.0f;
+        
+        formSheetController.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+            
+            PMRegistrationVC *regVC = rootMenuViewController; //(PMRegistrationVC*)presentedFSViewController;
+            if(regVC.isExitToMenu)  {
+                [wself showAllContext];
+            }
+            else
+            {
+                switch (ids) {
+                    case eEye:
+                        [self showEyeViewController];
+                        break;
+                    case eVoice:
+                        [self showVoiceViewController];
+                        break;
+                    case eSiluet:
+                        [self showSiluetViewController];
+                        break;
+                    case eFinger:
+                        [self showFingerViewController];
+                        break;
+                    case eMonogram:
+                        [self showMonogramViewController];
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+        };
+        
+        [formSheetController presentViewController:rootMenuViewController animated:NO completion:^{
+            
+        }];
+    }];
 }
 
 -(void) showVoiceViewController
@@ -375,8 +425,11 @@
     
     __weak id wself = self;
     
+    UINavigationController *navCntrl = [[UINavigationController alloc] init];
+    navCntrl.navigationBarHidden = YES;
+    
     [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:(__bridge CGColorRef)([UIColor clearColor])];
-    [self mz_presentFormSheetWithViewController:[[UINavigationController alloc] init] animated:YES transitionStyle:MZFormSheetTransitionStyleSlideAndBounceFromLeft completionHandler:^(MZFormSheetController *formSheetController) {
+    [self mz_presentFormSheetWithViewController:navCntrl animated:NO transitionStyle:MZFormSheetTransitionStyleSlideAndBounceFromLeft completionHandler:^(MZFormSheetController *formSheetController) {
         
         formSheetController.landscapeTopInset = 0.0f;
         
@@ -384,10 +437,9 @@
             [wself showAllContext];
         };
         
-        [formSheetController presentViewController:voiceVC animated:YES completion:^{
+        [formSheetController presentViewController:voiceVC animated:NO completion:^{
             
         }];
-        
     }];
 }
 
@@ -396,7 +448,7 @@
     //[self hideAllContext];
     
     PMMonogramVC *monogramVC = [[PMMonogramVC alloc] initWithNibName:@"PMMonogramVC" bundle:[NSBundle mainBundle]];
-    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size
+    /*MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size
                                                                     viewController:[[UINavigationController alloc] initWithRootViewController:monogramVC]];
     formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
     __weak id wself = self;
@@ -405,6 +457,25 @@
     };
     [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
         
+    }];*/
+    
+    __weak id wself = self;
+    
+    UINavigationController *navCntrl = [[UINavigationController alloc] init];
+    navCntrl.navigationBarHidden = YES;
+    
+    [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:(__bridge CGColorRef)([UIColor clearColor])];
+    [self mz_presentFormSheetWithViewController:navCntrl animated:NO transitionStyle:MZFormSheetTransitionStyleSlideAndBounceFromLeft completionHandler:^(MZFormSheetController *formSheetController) {
+        
+        formSheetController.landscapeTopInset = 0.0f;
+        
+        formSheetController.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+            [wself showAllContext];
+        };
+        
+        [formSheetController presentViewController:[[UINavigationController alloc] initWithRootViewController:monogramVC] animated:YES completion:^{
+            
+        }];
     }];
 }
 

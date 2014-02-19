@@ -54,6 +54,8 @@
 {
     [super viewDidLoad];
     
+    [[AppDelegateInstance() rippleViewController] disableDraw:YES];
+    
     finishView.alpha = 0;
     finishView.backgroundColor = [UIColor clearColor];
     
@@ -168,6 +170,9 @@
 
 -(void) onVoiceClose:(UIButton*)btn
 {
+    [self unload];
+    [[AppDelegateInstance() rippleViewController] disableDraw:NO];
+    
     CGPoint location = btn.center;
     [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
     
@@ -179,7 +184,6 @@
                          [UIView animateWithDuration:0.05f animations:^{
                              btn.transform = CGAffineTransformMakeScale(1, 1);
                          } completion:^(BOOL finished) {
-                             [self unload];
                              
                              /*self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
                              [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
@@ -362,6 +366,8 @@
 -(void) finishSavingSnapshot
 {
     [self unload];
+ 
+    [[AppDelegateInstance() rippleViewController] disableDraw:NO];
     
     [saveIndicator stopAnimating];
     [saveIndicator removeFromSuperview];

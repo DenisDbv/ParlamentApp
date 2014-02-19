@@ -21,6 +21,9 @@
 @property (nonatomic, assign) BOOL startVoice;
 
 @property (nonatomic, strong) ATTRactorManager *attrManager;
+@property (nonatomic) BOOL women;
+@property (nonatomic, retain) EAGLContext* _context;
+
 @end
 
 @implementation ATTRactorView
@@ -28,7 +31,7 @@
     CADisplayLink* displayLink;
     
     CAEAGLLayer* _eaglLayer;
-    EAGLContext* _context;
+    
     GLuint _colorRenderBuffer;
     GLuint _depthRenderBuffer;
     GLuint framebuffer;
@@ -60,8 +63,6 @@
     NSArray *attractorDeltaTime;
     
     CGFloat components[3];
-    
-    BOOL women;
 }
 @synthesize audioManager;
 @synthesize startVoice;
@@ -69,6 +70,8 @@
 @synthesize snapshotImage;
 @synthesize delegate;
 @synthesize scale, lastScale;
+@synthesize women;
+@synthesize _context;
 
 static int attrIndex = 0;
 
@@ -373,8 +376,8 @@ static int attrIndex = 0;
         {
             if(!wself.startVoice && dBFloatValue != 1.0)   {    //Первый проход в цикле dbFloatValue = 1.0000000 поэтому пропускаем создание аттрактора
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if(!women) [wself addAttractorToOpenGlBuffer];
-                    if(women == NO) women = YES;
+                    if(!wself.women) [wself addAttractorToOpenGlBuffer];
+                    if(wself.women == NO) wself.women = YES;
                 });
             }
             
@@ -428,6 +431,7 @@ static int attrIndex = 0;
     //    [self changeTRMatrixNear];
     
     //glEnable(GL_DEPTH_TEST);
+    glDisable(GL_DEPTH_TEST);
     glEnable(GL_POINT_SPRITE_OES);
     glEnable(GL_POINT_SMOOTH);
     glEnable(GL_BLEND);
@@ -436,7 +440,7 @@ static int attrIndex = 0;
     glBlendFunc(GL_SRC_COLOR, GL_ONE_MINUS_SRC_COLOR);
     //glBlendFunc(GL_ONE, GL_SRC_COLOR);
     
-    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    //glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
     //glClearColor(0.96, 0.96, 0.96, 0.0);
     glClearColor(1.0, 1.0, 1.0, 0.0);
     if(takeSnapshot)
@@ -448,6 +452,8 @@ static int attrIndex = 0;
     //glClearColor(0.0, 0.0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    glBindFramebufferOES(GL_FRAMEBUFFER_OES, framebuffer);
+    glBindRenderbufferOES(GL_RENDERBUFFER_OES, _colorRenderBuffer);
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
     
     glUseProgram(programHandle);

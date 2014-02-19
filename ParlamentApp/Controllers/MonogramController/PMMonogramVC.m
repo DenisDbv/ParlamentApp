@@ -109,8 +109,19 @@
 
 - (void)willShowKeyboardNotification:(NSNotification *)notification
 {
-    CGRect screenRect = [[notification userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    //CGRect screenRect = [[notification userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
 
+    int offset = 50;
+    
+    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft)
+    {
+        offset = 50;
+    }
+    else if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight)
+    {
+        offset = -50;
+    }
+    
     [UIView animateWithDuration:0.3 animations:^{
         self.view.frame = CGRectOffset(self.view.frame, 0, -50);
     }];
@@ -118,6 +129,17 @@
 
 - (void)willHideKeyboardNotification:(NSNotification *)notification
 {
+    int offset = 50;
+    
+    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft)
+    {
+        offset = -50;
+    }
+    else if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight)
+    {
+        offset = 50;
+    }
+    
     [UIView animateWithDuration:0.3 animations:^{
         self.view.frame = CGRectOffset(self.view.frame, 0, 50);
     }];
@@ -168,8 +190,12 @@
     
     [self.view endEditing:YES];
     
-    self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
-    [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+    //self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+    /*[self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+        //
+    }];*/
+    
+    [self mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
         //
     }];
 }

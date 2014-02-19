@@ -152,10 +152,10 @@
                      image:(UIImage*)image
                   filename:(NSString*)filename
 {
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    //Reachability *reachability = [Reachability reachabilityForInternetConnection];
     //[reachability startNotifier];
     
-    NetworkStatus status = [reachability currentReachabilityStatus];
+    /*NetworkStatus status = [reachability currentReachabilityStatus];
     
     if(status == NotReachable)
     {
@@ -172,7 +172,7 @@
             [self.delegate mailSendFailed:2];
             return;
         }
-    }
+    }*/
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 

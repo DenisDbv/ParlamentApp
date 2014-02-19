@@ -144,8 +144,13 @@
     [[AppDelegateInstance() rippleViewController] myTouchWithPoint:location];
     
     //[self.navigationController popViewControllerAnimated:YES];
-    self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+    /*self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
     [self dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+        //
+    }];*/
+    
+    //self.formSheetController.transitionStyle = MZFormSheetTransitionStyleSlideFromBottom;
+    [self mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
         //
     }];
 }
@@ -630,8 +635,11 @@
                          [UIView animateWithDuration:0.05f animations:^{
                              sender.transform = CGAffineTransformMakeScale(1, 1);
                          } completion:^(BOOL finished) {
-                             self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
+                             /*self.formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
                              [self.formSheetController dismissFormSheetControllerAnimated:NO completionHandler:^(MZFormSheetController *formSheetController) {
+                                 //
+                             }];*/
+                             [self mz_dismissFormSheetControllerAnimated:YES completionHandler:^(MZFormSheetController *formSheetController) {
                                  //
                              }];
                          }];

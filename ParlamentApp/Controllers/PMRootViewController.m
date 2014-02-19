@@ -66,13 +66,16 @@
         [TestFlight passCheckpoint:@"Root menu view controller present"];
     }];*/
     
+    UINavigationController *navCntrl = [[UINavigationController alloc] init];
+    navCntrl.navigationBarHidden = YES;
+    
     [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:(__bridge CGColorRef)([UIColor clearColor])];
-    [self mz_presentFormSheetWithViewController:[[UINavigationController alloc] init] animated:YES transitionStyle:MZFormSheetTransitionStyleSlideAndBounceFromLeft completionHandler:^(MZFormSheetController *formSheetController) {
-        
+    [self mz_presentFormSheetWithViewController:navCntrl animated:NO transitionStyle:MZFormSheetTransitionStyleFade completionHandler:^(MZFormSheetController *formSheetController) {
+        formSheetController.landscapeTopInset = 0.0f;
+        //formSheetController.transitionStyle = MZFormSheetTransitionStyleFade;
         [formSheetController presentViewController:rootMenuViewController animated:YES completion:^{
             
         }];
-        
     }];
     
     /*formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:rootMenuViewController];

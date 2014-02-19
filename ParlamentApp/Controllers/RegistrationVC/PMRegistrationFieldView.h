@@ -23,7 +23,7 @@ typedef enum
 @interface PMRegistrationFieldView : UIView
 
 @property (nonatomic, strong) id <PMRegistrationFieldViewDelegate> delegate;
-@property (nonatomic, assign) UITextField *titleField;
+@property (nonatomic, strong) UITextField *titleField;
 
 -(id) initWithPlaceholder:(NSString*)title subTitle:(NSString*)subTitle withType:(FieldType)type;
 
