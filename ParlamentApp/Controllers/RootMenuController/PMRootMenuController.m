@@ -451,7 +451,8 @@
         navCntrl.navigationBarHidden = YES;
         
         [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:(__bridge CGColorRef)([UIColor clearColor])];
-        [self presentFormSheetWithViewController:navCntrl animated:NO transitionStyle:MZFormSheetTransitionStyleSlideAndBounceFromLeft completionHandler:^(MZFormSheetController *formSheetController) {
+        [self presentFormSheetWithViewController:navCntrl animated:NO transitionStyle:MZFormSheetTransitionStyleSlideAndBounceFromLeft
+                               completionHandler:^(MZFormSheetController *formSheetController) {
             
             formSheetController.landscapeTopInset = 0.0f;
             
@@ -459,7 +460,10 @@
                 [wself showAllContext];
             };
             
-            [formSheetController presentViewController:voiceVC animated:NO completion:^{
+            /*[formSheetController presentViewController:voiceVC animated:NO completion:^{
+                
+            }];*/
+            [formSheetController presentViewController:[[UINavigationController alloc] initWithRootViewController:voiceVC] animated:NO completion:^{
                 
             }];
         }];

@@ -427,6 +427,7 @@ static int attrIndex = 0;
     if(takeSnapshot)    {
         glClearColor(0.270588, 0.588235, 0.741176, 0.0);
         //glClearColor(components[0], components[1], components[2], 0.0);
+        //glClearColor(0.0, 0.0, 0.0, 0.0);
     }
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     

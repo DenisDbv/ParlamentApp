@@ -10,6 +10,7 @@
 #import "UIImage+UIImageFunctions.h"
 #import "UIView+GestureBlocks.h"
 #import "NSString+SizeToFit.h"
+#import "PMImageReviewController.h"
 
 @interface PMChooseFontVC ()
 
@@ -286,12 +287,65 @@
         UIImage *finishImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
-        names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+        [self finishGenerateImage:finishImage];
+        
+        /*names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
         //Отсылаем изображение на email пользователя
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = (id)self;
-        [mailManager sendMessageWithTitle:names text:@"Монограмма" image:finishImage filename:@"monogram.png" toPerson:eToUser]; //@"Активация от Art of Individuality"
+        [mailManager sendMessageWithTitle:names text:@"Монограмма" image:finishImage filename:@"monogram.png" toPerson:eToUser]; //@"Активация от Art of Individuality"*/
     });
+}
+
+-(void) finishGenerateImage:(UIImage*)image
+{
+    dispatch_async( dispatch_get_main_queue(), ^{
+        self.blueLineImageView.hidden = YES;
+        
+        [saveIndicator stopAnimating];
+        [saveIndicator removeFromSuperview];
+        
+        titleLabel.alpha = saveBtn.alpha = monogramLabel.alpha = carousel.alpha = 0.0;
+        
+        finishTitle1.alpha = finishTitle2.alpha = finishTitle3.alpha = finishTitle4.alpha = finishTitle5.alpha = 0.0;
+        closeBtn.alpha = 0;
+        
+        PMImageReviewController *imageReviewController = [[PMImageReviewController alloc] initWithImage:image :@"Монограмма" :@"monogram.png" :eToUser];
+        imageReviewController.delegate = (id)self;
+        [self.navigationController pushViewController:imageReviewController animated:YES];
+    });
+}
+
+-(void) sendSuccessfulFromReviewController
+{
+    finishTitle1.alpha = finishTitle2.alpha = finishTitle3.alpha = finishTitle4.alpha = finishTitle5.alpha = 1.0;
+    closeBtn.alpha = 1;
+    
+    PMTimeManager *timeManager = [[PMTimeManager alloc] init];
+    finishTitle5.text = [NSString stringWithFormat:@"СПАСИБО И %@!", [timeManager titleTimeArea]];
+    
+    UIImage *settingImage = [[UIImage imageNamed:@"settings-close.png"] scaleProportionalToRetina];
+    [closeBtn addTarget:self action:@selector(onClose:) forControlEvents:UIControlEventTouchUpInside];
+    [closeBtn setBackgroundImage:settingImage forState:UIControlStateNormal];
+    [closeBtn setBackgroundImage:settingImage forState:UIControlStateHighlighted];
+}
+
+-(void) backFromReviewController
+{
+    self.blueLineImageView.hidden = NO;
+    
+    [saveIndicator stopAnimating];
+    [saveIndicator removeFromSuperview];
+    
+    [saveBtn setEnabled:YES];
+    UIImage *saveClearImage = [UIImage imageNamed:@"further.png"];
+    [saveBtn setBackgroundImage:saveClearImage forState:UIControlStateNormal];
+    [saveBtn setBackgroundImage:saveClearImage forState:UIControlStateHighlighted];
+    
+    titleLabel.alpha = saveBtn.alpha = monogramLabel.alpha = carousel.alpha = 1.0;
+    
+    //finishTitle1.alpha = finishTitle2.alpha = finishTitle3.alpha = finishTitle4.alpha = 1.0;
+    closeBtn.alpha = 1;
 }
 
 -(void) mailSendSuccessfully

@@ -12,6 +12,7 @@
 #import <MZTimerLabel/MZTimerLabel.h>
 #import "UIView+Screenshot.h"
 #import "NSString+SizeToFit.h"
+#import "PMImageReviewController.h"
 
 @interface PMVoiceVisualizationVC ()
 
@@ -53,6 +54,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBarHidden = YES;
     
     if(!IS_OS_7_OR_LATER)
         [[AppDelegateInstance() rippleViewController] disableDraw:YES];
@@ -248,15 +251,6 @@
     [self.view addSubview:imgView];*/
 }
 
--(void) snapshotWaiting
-{
-    NSLog(@"%@", NSStringFromCGSize(attractorView.snapshotImage.size));
-    mailManager = [[PMMailManager alloc] init];
-    mailManager.delegate = self;
-    //[mailManager sendMessageWithImage:attractorView.snapshotImage imageName:@"voice.png" andText:@"Изображение голоса"];
-    [mailManager sendMessageWithTitle:@"Активация от Art of Individuality" text:@"Изображение голоса" image:attractorView.snapshotImage filename:@"voice.png" toPerson:eToUser];
-}
-
 -(void) mailSendSuccessfully
 {
     //[self performSelector:@selector(finishSavingSnapshot) withObject:nil afterDelay:0.0];
@@ -269,15 +263,18 @@
 
 -(void) finishSavingSnapshot
 {
-    [self unload];
+    //[self unload];
+    attractorSnapshot = attractorView.snapshotImage;
     
     if(!IS_OS_7_OR_LATER)
         [[AppDelegateInstance() rippleViewController] disableDraw:NO];
     
+    [self initResultImage];
+    
     [saveIndicator stopAnimating];
     [saveIndicator removeFromSuperview];
     
-    saveButton.alpha = 0.0;
+    /*saveButton.alpha = 0.0;
     resetButton.alpha = 0.0;
     titleLabel1.alpha = titleLabel2.alpha = titleLabel3.alpha = titleLabel4.alpha = 0.0;
     timerLabel.alpha = 0.0;
@@ -291,9 +288,90 @@
     UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
     [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
     [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
-    [saveButton setEnabled:YES];
+    [saveButton setEnabled:YES];*/
+}
+
+-(void) finishGenerateImage:(UIImage*)image
+{
+    __weak id wself = self;
     
-    [self initResultImage];
+    dispatch_sync( dispatch_get_main_queue(), ^{
+        closeButton.alpha = 0;
+        saveButton.alpha = 0;
+        
+        PMImageReviewController *imageReviewController = [[PMImageReviewController alloc] initWithImage2:image :@"Изображение голоса" :@"voice.png" :eToUser];
+        imageReviewController.delegate = (id)wself;
+        
+        if( IS_OS_7_OR_LATER )  {
+            MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:imageReviewController];
+            formSheet.transitionStyle = MZFormSheetTransitionStyleSlideAndBounceFromRight;
+            
+            formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+                [wself showAllContext];
+            };
+            [formSheet presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+                
+            }];
+        } else  {
+            UINavigationController *navCntrl = [[UINavigationController alloc] init];
+            navCntrl.navigationBarHidden = YES;
+            
+            [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:(__bridge CGColorRef)([UIColor clearColor])];
+            [self presentFormSheetWithViewController:navCntrl animated:NO transitionStyle:MZFormSheetTransitionStyleSlideAndBounceFromLeft
+                                   completionHandler:^(MZFormSheetController *formSheetController) {
+                                       
+                                       formSheetController.landscapeTopInset = 0.0f;
+                                       
+                                       formSheetController.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+                                           [wself showAllContext];
+                                       };
+                                       
+                                       /*[formSheetController presentViewController:voiceVC animated:NO completion:^{
+                                        
+                                        }];*/
+                                       [formSheetController presentViewController:[[UINavigationController alloc] initWithRootViewController:imageReviewController] animated:NO completion:^{
+                                           
+                                       }];
+                                   }];
+        }
+    });
+}
+
+-(void) sendSuccessfulFromReviewController
+{
+     [self unload];
+    
+     saveButton.alpha = 0.0;
+     resetButton.alpha = 0.0;
+     titleLabel1.alpha = titleLabel2.alpha = titleLabel3.alpha = titleLabel4.alpha = 0.0;
+     timerLabel.alpha = 0.0;
+     settingButton.alpha = 0.0;
+     attractorView.alpha = 0.0;
+     
+     PMTimeManager *timeManager = [[PMTimeManager alloc] init];
+     finishTitle4.text = [NSString stringWithFormat:@"СПАСИБО И %@!", [timeManager titleTimeArea]];
+     finishView.alpha = 1.0;
+     
+     UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
+     [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
+     [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
+     [saveButton setEnabled:YES];
+    
+    closeButton.alpha = 1.0;
+}
+
+-(void) backFromReviewController
+{
+    closeButton.alpha = saveButton.alpha = 1;
+    
+    [saveButton setEnabled:YES];
+    UIImage *saveVoiceImage = [[UIImage imageNamed:@"save-voice.png"] scaleProportionalToRetina];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateNormal];
+    [saveButton setImage:saveVoiceImage forState:UIControlStateHighlighted];
+    
+    [timer reset];
+    [timer start];
+    [attractorView resetAttractors];
 }
 
 -(void) initResultImage
@@ -302,7 +380,7 @@
         
         UIImage *backgroundImage = [UIImage imageNamed:@"back_texture2.png"];
         CGRect backgroundRect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
-        CGRect figureRect = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, 250, backgroundImage.size.width - 110, 530);
+        CGRect figureRect = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, backgroundImage.size.width-250, backgroundImage.size.width - 110, 530);
         
         /*UIGraphicsBeginImageContextWithOptions(attractorSnapshot.size, NO, 2.0);
         CGContextRef context = UIGraphicsGetCurrentContext();
@@ -324,11 +402,10 @@
         CGContextTranslateCTM(context, 0, backgroundImage.size.height);
         CGContextScaleCTM(context, 1.0, -1.0);
         CGContextDrawImage(context, backgroundRect, backgroundImage.CGImage);
+        CGContextDrawImage(context, figureRect, pngImage.CGImage);
+        
         CGContextTranslateCTM(context, 0, backgroundImage.size.height);
         CGContextScaleCTM(context, 1.0, -1.0);
-        CGContextDrawImage(context, figureRect, pngImage.CGImage);
-        //[attractorSnapshot drawInRect:figureRect];
-        //CGRectMake((backgroundRect.size.width-attractorSnapshot.size.width)/2, (backgroundRect.size.height-attractorSnapshot.size.height)/2, attractorSnapshot.size.width, attractorSnapshot.size.height)
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
@@ -344,7 +421,7 @@
             oneHeight = size.height;
             
             textRect.origin.x = (backgroundRect.size.width - size.width)/2;
-            textRect.origin.y = figureRect.origin.y + figureRect.size.height + 40;
+            textRect.origin.y = 250 + figureRect.size.height + 40;
             
             [names drawInRect:textRect withAttributes:att];
         }
@@ -392,29 +469,13 @@
         UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
-        /*dispatch_sync(dispatch_get_main_queue(), ^{
-            
-            NSData* imageData =  UIImagePNGRepresentation(attractorSnapshot);
-            UIImage *pngImage = [UIImage imageWithData:imageData];
-            UIImageWriteToSavedPhotosAlbum(pngImage, nil, nil, nil);
-            
-            UIImageView *imgView = [[UIImageView alloc] initWithImage:attractorSnapshot];
-            UIImageView *imgView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back_2.png"]];
-            UIView *secondView = [[UIView alloc] initWithFrame:imgView2.frame];
-            [secondView addSubview:imgView2];
-            //imgView.frame = CGRectOffset(imgView.frame, (imgView2.frame.size.width - attractorSnapshot.size.width)/2, (imgView2.frame.size.height - attractorSnapshot.size.height)/2);
-            [secondView addSubview:imgView];
-            [self.view addSubview:imgView];
-
-        });*/
+        [self finishGenerateImage:resultingImage];
         
-        names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
+        /*names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
         mailManager = [[PMMailManager alloc] init];
         mailManager.delegate = (id)self;
-        [mailManager sendMessageWithTitle:names text:@"Изображение голоса" image:resultingImage filename:@"voice.png" toPerson:eToUser]; //@"Активация от Art of Individuality"
+        [mailManager sendMessageWithTitle:names text:@"Изображение голоса" image:resultingImage filename:@"voice.png" toPerson:eToUser];*/
     });
-    
-    
 }
 
 -(UIImage *)changeWhiteColorTransparent: (UIImage *)image
@@ -498,6 +559,7 @@
                          }];
                      }];
     
+    [timer reset];
     [attractorView resetAttractors];
 }
 

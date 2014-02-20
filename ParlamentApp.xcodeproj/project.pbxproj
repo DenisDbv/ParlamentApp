@@ -23,6 +23,8 @@
 		1822F66F18A4BF92009407D0 /* shiny-metal-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1822F66E18A4BF92009407D0 /* shiny-metal-background.jpg */; };
 		1822F69618A93ED8009407D0 /* NSString+SizeToFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1822F69518A93ED8009407D0 /* NSString+SizeToFit.m */; };
 		1864C24818B556A10027B1C9 /* back_texture2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1864C24718B556A10027B1C9 /* back_texture2.png */; };
+		1864C25318B5B9F10027B1C9 /* PMImageReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864C25118B5B9F10027B1C9 /* PMImageReviewController.m */; };
+		1864C25418B5B9F10027B1C9 /* PMImageReviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1864C25218B5B9F10027B1C9 /* PMImageReviewController.xib */; };
 		18A54AE7186025420085B714 /* PMMailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A54AE6186025420085B714 /* PMMailManager.m */; };
 		18A54AEA186032FA0085B714 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE8186032FA0085B714 /* test.vcf */; };
 		18A54AEB186032FA0085B714 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18A54AE9186032FA0085B714 /* Settings.bundle */; };
@@ -226,6 +228,9 @@
 		1822F69418A93ED8009407D0 /* NSString+SizeToFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SizeToFit.h"; sourceTree = "<group>"; };
 		1822F69518A93ED8009407D0 /* NSString+SizeToFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SizeToFit.m"; sourceTree = "<group>"; };
 		1864C24718B556A10027B1C9 /* back_texture2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_texture2.png; sourceTree = "<group>"; };
+		1864C25018B5B9F10027B1C9 /* PMImageReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMImageReviewController.h; sourceTree = "<group>"; };
+		1864C25118B5B9F10027B1C9 /* PMImageReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMImageReviewController.m; sourceTree = "<group>"; };
+		1864C25218B5B9F10027B1C9 /* PMImageReviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageReviewController.xib; sourceTree = "<group>"; };
 		18A54AE5186025420085B714 /* PMMailManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailManager.h; sourceTree = "<group>"; };
 		18A54AE6186025420085B714 /* PMMailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMailManager.m; sourceTree = "<group>"; };
 		18A54AE8186032FA0085B714 /* test.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.vcf; sourceTree = "<group>"; };
@@ -495,6 +500,16 @@
 				1822F69518A93ED8009407D0 /* NSString+SizeToFit.m */,
 			);
 			path = SizeToFit;
+			sourceTree = "<group>";
+		};
+		1864C24F18B5B9E40027B1C9 /* ImageReviewController */ = {
+			isa = PBXGroup;
+			children = (
+				1864C25018B5B9F10027B1C9 /* PMImageReviewController.h */,
+				1864C25118B5B9F10027B1C9 /* PMImageReviewController.m */,
+				1864C25218B5B9F10027B1C9 /* PMImageReviewController.xib */,
+			);
+			path = ImageReviewController;
 			sourceTree = "<group>";
 		};
 		18A54AE3186025060085B714 /* Managers */ = {
@@ -838,6 +853,7 @@
 		18A84C991851D54600612BE5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1864C24F18B5B9E40027B1C9 /* ImageReviewController */,
 				18A54B0B186266EC0085B714 /* EyeVC */,
 				18EA46B41859AE7C0066A22C /* RegistrationVC */,
 				18EA4684185734D50066A22C /* SiluetViewController */,
@@ -1212,6 +1228,7 @@
 				18EA46211855F1590066A22C /* PMMonogramVC.xib in Resources */,
 				18A54B13186276BE0085B714 /* arrow_p.png in Resources */,
 				18EA464D185661D90066A22C /* acquests.png in Resources */,
+				1864C25418B5B9F10027B1C9 /* PMImageReviewController.xib in Resources */,
 				18A54B10186267020085B714 /* PMEyeVC.xib in Resources */,
 				18EA4652185661D90066A22C /* andantino.png in Resources */,
 				18A84C7B1851D32600612BE5 /* Images.xcassets in Resources */,
@@ -1342,6 +1359,7 @@
 				18A68FB2185484A6009019BC /* ATTRactorManager.m in Sources */,
 				18A54AFB18603F4F0085B714 /* NSData+Base64Additions.m in Sources */,
 				18A84CB71852084700612BE5 /* UIView+GestureBlocks.m in Sources */,
+				1864C25318B5B9F10027B1C9 /* PMImageReviewController.m in Sources */,
 				1822F66D18A0E9FD009407D0 /* UIView+Screenshot.m in Sources */,
 				18A68F7818538DC7009019BC /* PMParentController.m in Sources */,
 				18EA469118573E500066A22C /* RippleShader.vsh in Sources */,

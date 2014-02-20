@@ -49,16 +49,33 @@
     onClose.alpha = onFurther.alpha = initialContainerView.alpha = titleLabel.alpha = 1.0;
     
     [self addKeyboardNotifications];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange2:) name:UITextFieldTextDidChangeNotification object: nil];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [initialTextField becomeFirstResponder];
 }
 
 -(void) viewWillDisappear:(BOOL)animated
 {
     [self removeKeyboardNotifications];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void)textDidChange2:(UITextField *)textField
+{
+    if ([initialTextField.text length] > 2) {
+        initialTextField.text = [initialTextField.text substringToIndex:2];
+    }
+    //NSLog(@"%@", initialTextField.text);
 }
 
 #pragma mark - UIKeyboard Notifications
