@@ -60,6 +60,9 @@
     NSArray *attractorDeltaTime;
     
     CGFloat components[3];
+    
+    BOOL isMan;
+    NSMutableArray *oldColorArray;
 }
 @synthesize audioManager;
 @synthesize startVoice;
@@ -88,6 +91,12 @@ static int attrIndex = 0;
     
     attrManager = [[ATTRactorManager alloc] init];
     attrIndex = 0;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if([[userDefaults objectForKey:@"_sex"] isEqualToString:@"ЖЕНСКИЙ"])
+        isMan = NO;
+    else
+        isMan = YES;
 }
 
 - (void)getRGBComponents:(CGFloat [3])components forColor:(UIColor *)color {
@@ -199,9 +208,9 @@ static int attrIndex = 0;
                        [NSNumber numberWithInt:256],
                        [NSNumber numberWithInt:256]];
     
-    attractorPontsSize = @[[NSNumber numberWithFloat:0.3], //0.6
-                           [NSNumber numberWithFloat:0.3], //0.5
-                           [NSNumber numberWithFloat:0.4],
+    attractorPontsSize = @[[NSNumber numberWithFloat:0.3], //0.6    0.3
+                           [NSNumber numberWithFloat:0.3], //0.5    0.3
+                           [NSNumber numberWithFloat:0.4], //0.4
                            [NSNumber numberWithFloat:0.4],
                            [NSNumber numberWithFloat:0.3],
                            [NSNumber numberWithFloat:0.7],
@@ -425,10 +434,16 @@ static int attrIndex = 0;
     glClearColor(1.0, 1.0, 1.0, 0.0);
     
     if(takeSnapshot)    {
-        glClearColor(0.270588, 0.588235, 0.741176, 0.0);
-        //glClearColor(0.0, 0.0, 1.0, 0.0);
+        if(!isMan)  {
+            glClearColor(0.270588, 0.588235, 0.741176, 0.0);
+        }
+        else    {
+            glClearColor(1.0, 1.0, 1.0, 0.0);
+            [self setAllAttractrorsWhite];
+        }
+        
         //glClearColor(components[0], components[1], components[2], 0.0);
-        //glClearColor(255.0/255.0, 255.0/255.0, 255.0/255.0, 0.0);
+        //glClearColor(245.0/255.0, 245.0/255.0, 245.0/255.0, 0.0);
     }
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -458,10 +473,45 @@ static int attrIndex = 0;
         takeSnapshot = NO;
         snapshotImage = [self snapshot:self];
         //snapshotImage = [self glToUIImage];
+        
+        if(isMan)
+        {
+            [self setAllAttractrorsColorBack];
+        }
     }
     
     [_context presentRenderbuffer:GL_RENDERBUFFER_OES];
 
+}
+
+-(void) setAllAttractrorsWhite
+{
+    CGFloat rgbColor[] = {250.0f/255.0f, 250.0f/255.0f, 250.0f/255.0f};
+    
+    NSInteger attractorCount = [attrManager attractorsDepth];
+    for(int loop = 0; loop < attractorCount; loop++)
+    {
+        ATTRactorObject *object = [attrManager attractorAccess:loop];
+        if(object != nil)   {
+            [object setRGBColor:rgbColor];
+            object.pointSize = 0.1f;
+        }
+    }
+}
+
+-(void) setAllAttractrorsColorBack
+{
+    CGFloat rgbColor[] = {0.787200, 0.928896, 0.960000};
+    
+    NSInteger attractorCount = [attrManager attractorsDepth];
+    for(int loop = 0; loop < attractorCount; loop++)
+    {
+        ATTRactorObject *object = [attrManager attractorAccess:loop];
+        if(object != nil)   {
+            [object setRGBColor:rgbColor];
+            object.pointSize = [[attractorPontsSize objectAtIndex:loop] floatValue];
+        }
+    }
 }
 
 -(void) pinchGestureCaptured:(UIPinchGestureRecognizer*)gestureRecognizer

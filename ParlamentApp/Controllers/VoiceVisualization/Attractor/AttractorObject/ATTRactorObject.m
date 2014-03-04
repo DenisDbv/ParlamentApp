@@ -253,11 +253,11 @@
     
     // hsv color [0.53, 0.18, 0.96]
     float hue = 0.53f;
-    float hsvColor[] = { 0.53, 0.18f, 0.96f }; //{0.99, 1.0f, 0.75f};   //0.51
+    float hsvColor[] = { 0.53f, 0.18f, 0.96f }; //{0.99, 1.0f, 0.75f};   //0.51 //1.0f - даст светло синий как в картинке
     
     //hsvColor[0] = _randomInRadius(hue, randomWidth / 2.0f);
     _hsv2rgb(hsvColor, color);
-    //NSLog(@"==> %f %f %f", color[0]*255, color[1]*255, color[2]*255);
+    NSLog(@"==> %f %f %f", color[0], color[1], color[2]);
     /*color[0] = 1.0;
     color[1] = 1.0;
     color[2] = 1.0;*/
@@ -286,7 +286,7 @@
     
     memcpy(tr, trDef, sizeof(trDef));
     
-    [self startTimer];
+    //[self startTimer];
 }
 
 - (void)getRGBComponents:(CGFloat [3])components forColor:(UIColor *)color {

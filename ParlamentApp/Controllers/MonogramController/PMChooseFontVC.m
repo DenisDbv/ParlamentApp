@@ -140,12 +140,12 @@
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         UIImage *backgroundImage;
-        if([[userDefaults objectForKey:@"_sex"] isEqualToString:@"МУЖСКОЙ"])
+        if([[userDefaults objectForKey:@"_sex"] isEqualToString:@"ЖЕНСКИЙ"])
         {
-            backgroundImage = [UIImage imageNamed:@"back_texture2.png"];
+            backgroundImage = [UIImage imageNamed:@"back_2.png"];
         }
         else
-            backgroundImage = [UIImage imageNamed:@"back_2.png"];
+            backgroundImage = [UIImage imageNamed:@"back_texture2.png"];
         
         
         CGRect backgroundRect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
