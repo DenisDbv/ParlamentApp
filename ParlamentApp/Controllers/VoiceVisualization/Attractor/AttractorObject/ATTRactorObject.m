@@ -180,6 +180,13 @@
     color[3] = 0.01f;
 }
 
+-(void) setRGBColor:(CGFloat*)component
+{
+    color[0] = component[0];
+    color[1] = component[1];
+    color[2] = component[2];
+}
+
 -(void) setTr0:(float)trZero
 {
     _tr0 = trZero;
@@ -251,9 +258,9 @@
     //hsvColor[0] = _randomInRadius(hue, randomWidth / 2.0f);
     _hsv2rgb(hsvColor, color);
     //NSLog(@"==> %f %f %f", color[0]*255, color[1]*255, color[2]*255);
-    /*color[0] = 0.41;
-    color[1] = 0.96;
-    color[2] = 0.98;*/
+    /*color[0] = 1.0;
+    color[1] = 1.0;
+    color[2] = 1.0;*/
     //color[3] = 0.01f;
     fade = 1.0f;
     phase = 0.0f;

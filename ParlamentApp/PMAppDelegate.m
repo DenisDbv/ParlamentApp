@@ -6,6 +6,12 @@
 //  Copyright (c) 2013 brandmill. All rights reserved.
 //
 
+/*
+ 1) В сокращеннйо форме регистрации вместо телефона - пол
+ 2) Для мужчин темный фон для женщин светлый
+ 3) Смена цвета аттрактора в темной фоне
+ */
+
 #import "PMAppDelegate.h"
 #import "MBPopoverBackgroundView.h"
 

@@ -258,7 +258,7 @@
     NSUserDefaults *setting = [NSUserDefaults standardUserDefaults];
     shortRegForm = [[setting objectForKey:@"ShortRegForm"] boolValue];
     if(shortRegForm)    {
-        fieldsArray = @[nameField, secondNameField, phoneField, emailField];
+        fieldsArray = @[nameField, secondNameField, sexField, emailField]; //phoneField
         tableView.frame = CGRectMake(387, 190, tableView.frame.size.width, tableView.frame.size.height);
     }
     else    {

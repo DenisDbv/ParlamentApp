@@ -49,6 +49,7 @@
 -(float*) trArray;
 -(float*) colorArray;
 -(void) setHueColor:(CGFloat)hueColor;
+-(void) setRGBColor:(CGFloat*)component;
 -(void) attractorInfo;
 
 -(void) attractorNoiceFar;

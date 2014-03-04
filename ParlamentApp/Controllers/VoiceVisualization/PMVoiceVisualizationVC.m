@@ -378,7 +378,15 @@
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        UIImage *backgroundImage = [UIImage imageNamed:@"back_texture2.png"];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        UIImage *backgroundImage;
+        if([[userDefaults objectForKey:@"_sex"] isEqualToString:@"МУЖСКОЙ"])
+        {
+            backgroundImage = [UIImage imageNamed:@"back_texture2.png"];
+        }
+        else
+            backgroundImage = [UIImage imageNamed:@"back_2.png"];
+        
         CGRect backgroundRect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
         CGRect figureRect = CGRectMake((backgroundRect.size.width - (backgroundImage.size.width - 110))/2, backgroundImage.size.width-250, backgroundImage.size.width - 110, 530);
         
@@ -407,7 +415,6 @@
         CGContextTranslateCTM(context, 0, backgroundImage.size.height);
         CGContextScaleCTM(context, 1.0, -1.0);
         
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *names = [NSString stringWithFormat:@"%@ %@", [userDefaults objectForKey:@"_firstname"], [userDefaults objectForKey:@"_lastname"]];
         UIFont *font = [UIFont fontWithName:@"MyriadPro-Cond" size:40.0];
         CGRect textRect = CGRectMake(0, 0, backgroundRect.size.width, backgroundRect.size.height);
