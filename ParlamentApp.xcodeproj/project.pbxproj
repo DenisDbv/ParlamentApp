@@ -132,6 +132,10 @@
 		18A89072185E3A0D00BD094A /* PMDatePickerVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A89070185E3A0D00BD094A /* PMDatePickerVCViewController.xib */; };
 		18A89076185E590F00BD094A /* PMSexChooseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A89074185E590F00BD094A /* PMSexChooseVC.m */; };
 		18A89077185E590F00BD094A /* PMSexChooseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A89075185E590F00BD094A /* PMSexChooseVC.xib */; };
+		18D524A01916CD11002ABF49 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D5249F1916CD11002ABF49 /* ExternalAccessory.framework */; };
+		18D524A21916CD19002ABF49 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D524A11916CD19002ABF49 /* libxml2.dylib */; };
+		18D524A41916CD23002ABF49 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D524A31916CD23002ABF49 /* libstdc++.6.dylib */; };
+		18D524AA1916D7AF002ABF49 /* libFbFmobileOne.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D524A91916D7AF002ABF49 /* libFbFmobileOne.a */; };
 		18E527EA188D58860041ACE3 /* icon_152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E527E8188D58860041ACE3 /* icon_152x152.png */; };
 		18E527EB188D58860041ACE3 /* icon_76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E527E9188D58860041ACE3 /* icon_76x76.png */; };
 		18EA46191855D8AC0066A22C /* clear_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EA46181855D8AC0066A22C /* clear_button.png */; };
@@ -372,6 +376,14 @@
 		18A89073185E590F00BD094A /* PMSexChooseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSexChooseVC.h; sourceTree = "<group>"; };
 		18A89074185E590F00BD094A /* PMSexChooseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSexChooseVC.m; sourceTree = "<group>"; };
 		18A89075185E590F00BD094A /* PMSexChooseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMSexChooseVC.xib; sourceTree = "<group>"; };
+		18D5249A1916CCF2002ABF49 /* FbFAccessoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FbFAccessoryController.h; sourceTree = "<group>"; };
+		18D5249B1916CCF2002ABF49 /* FbFmobileOneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FbFmobileOneDelegate.h; sourceTree = "<group>"; };
+		18D5249C1916CCF2002ABF49 /* FbFmobileOneErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FbFmobileOneErrors.h; sourceTree = "<group>"; };
+		18D5249F1916CD11002ABF49 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		18D524A11916CD19002ABF49 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		18D524A31916CD23002ABF49 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		18D524A71916D38E002ABF49 /* libFbFmobileOne.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFbFmobileOne.a; path = ../../../Downloads/libFbFmobileOne.a; sourceTree = "<group>"; };
+		18D524A91916D7AF002ABF49 /* libFbFmobileOne.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFbFmobileOne.a; path = ../../../Downloads/FingerPrintAppLatestLib/FingerPrintApp/FbFmobileOne/libFbFmobileOne.a; sourceTree = "<group>"; };
 		18E527E8188D58860041ACE3 /* icon_152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_152x152.png; sourceTree = "<group>"; };
 		18E527E9188D58860041ACE3 /* icon_76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_76x76.png; sourceTree = "<group>"; };
 		18EA46181855D8AC0066A22C /* clear_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear_button.png; sourceTree = "<group>"; };
@@ -451,6 +463,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D524AA1916D7AF002ABF49 /* libFbFmobileOne.a in Frameworks */,
+				18D524A41916CD23002ABF49 /* libstdc++.6.dylib in Frameworks */,
+				18D524A21916CD19002ABF49 /* libxml2.dylib in Frameworks */,
+				18D524A01916CD11002ABF49 /* ExternalAccessory.framework in Frameworks */,
 				18A54AED186035E90085B714 /* CFNetwork.framework in Frameworks */,
 				18EA4699185766430066A22C /* CoreVideo.framework in Frameworks */,
 				18EA469718575F9E0066A22C /* QuartzCore.framework in Frameworks */,
@@ -753,6 +769,11 @@
 		18A84C621851D32600612BE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18D524A91916D7AF002ABF49 /* libFbFmobileOne.a */,
+				18D524A71916D38E002ABF49 /* libFbFmobileOne.a */,
+				18D524A31916CD23002ABF49 /* libstdc++.6.dylib */,
+				18D524A11916CD19002ABF49 /* libxml2.dylib */,
+				18D5249F1916CD11002ABF49 /* ExternalAccessory.framework */,
 				18A54AEC186035E90085B714 /* CFNetwork.framework */,
 				18EA4698185766430066A22C /* CoreVideo.framework */,
 				18EA469618575F9E0066A22C /* QuartzCore.framework */,
@@ -792,6 +813,7 @@
 		18A84C6C1851D32600612BE5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18D524991916CCF2002ABF49 /* FbFmobileOne */,
 				18A84C6D1851D32600612BE5 /* ParlamentApp-Info.plist */,
 				18A84C6E1851D32600612BE5 /* InfoPlist.strings */,
 				18A84C711851D32600612BE5 /* main.m */,
@@ -947,6 +969,16 @@
 				18A89068185E351D00BD094A /* FlatDatePicker.m */,
 			);
 			path = FlatDatePicker;
+			sourceTree = "<group>";
+		};
+		18D524991916CCF2002ABF49 /* FbFmobileOne */ = {
+			isa = PBXGroup;
+			children = (
+				18D5249A1916CCF2002ABF49 /* FbFAccessoryController.h */,
+				18D5249B1916CCF2002ABF49 /* FbFmobileOneDelegate.h */,
+				18D5249C1916CCF2002ABF49 /* FbFmobileOneErrors.h */,
+			);
+			path = FbFmobileOne;
 			sourceTree = "<group>";
 		};
 		18EA461C1855F13A0066A22C /* MonogramController */ = {
@@ -1133,6 +1165,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = brandmill;
 				TargetAttributes = {
+					18A84C5F1851D32600612BE5 = {
+						DevelopmentTeam = BLTF8P8RTQ;
+					};
 					18A84C7F1851D32700612BE5 = {
 						TestTargetID = 18A84C5F1851D32600612BE5;
 					};
@@ -1508,6 +1543,13 @@
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ParlamentApp",
+					"$(PROJECT_DIR)/ParlamentApp/FbFmobileOne",
+					/Users/apple/Downloads,
+					/Users/apple/Downloads/FingerPrintAppLatestLib/FingerPrintApp/FbFmobileOne,
+				);
 				PRODUCT_NAME = "The Art of Individuality";
 				PROVISIONING_PROFILE = "71EA7330-62BE-4D5A-8BEF-85E1B1B36645";
 				VALID_ARCHS = "armv7 armv7s";
@@ -1527,6 +1569,13 @@
 				GCC_PREFIX_HEADER = "ParlamentApp/ParlamentApp-Prefix.pch";
 				INFOPLIST_FILE = "ParlamentApp/ParlamentApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ParlamentApp",
+					"$(PROJECT_DIR)/ParlamentApp/FbFmobileOne",
+					/Users/apple/Downloads,
+					/Users/apple/Downloads/FingerPrintAppLatestLib/FingerPrintApp/FbFmobileOne,
+				);
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_NAME = "The Art of Individuality";

@@ -507,7 +507,7 @@ void rgbToHSV(float rgb[3], float hsv[3])
         // Set data for cube
         [colorCube setValue:data forKey:@"inputCubeData"];
         
-        UIImage *image = [_photoDict objectForKey:PBJVisionPhotoImageKey];//[UIImage imageNamed:@"test.png"]; //
+        UIImage *image = [_photoDict objectForKey:PBJVisionPhotoImageKey];
         CIImage *beginImage = [[CIImage alloc] initWithImage:image];
         
         [colorCube setValue:beginImage forKey:kCIInputImageKey];

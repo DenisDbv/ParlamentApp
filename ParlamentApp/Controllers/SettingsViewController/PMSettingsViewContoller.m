@@ -88,7 +88,7 @@
 
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.height;
-    
+
     UIImage *settingImage = [[UIImage imageNamed:@"settings-close-small.png"] scaleProportionalToRetina];
     UIButton *settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [settingButton addTarget:self action:@selector(onSettingClose:) forControlEvents:UIControlEventTouchUpInside];

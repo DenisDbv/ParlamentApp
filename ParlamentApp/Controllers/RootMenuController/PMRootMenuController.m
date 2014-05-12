@@ -516,7 +516,7 @@
     
     if( IS_OS_7_OR_LATER )  {
         
-        MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:fingerVC];
+        MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithSize:self.view.bounds.size viewController:[[UINavigationController alloc] initWithRootViewController:fingerVC]];
         formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
         formSheet.willDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
             [wself showAllContext];

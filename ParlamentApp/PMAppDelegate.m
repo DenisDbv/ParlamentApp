@@ -24,6 +24,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    /*
+     Disable the automatic idle timer sleep
+     WARNING: this will drain the battery quickly if the
+     device is not manually put to sleep
+     */
+	[UIApplication sharedApplication].idleTimerDisabled = YES;
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [MBPopoverBackgroundView initialize];

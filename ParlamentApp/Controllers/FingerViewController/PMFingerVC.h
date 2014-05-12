@@ -11,4 +11,7 @@
 @interface PMFingerVC : PMParentController
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIButton *onClose;
+@property (strong, nonatomic) IBOutlet UIButton *onFurther;
+
 @end
